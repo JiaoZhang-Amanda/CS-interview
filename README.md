@@ -1,7 +1,18 @@
 <br>
 
-| &nbsp;算法&nbsp; | 操作系统 | &nbsp;网络&nbsp;|面向对象| &nbsp;&nbsp;数据库&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Java&nbsp;&nbsp;&nbsp;|         系统设计| &nbsp;&nbsp;&nbsp;工具&nbsp;&nbsp;&nbsp; |编码实践| &nbsp;&nbsp;&nbsp;后记&nbsp;&nbsp;&nbsp; |
+| &nbsp;Algorithm&nbsp; | OS | &nbsp;Network&nbsp;|object-oriented| &nbsp;&nbsp;database&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Java&nbsp;&nbsp;&nbsp;|         OOD| &nbsp;&nbsp;&nbsp;Tools&nbsp;&nbsp;&nbsp; |Others| &nbsp;&nbsp;&nbsp;My notes&nbsp;&nbsp;&nbsp; |
 | :---: | :----: | :---: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
-| [:pencil2:](#pencil2-算法) | [:computer:](#computer-操作系统) | [:cloud:](#cloud-网络) | [:art:](#art-面向对象) | [:floppy_disk:](#floppy_disk-数据库) |[:coffee:](#coffee-java)| [:bulb:](#bulb-系统设计) |[:wrench:](#wrench-工具)| [:watermelon:](#watermelon-编码实践) |[:memo:](#memo-后记)|
+| [:pencil2:](#pencil2-Algorithm) | [:computer:](#computer-OS) | [:cloud:](#cloud-Network) | [:art:](#art-object-oriented) | [:floppy_disk:](#floppy_disk-database) |[:coffee:](#coffee-java)| [:bulb:](#bulb-OOD) |[:wrench:](#wrench-Tools)| [:watermelon:](#watermelon-Others) |[:memo:](#memo-my notes)|
 
 <br>
+
+## :pencile2: Algorithm
+## :computer: OS
+## :cloud: Network
+## :art: object-oriented
+## :floppy_disk: database
+## :coffee: Java
+## :bulb: OOD
+## :wrench: Tools
+## :watermelon: Others
+## :memo: my notes
