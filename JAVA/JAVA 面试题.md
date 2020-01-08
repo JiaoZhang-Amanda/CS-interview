@@ -1,4 +1,4 @@
-## JAVA 面试题
+## JAVA Interview Question
 
 ### 1. Does JAVA has destructor? How to force it?
 No. Because Java is a garbage collected language. You can not predict when an object will be destroyed. 
@@ -25,7 +25,7 @@ No, you can only extend a single class but you can implement multiple interfaces
 
 **JDK** JDK is an acronym for Java Development Kit. It physically exists. It contains JRE + development tools.
 
-### 6. Explain the Java Exception Hierarchy.
+### 7. Explain the Java Exception Hierarchy.
 Java Exceptions are hierarchical and inheritance is used for categorizing the different types of exceptions. Throwable is the parent class of Java Exceptions Hierarchy and it has two child objects Throwable – Error
 		  - Exceptions - checked
 		  			   - runtime exception
