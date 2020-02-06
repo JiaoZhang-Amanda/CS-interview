@@ -24,9 +24,10 @@
 - **Hash Tables**
 
 ### Common Data Structure Operations
-w*: Worst Time Complexity
-a*: Average Time Complexity
-Data Structure|Access(a*)|Search(a*)|Insertion(a*)|Deletion(a*)|Access(w*)|Search(w*)|Insertion(w*)|Deletion(w*)
+- w*: Worst Time Complexity
+- a*: Average Time Complexity
+
+DataStructure|Access(a*)|Search(a*)|Insertion(a*)|Deletion(a*)|Access(w*)|Search(w*)|Insertion(w*)|Deletion(w*)
 --|--|--|--|--|--|--|--|--
 Array|**O(1)**|O(n)|O(n)|O(n)|**O(1)**|O(n)|O(n)|O(n)
 Stack|O(n)|O(n)|**O(1**)|**O(1)**|O(n)|O(n)|**O(1)**|**O(1)**
