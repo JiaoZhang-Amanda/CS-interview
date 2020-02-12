@@ -56,3 +56,46 @@ TCP is slower as compared to UDP because retransmission of lost packets can take
 - **201** Created: This indicates that the request was successful. It is used to confirm success of a PUT or POST request.
 - **200** OK: It indicates that the request is successful.
 
+### 6. Difference between Switch and Router?
+* Computers can be connected to each other via a switch or a router. A switch is designed to connect computers within a network, while a router is designed to connect multiple networks together.
+* The main objective of router is to connect various networks simultaneously and it works in network layer, whereas the main objective of switch is to connect various devices simultaneously and it works in data link layer.
+### 7. 
+### 8. 
+### 9. TCP Three-way handshake?TCP Synchronisation
+* The client sends a TCP SYNchronize packet to Server
+* Server receives client’s SYN
+* Server sends a SYNchronize+ACKnowledgement
+* Client receives Server’s SYN-ACK
+* Client sends ACKnowledge
+* Server receives ACK.
+* TCP socket connection is ESTABLISHED.
+
+### 10. Describe DHCP?
+**DHCP** stands for dynamic host configuration protocol and is a network protocol used on IP networks where a DHCP server automatically assigns an IP address and other information to each host on the network so they can communicate efficiently with other endpoints.
+### 11. How DNS works? What's DNS, can you describe in detail? what protocol it use?
+### 12. When and why did you use wireshark?
+### 13. What's mtu?
+A **maximum transmission unit (MTU)** is the largest size packet or frame, specified in octets (eight-bit bytes), that can be sent in a packet- or frame-based network such as the Internet. The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
+### 14.  
+### 15. difference between odor and bro, bgp attributes, ospf area, LSA types
+### 16. What's the difference between DNS TCP and UDP?
+### 17. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
+OSI model stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
+Physical Layer    Converts data bit into an electrical impulse.
+Datalink Layer    Data packet will be encoded and decoded into bits.
+Network Layer    Transfer of datagrams from one to another.
+Transport Layer    Responsible for Data transfer from one to another.
+Session Layer    Manage and control signals between computers.
+Presentation Layer    Transform data into application layer format.
+Application Layer    An end user will interact with the Application layer.
+
+### 18. If a server failed to do a nightly backup, what could be a reason for that? 
+
+
+
+_______
+
+## network troubleshooting
+If your computer runs slow, how to troubleshout(linux server)?
+If you had no connection and thr address of 169.254 what does this means and how to solve the issue?
+conmmands used to check Internet connection?
