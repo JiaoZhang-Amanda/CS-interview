@@ -36,6 +36,8 @@ It can't be killed (because it's already dead, hence "zombie"), but it won't con
 #### 8. Can root kill init(PID1) process?
 * By default, no, that's not allowed.
 * In fact killing PID 1, if it were allowed, would cause disaster, because it’s the ancestor process of all the other processes, and there’d be be nowhere to re-parent them to. If PID 1 calls exit() itself, the Linux kernel would panic, that is, immediately abort everything and print a stack trace, like Blue Screen of Death on Windows.
+#### 9. How to Free up the memory when the process is not running or seems to be hung?
+To kill the process using the process_id and free up the resources allowing other processes to run.
 _____
 ### Memory
 Memory get's divided into two distinct areas:
