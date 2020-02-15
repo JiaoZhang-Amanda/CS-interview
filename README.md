@@ -10,7 +10,7 @@
 ## :computer: OS
 ## :cloud: Network
 ## :art: object-oriented
-## :floppy_disk: [database](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Network/Network%20Interview%20Q.md)
+## :floppy_disk: [database](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Database/Database%20Interview%20Q.md)
 ## :coffee: Java
 ## :bulb: OOD
 ## :wrench: Tools
