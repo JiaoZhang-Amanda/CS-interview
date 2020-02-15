@@ -34,7 +34,7 @@ NULL is used to indicate that the pointer doesn’t point to a valid location. I
 
 ### What is the difference between call by value and call by reference in C？
 
- |Call by value|Call by reference
+。|Call by value|Call by reference
 --|--|--
 Description|When a copy of the value is passed to the function, then the original value is not modified.|When a copy of the value is passed to the function, then the original value is modified.
 Memory location  |  Actual arguments and formal arguments are created in separate memory locations.   | Actual arguments and formal arguments are created in the same memory location.
