@@ -1,3 +1,0 @@
-## C/C++ Interview Question
-
-### 
