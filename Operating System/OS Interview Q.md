@@ -47,7 +47,7 @@ Memory get's divided into two distinct areas:
 Virtual memory creates an illusion that each user has one or more contiguous address spaces, each beginning at address zero. The sizes of such virtual address spaces is generally very high.
 The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
 _____
-### deadlock
+### synchronization & deadlock
 #### 1. What is deadlock? 
 Deadlock is a situation when two or more processes wait for each other to finish and none of them ever finish.  Consider an example when two trains are coming toward each other on same track and there is only one track, none of the trains can move once they are in front of each other.  Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
 #### 2. What are the necessary conditions for deadlock?
@@ -55,11 +55,11 @@ Mutual Exclusion: There is a resource that cannot be shared.
 Hold and Wait: A process is holding at least one resource and waiting for another resource which is with some other process.
 No Preemption: The operating system is not allowed to take a resource back from a process until process gives it back.
 Circular Wait:  A set of processes are waiting for each other in circular form.
-
-### Process control
-### memory/resource management
-### virtual memory
-
+#### 3. Mutex VS Semaphore
+* Mutex is a mutual exclusion object that synchronizes access to a resource. It is created with a unique name at the start of a program. The Mutex is a locking mechanism that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
+* A Mutex is different than a semaphore as it is a locking mechanism while a semaphore is a signalling mechanism. A binary semaphore can be used as a Mutex but a Mutex can never be used as a semaphore.
+* A semaphore is a signalling mechanism and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
+* A semaphore uses two atomic operations, wait and signal for process synchronization. The wait operation decrements the value of its argument S, if it is positive. If S is negative or zero, then no operation is performed.
 _____
 ### kernel development(Linux)
 #### 1. What happens when we type a simple command on shell? 
@@ -106,8 +106,14 @@ Information maintanence|GetCurrentProcessID() SetTimer() Sleep()|getpid() alarm(
 Communication|CreatePipe() CreateFileMapping() MapViewOfFile()|Pipe() shm_open() mmap()
 Protection|SetFileSecurity() InitlializeSecurityDescriptor() SetSecurityDescriptorGroup ()|Chmod() Umask() Chown()
 
-### experience writing about debugging multithreaded programs
-
+### 5. Debugging multithreaded programs
+GDB provides these facilities for debugging multi-thread programs:
+* automatic notification of new threads
+* 'thread threadno', a command to switch among threads
+* 'info threads', a command to inquire about existing threads
+* `thread apply [threadno] [all] args', a command to apply a command to a list of threads
+* thread-specific breakpoints
+____
 CLI是什么，how comfortable?
 How comfortable with shell script
 change permission
@@ -115,6 +121,5 @@ how computer recognize the permission: binary
 怎么获得script第一个argument
 $是什么
 Linux， ssh 是啥
-Linux OS 
 linux commands, linux troubleshooting basics.
 

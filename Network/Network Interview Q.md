@@ -59,8 +59,7 @@ TCP is slower as compared to UDP because retransmission of lost packets can take
 ### 6. Difference between Switch and Router?
 * Computers can be connected to each other via a switch or a router. A switch is designed to connect computers within a network, while a router is designed to connect multiple networks together.
 * The main objective of router is to connect various networks simultaneously and it works in network layer, whereas the main objective of switch is to connect various devices simultaneously and it works in data link layer.
-### 7. 
-### 8. 
+
 ### 9. TCP Three-way handshake?TCP Synchronisation
 * The client sends a TCP SYNchronize packet to Server
 * Server receives client’s SYN
