@@ -6,12 +6,18 @@
 
 <br>
 
-## :pencil2: Algorithm
+## :pencil2: Algorithm & data structure
+- [data structure](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Data%20Structure/Data%20Structure%20Q.md)
 ## :computer: OS
+- [Operation System](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Operating%20System/OS%20Interview%20Q.md)
 ## :cloud: Network
+- [Network](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Network/Network%20Interview%20Q.md)
 ## :art: object-oriented
+- [OOP Concept](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Object-Oriented%20Programming/Object-Oriented%20Programming%20Concepts%20Interview%20Q.md)
+- [C/C++](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Object-Oriented%20Programming/C:C%2B%2B%20Interview%20Q.md)
+- [Java](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/JAVA/JAVA%20Interview%20Q.md)
 ## :floppy_disk: database
-## :coffee: Java
+- [database](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Database/Database%20Interview%20Q.md)
 ## :bulb: OOD
 ## :wrench: Tools
 ## :watermelon: Others
