@@ -48,11 +48,11 @@ Arguments  |  The copies of the actual arguments are passed to the formal argume
 1. Invalid Memory Access in heap and stack
 This error occurs when a read or write instruction references unallocated or deallocated memory.
 
-'''(C++)
+```(C++)
 char *pStr = (char*) malloc(25); 
 free(pStr); 
 strcpy(pStr, .parallel programming.); // Invalid write to deallocated memory in heap
-'''
+```
 
 2. Memory leak
 Memory leaks occur when memory is allocated but not released. If such leaks happen often enough and frequently enough, the leaks will eventually cause the application to run out of memory resulting in a premature termination (gracefully or as a crash).
