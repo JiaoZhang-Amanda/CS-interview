@@ -38,27 +38,48 @@ It can't be killed (because it's already dead, hence "zombie"), but it won't con
 * In fact killing PID 1, if it were allowed, would cause disaster, because it’s the ancestor process of all the other processes, and there’d be be nowhere to re-parent them to. If PID 1 calls exit() itself, the Linux kernel would panic, that is, immediately abort everything and print a stack trace, like Blue Screen of Death on Windows.
 #### 9. How to Free up the memory when the process is not running or seems to be hung?
 To kill the process using the process_id and free up the resources allowing other processes to run.
+#### 10. Multi-thread
+* two or more tasks can be executed simultaneously.
+* Two types: Processor based and thread based. Processor based multitasking is totally managed by the OS, however multitasking through multithreading can be controlled by the programmer to some extent.
+* It makes system more responsive and enables resource sharing and more economical.
+#### 11. Scheduling Alg.
+* First-Come, First-Served (FCFS) Scheduling: non-preemptive, pre-emptive scheduling algorithm
+* Shortest-Job-Next (SJN) Scheduling: non-preemptive, pre-emptive scheduling algorithm. With lowest exection time
+* Priority Scheduling: priority value(0max - 99least)
+* Shortest Remaining Time: preemptive version of the SJN algorithm.
+* Round Robin(RR) Scheduling: preemptive process scheduling algorithm. Each process is given  aquantum amount of time
+* Multiple-Level Queues Scheduling
 _____
 ### Memory
 Memory get's divided into two distinct areas:
 * **The user space**, which is a set of locations where normal user processes run (i.e everything other than the kernel). The role of the kernel is to manage applications running in this space from messing with each other, and the machine.
 * **The kernel space**, which is the location where the code of the kernel is stored, and executes under.
 #### 2. What is Virtual Memory?
-Virtual memory creates an illusion that each user has one or more contiguous address spaces, each beginning at address zero. The sizes of such virtual address spaces is generally very high.
-The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
+* Virtual memory creates an illusion that each user has one or more contiguous address spaces, each beginning at address zero. The sizes of such virtual address spaces is generally very high.
+* The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
 _____
 ### synchronization & deadlock
 #### 1. What is deadlock? 
 Deadlock is a situation when two or more processes wait for each other to finish and none of them ever finish.  Consider an example when two trains are coming toward each other on same track and there is only one track, none of the trains can move once they are in front of each other.  Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
 #### 2. What are the necessary conditions for deadlock?
-Mutual Exclusion: There is a resource that cannot be shared.
-Hold and Wait: A process is holding at least one resource and waiting for another resource which is with some other process.
-No Preemption: The operating system is not allowed to take a resource back from a process until process gives it back.
-Circular Wait:  A set of processes are waiting for each other in circular form.
+* Mutual Exclusion: There is a resource that cannot be shared.
+* Hold and Wait: A process is holding at least one resource and waiting for another resource which is with some other process.
+* No Preemption: The operating system is not allowed to take a resource back from a process until process gives it back.
+* Circular Wait:  A set of processes are waiting for each other in circular form.
+#### 3. Deadlock prevention
+All four of the conditions are necessary for deadlock to occur, it follows that deadlock might be prevented by denying any one of the conditions.
+* Mutual Exclusion: Not always possible to prevent deadlock by preventing mutual exclusion (making all resources shareable) as certain resources are cannot be shared safely.
+* Hold and Wait: We will see two approaches, but both have their disadvantages.
+    * A resource can get all required resources before it start execution. This will avoid deadlock, but will result in reduced throughputs as resources are held by processes even when they are not needed. They could have been used by other processes during this time.
+    * Second approach is to request for a resource only when it is not holing any other resource. This may result in a starvation as all required resources might not be available freely always.
+* No preemption: We will see two approaches here. 
+    * If a process request for a resource which is held by another waiting resource, then the resource may be preempted from the other waiting resource. In the second approach, if a process request for a resource which are not readily available, all other resources that it holds are preempted.  
+    * The challenge here is that the resources can be preempted only if we can save the current state can be saved and processes could be restarted later from the saved state.
+* Circular wait: To avoid circular wait, resources may be ordered and we can ensure that each process can request resources only in an increasing order of these numbers. The algorithm may itself increase complexity and may also lead to poor resource utilization.
 #### 3. Mutex VS Semaphore
-* Mutex is a mutual exclusion object that synchronizes access to a resource. It is created with a unique name at the start of a program. The Mutex is a locking mechanism that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
+* Mutex is a mutual exclusion object that synchronizes access to a resource. It is created with a unique name at the start of a program. The Mutex is a **locking mechanism** that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
 * A Mutex is different than a semaphore as it is a locking mechanism while a semaphore is a signalling mechanism. A binary semaphore can be used as a Mutex but a Mutex can never be used as a semaphore.
-* A semaphore is a signalling mechanism and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
+* A semaphore is a **signalling mechanism*** and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
 * A semaphore uses two atomic operations, wait and signal for process synchronization. The wait operation decrements the value of its argument S, if it is positive. If S is negative or zero, then no operation is performed.
 _____
 ### kernel development(Linux)

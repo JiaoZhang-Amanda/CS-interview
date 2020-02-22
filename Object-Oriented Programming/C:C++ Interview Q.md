@@ -40,3 +40,27 @@ Description|When a copy of the value is passed to the function, then the origina
 Memory location  |  Actual arguments and formal arguments are created in separate memory locations.   | Actual arguments and formal arguments are created in the same memory location.
 Safety   | In this case, actual arguments remain safe as they cannot be modified.   | In this case, actual arguments are not reliable, as they are modified.
 Arguments  |  The copies of the actual arguments are passed to the formal arguments.  |  The addresses of actual arguments are passed to their respective formal arguments.
+
+### Memory errors
+[link](https://www.cprogramming.com/tutorial/memory_debugging_parallel_inspector.html)
+* Applications that have memory errors can experience major problems. For example, memory leaks can cause an application to run out of memory resulting in the termination of the application, gracefully or otherwise.
+* Memory errors can be broadly classified into Heap Memory Errors and Stack Memory Errors. 
+1. Invalid Memory Access in heap and stack
+This error occurs when a read or write instruction references unallocated or deallocated memory.
+
+'''(C++)
+char *pStr = (char*) malloc(25); 
+free(pStr); 
+strcpy(pStr, .parallel programming.); // Invalid write to deallocated memory in heap
+'''
+
+2. Memory leak
+Memory leaks occur when memory is allocated but not released. If such leaks happen often enough and frequently enough, the leaks will eventually cause the application to run out of memory resulting in a premature termination (gracefully or as a crash).
+3. Mismatched Allocation/Deallocation
+This error occurs when a deallocation is attempted with a function that is not the logical counterpart of the allocation function used.
+4. Missing Allocation
+This error occurs when freeing memory which has already been freed. This is also called "repeated free" or "double free".
+5. Uninitialized Memory Access in heap and stack
+This type of memory error will occur when an uninitialized variable is read in your application.
+6. Cross Stack Access
+This occurs when a thread accesses stack memory of a different thread.
