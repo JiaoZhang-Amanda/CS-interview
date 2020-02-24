@@ -97,7 +97,7 @@ Static keyword has different meanings when used with different types. We can use
     * deque : doubled ended queue -- dynamic array that also allows for efficient add/delete at beginning
     * array : static array -- size fixed at compile time.
        
-#### how multiple inheritance works
+### How multiple inheritance works
 * Multiple Inheritance is a feature of C++ where a class can inherit from more than one classes.
 * The constructors of inherited classes are called in the same order in which they are inherited.
 * The destructors are called in reverse order of constructors.
