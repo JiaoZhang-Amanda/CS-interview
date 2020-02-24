@@ -64,3 +64,43 @@ This error occurs when freeing memory which has already been freed. This is also
 This type of memory error will occur when an uninitialized variable is read in your application.
 6. Cross Stack Access
 This occurs when a thread accesses stack memory of a different thread.
+
+### Smart Pointers
+```
+MyClass *ptr = new MyClass(); 
+ptr->doSomething(); 
+//  We must do delete(ptr) to avoid memory leak
+```
+Using smart pointers, we can make pointers to work in way that we don’t need to explicitly call delete. Smart pointer is a wrapper class over a pointer with operator like * and -> overloaded. The objects of smart pointer class look like pointer, but can do many things that a normal pointer can’t like automatic destruction (yes, we don’t have to explicitly use delete), reference counting and more.
+
+### Virtual destructor
+Destructors in the Base class can be Virtual. Whenever Upcasting is done, Destructors of the Base class must be made virtual for proper destrucstion of the object when the program exits.
+* NOTE: Constructors are never Virtual, only Destructors can be Virtual.
+* A normal destructor is set to be just that a normal destructor that the class has implementation for and nowhere else. A virtual destructor can be customized for the task at hand because it can be overriden. So if anywhere you need to change the behavior of the destructor you should make it virtual.
+
+### Static Keyword
+Static keyword has different meanings when used with different types. We can use static keyword with:
+* Static Variables : Variables in a function, Variables in a class
+    * Static variables in a Function: When a variable is declared as static, space for it gets allocated for the lifetime of the program.
+    * Static variables in a class: As the variables declared as static are initialized only once as they are allocated space in separate static storage so, the static variables in a class are shared by the objects.
+* Static Members of Class : Class objects and Functions in a class
+    * Class objects as static: Just like variables, objects also when declared as static have a scope till the lifetime of program.
+    * Static member functions: are allowed to access only the static data members or other static member functions, they can not access the non-static data members or member functions of the class.
+    
+### What is the difference between vector and list?
+* Both vector and list are sequential containers of C++ Standard Template Library. 
+* List stores elements at non contiguous memory location i.e. it internally uses a doubly linked list, Whereas, vector stores elements at contiguous memory locations like an array.
+* Types of STL
+    * vector: dynamic array -- efficient at random access, and add/delete at end.
+    * list : doubly-linked list -- efficient at forward/backward traversal, and insertion anywhere.
+    * forward_list : singly-linked list -- efficient at forward traversal, and insertion anywhere.
+    * deque : doubled ended queue -- dynamic array that also allows for efficient add/delete at beginning
+    * array : static array -- size fixed at compile time.
+       
+#### how multiple inheritance works
+* Multiple Inheritance is a feature of C++ where a class can inherit from more than one classes.
+* The constructors of inherited classes are called in the same order in which they are inherited.
+* The destructors are called in reverse order of constructors.
+
+
+

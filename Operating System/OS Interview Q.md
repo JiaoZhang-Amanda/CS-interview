@@ -9,7 +9,7 @@
 #### 2. Process vs Thread?
 * The thread is a subset of process. The process can contain multiple threads. 
 * The threads within the same process run in a shared memory space, while processes run in separate memory spaces.
-* Threads are not independent of one another like processess are, and as a resuly threads share with other threads their code section, data section, and OS resources. But, like process, a thread has its own program counter(PC), register set, and stack space.
+* Threads are not independent of one another like processess are, and as a result threads share with other threads their code section, data section, and OS resources. But, like process, a thread has its own program counter(PC), register set, and stack space.
 
 #### 3. Types of Threads
 * User level thread
@@ -43,12 +43,12 @@ It can't be killed (because it's already dead, hence "zombie"), but it won't con
 
 #### 8. Can root kill init(PID1) process?
 * By default, no, that's not allowed.
-* In fact killing PID 1, if it were allowed, would cause disaster, because it’s the ancestor process of all the other processes, and there’d be be nowhere to re-parent them to. If PID 1 calls exit() itself, the Linux kernel would panic, that is, immediately abort everything and print a stack trace, like Blue Screen of Death on Windows.
+* In fact killing PID 1, if it were allowed, would cause disaster, because it’s the ancestor process of all the other processes, and there’d be nowhere to re-parent them to. If PID 1 calls exit() itself, the Linux kernel would panic, that is, immediately abort everything and print a stack trace, like Blue Screen of Death on Windows.
 
 #### 9. How to Free up the memory when the process is not running or seems to be hung?
 To kill the process using the process_id and free up the resources allowing other processes to run.
 
-#### 10. Multi-thread
+#### 10. Multi-tasking
 * two or more tasks can be executed simultaneously.
 * Two types: Processor based and thread based. Processor based multitasking is totally managed by the OS, however multitasking through multithreading can be controlled by the programmer to some extent.
 * It makes system more responsive and enables resource sharing and more economical.
@@ -71,8 +71,11 @@ Memory get's divided into two distinct areas:
 * The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
 _____
 ### synchronization & deadlock
+Process Synchronization: The shared resources can be used by all the processes but the processes should make sure that at a particular time, only one process should be using that shared resource.
 #### 1. What is deadlock? 
 Deadlock is a situation when two or more processes wait for each other to finish and none of them ever finish.  Consider an example when two trains are coming toward each other on same track and there is only one track, none of the trains can move once they are in front of each other.  Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
+
+inappropriate use of mutexes can lead to deadlock.
 
 #### 2. What are the necessary conditions for deadlock?
 * Mutual Exclusion: There is a resource that cannot be shared.
@@ -92,21 +95,32 @@ All four of the conditions are necessary for deadlock to occur, it follows that 
 * Circular wait: To avoid circular wait, resources may be ordered and we can ensure that each process can request resources only in an increasing order of these numbers. The algorithm may itself increase complexity and may also lead to poor resource utilization.
 
 #### 4. Mutex VS Semaphore
-* It ensures that only one thread is executing a key piece of code at a time, which in turns limits access to a data structure. It ensures that the both threads have a full and proper view of that memory irrespective of any CPU reordering. The mutex is an absolute necessity when doing concurrent programming.
-* Mutex is a mutual exclusion object that synchronizes access to a resource. It is created with a unique name at the start of a program. The Mutex is a **locking mechanism** that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
-* A Mutex is different than a semaphore as it is a locking mechanism while a semaphore is a signalling mechanism. A binary semaphore can be used as a Mutex but a Mutex can never be used as a semaphore.
-* A semaphore is a **signalling mechanism*** and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
+* To apply process synchronization: It ensures that only one thread is executing a key piece of code at a time, which in turns limits access to a data structure. It ensures that the both threads have a full and proper view of that memory irrespective of any CPU reordering. 
+* The Mutex is a **locking mechanism** that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
+* A semaphore is a **signalling mechanism** and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
+* A binary semaphore can be used as a Mutex but a Mutex can never be used as a semaphore.
 * A semaphore uses two atomic operations, wait and signal for process synchronization. The wait operation decrements the value of its argument S, if it is positive. If S is negative or zero, then no operation is performed.
+```
+wait(S){
+    while (S<=0);
+    S--;
+}
+```
+```
+signal(S){
+    S++;
+}
+```
 _____
 ### kernel development(Linux)
 #### 1. What happens when we type a simple command on shell? 
 * Shell interprets the command.
 * Shell creates a child process and executes the command on the child process.
 * Shell waits for the child process's completion.
--- fork(): creates a duplicate copy of the calling process as its child. called child process
+-- `fork()`: creates a duplicate copy of the calling process as its child. called child process
 
 #### 2. System.log
-A system log is a file containing events that are updated by the operating system components.It may contain information such as device drivers,events,operations or even device changes.
+A system log is a file containing events that are updated by the operating system components.It may contain information such as device drivers, events, operations or even device changes.
 - A system log is used to
      * detect and solve the problems found in the computer
      * Storage and recovery of data about changes on data items by different transactions.
@@ -124,17 +138,17 @@ A system log is a file containing events that are updated by the operating syste
 #### 4. system.call
 A system call is a mechanism that provides the interface between a process and the operating system. It is a programmatic method in which a computer program requests a service from the kernel of the OS.
 - 5 different categories
-    * Process control: end, abort, create, terminate, allocate and free memory.
-    * File management: create, open, close, delete, read file etc.
-    * Device management
-    * Information maintenance
-    * Communication
+    * **Process control**: end, abort, create, terminate, allocate and free memory.
+    * **File management**: create, open, close, delete, read file etc.
+    * **Device management**
+    * **Information maintenance**
+    * **Communication**
 - Important System Calls 
-    * **wait()** In some systems, a process needs to wait for another process to complete its execution. This type of situation occurs when a parent process creates a child process, and the execution of the parent process remains suspended until its child process executes. The suspension of the parent process automatically occurs with a wait() system call. When the child process ends execution, the control moves back to the parent process.
-    * **fork()** Processes use this system call to create processes that are a copy of themselves. With the help of this system Call parent process creates a child process, and the execution of the parent process will be suspended till the child process executes.
-    * **exec()** This system call runs when an executable file in the context of an already running process that replaces the older executable file. However, the original process identifier remains as a new process is not built, but stack, data, head, data, etc. are replaced by the new process.
-    * **kill()** The kill() system call is used by OS to send a termination signal to a process that urges the process to exit. However, a kill system call does not necessarily mean killing the process and can have various meanings.
-    * **exit()** The exit() system call is used to terminate program execution. Specially in the multi-threaded environment, this call defines that the thread execution is complete. The OS reclaims resources that were used by the process after the use of exit() system call.
+    * **`wait(`)** In some systems, a process needs to wait for another process to complete its execution. This type of situation occurs when a parent process creates a child process, and the execution of the parent process remains suspended until its child process executes. The suspension of the parent process automatically occurs with a wait() system call. When the child process ends execution, the control moves back to the parent process.
+    * **`fork()`** Processes use this system call to create processes that are a copy of themselves. With the help of this system Call parent process creates a child process, and the execution of the parent process will be suspended till the child process executes.
+    * **`exec()`** This system call runs when an executable file in the context of an already running process that replaces the older executable file. However, the original process identifier remains as a new process is not built, but stack, data, head, data, etc. are replaced by the new process.
+    * **`kill()`** The kill() system call is used by OS to send a termination signal to a process that urges the process to exit. However, a kill system call does not necessarily mean killing the process and can have various meanings.
+    * **`exit()`** The exit() system call is used to terminate program execution. Specially in the multi-threaded environment, this call defines that the thread execution is complete. The OS reclaims resources that were used by the process after the use of exit() system call.
 
 Categories|Windows|Unix
 --|--|--
@@ -148,9 +162,9 @@ Protection|SetFileSecurity() InitlializeSecurityDescriptor() SetSecurityDescript
 ### 5. Debugging multithreaded programs
 GDB provides these facilities for debugging multi-thread programs:
 * automatic notification of new threads
-* 'thread threadno', a command to switch among threads
-* 'info threads', a command to inquire about existing threads
-* `thread apply [threadno] [all] args', a command to apply a command to a list of threads
+* `thread threadno`, a command to switch among threads
+* `info threads`, a command to inquire about existing threads
+* `thread apply [threadno] [all] args`, a command to apply a command to a list of threads
 * thread-specific breakpoints
 ____
 #### What is CLI?
