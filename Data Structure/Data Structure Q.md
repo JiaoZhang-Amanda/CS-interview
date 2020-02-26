@@ -4,7 +4,7 @@
 - **Arrays**
    - One-dimensional arrays (as shown above)
    - Multi-dimensional arrays (arrays within arrays)
-- **Stacks**
+   - **Stacks**
 - **Queues**
 - **Linked List**
    - Singly Linked List (Unidirectional)
@@ -42,8 +42,9 @@ BST|**O(logn)**|**O(logn)**|**O(logn)**|**O(logn)**|O(n)|O(n)|O(n)|O(n)
 
 ### Deinifation
 - **LinkedList**: A linked list is a sequence of nodes in which each node is connected to the node following it. This forms a chain-like link for data storage.
-- **Queue**: A queue is a data structure that can simulate a list or stream of data. In this structure, new elements are inserted at one end, and existing elements are removed from the other end.
-- **Stack**: A stack is a data structure in which only the top element can be accessed. As data is stored in the stack, each data is pushed downward, leaving the most recently added data on top.
+- **Queue**: A queue is a data structure that can simulate a list or stream of data. In this structure, new elements are inserted at one end, and existing elements are removed from the other end. FIFO
+- **Stack**: A stack is a data structure in which only the top element can be accessed. As data is stored in the stack, each data is pushed downward, leaving the most recently added data on top. LIFO
+    - implementation: LinkedList/Dynamic Arrays
 - **Graph**: A graph is one type of data structure that contains a set of ordered pairs. These ordered pairs are also referred to as edges or arcs and are used to connect nodes where data can be stored and retrieved.
 - **Doubld LinkedList**: Doubly linked lists are a special type of linked list wherein traversal across the data elements can be done in both directions. This is made possible by having two links in every node, one that links to the next node and another one that connects to the previous node.
 - **Binary Tree**: A binary tree is one type of data structure that has two nodes, a left node, and a right node. In programming, binary trees are an extension of the linked list structures.

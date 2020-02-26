@@ -104,3 +104,7 @@ Static keyword has different meanings when used with different types. We can use
 
 
 
+### copy and deep copy
+### long long int VS int in java
+### vector VS list
+### map libraray in C++(->second)
