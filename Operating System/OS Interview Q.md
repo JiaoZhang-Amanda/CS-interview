@@ -94,7 +94,16 @@ All four of the conditions are necessary for deadlock to occur, it follows that 
     * The challenge here is that the resources can be preempted only if we can save the current state can be saved and processes could be restarted later from the saved state.
 * Circular wait: To avoid circular wait, resources may be ordered and we can ensure that each process can request resources only in an increasing order of these numbers. The algorithm may itself increase complexity and may also lead to poor resource utilization.
 
-#### 4. Mutex VS Semaphore
+#### 4. What is race condition in OS?
+* Race Around Condition in an operating system is a situation where the result produced by two processes(or threads) operated on shared resources depends in an unexpected way on the relative order in which process gains access to the CPU(s).
+* A race condition is a situation that may occur inside a critical section. This happens when the result of multiple thread execution in critical section differs according to the order in which the threads execute.
+* Race conditions in critical sections can be avoided if the critical section is treated as an atomic instruction. Also, proper thread synchronization using locks or atomic variables can prevent race conditions.
+* Critical Section: The critical section in a code segment where the shared variables can be accessed. Atomic action is required in a critical section. All the other processes have to wait to execute in their critical sections.
+
+#### 5. What is Condition variables?
+Condition variables are variables that represent certain conditions and can only be used in monitors. Associated with each condition variable, there is a queue of threads and two operations: condition signal and condition wait. When a thread calls condition wait, the caller is put into the queue of that condition variable. When a thread calls condition signal, if there are threads waiting in that condition variable's queue, one of them is released. Otherwise, the condition signal is lost.
+
+#### 6. Mutex VS Semaphore
 * To apply process synchronization: It ensures that only one thread is executing a key piece of code at a time, which in turns limits access to a data structure. It ensures that the both threads have a full and proper view of that memory irrespective of any CPU reordering. 
 * The Mutex is a **locking mechanism** that makes sure only one thread can acquire the Mutex at a time and enter the critical section. This thread only releases the Mutex when it exits the critical section.
 * A semaphore is a **signalling mechanism** and a thread that is waiting on a semaphore can be signaled by another thread. This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
@@ -176,7 +185,30 @@ ssh stands for **“Secure Shell”**. It is a protocol used to securely connect
 ssh user_name@host(IP/Domain_name)
 ```
 #### linux commands
-* change permission? ```$ chmod nnn filename```
+* change permission? `chmod`
+* lists the current running processes: `ps`
+* lists directory contents: `ls`
+* displays manual pages: `man`
+* concatenates files: `cat`
+* changes file timestamps: `touch`
+* prints the working directory: `pwd`
+* changes directory: `cd`
+* removes files and directories: `rm`
+* copies files and directories: `cp`
+* makes directories: `mkdir`
+
+#### Linux networking commands
+*  `ipconfig`: configure network interface parameters. Mostly we use this command to check the IP address assigned to the system.
+* `traceroute`: print the route packets take to network host
+*  `dig`: a flexible tool for interrogating DNS name servers
+* `telnet`: connect destination host:port via a telnet protocol if connection establishes means connectivity between two hosts is working fine. 
+* `nslookup` is a program to query Internet domain name servers.
+* `Netstat` command allows you a simple way to review each of your network connections and open sockets. Netstat with head output is very helpful while performing web server troubleshooting.
+* `scp` allows you to secure copy files to and from another host in the network.
+* `w` prints a summary of the current activity on the system, including what each user is doing, and their processes.
+* `nmap` is a one of the powerful commands, which checks the opened port on the server.
+* enable or disable the network interface by using `ifup`/`ifdown` commands with ethernet interface parameter.
+
 #### linux troubleshooting basics.
 #### shell script
 * How to read command line arguments in a bash script?
