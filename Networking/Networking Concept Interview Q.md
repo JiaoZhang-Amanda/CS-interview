@@ -1,7 +1,6 @@
 ## Networking concepts Interview Question
-___
 ## [Protocols]
-* **IP**: Internet Protocol. IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. TCP/IP is the most popular protocol connecting the networks.
+* **IP**(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. TCP/IP is the most popular protocol connecting the networks.
 * **TCP**: Transmission Control Protocol. TCP is a popular communication protocol which is used for communicating over a network. It divides any message into series of packets that are sent from source to destination and there it gets reassembled at the destination.
 * **UDP**: User Datagram Protocol. UDP is a substitute communication protocol to Transmission Control Protocol implemented primarily for creating loss-tolerating and low-latency linking between different applications.
 * **FTP**: File Transfer Protocol. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc.
@@ -62,8 +61,6 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 * Server receives ACK.
 * TCP socket connection is ESTABLISHED.
 
-
-___
 ## [Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -84,7 +81,7 @@ ___
     * Network Interface Layer: It is the lowest layer of the TCP/IP model. It transfers the packets between different hosts. It includes encapsulation of IP packets into frames, mapping IP addresses to physical hardware devices, etc.
     
 ### 3. Data transmission
-e.g. a network server transmits data to a client
+e.g. a network server transmits data to a client</br>
 ![](https://community.emc.com/servlet/JiveServlet/showImage/2-831148-90201/image002.jpg)
 * The data to be transferred is the HTML page of the web server.
 * Add HTTP headers before data. The header  includes the HTTP version and a status code.
@@ -97,7 +94,7 @@ e.g. a network server transmits data to a client
 
 ### 4. What's mtu?
 A **maximum transmission unit (MTU)** is the largest size packet or frame, specified in octets (eight-bit bytes), that can be sent in a packet- or frame-based network such as the Internet. The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
-___
+
 ## [Others]
 ### 1. Describe in as much details as possible what happens after we type "www.google.com" into the URL box of browser and hit enter. / What happens when you type a URL in the web browser?
 - Step 1. URL is typed in the browser.
@@ -191,7 +188,6 @@ Protocol | Frequency  | Channel Width   |   MIMO   |   Maximum data rate (theore
 802.11b  |    2.4 GHz    |  20 MHz    |  N/A   |   11 Mbps
 Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 
-_____
 ## [network troubleshooting]
 ### 1. If your computer runs slow, how to troubleshout(linux server)?
 * Because of some of the following reasons:
@@ -218,7 +214,7 @@ _____
 
 ### 5. When and why did you use wireshark?
 Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education.
-___
+
 ## [Socket Programming]
 ### 1. Difference between sendto and send functions.
 These functions send data to a socket. Generally speaking, send() is used for TCP SOCK_STREAM connected sockets, and sendto() is used for UDP SOCK_DGRAM unconnected datagram sockets.
