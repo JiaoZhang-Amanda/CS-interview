@@ -1,6 +1,6 @@
-## OS Interview Question
+# OS Interview Question
 
-### Threads and Process
+## Threads and Process
 #### 1. What is a Thread? What is a process? What is process table?
 * A **Thread** is a path of execution within a process. A process can contain multiple threads.
 * A **process** is an instance of program in execution. For example a Web Browser is a process, a shell (or command prompt) is a process.
@@ -48,10 +48,13 @@ It can't be killed (because it's already dead, hence "zombie"), but it won't con
 #### 9. How to Free up the memory when the process is not running or seems to be hung?
 To kill the process using the process_id and free up the resources allowing other processes to run.
 
-#### 10. Multi-tasking
-* two or more tasks can be executed simultaneously.
-* Two types: Processor based and thread based. Processor based multitasking is totally managed by the OS, however multitasking through multithreading can be controlled by the programmer to some extent.
-* It makes system more responsive and enables resource sharing and more economical.
+#### 10. Multi-tasking VS Multithreading
+* **Multitasking** is when a single CPU performs several tasks (program, process, task, threads) at the same time. To perform multitasking, the CPU switches among theses tasks very frequently so that user can interact with each program simultaneously. In a multitasking operating system, several users can share the system simultaneously.
+    * Two types: Processor based and thread based. Processor based multitasking is totally managed by the OS, however multitasking through multithreading can be controlled by the programmer to some extent.
+    * It makes system more responsive and enables resource sharing and more economical.
+* **Multithreading** allows multiple threads of a single task (program, process) to be processed by CPU at the same time. 
+    * The main advantage is: Threads share the same address space, Thread remains lightweight and Cost of communication between threads is low.
+
 
 #### 11. Scheduling Alg.
 * First-Come, First-Served (FCFS) Scheduling: non-preemptive, pre-emptive scheduling algorithm
@@ -60,8 +63,18 @@ To kill the process using the process_id and free up the resources allowing othe
 * Shortest Remaining Time: preemptive version of the SJN algorithm.
 * Round Robin(RR) Scheduling: preemptive process scheduling algorithm. Each process is given  aquantum amount of time
 * Multiple-Level Queues Scheduling
-_____
-### Memory
+
+#### 12. bootloader VS bootstraper
+* **Bootloader** is a piece of code that runs before any operating system is running. Bootloader are used to boot other operating systems, usually each operating system has a set of bootloaders specific for it.
+* **Bootstrap** loader is a program that resides in the computers EPROM, ROM, or othernon-volatile memory that automatically executed by the processor when turning on the computer. The bootstrap loader reads the hard drives boot sector to continue the process of loading the computers operating system.
+
+#### 13. What’s interrupt latency? How to reduce it?
+* Interrupt: In systems programming, an interrupt is a signal to the processor.
+    * **hardware interrupt** is a signal which can tell the CPU that something happen in hardware device, and should be immediately responded. Unlike the software interrupts, hardware interrupts are asynchronous and can occur in the middle of instruction execution, requiring additional care in programming. The act of initiating a hardware interrupt is referred to as an interrupt request (IRQ).
+    * **Software interrupt** is an instruction which cause a context switch to an interrupt handler similar to a hardware interrupt. Usually it is an interrupt generated within a processor by executing a special instruction in the instruction set which causes an interrupt when it is executed. Another type of software interrupt is triggered by an exceptional condition in the processor itself. This type of interrupt is often called a **trap** or **exception**.
+* **Interrupt latency** refers primarily to the software interrupt handling latencies. In other words, the amount of time that elapses from the time that an external interrupt arrives at the processor until the time that the interrupt processing begins. One of the most important aspects of kernel real-time performance is the ability to service an interrupt request (IRQ) within a specified amount of time.
+
+## Memory
 Memory get's divided into two distinct areas:
 * **The user space**, which is a set of locations where normal user processes run (i.e everything other than the kernel). The role of the kernel is to manage applications running in this space from messing with each other, and the machine.
 * **The kernel space**, which is the location where the code of the kernel is stored, and executes under.
@@ -69,8 +82,8 @@ Memory get's divided into two distinct areas:
 #### 2. What is Virtual Memory?
 * Virtual memory creates an illusion that each user has one or more contiguous address spaces, each beginning at address zero. The sizes of such virtual address spaces is generally very high.
 * The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
-_____
-### synchronization & deadlock
+
+## synchronization & deadlock
 Process Synchronization: The shared resources can be used by all the processes but the processes should make sure that at a particular time, only one process should be using that shared resource.
 #### 1. What is deadlock? 
 Deadlock is a situation when two or more processes wait for each other to finish and none of them ever finish.  Consider an example when two trains are coming toward each other on same track and there is only one track, none of the trains can move once they are in front of each other.  Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
@@ -120,8 +133,8 @@ signal(S){
     S++;
 }
 ```
-_____
-### kernel development(Linux)
+
+## kernel development(Linux)
 #### 1. What happens when we type a simple command on shell? 
 * Shell interprets the command.
 * Shell creates a child process and executes the command on the child process.

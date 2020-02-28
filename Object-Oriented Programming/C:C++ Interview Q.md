@@ -79,6 +79,14 @@ double interest;
 enum weekdays;
 enum weekend;
 ```
+### When should we use pointers in a C program?
+* To get address of a variable
+* For achieving pass by reference in C: Pointers allow different functions to share and modify their local variables.
+* To pass large structures so that complete copy of the structure can be avoided.
+* To implement “linked” data structures like linked lists and binary trees.
+
+### What is NULL pointer?
+NULL is used to indicate that the pointer doesn’t point to a valid location. Ideally, we should initialize pointers as NULL if we don’t know their value at the time of declaration. Also, we should make a pointer NULL when memory pointed by it is deallocated in the middle of a program.
 
 ### Structures VS Union
 * Structure is a user-defined datatype in C language which allows us to combine data of different types together. Structure helps to construct a complex data type which is more meaningful. It is somewhat similar to an Array, but an array holds data of similar type only. But structure on the other hand, can store data of any type, which is practical more useful.
@@ -185,14 +193,7 @@ In C++ language, three types of loops are used
 • For loop
 • Do-while loop
 
-### When should we use pointers in a C program?
-* To get address of a variable
-* For achieving pass by reference in C: Pointers allow different functions to share and modify their local variables.
-* To pass large structures so that complete copy of the structure can be avoided.
-* To implement “linked” data structures like linked lists and binary trees.
 
-### What is NULL pointer?
-NULL is used to indicate that the pointer doesn’t point to a valid location. Ideally, we should initialize pointers as NULL if we don’t know their value at the time of declaration. Also, we should make a pointer NULL when memory pointed by it is deallocated in the middle of a program.
 
 
 
