@@ -21,14 +21,17 @@
 ### 1. What is the difference between TCP and UDP? When would you use each of them?
 TCP|UDP
 --|--
-TCP stands for Transmission control protocol|UDP stands for User datagram protocol
-TCP is connection-oriented protocol means before sending data, there is connection establishment happens between two clients|UDP is connectionless protocol means there is no connection establishment before sending data between two clients
-TCP provides reliable communication|UDP provides unreliable communiation
+TCP stands for **Transmission control protocol**|UDP stands for **User datagram protocol**
+TCP is **connection-oriented** protocol means before sending data, there is connection establishment happens between two clients|UDP is **connectionless **protocol means there is no connection establishment before sending data between two clients
+TCP provides **reliable** communication, in-order byte-stream data transfer. For loss, there is acknowledgements and retransmissions|UDP provides **unreliable** communiation
 TCP gives guarantee of transmission of data|UDP does not give guarantee of transmission of data.
 TCP header size is 20 bytes|UDP header size is 8 bytes
-In TCP there is concept of acknowledgment|In UDP there is no concept of acknowledgment
+In TCP there is concept of **acknowledgment**|In UDP there is no concept of acknowledgment
+there is **flow control**, sender won't overwhelm receiver |there is no **flow control**
+there is **congestion control**, senders "slow down sending rate" when network congested|there is no **congestion control**
 TCP has concern of jitter. Means if any packet lost then TCP does not provide subsequent data to the application while it is requesting re-sending of the missing data|UDP does not have concern of jitter because there is retransmission of missing data.
 TCP is slower as compared to UDP because retransmission of lost packets can take long delay.|UDP is faster as compared to TCP because there is no retransmission of lost packets
+App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | App's using: streaming media, teleconferencing, DNS, Internet telephony
 
 ### 2. What are request methods in HTTP?
 HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
@@ -164,15 +167,15 @@ A **maximum transmission unit (MTU)** is the largest size packet or frame, speci
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.
 * Proxy Server also maintains the list of blacklisted websites so that the internal user is automatically prevented from getting easily infected by viruses, worms, etc.
 
-### 6. What are the different types of a network? Explain each briefly.
-* Personal Area Network (PAN): It is the smallest and basic network type that is often used at home. It is a connection between the computer and another device such as phone, printer, modem tablets, etc
-* Local Area Network (LAN): LAN is used in small offices and internet cafes to connect a small group of computers to each other. Usually, they are used to transfer a file or for playing the game in a network.
-* Metropolitan Area Network (MAN): It is a powerful network type than LAN. The area covered by MAN is a small town, city, etc. A huge server is used to cover such a large span of area for connection.
-* Wide Area Network (WAN): It is more complex than LAN and covers a large span of the area typically a large physical distance. The Internet is the largest WAN which is spread across the world. WAN is not owned by any single organization but it has distributed ownership.
-* Storage Area Network (SAN)
-* System Area Network (SAN)
-* Enterprise Private Network (EPN)
-* Passive Optical Local Area Network (POLAN)
+### 6. What are the different types of a network? Explain each briefly. (Network Classifications based on coverage)
+* **Personal Area Network (PAN)**: It is the smallest and basic network type that is often used at home. It is a connection between the computer and another device such as phone, printer, modem tablets, etc
+* **Local Area Network (LAN)**: LAN is used in small offices and internet cafes to connect a small group of computers to each other. Usually, they are used to transfer a file or for playing the game in a network.
+* **Metropolitan Area Network (MAN)**: It is a powerful network type than LAN. The area covered by MAN is a small town, city, etc. A huge server is used to cover such a large span of area for connection.
+* **Wide Area Network (WAN)**: It is more complex than LAN and covers a large span of the area typically a large physical distance. The Internet is the largest WAN which is spread across the world. WAN is not owned by any single organization but it has distributed ownership.
+* **Storage Area Network (SAN)**
+* **System Area Network (SAN)**
+* **Enterprise Private Network (EPN)**
+* **Passive Optical Local Area Network (POLAN)**
 
 ### 7. Different Wi-Fi Protocols and Data Rates
 IEEE 802.11 Wi-Fi protocol summary:
