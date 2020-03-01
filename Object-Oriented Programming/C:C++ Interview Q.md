@@ -17,15 +17,15 @@ C uses functions for input/output. For example scanf and printf.|C++ uses object
  ### Memory Layout of C Programs
  ![](https://media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg)
  1. **Text segment**
-     * also known as a code segment or simply as text, is one of the sections of a program in an object file or in memory, which contains executable instructions.
+     * also known as a code segment or simply as text, is one of the sections of a program in an object file or in memory, which contains **executable instructions**.
      * the text segment is sharable so that only a single copy needs to be in memory for frequently executed programs, such as text editors, the C compiler, the shells, and so on. Also, the text segment is often read-only, to prevent a program from accidentally modifying its instructions.
- 2. **Initialized data segment**
-     * Initialized data segment, usually called simply the **Data Segment**. A data segment is a portion of virtual address space of a program, which contains the global variables and static variables that are initialized by the programmer.
+ 2. **Initialized data segment** Data
+     * Initialized data segment, usually called simply the **Data Segment**. A data segment is a portion of virtual address space of a program, which contains the **global variables** and **static variables** that are initialized by the programmer.
      * Note that, data segment is not read-only, since the values of the variables can be altered at run time.
      * This segment can be further classified into initialized read-only area and initialized read-write area.
- 3. **Uninitialized data segment**
+ 3. **Uninitialized data segment** BSS
     * Uninitialized data segment, often called the **BSS segment**, named after an ancient assembler operator that stood for “block started by symbol.” Data in this segment is initialized by the kernel to arithmetic 0 before the program starts executing
-    * uninitialized data starts at the end of the data segment and contains all global variables and static variables that are initialized to zero or do not have explicit initialization in source code.
+    * uninitialized data starts at the end of the data segment and contains all **global variables** and **static variables** that are initialized to zero or do not have explicit initialization in source code.
  4. **Stack**
      * The stack area traditionally adjoined the heap area and grew the opposite direction; when the stack pointer met the heap pointer, free memory was exhausted. 
      * The stack area contains the program stack, a LIFO structure, typically located in the higher parts of memory.
@@ -33,7 +33,8 @@ C uses functions for input/output. For example scanf and printf.|C++ uses object
      * Functions and variable are declared on the stack. 
  5. **Heap**
      * Heap is the segment where *dynamic memory* allocation usually takes place.
-     * The heap area begins at the end of the BSS segment and grows to larger addresses from there.The Heap area is managed by malloc, realloc, and free, which may use the brk and sbrk system calls to adjust its size
+     * The heap area begins at the end of the BSS segment and grows to larger addresses from there.
+     * The Heap area is managed by malloc, realloc, and free, which may use the brk and sbrk system calls to adjust its size
      
 ### Storage classes in C.
 A storage class represents the visibility and a location of a variable. It tells from what part of code we can access a variable. a storage class is used to represent the information about a variable. A storage class is used to describe the following things:
@@ -168,6 +169,15 @@ Arguments  |  The copies of the actual arguments are passed to the formal argume
     * A .o object file file (also .obj on Windows) contains compiled object code (that is, machine code produced by your C or C++ compiler), together with the names of the functions and other objects the file contains. 
     * Object files are processed by the linker to produce the final executable.
 4) **Linking**: This is the final phase in which all the linking of function calls with their definitions are done. Linker knows where all these functions are implemented. Linker does some extra work also, it adds some extra code to our program which is required when the program starts and ends. 
+
+### String related function in C
+Strings are defined as an array of characters. The difference between a character array and a string is the string is terminated with a special character ‘\0’.
+strcat(): append a copy of the source string to the end of destination string. The strcat() function takes two arguments: dest & src, returns dest, the pointer to the destination string.
+strrchr(): Returns a pointer to the last occurrence of a character in a string. char *strrchr(const char *str, int c) 
+strcmp(): compare these two strings lexicographically. int strcmp(const char *leftStr, const char *rightStr );
+strcpy():  copy one string to another. char* strcpy(char* dest, const char* src); returns a pointer to the destination string.
+strlen(): calculates the length of a given string.
+strncat(): appends not more than n characters from the string pointed to by src to the end of the string pointed to by dest plus a terminating Null-character. strncat(dest, src, 5);
 
 ## [C++]
 ### Explain what is the use of void main () in C++ language?
