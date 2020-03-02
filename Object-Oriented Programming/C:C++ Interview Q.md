@@ -56,6 +56,7 @@ register |  It is a variable which is stored inside a Register.
 * Typedef defines a new data type. Macros can be of any type. Macros can even be any code block containing statements, loops, function calls etc.
 `typedef <existing_name> <alias_name>`
 `#define MAX 1000`
+`#define MIN(A,B) ((A)<= (B)?(A):(B))`
 * typedef interpretation is performed by the compiler where #define statements are performed by preprocessor. Macros are expanded by the preprocessor before compilation takes place.
 * #define should not be terminated with a semicolon, but typedef should be terminated with semicolon.
 * #define will just copy-paste the definition values at the point of use, while typedef is the actual definition of a new type.
@@ -80,6 +81,11 @@ double interest;
 enum weekdays;
 enum weekend;
 ```
+### What is size of character, integer, integer pointer, character pointer?
+• The sizeof character is 1 byte.
+• Size of integer is 4 bytes.
+• Size of integer pointer and character is 8 bytes on 64 bit machine and 4 bytes on 32 bit machine.
+
 ### When should we use pointers in a C program?
 * To get address of a variable
 * For achieving pass by reference in C: Pointers allow different functions to share and modify their local variables.
@@ -87,7 +93,13 @@ enum weekend;
 * To implement “linked” data structures like linked lists and binary trees.
 
 ### What is NULL pointer?
-NULL is used to indicate that the pointer doesn’t point to a valid location. Ideally, we should initialize pointers as NULL if we don’t know their value at the time of declaration. Also, we should make a pointer NULL when memory pointed by it is deallocated in the middle of a program.
+There are times when it’s necessary to have a pointer that doesn’t point to anything. The macro NULL, defined in , has a value that’s guaranteed to be different from any valid pointer. NULL is a literal zero, possibly cast to void* or char*. Some people, notably C++ programmers, prefer to use 0 rather than NULL. The null pointer is used in three ways:
+1) To stop indirection in a recursive data structure \
+2) As an error value
+3) As a sentinel value
+
+### What is void pointer and what is its use?
+Void pointer or generic pointer is a special kind of pointer that can point to any type of object, but it is not aware of the type of object it points to. It can be typecasted to any type. This is an advantage that allows malloc() and calloc() to allocate memory of any type just because of void pointer type.
 
 ### Structures VS Union
 * Structure is a user-defined datatype in C language which allows us to combine data of different types together. Structure helps to construct a complex data type which is more meaningful. It is somewhat similar to an Array, but an array holds data of similar type only. But structure on the other hand, can store data of any type, which is practical more useful.
@@ -146,9 +158,22 @@ Safety   | In this case, actual arguments remain safe as they cannot be modified
 Arguments  |  The copies of the actual arguments are passed to the formal arguments.  |  The addresses of actual arguments are passed to their respective formal arguments.
 
 ### volatile keyword
-* The volatile keyword is intended to prevent the compiler from applying any optimizations on objects that can change in ways that cannot be determined by the compiler. 
-* Objects declared as volatile are omitted from optimization because their values can be changed by code outside the scope of current code at any time.
+* The C's volatile keyword is a qualifier that tells the compiler not to optimize when applied to a variable. By declaring a variable volatile, we can tell the compiler that the value of the variable may change any moment from outside of the scope of the program. A variable should be declared volatile whenever its value could change unexpectedly and beyond the comprehension of the compiler.
+* Examples of volatile variables are:
+    - Hardware registers in peripherals (for example, status registers)
+    - Non-automatic variables referenced within an interrupt service routine
+    -   Variables shared by multiple tasks in a multi-threaded application
 * `volatile int foo;`/ `int volatile foo;`
+
+### Can a variable be both const and volatile?
+Yes. An example is a read-only status register. It is volatile because it can change unexpectedly. It is const because the program should not attempt to modify it
+
+### What do you mean by const keyword ?
+const Keyword in C++ Constant is something that doesn't change. In C language and C++ we use the keyword const to make program elements constant. const keyword can be used in many contexts in a C++ program.
+
+### Can a pointer be volatile?
+* Yes, although this is not very common. An example is when an interrupt service routine modifies a pointer to a buffer
+* If we see the declaration volatile int *p, it means that the pointer itself is not volatile and points to an integer that is volatile. This is to inform the compiler that pointer p is pointing to an integer and the value of that integer may change unexpectedly even if there is no code indicating so in the program.
 
 ### Compiling a C program: Behind the Scenes
 * C is a high-level language and it needs a compiler to convert it into an executable code so that the program can be run on our machine.
@@ -169,6 +194,15 @@ Arguments  |  The copies of the actual arguments are passed to the formal argume
     * A .o object file file (also .obj on Windows) contains compiled object code (that is, machine code produced by your C or C++ compiler), together with the names of the functions and other objects the file contains. 
     * Object files are processed by the linker to produce the final executable.
 4) **Linking**: This is the final phase in which all the linking of function calls with their definitions are done. Linker knows where all these functions are implemented. Linker does some extra work also, it adds some extra code to our program which is required when the program starts and ends. 
+
+### What is the difference between static linking and dynamic linking?
+
+Static linking  |  Dynamic linking
+--|--
+Linking happens at compile time.    |    Linking happens at run time.
+Binary size will be more, entire library added to it.    |    Binary size will be less because library is separately loaded and linked.
+Loading time is less, only binary need to load.    |    Loading time will be more as we need to load library and link at run time.
+Memory usage is high. Each time when you start application, library will be duplicated in memory.      |  Memory usage is less as the library is loaded dynamically
 
 ### String related function in C
 Strings are defined as an array of characters. The difference between a character array and a string is the string is terminated with a special character ‘\0’.
@@ -201,11 +235,7 @@ In any programming language, to execute a set of statements repeatedly until a p
 In C++ language, three types of loops are used
 • While loop
 • For loop
-• Do-while loop
-
-
-
-
+• Do-while loops
 
 ## [Memory]
 ### Memory errors
