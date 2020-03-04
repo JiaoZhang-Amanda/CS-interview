@@ -19,6 +19,7 @@
 Given a collection of intervals, merge all overlapping intervals.<br>Input: [[1,3],[2,6],[8,10],[15,18]]<br>
 Output: [[1,6],[8,10],[15,18]]<br>
 Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+![link](https://leetcode.com/problems/merge-intervals/)
 </details>
 
 <details>
