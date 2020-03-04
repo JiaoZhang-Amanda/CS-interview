@@ -18,7 +18,7 @@
 <summary>56. Merge Intervals<br>Given a collection of intervals, merge all overlapping intervals.<br>Input: [[1,3],[2,6],[8,10],[15,18]]<br>
 Output: [[1,6],[8,10],[15,18]]<br>
 Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].</summary>
-```
+<code>
 class Solution {
     private class IntervalComparator implements Comparator<int[]> {
         @Override
@@ -52,7 +52,7 @@ class Solution {
         return Math.max(a[0], b[0]) <= Math.min(a[1], b[1]);
     }
 }
-```
+</code>
 </details>
 
 <details>
