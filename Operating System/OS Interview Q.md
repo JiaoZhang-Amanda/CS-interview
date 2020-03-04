@@ -139,7 +139,10 @@ Human interface device & Network protocols & File system & Logical I/O managemen
 * When fork() is called the child process gets a copy of the parents;s file descriptor table.
 
 #### 2. Directories
-* A directory is a file, maps a file name to an inode(index node) number. An inode maps an inode number to disk address.
+* A directory is a file, maps a file name to an inode(index node) number. An inode maps an inode number to disk address. Directories are lists of names assigned to inodes. A directory contains an entry for itself, its parent, and each of its children.
+* What is inside an iNode?
+    * The inode (index node) is a data structure in a Unix-style file system that describes a file-system object such as a file or a directory. Each inode stores the attributes and disk block locations of the object's data. File-system object attributes may include metadata (times of last change, access, modification), as well as owner and permission data.
+    * The inode is a disc block that contains information like the number of hard links to it the atime, mtime, and ctime fields,owner and group ID, the access mask, the file type, file size, etc. It also contains a few adresses of data blocks.
 * Directory Hierarchy
     * **Hard Link**: refer to a file(not a dictory) in one directory that appears in another. Using link() system call of ln in shell command.
     * **Soft Links / Symbolic Links**: a special kind of file containing the name of another file or directory. Using syslink() / ln -s shell command.
@@ -220,7 +223,11 @@ A system log is a file containing events that are updated by the operating syste
      * detect and solve the problems found in the computer
      * Storage and recovery of data about changes on data items by different transactions.
      * Warnings from the system logo can be used to predict system problems
-     
+- Log parsing in Linux
+    * Location of log files in common Linux System(/var/log)
+    * We are interested in /var/log/messages.
+    * messages log file contain general system messages.
+    * syslog/rsyslog generally routed all general system messages to log file or the logs which are not configured to be routed to any log file.
 #### 3. Types of records in a system log includes
 * IMS in put message
 * Condensed command type of record
@@ -274,6 +281,7 @@ ssh user_name@host(IP/Domain_name)
 #### linux commands
 * change permission? `chmod` <br>
 `[user](read, write, execute)[group](read, write, execute)[others](read, write, execute)`
+the nine bits that specify read, write, and execute (or search) permissions for the owner, group and world, there are three other bits that have special characteristics.
 * lists the current running processes: `ps`
 * lists directory contents: `ls`
 * displays manual pages: `man`

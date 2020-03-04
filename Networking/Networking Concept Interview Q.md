@@ -20,7 +20,7 @@
         * **Selective Repeat ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
     - TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
 * **Stop and wait protocol**: sender sends one frame, waits until it receives confirmation from the receiver (okay to go ahead), and then sends the next frame.
-* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium.
+* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
     * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
     * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
     * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
@@ -127,6 +127,16 @@ e.g. a network server transmits data to a client</br>
 10.0.0.0-10.255.255.255<br>
 172.16.0.0-172.31.255.255<br>
 192.168.0.0-192.168.255.255
+* IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
+* regular expression for IP address.
+^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
+
+### 6. MAC address
+MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
+* What's the MAC address in the TCP packet when your destination is Google.com?
+Gateway's MAC address
+* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
+取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
 
 ### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
 Client ------SYN-----> Server<br>
@@ -195,7 +205,8 @@ Client ------ACK-----> Server<br>
     The recursive server retrieves the A record for dyn.com from the authoritative name servers and stores the record in its local cache.
     * Step 7: Receive the answer. 
     Armed with the answer, recursive server returns the A record back to your computer. Your computer stores the record in its cache, reads the IP address from the record, then passes this information to your browser. The browser then opens a connection to the webserver and receives the website.
-    
+* What's the DNS record type for IPv6 entries?  
+An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address. AAAA records are available for customers using the No-IP Plus Managed DNS service. Currently, IP addresses are based on version 4 of the internet protocol, where there are 4 sets of numbers ranging from 0-255. For example (127.198.30.245). IPv6 has a much larger address space where there are 8 sets ranging from 0000-FFFF. For example (2001:0db8:0000:0000:0000:0000:1428:57ab).
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.
