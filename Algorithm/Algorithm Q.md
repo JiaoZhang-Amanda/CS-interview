@@ -1,12 +1,19 @@
 ## Algorithm Interview Question
 
-### Commonly Algorithm
-* Tree Traversal Algorithms: Pre-Order, In-Order, and Post-Order traversal.
-* Graph Search Algorithms: Depth First Search (DFS), Breadth First Search (BFS), and Dijkstra’s algorithm, A* 
-* Search Algorithms: binary search
-* Sorting Algorithms: Bubble sort, insertion sort, selection sort, etc, merge sort and quick sort.
+## Commonly Algorithm
 
-### Sorting Algorithm
+1. Sorting Algorithm: Bubble sort, insertion sort, selection sort, etc, merge sort and quick sort.
+2. Graph Search Algorithm: Depth First Search (DFS), Breadth First Search (BFS), and Dijkstra’s algorithm, A* 
+3. Tree / Binary Search Tree
+4. Dynamic Programming
+5. Search / Binary Search
+6. String / Array
+7. Math
+8. Bit
+9. Linked List
+
+
+## Sorting Algorithm
 
 Algorithm    | Best-case       |  Worst-case        | Average-case      |   Space Complexity     |    Stable?
 --|--|--|--|--|--
@@ -43,3 +50,79 @@ Counting Sort      | O(k+n)       | O(k+n)        | O(k+n)      |   O(k+n)      
 * Cons
     1) Marginally slower than quicksort in practice
     2) Not as space-efficient as other sorting algorithms, e.g. block sort
+
+## Graph Search Algorithm
+### Breadth First Search(BFS)
+An algorithm for traversing or searching tree or graph data structures. It starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'), and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
+* Input: A graph Graph and a starting vertex root of Graph
+* Output: Goal state. The parent links trace the shortest path back to root
+* Pseudocode
+```
+procedure BFS(G, start_v) is
+      let Q be a queue
+      label start_v as discovered
+      Q.enqueue(start_v)
+      while Q is not empty do
+          v := Q.dequeue()
+          if v is the goal then
+              return v
+          for all edges from v to w in G.adjacentEdges(v) do
+             if w is not labeled as discovered then
+                 label w as discovered
+                 w.parent := v
+                 Q.enqueue(w)
+```
+### Depth-first search(DFS)
+An algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
+* Input: A graph G and a vertex v of G
+* Output: All vertices reachable from v labeled as discovered
+* Recursive
+```
+procedure DFS(G, v) is
+label v as discovered
+for all directed edges from v to w that are in G.adjacentEdges(v) do
+    if vertex w is not labeled as discovered then
+        recursively call DFS(G, w)
+```
+* Iterative
+```
+procedure DFS-iterative(G, v) is
+let S be a stack
+S.push(v)
+while S is not empty do
+    v = S.pop()
+    if v is not labeled as discovered then
+        label v as discovered
+        for all edges from v to w in G.adjacentEdges(v) do 
+            S.push(w)
+```
+### Dijkstra’s algorithm
+An algorithm for finding the shortest paths between nodes in a graph, which may represent
+* Using a priority queue
+```
+  function Dijkstra(Graph, source):
+      dist[source] ← 0                           // Initialization
+
+      create vertex priority queue Q
+
+      for each vertex v in Graph:           
+          if v ≠ source
+              dist[v] ← INFINITY                 // Unknown distance from source to v
+              prev[v] ← UNDEFINED                // Predecessor of v
+
+         Q.add_with_priority(v, dist[v])
+
+
+     while Q is not empty:                      // The main loop
+         u ← Q.extract_min()                    // Remove and return best vertex
+         for each neighbor v of u:              // only v that are still in Q
+             alt ← dist[u] + length(u, v) 
+             if alt < dist[v]
+                 dist[v] ← alt
+                 prev[v] ← u
+                 Q.decrease_priority(v, alt)
+
+     return dist, prev
+```
+### A*
+A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major practical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 

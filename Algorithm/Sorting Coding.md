@@ -18,6 +18,8 @@ list.sort(new Comparator<Integer>() {
                 return -1;
             }//1,0,-1三者同时出现时，1表示不交换位置，0表示相等时不交换，-1表示交换
         });
+//OR
+Arrays.sort(intervals, (int[] i1, int[] i2) -> i1[0] != i2[0] ? i1[0] - i2[0] : i1[1] - i2[1]);
 ```
 Increasing order: 
 ```
@@ -46,6 +48,7 @@ if(o1<o2)  return 1;
 522    |Longest Uncommon Subsequence II    |Medium  
 506    |Relative Ranks   | Easy
 853   | Car Fleet   | Medium
+347     |  Top K Frequent Elements    |   Sorting
 
 <details>
 <summary>56. Merge Intervals</summary>
@@ -66,11 +69,9 @@ Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >
 
 <details>
 <summary>324. Wiggle Sort II</summary>
-<br>Given an unsorted array nums, reorder it in-place such that
-<br>nums[0] <= nums[1] >= nums[2] <= nums[3]
-<br>Input: [3, 5, 2, 1, 6, 4]
-<br>Output: [1, 6, 2, 5, 3, 4]
-<br>Explanation: This question may have multiple answers, and [2, 6, 1, 5, 3, 4] is also ok.
+<br>Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
+<br>Input: nums = [1, 5, 1, 1, 6, 4]
+<br>Output: One possible answer is [1, 4, 1, 5, 1, 6].
 </details>
 
 <details>
