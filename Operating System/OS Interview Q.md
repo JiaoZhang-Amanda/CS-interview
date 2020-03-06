@@ -66,6 +66,27 @@ To kill the process using the process_id and free up the resources allowing othe
 * **Bootloader** is a piece of code that runs before any operating system is running. Bootloader are used to boot other operating systems, usually each operating system has a set of bootloaders specific for it.
 * **Bootstrap** loader is a program that resides in the computers EPROM, ROM, or othernon-volatile memory that automatically executed by the processor when turning on the computer. The bootstrap loader reads the hard drives boot sector to continue the process of loading the computers operating system.
 
+#### 13. Describe how to boot an operating system.
+The word “boot” is short for “bootstrap,” which is the name of the program that prompts the operating system at startup. Booting occurs when you start a computer from the kernel. This usually happens when you start it for the first time. It may also occur when the computer malfunctions and you have to put it in safe mode or reboot it as though it were a new CPU.
+
+#### 14. 6 Stages of Linux Boot Process
+1. BIOS
+BIOS stands for Basic Input/Output System. Performs some system integrity checks, Searches, loads, and executes the boot loader program. In simple terms BIOS loads and executes the MBR boot loader.
+2. MBR
+MBR stands for Master Boot Record. It is located in the 1st sector of the bootable disk.  in simple terms MBR loads and executes the GRUB boot loader.
+3. GRUB
+GRUB stands for Grand Unified Bootloader. If you have multiple kernel images installed on your system, you can choose which one to be executed. In simple terms GRUB just loads and executes Kernel and initrd images.
+4. Kernel
+* Mounts the root file system as specified in the “root=” in grub.conf. Kernel executes the /sbin/init program
+* Since init was the 1st program to be executed by Linux Kernel, it has the process id (PID) of 1. Do a ‘ps -ef | grep init’ and check the pid.
+* initrd stands for Initial RAM Disk. initrd is used by kernel as temporary root file system until kernel is booted and the real root file system is mounted. It also contains necessary drivers compiled inside, which helps it to access the hard drive partitions, and other hardware.
+5. Init
+* Looks at the /etc/inittab file to decide the Linux run level.
+* Following are the available run levels: 0 – halt 1 – Single user mode 2 – Multiuser, without NFS 3 – Full multiuser mode 4 – unused 5 – X11 6 – reboot
+* Init identifies the default initlevel from /etc/inittab and uses that to load all appropriate program. Typically you would set the default run level to either 3 or 5.
+6. Runlevel programs
+When the Linux system is booting up, you might see various services getting started. For example, it might say “starting sendmail …. OK”. Those are the runlevel programs, executed from the run level directory as defined by your run level.
+
 ## Processor Management
 Scheduling & Interrupt management
 #### 1. Scheduling Alg.
@@ -126,6 +147,9 @@ paging is a memory management scheme by which a computer stores and retrieves da
 #### 5. Copy-on-write(COW)
 * A process gets a private copy of the page after a thread in the process performs a write to that page for the first time.
 * Use private mapping and COW for data and bss regins
+
+#### 6. Explain your experience with RAID and disk redundancy.
+RAID (redundant array of independent disks) is a way of storing the same data in different places on multiple hard disks or solid-state drives to protect data in the case of a drive failure. There are different RAID levels, however, and not all have the goal of providing redundancy.
 
 ## I/O Management
 Human interface device & Network protocols & File system & Logical I/O management & Physical device drivers
