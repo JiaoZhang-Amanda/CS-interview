@@ -89,14 +89,16 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 
 ### 6. SSL
 SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
-1)
+1) How is SSL related to HTTPs
+HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL/TLS (hereafter referred to simply as “SSL”) encryption layer on top of it. Servers and clients still speak exactly the same HTTP to each other, but over a secure SSL connection that encrypts and decrypts their requests and responses. The SSL layer has 2 main purposes:
+    * Verifying that you are talking directly to the server that you think you are talking to
+    * Ensuring that only the server can read what you send it and only you can read what it sends back
 2) SSL handshakes
 * It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the website's origin server.
 * It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
 * It occurs after a TCP connection has been opened via a TCP handshake.
-* 
 <details>
-<summary> process</summary>
+<summary> handshakes process</summary>
 <br>1. The SSL or TLS client sends a client hello message that lists cryptographic information such as the SSL or TLS version and, in the client's order of preference, the CipherSuites supported by the client. The message also contains a random byte string that is used in subsequent computations. The protocol allows for the client hello to include the data compression methods supported by the client.
 <br>2. The SSL or TLS server responds with a server hello message that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request that includes a list of the types of certificates supported and the Distinguished Names of acceptable Certification Authorities (CAs).
 <br>3. The SSL or TLS client verifies the server's digital certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
@@ -247,6 +249,7 @@ A routing protocol specifies how routers communicate with each other, distributi
 3) Types of Routing
     * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
+    
 ### 4. What's DNS? what protocol it use? How DNS works(detail)? 
 * DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
 * It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
@@ -334,6 +337,38 @@ Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 ### 5. When and why did you use wireshark?
 Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education.
 
+### 6. How to Troubleshoot a Network
+<details>
+<summary>1. Check the hardware.</summary>
+When you’re beginning the troubleshooting process, check all your hardware to make sure it’s connected properly, turned on, and working. If a cord has come loose or somebody has switched off an important router, this could be the problem behind your networking issues. There’s no point in going through the process of troubleshooting network issues if all you need to do is plug a cord in. Make sure all switches are in the correct positions and haven’t been bumped accidentally.
+Next, turn the hardware off and back on again. This is the mainstay of IT troubleshooting, and while it might sound simplistic, often it really does solve the problem. Power cycling your modem, router, and PC can solve simple issues—just be sure to leave each device off for at least 60 seconds before you turn it back on.
+</details>
+<details>
+<summary> 2. Use ipconfig</summary>
+Open the command prompt and type “ipconfig” (without the quotes) into the terminal. The Default Gateway (listed last) is your router’s IP. Your computer’s IP address is the number next to “IP Address.” If your computer’s IP address starts with 169, the computer is not receiving a valid IP address. If it starts with anything other than 169, your computer is being allocated a valid IP address from your router.
+Try typing in “ipconfig /release” followed by “ipconfig /renew” to get rid of your current IP address and request a new one. This will in some cases solve the problem. If you still can’t get a valid IP from your router, try plugging your computer straight into the modem using an ethernet cable. If it works, the problem lies with the router.
+</details>
+<details>
+<summary> 3. Use ping and tracert</summary>
+If your router is working fine, and you have an IP address starting with something other than 169, the problem’s most likely located between your router and the internet. At this point, it’s time to use the ping tool. Try sending a ping to a well-known, large server, such as Google, to see if it can connect with your router. You can ping Google DNS servers by opening the command prompt and typing “ping 8.8.8.8”; you can also add “-t” to the end (ping 8.8.8.8 -t) to get it to keep pinging the servers while you troubleshoot. If the pings fail to send, the command prompt will return basic information about the issue.
+You can use the tracert command to do the same thing, by typing “tracert 8.8.8.8”; this will show you each step, or “hop,” between your router and the Google DNS servers. You can see where along the pathway the error is arising. If the error comes up early along the pathway, the issue is more likely somewhere in your local network.
+</details>
+<details>
+<summary> 4. Perform a DNS check(nslookup)</summary>
+Use the command “nslookup” to determine whether there’s a problem with the server you’re trying to connect to. If you perform a DNS check on, for example, google.com and receive results such as “Timed Out,” “Server Failure,” “Refused,” “No Response from Server,” or “Network Is Unreachable,” it may indicate the problem originates in the DNS server for your destination. (You can also use nslookup to check your own DNS server.)
+</details>
+<details>
+<summary> 5. Contact the ISP</summary>
+ If all of the above turn up no problems, try contacting your internet service provider to see if they’re having issues. You can also look up outage maps and related information on a smartphone to see if others in your area are having the same problem.
+</details>
+<details>
+<summary> 6. Check on virus and malware protection</summary>
+make sure your virus and malware tools are running correctly
+</details>
+<details>
+<summary> 7. Review database logs</summary>
+Review all your database logs to make sure the databases are functioning as expected.
+</details>
 ## [Socket Programming]
 A socet is an astract representation of a communication endpoint.  
 A socket allows the application to "plug in" to the network and commnucate with other applications
