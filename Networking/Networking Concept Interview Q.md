@@ -38,7 +38,7 @@ there is **error, flow control**, sender won't overwhelm receiver |there is no *
 there is **congestion control**, senders "slow down sending rate" when network congested|there is no **congestion control**
 TCP has concern of jitter. Means if any packet lost then TCP does not provide subsequent data to the application while it is requesting re-sending of the missing data|UDP does not have concern of jitter because there is retransmission of missing data.
 TCP is slower as compared to UDP because retransmission of lost packets can take long delay.|UDP is faster as compared to TCP because there is no retransmission of lost packets
-App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | App's using: streaming media, teleconferencing, DNS, SNMP, RIP
+App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | App's using: streaming media, teleconferencing, DNS, SNMP, RIP, Voice over IP (VoIP)
 
 * Both UDP and TCP provide error checking.
 
@@ -66,6 +66,48 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 - **201** Created: This indicates that the request was successful. It is used to confirm success of a PUT or POST request.
 - **200** OK: It indicates that the request is successful.
 
+### 4. Common ports
+* HTTP – Port 80.
+* HTTPS – 443.
+* FTP – 21.
+* FTPS / SSH – 22.
+* POP3 – 110.
+* POP3 SSL – 995.
+* IMAP – 143.
+* IMAP SSL – 993.
+* DNS - 53
+* Telnet - 23: Remote login service, unencrypted text messages
+
+### 5. HTTP vs HTTPS 
+* In HTTP, URL begins with “http://” whereas URL starts with “https://”
+* HTTP uses port number 80 for communication and HTTPS uses 443
+* HTTP is considered to be unsecure that vulnerable to hackers and HTTPS is secure. It Is highly secure as the data is encrypted before it is seen across a network.
+* HTTP Works at Application Layer and HTTPS works at Transport Layer
+* HTTPS websites use data encryption. HTTP transfers data in plain text while HTTPS transfers data in cipher text (encrypt text).
+* HTTPs is slower than HTTP
+* HTTP does not require any certificates and HTTPS needs SSL Certificates
+
+### 6. SSL
+SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
+1)
+2) SSL handshakes
+* It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the website's origin server.
+* It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
+* It occurs after a TCP connection has been opened via a TCP handshake.
+* <details>
+<summary> process</summary>
+The SSL or TLS client sends a client hello message that lists cryptographic information such as the SSL or TLS version and, in the client's order of preference, the CipherSuites supported by the client. The message also contains a random byte string that is used in subsequent computations. The protocol allows for the client hello to include the data compression methods supported by the client.
+The SSL or TLS server responds with a server hello message that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request that includes a list of the types of certificates supported and the Distinguished Names of acceptable Certification Authorities (CAs).
+The SSL or TLS client verifies the server's digital certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
+The SSL or TLS client sends the random byte string that enables both the client and the server to compute the secret key to be used for encrypting subsequent message data. The random byte string itself is encrypted with the server's public key.
+If the SSL or TLS server sent a client certificate request, the client sends a random byte string encrypted with the client's private key, together with the client's digital certificate, or a no digital certificate alert. This alert is only a warning, but with some implementations the handshake fails if client authentication is mandatory.
+The SSL or TLS server verifies the client's certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
+The SSL or TLS client sends the server a finished message, which is encrypted with the secret key, indicating that the client part of the handshake is complete.
+The SSL or TLS server sends the client a finished message, which is encrypted with the secret key, indicating that the server part of the handshake is complete.
+For the duration of the SSL or TLS session, the server and client can now exchange messages that are symmetrically encrypted with the shared secret key.
+</details>
+
+![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
 ## [Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -182,11 +224,28 @@ Client ------ACK-----> Server<br>
 3. Cookies exit as plain text on client machine and they may pose a security rist as anyone can open the cookie.
 
 ### 3. Difference between Hub, Switch and Router?
-* Computers can be connected to each other via a switch or a router. A switch is designed to connect computers within a network, while a router is designed to connect multiple networks together.
-* The main objective of **router** is to connect various *networks* simultaneously and it works in *network layer*(Layer 3 of the OSI Model), whereas the main objective of **switch** is to connect various *devices* simultaneously and it works in *data link layer*(Layer 2 of the OSI Model).
-* Hub, broadcast all data to every port, physical Layer.
+* A **hub** is to sent out a message from one port to other ports. For example, if there are three computers of A, B, C, the message sent by a hub for computer A will also come to the other computers. But only computer A will respond and the response will also go out to every other port on the hub. Therefore, all the computers can receive the message and computers themselves need to decide whether to accept the message. works on the physical layer (Layer 1) of OSI model
+* A switch is able to handle the data and knows the specific addresses to send the message. It can decide which computer is the message intended for and send the message directly to the right computer.  works on the data link layer (Layer 2)
+* Router is actually a small computer that can be programmed to handle and route the network traffic. It usually connects at least two networks together. Routers can calculate the best route for sending data and communicate with each other by protocols.works in *network layer*(Layer 3 of the OSI Model)
+* Collisions are often in a hub environment, because each port on a hub is in the same **collision domain**. By contrast, each port on a bridge, a switch or a router is in a separate collision domain.
+* All ports on a hub or a switch are by default in the same **broadcast domain**. All ports on a router are in the different broadcast domains and routers don't forward broadcasts from one broadcast domain to another.
 
-
+### 4. Router
+1) Router function?
+    * It forwards data packets toward their destination.
+    * It acts as an intersection between multiple IP networks.
+2) Routing Protocols
+A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
+    * RIP(Routing Information Protocol): It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
+    * OSPF(Open Shortest Path First): It enabled routers discover the network by sending identification messages to each other followed by messages that capture specific routing items rather than the entire routing table. It is the only link-state routing protocol listed in this category. 
+        * An OSPF network can be divided into sub-domains called **areas**. An area is a logical collection of OSPF networks, routers, and links that have the same area identification. A router within an area must maintain a topological database for the area to which it belongs.
+        * OSPF LSA Types: LSA Type 1: Router LSA. LSA Type 2: Network LSA. LSA Type 3: Summary LSA. LSA Type 4: Summary ASBR LSA. LSA Type 5: Autonomous system external LSA. LSA Type 6: Multicast OSPF LSA. LSA Type 7: Not-so-stubby area LSA. LSA Type 8: External attribute LSA for BGP.
+    * IS-IS(Intermediate System to Intermediate System): IS-IS does not run over Internet Protocol (IP) and uses its own addressing scheme. 
+    * BGP(Border Gateway Protocol ): an **exterior gateway protocol (EGP)**. Basically, interior protocols are meant to dynamically route data across a network that you fully control and maintain. Exterior routing protocols are used to exchange routes between distinctly separate networks that you have no administrative control over. BGP is the routing protocol used on the internet;  therefore, the most common enterprise use is to run BGP on your internet edge when connecting to your ISP.
+        * six states:Idle, Connect, Active, Opensent, Openconfirm, Established. In the "Idle" state, BGP initializes all resources, refuses all inbound BGP connection attempts and initiates a TCP connection to the peer. The second state is "Connect". In the "Connect" state, the router waits for the TCP connection to complete and transitions to the "OpenSent" state if successful. If unsuccessful, it starts the ConnectRetry timer and transitions to the "Active" state upon expiration. In the "Active" state, the router resets the ConnectRetry timer to zero and returns to the "Connect" state. In the "OpenSent" state, the router sends an Open message and waits for one in return in order to transition to the "OpenConfirm" state. Keepalive messages are exchanged and, upon successful receipt, the router is placed into the "Established" state. In the "Established" state, the router can send/receive: Keepalive; Update; and Notification messages to/from its peer.
+3) Types of Routing
+    * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
+    * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
 ### 4. What's DNS? what protocol it use? How DNS works(detail)? 
 * DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
 * It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
@@ -207,6 +266,7 @@ Client ------ACK-----> Server<br>
     Armed with the answer, recursive server returns the A record back to your computer. Your computer stores the record in its cache, reads the IP address from the record, then passes this information to your browser. The browser then opens a connection to the webserver and receives the website.
 * What's the DNS record type for IPv6 entries?  
 An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address. AAAA records are available for customers using the No-IP Plus Managed DNS service. Currently, IP addresses are based on version 4 of the internet protocol, where there are 4 sets of numbers ranging from 0-255. For example (127.198.30.245). IPv6 has a much larger address space where there are 8 sets ranging from 0000-FFFF. For example (2001:0db8:0000:0000:0000:0000:1428:57ab).
+
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.

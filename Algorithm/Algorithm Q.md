@@ -127,10 +127,40 @@ An algorithm for finding the shortest paths between nodes in a graph, which may 
 ### A*
 A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major practical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 
 
-### Union Find
+### Union Find(Disjoint Set Union)
 A union-find algorithm is an algorithm that performs two useful operations on such a data structure:
 
 * Find: Determine which subset a particular element is in. This can be used for determining if two elements are in the same subset.
 * Union: Join two subsets into a single subset.
 
 Union-Find Algorithm can be used to check whether an undirected graph contains cycle or not. 
+```
+public int find(int p){
+    while(p != id[p]) p = id[p];
+    return p;
+}
+
+public void union(int p, int q){
+    int pRoot = find(p);
+    int qRoot = find(q);
+    if(pRoot == qRoot) return;
+    id[p] = qRoot;
+    count--;
+}
+```
+## Tree / Binary Search Tree
+* Tree construction, traversal and manipulation algorithms
+* one flavor of balanced binary tree, whether it's a red/black tree, a splay tree or an AVL tree and how it's implemented. 
+* there are three basic ways to represent a graph in memory (objects and pointers, matrix and adjacency list), and you should familiarize yourself with each representation and its pros and cons. 
+* difference between inorder, postorder and preorder traversal (for trees). their computational complexity, tradeoffs and how to implement them in real code. 
+
+### Binary trees, N-ary trees and Trie-trees
+* A **binary tree** is a rooted tree in which each node has no more than 2 children.
+*  If a tree is a rooted tree in which each node has no more than N children, it is called **N-ary tree**
+* **Trie** is one of the most frequently used N-ary trees
+
+### Tree Traversal
+* preorder: visit the root node, then traverse the left subtree and finally traverse the right subtree.
+* inorder: traverse the left subtree, then visit the root node and finally traverse the right subtree.
+* postorder: traverse the left subtree, then traverse the right subtree and finally visit the root node.
+* level-order: traverse the tree level by level.

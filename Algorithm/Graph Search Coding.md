@@ -11,9 +11,9 @@
 399   |   Evaluate Division   |   Medium     
 261  |  Graph Valid Tree  |  Medium
 323 |   Number of Connected Components in an Undirected Graph  |  Medium
+684   | Redundant Connection  |  Medium  
 685  |  Redundant Connection II  |  Hard    
-332  |  Reconstruct Itinerary  |  Medium    
-684   | Redundant Connection  |  Medium    
+332  |  Reconstruct Itinerary  |  Medium      
 269 |   Alien Dictionary  |  Hard
 444  |  Sequence Reconstruction   | Medium
 133  |  Clone Graph   | Medium
@@ -109,6 +109,25 @@ You can assume that no duplicate edges will appear in edges. Since all edges are
 </details>
 
 <details>
+<summary>684. Redundant Connection</summary>
+In this problem, a tree is an undirected graph that is connected and has no cycles.
+
+The given input is a graph that started as a tree with N nodes (with distinct values 1, 2, ..., N), with one additional edge added. The added edge has two different vertices chosen from 1 to N, and was not an edge that already existed.
+
+The resulting graph is given as a 2D-array of edges. Each element of edges is a pair [u, v] with u < v, that represents an undirected edge connecting nodes u and v.
+
+Return an edge that can be removed so that the resulting graph is a tree of N nodes. If there are multiple answers, return the answer that occurs last in the given 2D-array. The answer edge [u, v] should be in the same format, with u < v.
+
+Example 1:
+Input: [[1,2], [1,3], [2,3]]
+Output: [2,3]
+Explanation: The given undirected graph will be like this:
+  1
+ / \
+2 - 3
+</details>
+
+<details>
 <summary>685. Redundant Connection II</summary>
 In this problem, a rooted tree is a directed graph such that, there is exactly one node (the root) for which all other nodes are descendants of this node, plus every node has exactly one parent, except for the root node which has no parents.
 
@@ -141,25 +160,6 @@ Example 1:
 
 Input: [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
 Output: ["JFK", "MUC", "LHR", "SFO", "SJC"]
-</details>
-
-<details>
-<summary>684. Redundant Connection</summary>
-In this problem, a tree is an undirected graph that is connected and has no cycles.
-
-The given input is a graph that started as a tree with N nodes (with distinct values 1, 2, ..., N), with one additional edge added. The added edge has two different vertices chosen from 1 to N, and was not an edge that already existed.
-
-The resulting graph is given as a 2D-array of edges. Each element of edges is a pair [u, v] with u < v, that represents an undirected edge connecting nodes u and v.
-
-Return an edge that can be removed so that the resulting graph is a tree of N nodes. If there are multiple answers, return the answer that occurs last in the given 2D-array. The answer edge [u, v] should be in the same format, with u < v.
-
-Example 1:
-Input: [[1,2], [1,3], [2,3]]
-Output: [2,3]
-Explanation: The given undirected graph will be like this:
-  1
- / \
-2 - 3
 </details>
 
 <details>
