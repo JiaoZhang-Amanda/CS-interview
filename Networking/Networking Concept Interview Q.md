@@ -13,7 +13,7 @@
 * **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure.
 * **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
 * **ARP**: Address Resolution Protocol.  It's used to find LAN address from the network address. It helps a node to send a frame over a local link. The node send a broadcast message to all nodes "What is the MAC address of this ip address". Node with the provided ip address replies with MAC address.
-* **DHCP**: dynamic host configuration protocol. It is a network protocol used on IP networks. A DHCP server automatically assigns an IP address and other information to each host on the network so they can communicate efficiently with other endpoints. Device sends broadcast message "I am new here". DHCP server see message and responde and allocate an IP address, while other devices ignore the message.
+* **DHCP**: 
 * **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
     - Types: Sliding Window ARQ(Automatic Repeat req uest) 
         * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
@@ -60,6 +60,7 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 - **409** : When we use PUT request to create the same resource twice then server displays 409 code to the browser.
 - **405**Method not allowed: Web Server displays the HTTP 405 error message, when requested method is not allowed. Ex. if a resource allows get method, we cannot request post to get this resource.
 - **401**: This response code is generated when an unauthorized user request for secure resource on the web server.
+- **403**: Forbidden Error. when a web server forbids you from accessing the page you’re trying to open in your browser.
 - **404** Not found: requested document not found on this server
 - **400** Bad Request: request msg nit understood by server
 - **301** Moved Permanently: requested object moved, new location specified later in this msg(Location:)
@@ -77,6 +78,7 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 * IMAP SSL – 993.
 * DNS - 53
 * Telnet - 23: Remote login service, unencrypted text messages
+* DHCP - for server is 67 and for the client is 68.
 
 ### 5. HTTP vs HTTPS 
 * In HTTP, URL begins with “http://” whereas URL starts with “https://”
@@ -86,6 +88,10 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 * HTTPS websites use data encryption. HTTP transfers data in plain text while HTTPS transfers data in cipher text (encrypt text).
 * HTTPs is slower than HTTP
 * HTTP does not require any certificates and HTTPS needs SSL Certificates
+
+### Network security protocols
+* Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
+* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
 
 ### 6. SSL
 SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
@@ -111,6 +117,29 @@ HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL
 </details>
 
 ![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
+
+### DHCP
+<details>
+<summary>What id DHCP?</summary>
+The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configuration Protocol(DHCP) is an application layer protocol. It is a Client server protocol which uses UDP services. IP address is assigned from a pool of addresses. DHCP port number for server is 67 and for the client is 68.
+</details>
+<details>
+<summary>How DHCP Works</summary>
+ <br>Device sends broadcast message "I am new here". DHCP server see message and responde and allocate an IP address, while other devices ignore the message.
+ <br>In DHCP, the client and the server exchange mainly 4 DHCP messages in order to make a connection, also called DORA process, but there are 8 DHCP messages in the process.
+</details>
+<details>
+<summary>DHCP DORA Process</summary>
+ <br>* Discovery ( DHCP discover ):
+ <br>By this message interaction start between server and client. Discovery sent by a client that is connected to a local subnet. While send discovery destination address is broadcast 255.255.255.255 and source address is 0.0.0.0.
+  <br>* OFFER ( DHCP offer ):
+  <br>Offer is a response to the Discovery message by the DHCP server to the DHCP clients. It contains a network configuration setting for the client like an IP address offered to client 10.1.1.1.
+  <br>* REQUEST ( DHCP request ):
+ Response to Offer is indicating that the client has accepted the network configuration. It means to accept the offer by the DHCP server with IP 10.1.1.1. this message sent by the client with destination address 255.255.255.255 and the source address is 10.1.1.1.
+  <br>* ACKNOWLEDGE ( DHCP ack ):
+ After the request message or accept the IP by DHCP SERVER, the server sent an ACK to the client. This message clear to the client that now you can start using the network.
+</details>
+
 ## [Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -176,6 +205,12 @@ e.g. a network server transmits data to a client</br>
 * regular expression for IP address.
 ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
 
+### 6. NAT: Network Address Translation
+* Network Address Translation (NAT) is the ability of a router to translate a public IP address to a private IP address and vice versa.  It adds security to the network by keeping the private IP addresses hidden from the outside world.
+* three NAT types
+    * Open NAT - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
+    * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
+    * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
 ### 6. MAC address
 MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
 * What's the MAC address in the TCP packet when your destination is Google.com?
@@ -335,7 +370,8 @@ Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 * May be due to failure or mis-configuration of NTP Server.
 
 ### 5. When and why did you use wireshark?
-Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education.
+* Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education.
+* Wireshark can peer inside the network and examine the details of traffic at a variety of levels, ranging from connection-level information to the bits comprising a single packet. This flexibility and depth of inspection allows the valuable tool to analyze security events and troubleshoot network security device issues.
 
 ### 6. How to Troubleshoot a Network
 <details>
@@ -369,6 +405,7 @@ make sure your virus and malware tools are running correctly
 <summary> 7. Review database logs</summary>
 Review all your database logs to make sure the databases are functioning as expected.
 </details>
+
 ## [Socket Programming]
 A socet is an astract representation of a communication endpoint.  
 A socket allows the application to "plug in" to the network and commnucate with other applications
@@ -422,3 +459,15 @@ Establishing a UDP socket communication on the **client side** are the following
 
 ### 3. Difference between sendto and send functions.
 These functions send data to a socket. Generally speaking, send() is used for TCP SOCK_STREAM connected sockets, and sendto() is used for UDP SOCK_DGRAM unconnected datagram sockets.
+
+### 4. Basic CLI(command-line interface
+* Print Working Directory (pwd) 
+* Change Directories (cd) 
+* List Files and Directories (ls) 
+* Create Files (touch) 
+* Creating Directories (mkdir) 
+* Deleting Files (rm) 
+* Move or Rename Files or Directories (mv)
+* Copying Directories (cp)
+* Clear Your CLI (clear)
+* Manual Pages (man)
