@@ -47,6 +47,16 @@ for (Map.Entry<String,String> entry : gfg.entrySet())
     System.out.println("Key = " + entry.getKey() + 
                  ", Value = " + entry.getValue()); 
 ```
+PriorityQueue<>
+```
+PriorityQueue<Integer> q = new PriorityQueue<>(
+    (n1, n2) -> map.get(n1) - map.get(n2)
+);
+q.offer(i);
+if(q.size() > k){
+    q.poll();
+}
+```
 * compare(Integer o1, Integer o2){}中，o1代表的是List容器中的后一个元素，o2代表的是List容器中的前一个元素！
 
 ### Leetcode
