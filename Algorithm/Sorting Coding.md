@@ -33,6 +33,20 @@ if(o1>o2)  return -1;
 if(o1==o2)  return 0;
 if(o1<o2)  return 1;
 ```
+TreeMap<>
+default: decreasing
+```
+Map<Integer, Double> map = new TreeMap<>();
+TreeMap<Integer,Integer> map2= new TreeMap<Integer,Integer>(new Comparator<Integer>(){
+            public int compare(Integer a,Integer b){
+                return b-a;            
+                });
+for(Double sec: map.values()){}
+for(Double sec: map.keySet()){}
+for (Map.Entry<String,String> entry : gfg.entrySet())  
+    System.out.println("Key = " + entry.getKey() + 
+                 ", Value = " + entry.getValue()); 
+```
 * compare(Integer o1, Integer o2){}中，o1代表的是List容器中的后一个元素，o2代表的是List容器中的前一个元素！
 
 ### Leetcode
@@ -130,4 +144,14 @@ The distance between these two cars is ignored - they are assumed to have the sa
 A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.
 If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.
 How many car fleets will arrive at the destination?
+</details>
+
+<details>
+<summary>347. Top K Frequent Elements</summary>
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
 </details>
