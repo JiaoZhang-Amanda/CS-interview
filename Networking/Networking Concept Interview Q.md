@@ -143,13 +143,16 @@ The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configura
 ## [Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
-* **Physical Layer**: Converts data bit into an electrical impulse.(e.g. ethernet)
-* **Datalink Layer**: Data packet will be encoded and decoded into bits.
-* **Network Layer**: Transfer of datagrams from one to another.
-* **Transport Layer**: Responsible for Data transfer from one to another. Keep track all transmission and failure. Process-to-process communications
-* **Session Layer**: Manage and control signals between computers.
-* **Presentation Layer**: Transform data into application layer format.
-* **Application Layer**: An end user and application interact with the Application layer. (e.g. email)
+
+Name | Details  | Protocols involved | Data units
+--|--|--|--
+**Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
+**Datalink Layer** | is responsible for the node to node delivery of the message. The main function of this layer is to make sure data transfer is error-free from one node to another, over the physical layer. DLL encapsulates Sender and Receiver’s MAC address in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) |ARP, CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
+**Network Layer**| transmission of data from one host to the other located in different networks. It also takes care of packet routing. The sender & receiver’s IP address are placed in the header by the network layer. |Internet Protocol (IPv4), Internet Protocol (IPv6), IPX, AppleTalk, ICMP, IPSec and IGMP.|Packet
+**Transport Layer**| responsible for the End to End Delivery of the complete message. The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
+**Session Layer**| responsible for establishment of connection, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
+**Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
+* **Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user. (e.g. email)|HTTP, SMTP, DHCP, FTP, Telnet, SNMP and SMPP|data
 
 ### 2. Explain TCP/IP Model
 * The most widely used and available protocol is TCP/IP i.e. Transmission Control Protocol and Internet Protocol. TCP/IP specifies how data should be packaged, transmitted and routed in their end to end data communication.
