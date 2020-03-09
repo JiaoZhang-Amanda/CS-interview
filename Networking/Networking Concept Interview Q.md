@@ -152,7 +152,7 @@ Name | Details  | Protocols involved | Data units
 **Transport Layer**| responsible for the End to End Delivery of the complete message. The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for establishment of connection, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
-**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user. (e.g. email)|HTTP, SMTP, DHCP, FTP, Telnet, SNMP and SMPP|data
+**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
 
 ### 2. Explain TCP/IP Model
 * The most widely used and available protocol is TCP/IP i.e. Transmission Control Protocol and Internet Protocol. TCP/IP specifies how data should be packaged, transmitted and routed in their end to end data communication.
@@ -163,17 +163,15 @@ Name | Details  | Protocols involved | Data units
     * **Network Interface Layer**: It is the lowest layer of the TCP/IP model. It transfers the packets between different hosts. It includes encapsulation of IP packets into frames, mapping IP addresses to physical hardware devices, etc.
     
 ### 3. Data transmission
-e.g. a network server transmits data to a client</br>
 ![](./data_flow.jpeg)
-* The data to be transferred is the HTML page of the web server.
-* Add HTTP headers before data. The header  includes the HTTP version and a status code.
-* HTTP application layer protocol sends data to the transport layer. The TCP is used to manage the sessions between the network server and the client.
-* IP information is added before TCP information. IP specifies the appropriate source and destination IP addresses. This information constitutes an IP message.
-* After the Ethernet protocol is added to both ends of the IP packet, the data link frame is formed. The above frame is sent to the nearest router on the path to the network client. The router removes the Ethernet information, looks at the IP message, determines the best path, inserts the message into a new frame, and sends it to the next adjacent router in the target path. Each router removes and adds new data link layer information before forwarding.
-* Data is transmitted over the Internet, which contains media and intermediaries.
-* The client receives the data link frame containing the data, and processes each headers, and then removes the protocol headers in the reverse order. First the Ethernet information is removed, then the IP protocol information, then the TCP information, and finally the HTTP information.
-* After that, the web page information is passed to the client web browser software.
-
+1) An application, such as an email program, creates data that will be sent by an end user, such as an email message. The Application layer (layer 7) places a header (encapsulation) field that contains information such as screen size and fonts, and passes the data to the Presentation layer (layer 6).
+2) The Presentation layer places layer 6 header information. For example, the text in the message might be converted to ASCII. The Presentation layer will then pass the new data to the Session layer (layer 5).
+3) The Session layer follows the same process by adding layer 5 header information, such as information that the Session layer will manage the data flow, and passes this data to the Transport layer (layer 4).
+4) The Transport layer places layer 4 information, such as an acknowledgment that the segment was received in the header, and passes it to the Network layer (layer 3).
+5) The Network layer places layer 3 header information, such as the source and destination address so the Network layer can determine the best
+6) The Data Link layer places layer 2 **header and trailer** information, such as a Frame Check Sequence (FCS) to ensure that the information is not corrupt, and passes this new data to the Physical layer (layer 1) for transmission across the media.
+7) The bit stream is then transmitted as ones and zeros on the Physical layer. It is at this point that the Physical layer ensures bit synchronization. Bit synchronization will ensure the end user data is assembled in the correct order it was sent.
+8) Steps 1 through 7 occur in reverse order on the destination device. Device B collects the raw bits from the physical wire and passes them up the
 ### 4. Data Link Layer
 * Unit of Data: frame
 * Error detection
