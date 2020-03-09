@@ -1,19 +1,77 @@
 # Networking concepts Interview Question
+## [Models]
+### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
+**OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
+
+Name | Details  | Protocols involved | Data units
+--|--|--|--
+**Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
+**Datalink Layer** | is responsible for the node to node delivery of the message. The main function of this layer is to make sure data transfer is error-free from one node to another, over the physical layer. DLL encapsulates Sender and Receiver’s MAC address in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- Error detection, Error control & Flow Control|ARP, CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
+**Network Layer**| transmission of data from one host to the other located in different networks. It also takes care of packet routing. The sender & receiver’s IP address are placed in the header by the network layer. |Internet Protocol (IPv4), Internet Protocol (IPv6), IPX, AppleTalk, ICMP, IPSec and IGMP.|Packet
+**Transport Layer**| responsible for the End to End Delivery of the complete message. The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
+**Session Layer**| responsible for establishment of connection, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
+**Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
+**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
+
+### 2. Explain TCP/IP Model
+![](./OSI_TCP:IP.png)
+* The most widely used and available protocol is TCP/IP i.e. Transmission Control Protocol and Internet Protocol. TCP/IP specifies how data should be packaged, transmitted and routed in their end to end data communication.
+* Given below is a brief explanation of each layer:
+    * **Application Layer**: This is the top layer in the TCP/IP model. It includes processes that use Transport Layer Protocol to transmit the data to their destination. There are different Application Layer Protocols such as HTTP, FTP, SMTP, SNMP protocols, etc.
+    * **Transport Layer**: It receives the data from the Application Layer which is above the Transport Layer. It acts as a backbone between the host's system connected with each other and it mainly concerns about the transmission of data. TCP and UDP are mainly used as Transport Layer protocols.
+    * **Network or Internet Layer**: This layer sends the packets across the network. Packets mainly contain source & destination IP addresses and actual data to be transmitted.
+    * **Network Interface Layer**: It is the lowest layer of the TCP/IP model. It transfers the packets between different hosts. It includes encapsulation of IP packets into frames, mapping IP addresses to physical hardware devices, etc.
+* Characteristics TCP/IP Model
+    * Support for a flexible architecture
+    * Adding more systems to a network is easy.
+    * TCP/IP uses only the Internet layer, while OSI uses the network layer to define routing standards and protocols.
+    * A layer of the TCP/IP model is both connection-oriented and connectionless.
+    * It can be operated independently. For OSI, Layers can't work in parallel as each layer need to wait to obtain data from the previous layer.
+    
+### 3. Data transmission
+![](./data_flow2.png) ![](./data_flow.png)
+1) An application, such as an email program, creates data that will be sent by an end user, such as an email message. The Application layer (layer 7) places a header (encapsulation) field that contains information such as screen size and fonts, and passes the data to the Presentation layer (layer 6).
+2) The Presentation layer places layer 6 header information. For example, the text in the message might be converted to ASCII. The Presentation layer will then pass the new data to the Session layer (layer 5).
+3) The Session layer follows the same process by adding layer 5 header information, such as information that the Session layer will manage the data flow, and passes this data to the Transport layer (layer 4).
+4) The Transport layer places layer 4 information, such as an acknowledgment that the segment was received in the header, and passes it to the Network layer (layer 3).
+5) The Network layer places layer 3 header information, such as the source and destination address so the Network layer can determine the best
+6) The Data Link layer places layer 2 **header and trailer** information, such as a Frame Check Sequence (FCS) to ensure that the information is not corrupt, and passes this new data to the Physical layer (layer 1) for transmission across the media.
+7) The bit stream is then transmitted as ones and zeros on the Physical layer. It is at this point that the Physical layer ensures bit synchronization. Bit synchronization will ensure the end user data is assembled in the correct order it was sent.
+8) Steps 1 through 7 occur in reverse order on the destination device. Device B collects the raw bits from the physical wire and passes them up the
+
+### 4. TCP Header
+![](./TCP_header.png)
+* **Source port**: this is a 16 bit field that specifies the port number of the sender.
+* **Destination port**: this is a 16 bit field that specifies the port number of the receiver.
+* **Sequence number**: a 32 bit field that indicates how much data is sent during the TCP session. When you establish a new TCP connection (3 way handshake) then the initial sequence number is a random 32 bit value. The receiver will use this sequence number and sends back an acknowledgment. 
+* **Acknowledgment number**:  32 bit field is used by the receiver to request the next TCP segment. This value will be the sequence number incremented by 1.
+* **DO**: this is the 4 bit data offset field, also known as the header length. It indicates the length of the TCP header so that we know where the actual data begins.
+* **RSV**: these are 3 bits for the reserved field. They are unused and are always set to 0.
+* **Flags**: there are 9 bits for flags, we also call them control bits. We use them to establish connections, send data and terminate connections:
+    * **URG**: urgent pointer. When this bit is set, the data should be treated as priority over other data.
+    * **ACK**: used for the acknowledgment.
+    * **PSH**: this is the push function. This tells an application that the data should be transmitted immediately and that we don’t want to wait to fill the entire TCP segment.
+    * **RST**: this resets the connection, when you receive this you have to terminate the connection right away. This is only used when there are unrecoverable errors and it’s not a normal way to finish the TCP connection.
+    * **SYN**: we use this for the initial three way handshake and it’s used to set the initial sequence number.
+    * **FIN**: this finish bit is used to end the TCP connection. TCP is full duplex so both parties will have to use the FIN bit to end the connection. This is the normal method how we end an connection.
+* **Window**: the 16 bit window field specifies how many bytes the receiver is willing to receive. It is used so the receiver can tell the sender that it would like to receive more data than what it is currently receiving. It does so by specifying the number of bytes beyond the sequence number in the acknowledgment field.
+* **Checksum**: 16 bits are used for a checksum to check if the TCP header is OK or not.
+* **Urgent pointer**: these 16 bits are used when the URG bit has been set, the urgent pointer is used to indicate where the urgent data ends.
+* **Options**: this field is optional and can be anywhere between 0 and 320 bits.
+
 ## [Protocols]
-* **IP**(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
-    * connection-less, unreliable protocol designed to be ysed in a connection-less packet switched network such as the Internet.
-    * no guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lst or duplicated), IP relies on transport layer(TCP) to take care of these.
-* **TCP**: Transmission Control Protocol. TCP is a popular communication protocol which is used for communicating over a network. It divides any message into series of packets that are sent from source to destination and there it gets reassembled at the destination.
-* **UDP**: User Datagram Protocol. UDP is a substitute communication protocol to Transmission Control Protocol implemented primarily for creating loss-tolerating and low-latency linking between different applications.
+* **IP**
+* **TCP**
+* **UDP**
 * **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21**
-* **HTTP**: Hyper Text Transfer Protocol. HTTP is designed for transferring a hypertext among two or more systems. HTML tags are used for creating links. These links may be in any form like text or images. HTTP is designed on Client-server principles which allow a client system for establishing a connection with the server machine for making a request. The server acknowledges the request initiated by the client and responds accordingly.
-* **HTTPs**: Hyper Text Transfer Protocol Secure. HTTPS is abbreviated as Hyper Text Transfer Protocol Secure is a standard protocol to secure the communication among two computers one using the browser and other fetching data from web server. HTTP is used for transferring data between the client browser (request) and the web server (response) in the hypertext format, same in case of HTTPS except that the transferring of data is done in an encrypted format. So it can be said that https thwart hackers from interpretation or modification of data throughout the transfer of packets.
+* **HTTP**
+* **HTTPs**
 * **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
 * **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
-* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure.
+* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 * **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
-* **ARP**: Address Resolution Protocol.  It's used to find LAN address from the network address. It helps a node to send a frame over a local link. The node send a broadcast message to all nodes "What is the MAC address of this ip address". Node with the provided ip address replies with MAC address.
-* **DHCP**: 
+* **ARP**: 
+* **DHCP**
 * **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
     - Types: Sliding Window ARQ(Automatic Repeat req uest) 
         * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
@@ -24,6 +82,7 @@
     * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
     * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
     * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
+    
 ### 1. What is the difference between TCP and UDP? When would you use each of them?
 TCP|UDP
 --|--
@@ -81,6 +140,8 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 * DHCP - for server is 67 and for the client is 68.
 
 ### 5. HTTP vs HTTPS 
+* Hyper Text Transfer Protocol. HTTP is designed for transferring a hypertext among two or more systems. HTML tags are used for creating links. These links may be in any form like text or images. HTTP is designed on Client-server principles which allow a client system for establishing a connection with the server machine for making a request. The server acknowledges the request initiated by the client and responds accordingly.
+* Hyper Text Transfer Protocol Secure. HTTPS is abbreviated as Hyper Text Transfer Protocol Secure is a standard protocol to secure the communication among two computers one using the browser and other fetching data from web server. HTTP is used for transferring data between the client browser (request) and the web server (response) in the hypertext format, same in case of HTTPS except that the transferring of data is done in an encrypted format. So it can be said that https thwart hackers from interpretation or modification of data throughout the transfer of packets.
 * In HTTP, URL begins with “http://” whereas URL starts with “https://”
 * HTTP uses port number 80 for communication and HTTPS uses 443
 * HTTP is considered to be unsecure that vulnerable to hackers and HTTPS is secure. It Is highly secure as the data is encrypted before it is seen across a network.
@@ -119,6 +180,7 @@ HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL
 ![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
 
 ### DHCP
+![](DHCP.png)
 <details>
 <summary>What id DHCP?</summary>
 The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configuration Protocol(DHCP) is an application layer protocol. It is a Client server protocol which uses UDP services. IP address is assigned from a pool of addresses. DHCP port number for server is 67 and for the client is 68.
@@ -140,65 +202,85 @@ The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configura
  After the request message or accept the IP by DHCP SERVER, the server sent an ACK to the client. This message clear to the client that now you can start using the network.
 </details>
 
-## [Models]
-### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
-**OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
+### IP 
+(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
+* connection-less, unreliable protocol designed to be ysed in a connection-less packet switched network such as the Internet.
+* no guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lst or duplicated), IP relies on transport layer(TCP) to take care of these.
+* IP addresses
+    * Classful IP addressing
+        * Class A: 0*******.X.X.X(1-126)--network,node,node,node
+        * Class B: 10******.X.X.X(128-191)--network,network,node,node
+        * Class C: 110*****.X.X.X(192-223)-- network,network,network,node
+        * Class D: 1110****.X.X.X(224-239) Multicasting
+        * Class E: 1111****.X.X.X(240-255) REsearch
+    * Classless(concept of blocks): a.b.c.d/n
+        * subnet masking: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location. It is used to differentiate Network ID and Host ID from a given IP address. The default subnet mask are as under Class A = 255.0.0.0, Class B = 255.255.0.0, Class C = 255.255.255.0
+        * Subnetting: a process of creating multiple segments within IP network address space(netid, subnetid, hostid)
+    * Special IP Addresses(e.g. All 1's --> limited broadcast address)
+    * Private IP Addresses. not used in Internet or which are **not routable** in Internet.
+        * 10.0.0.0-10.255.255.255<br>
+        * 172.16.0.0-172.31.255.255<br>
+        * 192.168.0.0-192.168.255.255
+    * IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
+    * regular expression for IP address: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
+    * static VS dynamic IP address: 
+        * If you need to setup a web server or an email service, you'll need a static IP address. If you are just browsing an Internet, you may just get by with a dynamic IP address.
+        * A static IP address is an address that is permanently assigned to you by your ISP (as long as your contract is in good standing), and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
+        * A dynamic IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
+* IP routing: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use routing tables to determine a next hop address to which the packet should be forwarded.
+    * Router? a device or PC which is used to connect two or more IP networks. 
+    * Default Gateway? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
+*  IP address conflict: It occurs when two or more devices on the same network are assigned the same IP address. ==> take is restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
+```
+how many host in /27? addresses: 32 available hosts: 30 subnets: 2048
+Is 1.1.1.1 routable? 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
+```
 
-Name | Details  | Protocols involved | Data units
---|--|--|--
-**Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
-**Datalink Layer** | is responsible for the node to node delivery of the message. The main function of this layer is to make sure data transfer is error-free from one node to another, over the physical layer. DLL encapsulates Sender and Receiver’s MAC address in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) |ARP, CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
-**Network Layer**| transmission of data from one host to the other located in different networks. It also takes care of packet routing. The sender & receiver’s IP address are placed in the header by the network layer. |Internet Protocol (IPv4), Internet Protocol (IPv6), IPX, AppleTalk, ICMP, IPSec and IGMP.|Packet
-**Transport Layer**| responsible for the End to End Delivery of the complete message. The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
-**Session Layer**| responsible for establishment of connection, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
-**Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
-**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
-
-### 2. Explain TCP/IP Model
-![](./OSI_TCP:IP.png)
-* The most widely used and available protocol is TCP/IP i.e. Transmission Control Protocol and Internet Protocol. TCP/IP specifies how data should be packaged, transmitted and routed in their end to end data communication.
-* Given below is a brief explanation of each layer:
-    * **Application Layer**: This is the top layer in the TCP/IP model. It includes processes that use Transport Layer Protocol to transmit the data to their destination. There are different Application Layer Protocols such as HTTP, FTP, SMTP, SNMP protocols, etc.
-    * **Transport Layer**: It receives the data from the Application Layer which is above the Transport Layer. It acts as a backbone between the host's system connected with each other and it mainly concerns about the transmission of data. TCP and UDP are mainly used as Transport Layer protocols.
-    * **Network or Internet Layer**: This layer sends the packets across the network. Packets mainly contain source & destination IP addresses and actual data to be transmitted.
-    * **Network Interface Layer**: It is the lowest layer of the TCP/IP model. It transfers the packets between different hosts. It includes encapsulation of IP packets into frames, mapping IP addresses to physical hardware devices, etc.
-* Characteristics TCP/IP Model
-    * Support for a flexible architecture
-    * Adding more systems to a network is easy.
-    * TCP/IP uses only the Internet layer, while OSI uses the network layer to define routing standards and protocols.
-    * A layer of the TCP/IP model is both connection-oriented and connectionless.
-    * It can be operated independently. For OSI, Layers can't work in parallel as each layer need to wait to obtain data from the previous layer.
+### DNS
+* DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
+* It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
+* Process/ DNS resolving
+![](DNS.png)
+    * When you type the URL of website for example ‘google.com’ in a web-browser & then request send to **DNS recursive resolver** through your ISP.
+    * This DNS recursive resolver then sends the query to a **DNS root nameserver (.)**.
+    * The root DNS server then replies to the DNS resolver by IP address of a **Top Level Domain (TLD)** DNS server, which have the information about the domains.
+    * The DNS resolver then queries the **.com** Top Level Domain (TLD).
+    * The Top Level Domain server then replies with the IP address of the domain’s name-server, w7cloud.com.
+    * In last, the DNS resolver sends a request to the website’s name-server.
+    * The IP address for google.com is then returned to the resolver from the name-server.
+    * Then DNS recursive resolver responds to the web-browser with the IP address of the domain requested initially.
+* DNS servers
+    * Authoritative Name Server
+    * DNS Resolver
+    * DNS Root Server
+* DNS record types
+All necessary connections between the domain name and IP addresses are reflected in a special file located on the DNS server. The contents of this file are called a DNS zone description, or simply a **DNS zone**.
+    * **AAAA Record**: Contain THE hostname and it’s corresponding **IPv6 address**. * What's the DNS record type for IPv6 entries?  An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address. 
     
-### 3. Data transmission
-![](./data_flow2.png) ![](./data_flow.png)
-1) An application, such as an email program, creates data that will be sent by an end user, such as an email message. The Application layer (layer 7) places a header (encapsulation) field that contains information such as screen size and fonts, and passes the data to the Presentation layer (layer 6).
-2) The Presentation layer places layer 6 header information. For example, the text in the message might be converted to ASCII. The Presentation layer will then pass the new data to the Session layer (layer 5).
-3) The Session layer follows the same process by adding layer 5 header information, such as information that the Session layer will manage the data flow, and passes this data to the Transport layer (layer 4).
-4) The Transport layer places layer 4 information, such as an acknowledgment that the segment was received in the header, and passes it to the Network layer (layer 3).
-5) The Network layer places layer 3 header information, such as the source and destination address so the Network layer can determine the best
-6) The Data Link layer places layer 2 **header and trailer** information, such as a Frame Check Sequence (FCS) to ensure that the information is not corrupt, and passes this new data to the Physical layer (layer 1) for transmission across the media.
-7) The bit stream is then transmitted as ones and zeros on the Physical layer. It is at this point that the Physical layer ensures bit synchronization. Bit synchronization will ensure the end user data is assembled in the correct order it was sent.
-8) Steps 1 through 7 occur in reverse order on the destination device. Device B collects the raw bits from the physical wire and passes them up the
+### NAT: Network Address Translation
+* Network Address Translation (NAT) is the ability of a router to translate a public IP address to a private IP address and vice versa.  It adds security to the network by keeping the private IP addresses hidden from the outside world.
+* three NAT types
+    * Open NAT - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
+    * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
+    * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
+    
+### ARP
+![](./ARP.png)
+* ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
+* The address resolution protocol (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
 
-### 4. TCP Header
-![](./TCP_header.png)
-* **Source port**: this is a 16 bit field that specifies the port number of the sender.
-* **Destination port**: this is a 16 bit field that specifies the port number of the receiver.
-* **Sequence number**: a 32 bit field that indicates how much data is sent during the TCP session. When you establish a new TCP connection (3 way handshake) then the initial sequence number is a random 32 bit value. The receiver will use this sequence number and sends back an acknowledgment. 
-* **Acknowledgment number**:  32 bit field is used by the receiver to request the next TCP segment. This value will be the sequence number incremented by 1.
-* **DO**: this is the 4 bit data offset field, also known as the header length. It indicates the length of the TCP header so that we know where the actual data begins.
-* **RSV**: these are 3 bits for the reserved field. They are unused and are always set to 0.
-* **Flags**: there are 9 bits for flags, we also call them control bits. We use them to establish connections, send data and terminate connections:
-    * **URG**: urgent pointer. When this bit is set, the data should be treated as priority over other data.
-    * **ACK**: used for the acknowledgment.
-    * **PSH**: this is the push function. This tells an application that the data should be transmitted immediately and that we don’t want to wait to fill the entire TCP segment.
-    * **RST**: this resets the connection, when you receive this you have to terminate the connection right away. This is only used when there are unrecoverable errors and it’s not a normal way to finish the TCP connection.
-    * **SYN**: we use this for the initial three way handshake and it’s used to set the initial sequence number.
-    * **FIN**: this finish bit is used to end the TCP connection. TCP is full duplex so both parties will have to use the FIN bit to end the connection. This is the normal method how we end an connection.
-* **Window**: the 16 bit window field specifies how many bytes the receiver is willing to receive. It is used so the receiver can tell the sender that it would like to receive more data than what it is currently receiving. It does so by specifying the number of bytes beyond the sequence number in the acknowledgment field.
-* **Checksum**: 16 bits are used for a checksum to check if the TCP header is OK or not.
-* **Urgent pointer**: these 16 bits are used when the URG bit has been set, the urgent pointer is used to indicate where the urgent data ends.
-* **Options**: this field is optional and can be anywhere between 0 and 320 bits.
+### ICMP
+* ICMP is a transport level protocol within TCP/IP which communicates information about network connectivity issues back to the source of the compromised transmission. It sends control messages such as destination network unreachable, source route failed, and source quench.
+* For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
+
+### MAC address
+* MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
+* MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
+* What's the MAC address in the TCP packet when your destination is Google.com?
+Gateway's MAC address/ the router’s MAC address
+* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
+取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
+
 
 ### 4. Data Link Layer
 * Unit of Data: frame
@@ -215,37 +297,7 @@ Name | Details  | Protocols involved | Data units
     * Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits)
 * The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
 
-### 5. IP addresses
-* Classful IP addressing
-    * Class A: 0*******.X.X.X
-    * Class B: 10******.X.X.X
-    * Class C: 110*****.X.X.X
-    * Class D: 1110****.X.X.X
-    * Class E: 1111****.X.X.X
-* Classless(concept of blocks): a.b.c.d/n
-    * subnet masking: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location
-    * Subnetting: a process of creating multiple segments within IP network address space(netid, subnetid, hostid)
-* Special IP Addresses(e.g. All 1's --> limited broadcast address)
-* Private IP Addresses. They are non-routable.
-10.0.0.0-10.255.255.255<br>
-172.16.0.0-172.31.255.255<br>
-192.168.0.0-192.168.255.255
-* IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
-* regular expression for IP address.
-^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
-
-### 6. NAT: Network Address Translation
-* Network Address Translation (NAT) is the ability of a router to translate a public IP address to a private IP address and vice versa.  It adds security to the network by keeping the private IP addresses hidden from the outside world.
-* three NAT types
-    * Open NAT - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
-    * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
-    * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
-### 6. MAC address
-MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
-* What's the MAC address in the TCP packet when your destination is Google.com?
-Gateway's MAC address
-* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
-取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
+### 6. 
 
 ### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
 Client ------SYN-----> Server<br>
@@ -314,26 +366,7 @@ A routing protocol specifies how routers communicate with each other, distributi
     * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
     
-### 4. What's DNS? what protocol it use? How DNS works(detail)? 
-* DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
-* It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
-*  Process:
-    * Step 1: Request information. <br>
-      The process begins when you ask your computer to resolve a hostname, such as visiting https://dyn.com. The first place your computer looks for the corresponding IP address is its **local DNS cache**, which stores information that your computer has recently retrieved.</br> If your computer doesn’t already know the answer, it needs to perform a **DNS query** to find out. When host makes DNS query, query is sent to its local DNS server.
-    * Step 2: Ask the recursive DNS servers.<br>
-    your computer queries (contacts) the **recursive DNS servers** (resolvers) from your internet service provider (ISP). 
-    * Step 3: Ask the root name servers.
-    If the recursive servers don’t have the answer, they query the **root name servers**.
-    * Step 4: Ask the TLD name servers.
-    The root name servers will look at the first part of our request, reading from right to left — www.dyn.com — and in our case, direct our query to the **top-level domain** (TLD) name servers for .com.
-    * Step 5: Ask the **authoritative DNS servers**.
-    The TLD name servers review the next part of our request — www.dyn.com — and direct our query to the name servers responsible for this specific domain.
-    * Step 6: Retrieve the record.
-    The recursive server retrieves the A record for dyn.com from the authoritative name servers and stores the record in its local cache.
-    * Step 7: Receive the answer. 
-    Armed with the answer, recursive server returns the A record back to your computer. Your computer stores the record in its cache, reads the IP address from the record, then passes this information to your browser. The browser then opens a connection to the webserver and receives the website.
-* What's the DNS record type for IPv6 entries?  
-An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address. AAAA records are available for customers using the No-IP Plus Managed DNS service. Currently, IP addresses are based on version 4 of the internet protocol, where there are 4 sets of numbers ranging from 0-255. For example (127.198.30.245). IPv6 has a much larger address space where there are 8 sets ranging from 0000-FFFF. For example (2001:0db8:0000:0000:0000:0000:1428:57ab).
+
 
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
@@ -489,7 +522,7 @@ Establishing a UDP socket communication on the **client side** are the following
 ### 3. Difference between sendto and send functions.
 These functions send data to a socket. Generally speaking, send() is used for TCP SOCK_STREAM connected sockets, and sendto() is used for UDP SOCK_DGRAM unconnected datagram sockets.
 
-### 4. Basic CLI(command-line interface
+### 4. Basic CLI(command-line interface)
 * Print Working Directory (pwd) 
 * Change Directories (cd) 
 * List Files and Directories (ls) 
@@ -500,3 +533,13 @@ These functions send data to a socket. Generally speaking, send() is used 
 * Copying Directories (cp)
 * Clear Your CLI (clear)
 * Manual Pages (man)
+* `Telnet` 
+    * Using Telnet to Test Open Ports. `telnet [domainname or ip] [port]`test connectivity to a remote host on the given port. 
+* `Tracert`
+    * used to trace the route taken by a network packet from the local host to the destination host on a TCP/IP network. Like the ping command, it can be used with both an IP address and a host name.
+    `tracert < destination host name or IP address >`
+    * It will display the different routers or hops needed to travel from the source system to the destination system.
+* `Traceroute` is a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network.
+* `ping` Ping is a network utility used to see if the end user can reach other devices connected to the internet. When using Ping, always test a few different sites to see if it is just one site or all sites.
+* `ifconfig` get your IP address
+* `nslookup`
