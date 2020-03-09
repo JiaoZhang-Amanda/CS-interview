@@ -164,7 +164,7 @@ Name | Details  | Protocols involved | Data units
     
 ### 3. Data transmission
 e.g. a network server transmits data to a client</br>
-![](https://community.emc.com/servlet/JiveServlet/showImage/2-831148-90201/image002.jpg)
+![](./data_flow.jpeg)
 * The data to be transferred is the HTML page of the web server.
 * Add HTTP headers before data. The header  includes the HTTP version and a status code.
 * HTTP application layer protocol sends data to the transport layer. The TCP is used to manage the sessions between the network server and the client.
