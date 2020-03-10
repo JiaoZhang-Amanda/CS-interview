@@ -125,7 +125,7 @@ An algorithm for finding the shortest paths between nodes in a graph, which may 
      return dist, prev
 ```
 ### A*
-A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major practical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 
+A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major p.ractical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 
 
 #### Topological sort
 Topological sorting for **Directed Acyclic Graph (DAG)** is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering.
