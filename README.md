@@ -8,6 +8,10 @@
 
 ## :pencil2: Algorithm & data structure
 - [data structure](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Data%20Structure/Data%20Structure%20Q.md)
+- [Algorithm Basic](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Algorithm%20Q.md)
+- [Sorting Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Sorting%20Coding.md)
+- [Graph Search Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Graph%20Search%20Coding.md)
+- [Tree Search Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Tree%20Coding.md)
 ## :computer: OS
 - [Operation System](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Operating%20System/OS%20Interview%20Q.md)
 ## :cloud: Networking
