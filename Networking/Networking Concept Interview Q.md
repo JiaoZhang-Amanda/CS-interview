@@ -61,17 +61,17 @@ Name | Details  | Protocols involved | Data units
 
 ## [Protocols]
 * **IP**
+* **ARP**: 
+* **DHCP**
 * **TCP**
 * **UDP**
-* **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21**
 * **HTTP**
 * **HTTPs**
+* **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
 * **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
 * **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
 * **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 * **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
-* **ARP**: 
-* **DHCP**
 * **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
     - Types: Sliding Window ARQ(Automatic Repeat req uest) 
         * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
@@ -231,6 +231,7 @@ The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configura
     * Router? a device or PC which is used to connect two or more IP networks. 
     * Default Gateway? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
 *  IP address conflict: It occurs when two or more devices on the same network are assigned the same IP address. ==> take is restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
+* IPsec:  IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. It has 2 modes. The Main mode which provides the greater security and the Aggressive mode which enables the host to establish an IPsec circuit more quickly.
 ```
 how many host in /27? addresses: 32 available hosts: 30 subnets: 2048
 Is 1.1.1.1 routable? 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
@@ -282,22 +283,30 @@ Gateway's MAC address/ the router’s MAC address
 取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
 
 
-### 4. Data Link Layer
-* Unit of Data: frame
-* Error detection
-* Error control & Flow Control
-    * Stop-and-Wait ARQ
-    * Sliding Window ARQ
+### 4. Flow/error control
+* Flow control and Error control are the control mechanism at data link layer and transport layer. flow control observes the proper flow of the data from sender to receiver, on the other hand, the error control observes that the data delivered to the receiver is error free and reliable.
+* Flow Control: tell the sender how much data to send. 
+* Flow & Error Control technique: Stop-and-Wait & Sliding Window
+* Stop-and-Wait ARQ: send one frame at a time
+* Sliding Window ARQ: send several frame at a time
         * Gp-back-N ARQ
         * Selective-reject ARQ
         
-### 4. What's MTU?
-* A **maximum transfer unit (MTU)** is the maximum size of the data field(payload) in the frame. 
-* If packet size > MTU, need for fragmentation for IP datagram.
-    * Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits)
-* The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
+### 4. Window Size? MTU? MSS?
+* **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as congestion control and the receive window tries not to exceed the capacity of the receiver to process data, a process known as flow control.
+* A **maximum transfer unit (MTU)** is the maximum size of the data field(payload) in the frame. If packet size > MTU, need for fragmentation for IP datagram. Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits). The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
+*  **TCP MSS**(TCP Maximum Segment Size) defines the maximum amount of data that a host is willing to accept in a single TCP/IPv4 datagram. This TCP/IPv4 datagram might be fragmented at the IPv4 layer.
 
-### 6. 
+### 6. Domain name
+* **Broadcast Domain**: A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer.
+* **Domain Name**: A domain name is your website name. A domain name is the address where Internet users can access your website.
+* **Subdomain** For example, west.example.com and east.example.com are subdomains of the example.com domain, which in turn is a subdomain of the com top-level domain (TLD). 
+
+### 7. Describe unicast, multicast and broadcast?
+Data is transported over a network by three simple methods i.e. Unicast, Broadcast, and Multicast. 
+* Unicast: from one source to one destination i.e. One-to-One. Unicast uses IP provision techniques such as TCP (transmission control protocol) and UDP (user datagram protocol), which are session-based protocols. e.g. Browsing a website.
+* Broadcast: from one source to all possible destinations i.e. One-to-All.  e.g. ARP Request message, DHCP DISCOVER Message
+* Multicast: from one source to multiple destinations stating an interest in receiving the traffic i.e. One-to-Many. e.g. Multicast Windows Deployment Services (WDS) OS deployment traffic, IP TV etc
 
 ### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
 Client ------SYN-----> Server<br>
@@ -316,6 +325,14 @@ Client ------FIN-----> Server<br>
 Client <-----ACK------ Server ----②<br>
 Client <-----FIN------ Server ----③<br>
 Client ------ACK-----> Server<br>
+
+### Server Load Balancing
+* Server Load Balancing (SLB) is a technology that distributes high traffic sites among several servers using a network-based hardware or software-defined appliance. 
+* Server Load Balancing (SLB) provides network services and content delivery using a series of load balancing algorithms. It prioritizes responses to the specific requests from clients over the network. Server load balancing distributes client traffic to servers to ensure consistent, high-performance application delivery.
+* Two main types of load balancing:
+    * Transport-level load balancing is a DNS-based approach which acts independently of the application payload.
+    * Application-level load balancing uses traffic load to make balancing decisions such as with windows server load balancing.
+* HTTP server load balancing is a simple HTTP request/response architecture for HTTP traffic. But a TCP load balancer is for applications that do not speak HTTP. TCP load balancing can be implemented at layer 4 or at layer 7. An HTTP load balancer is a reverse proxy that can perform extra actions on HTTPS traffic.
 
 ## [Others]
 ### 1. Describe in as much details as possible what happens after we type "www.google.com" into the URL box of browser and hit enter. / What happens when you type a URL in the web browser?
@@ -342,6 +359,13 @@ Client ------ACK-----> Server<br>
 2. User browser can refuse cookies
 3. Cookies exit as plain text on client machine and they may pose a security rist as anyone can open the cookie.
 
+### 3. Networking hardware
+* Networking hardware, also known as network equipment or computer networking devices, are electronic devices which are required for communication and interaction between devices on a computer network. Specifically, they mediate data transmission in a computer network.
+* Networking devices may include gateways, routers, network bridges, modems, wireless access points, networking cables, line drivers, switches, hubs, and repeaters; and may also include hybrid network devices such as multilayer switches, protocol converters, bridge routers, proxy servers, firewalls, network address translators, multiplexers, network interface controllers, wireless network interface controllers, ISDN terminal adapters and other related hardware.
+
+### Gateway 
+A gateway is a piece of networking hardware used in telecommunications for telecommunications networks that allows data to flow from one discrete network to another. Gateways are distinct from routers or switches in that they communicate using more than one protocol to connect a bunch of networks[1][2] and can operate at any of the seven layers of the open systems interconnection model (OSI).
+
 ### 3. Difference between Hub, Switch and Router?
 * A **hub** is to sent out a message from one port to other ports. For example, if there are three computers of A, B, C, the message sent by a hub for computer A will also come to the other computers. But only computer A will respond and the response will also go out to every other port on the hub. Therefore, all the computers can receive the message and computers themselves need to decide whether to accept the message. works on the physical layer (Layer 1) of OSI model
 * A switch is able to handle the data and knows the specific addresses to send the message. It can decide which computer is the message intended for and send the message directly to the right computer.  works on the data link layer (Layer 2)
@@ -366,8 +390,6 @@ A routing protocol specifies how routers communicate with each other, distributi
     * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
     
-
-
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.
@@ -383,8 +405,9 @@ A routing protocol specifies how routers communicate with each other, distributi
 * **Enterprise Private Network (EPN)**
 * **Passive Optical Local Area Network (POLAN)**
 
-### 7. Networking Performance Measures
-* **Delay/Latency(end-to-end)**
+### 7. Networking Performance Measures: Bandwidth, Delay/Latency
+* **Bandwidth**: Bandwidth determines how fast data can be transferred over time. Bandwidth is the amount of data that can be transferred per second.
+* **Delay/Latency(end-to-end)** Latency is delay. Latency is how long it takes data to travel between its source and destination, measured in milliseconds.
     * **Transmission time**, the time it takes ti transmit a group of bits(e.g. a message/packet/frame) of bits into a network<br>
     `Tt = number of message bits[bits] / data rate[bps]`
     * **Propagation delay**, the time it takes for a bit to tranverse the link
@@ -407,7 +430,18 @@ Protocol | Frequency  | Channel Width   |   MIMO   |   Maximum data rate (theore
 802.11b(1G)  |    2.4 GHz    |  20 MHz    |  N/A   |   11 Mbps
 Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 
+### Cloud v Vitualization
+* virtualization is a technology, where cloud is an environment.
+* virtualization is a technology that allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system, and clouds are IT environments that abstract, pool, and share scalable resources across a network.
+* Clouds are usually created to enable cloud computing, which is the act of running workloads within that system. 
+* Cloud architecture
+
 ## [network troubleshooting]
+### built-in tools to troubleshoot network issues.
+1) Command Prompt Commands
+First, ipconfig provides information about your current connection. Second, use the ping command to send a few packets of information to a remote server. others: Tracert/traceroute, Nslookup, Netstat
+2) Built-In Troubleshooting Utilities
+Windows contains built-in troubleshooters for common problem areas like printing, Windows Update, and audio. 
 ### 1. If your computer runs slow, how to troubleshout(linux server)?
 * Because of some of the following reasons:
     * Many unnecessary services started or initialised at boot time by the init program
@@ -434,6 +468,7 @@ Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 ### 5. When and why did you use wireshark?
 * Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education.
 * Wireshark can peer inside the network and examine the details of traffic at a variety of levels, ranging from connection-level information to the bits comprising a single packet. This flexibility and depth of inspection allows the valuable tool to analyze security events and troubleshoot network security device issues.
+* Wireshark captures each packet sent to or from your system.
 
 ### 6. How to Troubleshoot a Network
 <details>
@@ -533,13 +568,14 @@ These functions send data to a socket. Generally speaking, send() is used 
 * Copying Directories (cp)
 * Clear Your CLI (clear)
 * Manual Pages (man)
+* `ping` The ping command is usually used as a simple way to verify that a computer can communicate over the network with another computer or network device. The ping command operates by sending **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination computer and waiting for a response.
+    `ping -n 5 -l 1500 www.google.com` In this example, the ping command is used to ping the hostname www.google.com. The -n option tells the ping command to send 5 ICMP Echo Requests instead of the default of 4, and the -l option sets the packet size for each request to 1500 bytes instead of the default of 32 bytes.
 * `Telnet` 
     * Using Telnet to Test Open Ports. `telnet [domainname or ip] [port]`test connectivity to a remote host on the given port. 
-* `Tracert`
-    * used to trace the route taken by a network packet from the local host to the destination host on a TCP/IP network. Like the ping command, it can be used with both an IP address and a host name.
-    `tracert < destination host name or IP address >`
-    * It will display the different routers or hops needed to travel from the source system to the destination system.
-* `Traceroute` is a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network.
-* `ping` Ping is a network utility used to see if the end user can reach other devices connected to the internet. When using Ping, always test a few different sites to see if it is just one site or all sites.
+    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com. `telnet telnet.microsoft.com`
+    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com on TCP port 44 and log the session activity in a local file called telnetlog.txt `telnet /f telnetlog.txt telnet.microsoft.com 44`
+* `Traceroute` is a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network It will display the different routers or hops needed to travel from the source system to the destination system.. Windows( `Tracert`) Linux(`tracepath`)
 * `ifconfig` get your IP address
-* `nslookup`
+* `nslookup` getting information from DNS server. find the address record for a domain. Reverse DNS lookup. view all the available DNS records. Lookup for an soa record. Look for an NS(Name Server) record which maps a domain name to a list of DNS servers authoritative for that domain. etc.
+* `Grep` a command line tool to search for regular expressions. Grep will print the matching line to the output and with the --color flag you can highlight the matching strings. `grep searchterm filename`
+`tcpdump` Capture Packets from Specific Interface; Display Available Interfaces... `tcpdump -i -eth0`

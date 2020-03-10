@@ -32,8 +32,8 @@ Network security is the security provided to a network from unauthorized access 
 - Web browsers automatically encrypt the text when they are connected to a secure server.
 - In the olden days data encryption was only used for passing government and military information.
 
-### 4. Explain the difference between symmetric and asymmetric encryption.
-Long story short, symmetric encryption uses the same key for both encryption and decryption, whereas asymmetric encryption employs different keys for the two processes. Symmetric is faster for obvious reasons but requires sending the key through an unencrypted channel, which is a risk.
+### 4. Two types: Explain the difference between symmetric and asymmetric encryption.
+symmetric encryption uses the same key for both encryption and decryption, whereas asymmetric encryption employs different keys for the two processes. Symmetric is faster for obvious reasons but requires sending the key through an unencrypted channel, which is a risk.
 
 ### 5. What is the Public Key Encryption?
 Public key encryption use public and private key for encryption and decryption. In this mechanism, public key is used to encrypt messages and only the corresponding private key can be used to decrypt them. To encrypt a message, a sender has to know recipient’s public key.
@@ -94,6 +94,9 @@ A firewall is a hardware or software installed to provide security to the privat
  * Client must know how to contact gateway.
  * Filters often use all or nothing policy for UDP.
  * Many highly protected sites wtill suffer from attacks.
+ 
+ ### 6. Stateless and stateful firewalls
+ Stateless firewalls are designed to protect networks based on static information such as source and destination. Whereas stateful firewalls filter packets based on the full context of a given network connection, stateless firewalls filter packets based on the individual packets themselves.
 
 ______
 ## [VPN]
@@ -140,7 +143,18 @@ It is a network of private computers which are a victim of malicious software. T
     * **Bandwidth flooding:** The attacker prevents legitimate packets from reaching the server by sending a deluge of packets. The packets sent are large in number so that the target’s link gets blocked for others to access.
 
 ### 7. Distributed Denial of Service (DDoS)*
-It is a complex version of a DoS attack and is much harder to detect and defend compared to a DoS attack. In this attack, the attacker uses multiple compromised systems to target a single DoS attack targeted system. The DDoS attack also leverages botnets.
+It is a complex version of a DoS attack and is much harder to detect and defend compared to a DoS attack. In this attack, the attacker uses multiple compromised systems to target a single DoS attack targeted system. The DDoS attack also leverages botnets. a distributed denial-of-service (DDoS) attack is a harmful attempt to disrupt normal traffic of a network or server by overwhelming the infrastructure with a massive flood of traffic.
+* **DDoS mitigation** refers to the process of successfully protecting a targeted server or network from a distributed denial-of-service (DDoS) attack.
+* a common way to mitigate a DDoS attack is to implement rate-limiting. This means the number of requests a server can accept within a certain timeframe has been limited.
+* When it comes to preventing larger-scale DDoS attacks, using a web application firewall (WAF) and Anycast network diffusion comes into play.
+* A WAF can also help mitigate the very common Layer 7 Attack by placing a set of rules between the origin server and the Internet, which acts as a gatekeeper and protects the server from malicious traffic. 
+* how do you stop a DDoS attack? You can implement a WAF, set up and use an Anycast network, and maintain a cluster of servers on your own. Or, you can use an existing, high-powered security solution like Global Edge Security, in addition to the DDoS mitigation tools that come with WP Engine’s standard managed hosting plans.   
+* a few of the most common types:
+    * HTTP Flood
+    * Protocol Attacks
+    * Volumetric Attacks
+    * DNS or UDP Amplification
+    * Layer 7 Attack (Application layer)
 
 ### 8. Man-in-the-middle
 A man-in-the-middle attack is someone who stands in between the conversation happening between you and the other person. By being in the middle, the attacker captures, monitors, and controls your communication effectively. For example, when the lower layer of the network sends information, the computers in the layer may not be able to determine the recipient with which they are exchanging information.

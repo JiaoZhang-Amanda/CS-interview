@@ -127,13 +127,16 @@ An algorithm for finding the shortest paths between nodes in a graph, which may 
 ### A*
 A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major practical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 
 
+#### Topological sort
+Topological sorting for **Directed Acyclic Graph (DAG)** is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering.
+
 ### Union Find(Disjoint Set Union)
 A union-find algorithm is an algorithm that performs two useful operations on such a data structure:
 
 * Find: Determine which subset a particular element is in. This can be used for determining if two elements are in the same subset.
 * Union: Join two subsets into a single subset.
 
-Union-Find Algorithm can be used to check whether an undirected graph contains cycle or not. 
+Union-Find Algorithm can be used to check whether an **undirected graph** contains cycle or not. 
 ```
 public int find(int p){
     while(p != id[p]) p = id[p];
