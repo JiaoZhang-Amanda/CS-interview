@@ -129,4 +129,30 @@ check task manager, antivirus, disk fragmentation.
 * Check your firewall or security software. There are specific troubleshooting steps for ZoneAlarm issues.
 * Check your browser access issues or email problems.
 
-### 14. 
+### 14. How do computers connect over the Internet?
+![](./internet_connect.png)
+* To connect to the Internet and other computers on a network, a computer must have a **NIC (network interface card)** installed. A network cable plugged into the NIC on one end and plugged into a cable modem, DSL modem, router, or switch can allow a computer to access the Internet and connect to other computers.
+* **ISPs (Internet service providers)**: When connected to an ISP, you're assigned an IP address, which is a unique address given to your computer or network to communicate on the Internet.
+* Windows, macOS, and Linux computers use the TCP/IP protocol to connect to other computers on a LAN or WAN. Connecting to a LAN or WAN requires either a wired connection or a wireless connection. A wired connection is usually done using a network cable (Cat 5 or Cat 6 network cable). A wireless connection (Wi-Fi) uses an 802.11b, 802.11g or 802.11n wireless network card. With both connection types, a network router is usually required to connect to other computers. Connecting to the Internet at your home also requires either a cable modem or a DSL modem, depending on which ISP you use.
+
+### 15. How do I troubleshoot slow performance on AWS EC2/RDS?
+1) Make sure you choose the EC2 instance type based on the network speed/bandwidth, computing capacity, storage they provide. Amazon EC2 Instance Types - Amazon Web Services
+2) While choosing RDS make sure the network speed/bandwidth is more. If you choose low configuration RDS instance then request and response payload could be the issue. Amazon RDS Instance Types - Amazon Web Services
+3) Check if there is high CPU utilization by the App service you are running on the EC2 instance. Usually, it could be because of the App which open/close multiple file descriptors unnecessarily. Its the developers mistake and should be fixed immediately.
+4) Check if there is high memory utilization by the App service you are running on the EC2 instance. Usually, it occurs because of some memory leak due to some unwanted looping and wrong variable handling. Its the developers mistake and should be fixed immediately.
+5) Implement better App Performance Monitroing (APM) agent like NewRelic to know exactly which MySQL queries are taking more time. The developers could have written a query with absolutely no brain, fix that.
+
+### 16. A client in Germany is trying to access a server in London, but his connection is running slow. You are in Dublin. How do you diagnose his issue?
+* This is a client system issue - have the client run diagnostics on his system.
+* This is a network congestion issue between the client and server - run several trace routes and see if there is latency on any intervening connection (there is little to be done about this, it just keeps you from chasing your tail looking at other issues needlessly)
+* This is a server issue - see if other authorized clients are having the same or similar issues.
+* Outside of these obvious ones, check the proper install of software, updates, etc. on both sides or at least the client side if you can’t get the server.
+
+### 17. CPU usage 100%?
+* End the processes that consume lots of CPU resources
+* Update your drivers
+* Modify Settings in Registry Editor: If you’re using Windows 10, this issue may be caused by Cortana. If you enabled Cortana, you may encounter the 100% CPU usage issue.
+* Run an antivirus scan: try running an antivirus scan to see if there are viruses, spywares or Trojans on your PC.
+* Disable P2P Share
+* Modify Windows notification settings
+
