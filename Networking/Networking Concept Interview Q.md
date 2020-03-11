@@ -5,7 +5,11 @@
     * [MAC Address](#mac-address)
     * [Router](#Router)
     * [Flow/Error control](#Flow/error-control)
-
+    * [DNS](#DNS)
+    * [NAT](#NAT)
+    * [Domain Name](#Domain-Name)
+    * [Unicast, Multicast and Broadcast](#unicast-multicast-and-broadcast)
+    * [Window size, MTU, MSS](#window-size-mtu-mss)
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -254,13 +258,6 @@ Simple mail transport Protocol. SMTP is designed to send and distribute outgoing
 ### Telnet
 Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
 
-
-
-____
-
-* **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
-* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
-
 ## [:fire:]()[Details]
 ### MAC address
 * MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
@@ -314,22 +311,11 @@ IS-IS does not run over Internet Protocol (IP) and uses its own addressing schem
     * **Sliding Window ARQ**: send several frame at a time, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
         * **Gp-back-N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
         * **Selective-reject ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
-___
-
-- TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
-* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
-    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
-    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
-    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
-    
-### Network security protocols
-* Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
-* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
-
+        
 ### DNS
 * DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
 * It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
-* Process/ DNS resolving
+* **Process/ DNS resolving**
 ![](DNS.png)
     * When you type the URL of website for example ‘google.com’ in a web-browser & then request send to **DNS recursive resolver** through your ISP.
     * This DNS recursive resolver then sends the query to a **DNS root nameserver (.)**.
@@ -343,36 +329,42 @@ ___
     * Authoritative Name Server
     * DNS Resolver
     * DNS Root Server
-* DNS record types
-All necessary connections between the domain name and IP addresses are reflected in a special file located on the DNS server. The contents of this file are called a DNS zone description, or simply a **DNS zone**.
-    * **AAAA Record**: Contain THE hostname and it’s corresponding **IPv6 address**. * What's the DNS record type for IPv6 entries?  An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address. 
-    
-### NAT: Network Address Translation
+* DNS record types: All necessary connections between the domain name and IP addresses are reflected in a special file located on the DNS server. The contents of this file are called a DNS zone description, or simply a **DNS zone**.
+    * **AAAA Record**: Contain THE hostname and it’s corresponding **IPv6 address**. * What's the DNS record type for IPv6 entries?  An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address.         
+
+### NAT
 * Network Address Translation (NAT) is the ability of a router to translate a public IP address to a private IP address and vice versa.  It adds security to the network by keeping the private IP addresses hidden from the outside world.
 * three NAT types
     * Open NAT - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
     * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
     * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
     
-
-
-### 4. 
-        
-### 4. Window Size? MTU? MSS?
-* **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as congestion control and the receive window tries not to exceed the capacity of the receiver to process data, a process known as flow control.
-* A **maximum transfer unit (MTU)** is the maximum size of the data field(payload) in the frame. If packet size > MTU, need for fragmentation for IP datagram. Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits). The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
-*  **TCP MSS**(TCP Maximum Segment Size) defines the maximum amount of data that a host is willing to accept in a single TCP/IPv4 datagram. This TCP/IPv4 datagram might be fragmented at the IPv4 layer.
-
-### 6. Domain name
+### Domain Name
 * **Broadcast Domain**: A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer.
 * **Domain Name**: A domain name is your website name. A domain name is the address where Internet users can access your website.
 * **Subdomain** For example, west.example.com and east.example.com are subdomains of the example.com domain, which in turn is a subdomain of the com top-level domain (TLD). 
 
-### 7. Describe unicast, multicast and broadcast?
+### Unicast, Multicast and Broadcast
 Data is transported over a network by three simple methods i.e. Unicast, Broadcast, and Multicast. 
-* Unicast: from one source to one destination i.e. One-to-One. Unicast uses IP provision techniques such as TCP (transmission control protocol) and UDP (user datagram protocol), which are session-based protocols. e.g. Browsing a website.
-* Broadcast: from one source to all possible destinations i.e. One-to-All.  e.g. ARP Request message, DHCP DISCOVER Message
-* Multicast: from one source to multiple destinations stating an interest in receiving the traffic i.e. One-to-Many. e.g. Multicast Windows Deployment Services (WDS) OS deployment traffic, IP TV etc
+* **Unicast**: from one source to one destination i.e. One-to-One. Unicast uses IP provision techniques such as TCP (transmission control protocol) and UDP (user datagram protocol), which are session-based protocols. e.g. Browsing a website.
+* **Broadcast**: from one source to all possible destinations i.e. One-to-All.  e.g. ARP Request message, DHCP DISCOVER Message
+* **Multicast**: from one source to multiple destinations stating an interest in receiving the traffic i.e. One-to-Many. e.g. Multicast Windows Deployment Services (WDS) OS deployment traffic, IP TV etc
+
+### Window Size? MTU? MSS?
+* **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as congestion control and the receive window tries not to exceed the capacity of the receiver to process data, a process known as flow control.
+* A **maximum transfer unit (MTU)** is the maximum size of the data field(payload) in the frame. If packet size > MTU, need for fragmentation for IP datagram. Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits). The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
+*  **TCP MSS**(TCP Maximum Segment Size) defines the maximum amount of data that a host is willing to accept in a single TCP/IPv4 datagram. This TCP/IPv4 datagram might be fragmented at the IPv4 layer.
+* TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
+
+
+* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
+    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
+    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
+    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
+    
+### Network security protocols
+* Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
+* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
 
 ### Server Load Balancing
 * Server Load Balancing (SLB) is a technology that distributes high traffic sites among several servers using a network-based hardware or software-defined appliance. 
@@ -421,8 +413,6 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 * Collisions are often in a hub environment, because each port on a hub is in the same **collision domain**. By contrast, each port on a bridge, a switch or a router is in a separate collision domain.
 * All ports on a hub or a switch are by default in the same **broadcast domain**. All ports on a router are in the different broadcast domains and routers don't forward broadcasts from one broadcast domain to another.
 
-
-    
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.
@@ -468,6 +458,8 @@ Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 * virtualization is a technology that allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system, and clouds are IT environments that abstract, pool, and share scalable resources across a network.
 * Clouds are usually created to enable cloud computing, which is the act of running workloads within that system. 
 * Cloud architecture
+
+* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 
 ## [Socket Programming]
 A socet is an astract representation of a communication endpoint.  
