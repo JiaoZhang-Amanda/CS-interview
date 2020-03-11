@@ -556,6 +556,23 @@ Establishing a UDP socket communication on the **server side** are as follows:
 These functions send data to a socket. Generally speaking, send() is used for TCP SOCK_STREAM connected sockets, and sendto() is used for UDP SOCK_DGRAM unconnected datagram sockets.
 
 ### 4. Basic CLI(command-line interface)
+* `ping` 
+    * The ping command is usually used as a simple way to verify that a computer can communicate over the network with another computer or network device. The ping command operates by sending **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination computer and waiting for a response.
+   * `ping -n 5 -l 1500 www.google.com` In this example, the ping command is used to ping the hostname www.google.com. The -n option tells the ping command to send 5 ICMP Echo Requests instead of the default of 4, and the -l option sets the packet size for each request to 1500 bytes instead of the default of 32 bytes.
+* `Telnet` 
+    * Using Telnet to Test Open Ports. `telnet [domainname or ip] [port]`test connectivity to a remote host on the given port. 
+    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com. `telnet telnet.microsoft.com`
+    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com on TCP port 44 and log the session activity in a local file called telnetlog.txt `telnet /f telnetlog.txt telnet.microsoft.com 44`
+* `Traceroute` 
+    * a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network It will display the different routers or hops needed to travel from the source system to the destination system.. Windows( `Tracert`) Linux(`tracepath`)
+* `ifconfig` 
+    * get your IP address
+* `nslookup` 
+    * getting information from DNS server. find the address record for a domain. Reverse DNS lookup. view all the available DNS records. Lookup for an soa record. Look for an NS(Name Server) record which maps a domain name to a list of DNS servers authoritative for that domain. etc.
+* `Grep` 
+    * a command line tool to search for regular expressions. Grep will print the matching line to the output and with the --color flag you can highlight the matching strings. `grep searchterm filename`
+`tcpdump` 
+    * Capture Packets from Specific Interface; Display Available Interfaces... `tcpdump -i -eth0`
 * Print Working Directory (pwd) 
 * Change Directories (cd) 
 * List Files and Directories (ls) 
@@ -566,14 +583,3 @@ These functions send data to a socket. Generally speaking, send() is used 
 * Copying Directories (cp)
 * Clear Your CLI (clear)
 * Manual Pages (man)
-* **`ping`** The ping command is usually used as a simple way to verify that a computer can communicate over the network with another computer or network device. The ping command operates by sending **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination computer and waiting for a response.
-    `ping -n 5 -l 1500 www.google.com` In this example, the ping command is used to ping the hostname www.google.com. The -n option tells the ping command to send 5 ICMP Echo Requests instead of the default of 4, and the -l option sets the packet size for each request to 1500 bytes instead of the default of 32 bytes.
-* `Telnet` 
-    * Using Telnet to Test Open Ports. `telnet [domainname or ip] [port]`test connectivity to a remote host on the given port. 
-    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com. `telnet telnet.microsoft.com`
-    * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com on TCP port 44 and log the session activity in a local file called telnetlog.txt `telnet /f telnetlog.txt telnet.microsoft.com 44`
-* `Traceroute` is a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network It will display the different routers or hops needed to travel from the source system to the destination system.. Windows( `Tracert`) Linux(`tracepath`)
-* `ifconfig` get your IP address
-* `nslookup` getting information from DNS server. find the address record for a domain. Reverse DNS lookup. view all the available DNS records. Lookup for an soa record. Look for an NS(Name Server) record which maps a domain name to a list of DNS servers authoritative for that domain. etc.
-* `Grep` a command line tool to search for regular expressions. Grep will print the matching line to the output and with the --color flag you can highlight the matching strings. `grep searchterm filename`
-`tcpdump` Capture Packets from Specific Interface; Display Available Interfaces... `tcpdump -i -eth0`
