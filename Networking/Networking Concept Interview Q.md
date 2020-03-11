@@ -11,7 +11,7 @@ Name | Details  | Protocols involved | Data units
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCPUDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, [SSL](#SSL) and MIME|data
-**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
+**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|[HTTP](#HTTP)(via a web browser), SMTP(via an email client), [DHCP](#DHCP), FTP(via an FTP client), Telnet|data
 
 ### 2. Explain TCP/IP Model
 ![](./OSI_TCP:IP.png)
@@ -58,6 +58,19 @@ Name | Details  | Protocols involved | Data units
 * **Options**: this field is optional and can be anywhere between 0 and 320 bits.
 
 ## [Protocols]
+### Common ports
+* HTTP – Port 80.
+* HTTPS – 443.
+* FTP – 21.
+* FTPS / SSH – 22.
+* POP3 – 110.
+* POP3 SSL – 995.
+* IMAP – 143.
+* IMAP SSL – 993.
+* DNS - 53
+* Telnet - 23: Remote login service, unencrypted text messages
+* DHCP - for server is 67 and for the client is 68.
+___
 ### ARP
 ![](./ARP.png)
 * The **address resolution protocol** (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
@@ -156,7 +169,7 @@ HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL
     * It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
     * It occurs after a TCP connection has been opened via a TCP handshake.
 <details>
-<summary> handshakes process</summary>
+<summary> <b>Handshakes Process</b></summary>
 <br>1. The <b>SSL or TLS client</b> sends a <b>client hello message</b> that lists cryptographic information such as the SSL or TLS version. 
 <br>2. The <b>SSL or TLS server</b> responds with a <b>server hello message</b> that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request.
 <br>3. The <b>SSL or TLS client</b> verifies the server's digital certificate.
@@ -170,54 +183,38 @@ HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL
 
 ![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
 ___
-### 2. What are request methods in HTTP?
+### HTTP
 HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
-- **GET**- It is used to send data in url.
-- **HEAD**- It only transfers status line and header section as a request.
-- **POST**- It is used to send data to the server.
-- **PUT**- It is used to send entire updated data to the server. 
-- **DELETE**- Delete method sends a request to the server to perform delete operation.
-- **CONNECT**- It is used to establish connection to the server.
-- **OPTIONS**- Option method describes communication options for target resource.
-- **TRACE**- It performs message loop-back test along the path to the target resource.
-
-### 3. What is status code in HTTP?
-4xx Client Error/5xx Server Error
-- **500** internal server errors: Web server displays 500 internal server error, when processing fails due to some unanticipated incident on the server side. 
-- **505** HTTP Version NO Supported
-- **409** : When we use PUT request to create the same resource twice then server displays 409 code to the browser.
-- **405**Method not allowed: Web Server displays the HTTP 405 error message, when requested method is not allowed. Ex. if a resource allows get method, we cannot request post to get this resource.
-- **401**: This response code is generated when an unauthorized user request for secure resource on the web server.
-- **403**: Forbidden Error. when a web server forbids you from accessing the page you’re trying to open in your browser.
-- **404** Not found: requested document not found on this server
-- **400** Bad Request: request msg nit understood by server
-- **301** Moved Permanently: requested object moved, new location specified later in this msg(Location:)
-- **201** Created: This indicates that the request was successful. It is used to confirm success of a PUT or POST request.
-- **200** OK: It indicates that the request is successful.
-
-### 4. Common ports
-* HTTP – Port 80.
-* HTTPS – 443.
-* FTP – 21.
-* FTPS / SSH – 22.
-* POP3 – 110.
-* POP3 SSL – 995.
-* IMAP – 143.
-* IMAP SSL – 993.
-* DNS - 53
-* Telnet - 23: Remote login service, unencrypted text messages
-* DHCP - for server is 67 and for the client is 68.
-
-### 5. HTTP vs HTTPS 
-* Hyper Text Transfer Protocol. HTTP is designed for transferring a hypertext among two or more systems. HTML tags are used for creating links. These links may be in any form like text or images. HTTP is designed on Client-server principles which allow a client system for establishing a connection with the server machine for making a request. The server acknowledges the request initiated by the client and responds accordingly.
-* Hyper Text Transfer Protocol Secure. HTTPS is abbreviated as Hyper Text Transfer Protocol Secure is a standard protocol to secure the communication among two computers one using the browser and other fetching data from web server. HTTP is used for transferring data between the client browser (request) and the web server (response) in the hypertext format, same in case of HTTPS except that the transferring of data is done in an encrypted format. So it can be said that https thwart hackers from interpretation or modification of data throughout the transfer of packets.
-* In HTTP, URL begins with “http://” whereas URL starts with “https://”
-* HTTP uses port number 80 for communication and HTTPS uses 443
-* HTTP is considered to be unsecure that vulnerable to hackers and HTTPS is secure. It Is highly secure as the data is encrypted before it is seen across a network.
-* HTTP Works at Application Layer and HTTPS works at Transport Layer
-* HTTPS websites use data encryption. HTTP transfers data in plain text while HTTPS transfers data in cipher text (encrypt text).
-* HTTPs is slower than HTTP
-* HTTP does not require any certificates and HTTPS needs SSL Certificates
+* What are **request methods** in HTTP?
+    - **GET**- It is used to send data in url.
+    - **HEAD**- It only transfers status line and header section as a request.
+    - **POST**- It is used to send data to the server.
+    - **PUT**- It is used to send entire updated data to the server. 
+    - **DELETE**- Delete method sends a request to the server to perform delete operation.
+    - **CONNECT**- It is used to establish connection to the server.
+    - **OPTIONS**- Option method describes communication options for target resource.
+    - **TRACE**- It performs message loop-back test along the path to the target resource.
+* What is **status code** in HTTP?
+    - **500** internal server errors: when processing fails due to some unanticipated incident on the server side. 
+    - **505** HTTP Version NO Supported
+    - **409** : When we use PUT request to create the same resource twice then server displays 409 code to the browser.
+    - **405**Method not allowed: when requested method is not allowed. Ex. if a resource allows get method, we cannot request post to get this resource.
+    - **401**: when an unauthorized user request for secure resource on the web server.
+    - **403**: Forbidden Error. when a web server forbids you from accessing the page you’re trying to open in your browser.
+    - **404** Not found: requested document not found on this server
+    - **400** Bad Request: request msg not understood by server
+    - **301** Moved Permanently: requested object moved, new location specified later in this msg(Location:)
+    - **201** Created: This indicates that the request was successful. It is used to confirm success of a PUT or POST request.
+    - **200** OK: It indicates that the request is successful.
+* **HTTPS** 
+    * HTTPS is abbreviated as Hyper Text Transfer Protocol Secure is a standard protocol to secure the communication among two computers one using the browser and other fetching data from web server.
+    * In HTTP, URL begins with “http://” whereas URL starts with “https://”
+    * HTTP uses port number 80 for communication and HTTPS uses 443
+    * HTTP is considered to be unsecure that vulnerable to hackers and HTTPS is secure. It Is highly secure as the data is encrypted before it is seen across a network.
+    * HTTP Works at Application Layer and HTTPS works at Transport Layer
+    * HTTPS websites use data encryption. HTTP transfers data in plain text while HTTPS transfers data in cipher text (encrypt text).
+    * HTTPs is slower than HTTP
+    * HTTP does not require any certificates and HTTPS needs SSL Certificates
 
 ### DHCP
 ![](DHCP.png)
