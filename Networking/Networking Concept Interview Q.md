@@ -486,9 +486,9 @@ Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 
 ## [:fire:]()[Socket Programming]
-A socet is an astract representation of a communication endpoint.  
-A socket allows the application to "plug in" to the network and commnucate with other applications
-A socket is uniquely identified by the IP address, Port number and the underlying transport layer protocol.
+* A socet is an astract representation of a communication endpoint.  
+* A socket allows the application to "plug in" to the network and commnucate with other applications
+* A socket is uniquely identified by the IP address, Port number and the underlying transport layer protocol.
 
 ### 1. TCP Socket API
 - **socket()**: specifying the type of communication protocol (TCP based on IPv4, TCP based on IPv6, UDP).
@@ -515,7 +515,8 @@ Establishing a TCP socket on the **client side** are the following:
 - Connect the socket to the address of the server using the `connect()` function;
 - Send and receive data by means of the `read()` and `write()` functions.
 - Close the connection by means of the `close()` function.
-<br>Establishing a TCP socket on the **Server side** are as follows:
+
+Establishing a TCP socket on the **Server side** are as follows:
 - Create a socket with the `socket()` function;
 - Bind the socket to an address using the `bind()` function;
 - Listen for connections with the `listen()` function;
@@ -528,10 +529,12 @@ Establishing a TCP socket on the **client side** are the following:
 `ssize_t recvfrom(int sockfd, void* buff, size_t nbytes, int flags, struct sockaddr* from, socklen_t *addrlen);`
 - **sendto()**: is similar to the send() function, but three additional arguments are required.
 `ssize_t sendto(int sockfd, const void *buff, size_t nbytes,int flags, const struct sockaddr *to,socklen_t addrlen);`
+
 Establishing a UDP socket communication on the **client side** are the following:
 - Create a socket using the **socket()** function;
 - Send and receive data by means of the **recvfrom()** and **sendto()** functions.
-<br>Establishing a UDP socket communication on the **server side** are as follows:
+
+Establishing a UDP socket communication on the **server side** are as follows:
 - Create a socket with the **socket()** function;
 - Bind the socket to an address using the **bind()** function;
 - Send and receive data by means of **recvfrom()** and **sendto()**.
@@ -550,7 +553,7 @@ These functions send data to a socket. Generally speaking, send() is used 
 * Copying Directories (cp)
 * Clear Your CLI (clear)
 * Manual Pages (man)
-* `ping` The ping command is usually used as a simple way to verify that a computer can communicate over the network with another computer or network device. The ping command operates by sending **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination computer and waiting for a response.
+* **`ping`** The ping command is usually used as a simple way to verify that a computer can communicate over the network with another computer or network device. The ping command operates by sending **Internet Control Message Protocol (ICMP)** Echo Request messages to the destination computer and waiting for a response.
     `ping -n 5 -l 1500 www.google.com` In this example, the ping command is used to ping the hostname www.google.com. The -n option tells the ping command to send 5 ICMP Echo Requests instead of the default of 4, and the -l option sets the packet size for each request to 1500 bytes instead of the default of 32 bytes.
 * `Telnet` 
     * Using Telnet to Test Open Ports. `telnet [domainname or ip] [port]`test connectivity to a remote host on the given port. 
