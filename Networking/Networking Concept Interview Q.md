@@ -277,31 +277,31 @@ Gateway's MAC address/ the router’s MAC address
 * **Routing Protocols**
 <br>A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
 
-        <details>
-        <summary><b>RIP(Routing Information Protocol)</b></summary>
-        It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
-        </details>
+<details>
+<summary><b>1) RIP(Routing Information Protocol)</b></summary>
+It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
+</details>
 
 <details>
-<summary><b>OSPF(Open Shortest Path First)</b></summary>
+<summary><b>2) OSPF(Open Shortest Path First)</b></summary>
 It enabled routers discover the network by sending identification messages to each other followed by messages that capture specific routing items rather than the entire routing table. It is the only link-state routing protocol listed in this category. 
 <br> * An OSPF network can be divided into sub-domains called **areas**. An area is a logical collection of OSPF networks, routers, and links that have the same area identification. A router within an area must maintain a topological database for the area to which it belongs.
 <br> * OSPF LSA Types: LSA Type 1: Router LSA. LSA Type 2: Network LSA. LSA Type 3: Summary LSA. LSA Type 4: Summary ASBR LSA. LSA Type 5: Autonomous system external LSA. LSA Type 6: Multicast OSPF LSA. LSA Type 7: Not-so-stubby area LSA. LSA Type 8: External attribute LSA for BGP.
 </details>
 
 <details>
-<summary><b>IS-IS(Intermediate System to Intermediate System)</b></summary>
+<summary><b>3) IS-IS(Intermediate System to Intermediate System)</b></summary>
 IS-IS does not run over Internet Protocol (IP) and uses its own addressing scheme. 
 </details>
 
 <details>
-<summary><b>BGP(Border Gateway Protocol)</b></summary>
+<summary><b>4) BGP(Border Gateway Protocol)</b></summary>
 <br>an **exterior gateway protocol (EGP)**. Basically, interior protocols are meant to dynamically route data across a network that you fully control and maintain. Exterior routing protocols are used to exchange routes between distinctly separate networks that you have no administrative control over. BGP is the routing protocol used on the internet;  therefore, the most common enterprise use is to run BGP on your internet edge when connecting to your ISP.
 <br>six states:Idle, Connect, Active, Opensent, Openconfirm, Established. 
 <br>In the "Idle" state, BGP initializes all resources, refuses all inbound BGP connection attempts and initiates a TCP connection to the peer. The second state is "Connect". In the "Connect" state, the router waits for the TCP connection to complete and transitions to the "OpenSent" state if successful. If unsuccessful, it starts the ConnectRetry timer and transitions to the "Active" state upon expiration. In the "Active" state, the router resets the ConnectRetry timer to zero and returns to the "Connect" state. In the "OpenSent" state, the router sends an Open message and waits for one in return in order to transition to the "OpenConfirm" state. Keepalive messages are exchanged and, upon successful receipt, the router is placed into the "Established" state. In the "Established" state, the router can send/receive: Keepalive; Update; and Notification messages to/from its peer.
 </details>
 
-3) **Types of Routing**
+* **Types of Routing**
     * **Static Routing**: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * **Dynamic Routing**: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
 
