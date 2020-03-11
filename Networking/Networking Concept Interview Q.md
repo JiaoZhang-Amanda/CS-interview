@@ -6,7 +6,7 @@
 Name | Details  | Protocols involved | Data units
 --|--|--|--
 **Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the **signal** received and convert it into **0s and 1s** and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
-**Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|ARP, CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
+**Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
 **Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |IPv4, IPv6, IPX, AppleTalk, ICMP, IPSec and IGMP.|Packet
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
@@ -58,29 +58,49 @@ Name | Details  | Protocols involved | Data units
 * **Options**: this field is optional and can be anywhere between 0 and 320 bits.
 
 ## [Protocols]
-* [**IP**](##IP)
-* **ARP**: 
-* **DHCP**
-* **TCP**
-* **UDP**
-* **HTTP**
-* **HTTPs**
-* **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
-* **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
-* **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
-* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
-* **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
-* **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
-    - Types: Sliding Window ARQ(Automatic Repeat req uest) 
-        * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
-        * **Selective Repeat ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
-    - TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
-* **Stop and wait protocol**: sender sends one frame, waits until it receives confirmation from the receiver (okay to go ahead), and then sends the next frame.
-* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
-    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
-    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
-    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
-    
+### ARP
+![](./ARP.png)
+* ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
+* The address resolution protocol (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
+___
+### IP 
+(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
+* connection-less, unreliable protocol designed to be ysed in a connection-less packet switched network such as the Internet.
+* no guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lst or duplicated), IP relies on transport layer(TCP) to take care of these.
+* IP addresses
+    * Classful IP addressing
+        * Class A: 0*******.X.X.X(1-126)--network,node,node,node
+        * Class B: 10******.X.X.X(128-191)--network,network,node,node
+        * Class C: 110*****.X.X.X(192-223)-- network,network,network,node
+        * Class D: 1110****.X.X.X(224-239) Multicasting
+        * Class E: 1111****.X.X.X(240-255) REsearch
+    * Classless(concept of blocks): a.b.c.d/n
+        * subnet masking: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location. It is used to differentiate Network ID and Host ID from a given IP address. The default subnet mask are as under Class A = 255.0.0.0, Class B = 255.255.0.0, Class C = 255.255.255.0
+        * Subnetting: a process of creating multiple segments within IP network address space(netid, subnetid, hostid)
+    * Special IP Addresses(e.g. All 1's --> limited broadcast address)
+    * Private IP Addresses. not used in Internet or which are **not routable** in Internet.
+        * 10.0.0.0-10.255.255.255<br>
+        * 172.16.0.0-172.31.255.255<br>
+        * 192.168.0.0-192.168.255.255
+    * IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
+    * regular expression for IP address: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
+    * static VS dynamic IP address: 
+        * If you need to setup a web server or an email service, you'll need a static IP address. If you are just browsing an Internet, you may just get by with a dynamic IP address.
+        * A static IP address is an address that is permanently assigned to you by your ISP (as long as your contract is in good standing), and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
+        * A dynamic IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
+* IP routing: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use routing tables to determine a next hop address to which the packet should be forwarded.
+    * Router? a device or PC which is used to connect two or more IP networks. 
+    * Default Gateway? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
+*  IP address conflict: It occurs when two or more devices on the same network are assigned the same IP address. ==> take is restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
+* IPsec:  IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. It has 2 modes. The Main mode which provides the greater security and the Aggressive mode which enables the host to establish an IPsec circuit more quickly.
+```
+how many host in /27? addresses: 32 available hosts: 30 subnets: 2048
+Is 1.1.1.1 routable? 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
+```
+### ICMP
+* ICMP is a transport level protocol within TCP/IP which communicates information about network connectivity issues back to the source of the compromised transmission. It sends control messages such as destination network unreachable, source route failed, and source quench.
+* For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
+___
 ### 1. What is the difference between TCP and UDP? When would you use each of them?
 TCP|UDP
 --|--
@@ -99,6 +119,49 @@ App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | 
 
 * Both UDP and TCP provide error checking.
 
+### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
+Client ------SYN-----> Server<br>
+Client <---ACK/SYN---- Server ----①<br>
+Client ------ACK-----> Server<br>
+* The client sends a TCP SYNchronize packet to Server
+* Server receives client’s SYN
+* Server sends a SYNchronize+ACKnowledgement
+* Client receives Server’s SYN-ACK
+* Client sends ACKnowledge
+* Server receives ACK.
+* TCP socket connection is ESTABLISHED.
+
+### 6. TCP connection termination? four-way handshake
+Client ------FIN-----> Server<br>
+Client <-----ACK------ Server ----②<br>
+Client <-----FIN------ Server ----③<br>
+Client ------ACK-----> Server<br>
+___
+### 6. SSL
+SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
+1) How is SSL related to HTTPs
+HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL/TLS (hereafter referred to simply as “SSL”) encryption layer on top of it. Servers and clients still speak exactly the same HTTP to each other, but over a secure SSL connection that encrypts and decrypts their requests and responses. The SSL layer has 2 main purposes:
+    * Verifying that you are talking directly to the server that you think you are talking to
+    * Ensuring that only the server can read what you send it and only you can read what it sends back
+2) SSL handshakes
+* It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the website's origin server.
+* It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
+* It occurs after a TCP connection has been opened via a TCP handshake.
+<details>
+<summary> handshakes process</summary>
+<br>1. The SSL or TLS client sends a client hello message that lists cryptographic information such as the SSL or TLS version and, in the client's order of preference, the CipherSuites supported by the client. The message also contains a random byte string that is used in subsequent computations. The protocol allows for the client hello to include the data compression methods supported by the client.
+<br>2. The SSL or TLS server responds with a server hello message that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request that includes a list of the types of certificates supported and the Distinguished Names of acceptable Certification Authorities (CAs).
+<br>3. The SSL or TLS client verifies the server's digital certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
+<br>4. The SSL or TLS client sends the random byte string that enables both the client and the server to compute the secret key to be used for encrypting subsequent message data. The random byte string itself is encrypted with the server's public key.
+<br>5. If the SSL or TLS server sent a client certificate request, the client sends a random byte string encrypted with the client's private key, together with the client's digital certificate, or a no digital certificate alert. This alert is only a warning, but with some implementations the handshake fails if client authentication is mandatory.
+<br>6. The SSL or TLS server verifies the client's certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
+<br>7. The SSL or TLS client sends the server a finished message, which is encrypted with the secret key, indicating that the client part of the handshake is complete.
+<br>8. The SSL or TLS server sends the client a finished message, which is encrypted with the secret key, indicating that the server part of the handshake is complete.
+<br>9. For the duration of the SSL or TLS session, the server and client can now exchange messages that are symmetrically encrypted with the shared secret key.
+</details>
+
+![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
+___
 ### 2. What are request methods in HTTP?
 HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 - **GET**- It is used to send data in url.
@@ -148,35 +211,6 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
 * HTTPs is slower than HTTP
 * HTTP does not require any certificates and HTTPS needs SSL Certificates
 
-### Network security protocols
-* Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
-* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
-
-### 6. SSL
-SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
-1) How is SSL related to HTTPs
-HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL/TLS (hereafter referred to simply as “SSL”) encryption layer on top of it. Servers and clients still speak exactly the same HTTP to each other, but over a secure SSL connection that encrypts and decrypts their requests and responses. The SSL layer has 2 main purposes:
-    * Verifying that you are talking directly to the server that you think you are talking to
-    * Ensuring that only the server can read what you send it and only you can read what it sends back
-2) SSL handshakes
-* It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the website's origin server.
-* It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
-* It occurs after a TCP connection has been opened via a TCP handshake.
-<details>
-<summary> handshakes process</summary>
-<br>1. The SSL or TLS client sends a client hello message that lists cryptographic information such as the SSL or TLS version and, in the client's order of preference, the CipherSuites supported by the client. The message also contains a random byte string that is used in subsequent computations. The protocol allows for the client hello to include the data compression methods supported by the client.
-<br>2. The SSL or TLS server responds with a server hello message that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request that includes a list of the types of certificates supported and the Distinguished Names of acceptable Certification Authorities (CAs).
-<br>3. The SSL or TLS client verifies the server's digital certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
-<br>4. The SSL or TLS client sends the random byte string that enables both the client and the server to compute the secret key to be used for encrypting subsequent message data. The random byte string itself is encrypted with the server's public key.
-<br>5. If the SSL or TLS server sent a client certificate request, the client sends a random byte string encrypted with the client's private key, together with the client's digital certificate, or a no digital certificate alert. This alert is only a warning, but with some implementations the handshake fails if client authentication is mandatory.
-<br>6. The SSL or TLS server verifies the client's certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
-<br>7. The SSL or TLS client sends the server a finished message, which is encrypted with the secret key, indicating that the client part of the handshake is complete.
-<br>8. The SSL or TLS server sends the client a finished message, which is encrypted with the secret key, indicating that the server part of the handshake is complete.
-<br>9. For the duration of the SSL or TLS session, the server and client can now exchange messages that are symmetrically encrypted with the shared secret key.
-</details>
-
-![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
-
 ### DHCP
 ![](DHCP.png)
 <details>
@@ -200,40 +234,33 @@ The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configura
  After the request message or accept the IP by DHCP SERVER, the server sent an ACK to the client. This message clear to the client that now you can start using the network.
 </details>
 
-### IP 
-(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
-* connection-less, unreliable protocol designed to be ysed in a connection-less packet switched network such as the Internet.
-* no guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lst or duplicated), IP relies on transport layer(TCP) to take care of these.
-* IP addresses
-    * Classful IP addressing
-        * Class A: 0*******.X.X.X(1-126)--network,node,node,node
-        * Class B: 10******.X.X.X(128-191)--network,network,node,node
-        * Class C: 110*****.X.X.X(192-223)-- network,network,network,node
-        * Class D: 1110****.X.X.X(224-239) Multicasting
-        * Class E: 1111****.X.X.X(240-255) REsearch
-    * Classless(concept of blocks): a.b.c.d/n
-        * subnet masking: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location. It is used to differentiate Network ID and Host ID from a given IP address. The default subnet mask are as under Class A = 255.0.0.0, Class B = 255.255.0.0, Class C = 255.255.255.0
-        * Subnetting: a process of creating multiple segments within IP network address space(netid, subnetid, hostid)
-    * Special IP Addresses(e.g. All 1's --> limited broadcast address)
-    * Private IP Addresses. not used in Internet or which are **not routable** in Internet.
-        * 10.0.0.0-10.255.255.255<br>
-        * 172.16.0.0-172.31.255.255<br>
-        * 192.168.0.0-192.168.255.255
-    * IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
-    * regular expression for IP address: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
-    * static VS dynamic IP address: 
-        * If you need to setup a web server or an email service, you'll need a static IP address. If you are just browsing an Internet, you may just get by with a dynamic IP address.
-        * A static IP address is an address that is permanently assigned to you by your ISP (as long as your contract is in good standing), and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
-        * A dynamic IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
-* IP routing: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use routing tables to determine a next hop address to which the packet should be forwarded.
-    * Router? a device or PC which is used to connect two or more IP networks. 
-    * Default Gateway? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
-*  IP address conflict: It occurs when two or more devices on the same network are assigned the same IP address. ==> take is restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
-* IPsec:  IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. It has 2 modes. The Main mode which provides the greater security and the Aggressive mode which enables the host to establish an IPsec circuit more quickly.
-```
-how many host in /27? addresses: 32 available hosts: 30 subnets: 2048
-Is 1.1.1.1 routable? 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
-```
+* **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
+
+* **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
+
+* **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
+
+* **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
+* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
+
+* **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
+    - Types: Sliding Window ARQ(Automatic Repeat req uest) 
+        * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
+        * **Selective Repeat ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
+    - TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
+* **Stop and wait protocol**: sender sends one frame, waits until it receives confirmation from the receiver (okay to go ahead), and then sends the next frame.
+* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
+    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
+    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
+    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
+    
+
+
+
+
+### Network security protocols
+* Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
+* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
 
 ### DNS
 * DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
@@ -263,15 +290,6 @@ All necessary connections between the domain name and IP addresses are reflected
     * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
     * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
     
-### ARP
-![](./ARP.png)
-* ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
-* The address resolution protocol (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
-
-### ICMP
-* ICMP is a transport level protocol within TCP/IP which communicates information about network connectivity issues back to the source of the compromised transmission. It sends control messages such as destination network unreachable, source route failed, and source quench.
-* For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
-
 ### MAC address
 * MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
 * MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
@@ -279,7 +297,6 @@ All necessary connections between the domain name and IP addresses are reflected
 Gateway's MAC address/ the router’s MAC address
 * 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
 取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
-
 
 ### 4. Flow/error control
 * Flow control and Error control are the control mechanism at data link layer and transport layer. flow control observes the proper flow of the data from sender to receiver, on the other hand, the error control observes that the data delivered to the receiver is error free and reliable.
@@ -305,24 +322,6 @@ Data is transported over a network by three simple methods i.e. Unicast, Broadca
 * Unicast: from one source to one destination i.e. One-to-One. Unicast uses IP provision techniques such as TCP (transmission control protocol) and UDP (user datagram protocol), which are session-based protocols. e.g. Browsing a website.
 * Broadcast: from one source to all possible destinations i.e. One-to-All.  e.g. ARP Request message, DHCP DISCOVER Message
 * Multicast: from one source to multiple destinations stating an interest in receiving the traffic i.e. One-to-Many. e.g. Multicast Windows Deployment Services (WDS) OS deployment traffic, IP TV etc
-
-### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
-Client ------SYN-----> Server<br>
-Client <---ACK/SYN---- Server ----①<br>
-Client ------ACK-----> Server<br>
-* The client sends a TCP SYNchronize packet to Server
-* Server receives client’s SYN
-* Server sends a SYNchronize+ACKnowledgement
-* Client receives Server’s SYN-ACK
-* Client sends ACKnowledge
-* Server receives ACK.
-* TCP socket connection is ESTABLISHED.
-
-### 6. TCP connection termination? four-way handshake
-Client ------FIN-----> Server<br>
-Client <-----ACK------ Server ----②<br>
-Client <-----FIN------ Server ----③<br>
-Client ------ACK-----> Server<br>
 
 ### Server Load Balancing
 * Server Load Balancing (SLB) is a technology that distributes high traffic sites among several servers using a network-based hardware or software-defined appliance. 
