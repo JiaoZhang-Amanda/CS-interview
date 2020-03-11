@@ -11,7 +11,7 @@ Name | Details  | Protocols involved | Data units
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCPUDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, [SSL](#SSL) and MIME|data
-**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|[HTTP](#HTTP)(via a web browser), [SMTP](#SMTP)(via an email client), [DHCP](#DHCP), [FTP](#FTP), Telnet|data
+**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|[HTTP](#HTTP), [SMTP](#SMTP), [DHCP](#DHCP), [FTP](#FTP), [Telnet](#Telnet)|data
 
 ### 2. Explain TCP/IP Model
 ![](./OSI_TCP:IP.png)
