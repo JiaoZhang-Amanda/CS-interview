@@ -276,8 +276,8 @@ Gateway's MAC address/ the router’s MAC address
     * It acts as an intersection between multiple IP networks.
 * **Routing Protocols**
 <br>A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
-<div>
-<details>
+
+&nbsp;<details>
 <summary><b>RIP(Routing Information Protocol)</b></summary>
 It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
 </details>
@@ -300,7 +300,7 @@ IS-IS does not run over Internet Protocol (IP) and uses its own addressing schem
 <br>six states:Idle, Connect, Active, Opensent, Openconfirm, Established. 
 <br>In the "Idle" state, BGP initializes all resources, refuses all inbound BGP connection attempts and initiates a TCP connection to the peer. The second state is "Connect". In the "Connect" state, the router waits for the TCP connection to complete and transitions to the "OpenSent" state if successful. If unsuccessful, it starts the ConnectRetry timer and transitions to the "Active" state upon expiration. In the "Active" state, the router resets the ConnectRetry timer to zero and returns to the "Connect" state. In the "OpenSent" state, the router sends an Open message and waits for one in return in order to transition to the "OpenConfirm" state. Keepalive messages are exchanged and, upon successful receipt, the router is placed into the "Established" state. In the "Established" state, the router can send/receive: Keepalive; Update; and Notification messages to/from its peer.
 </details>
-</div>
+
 3) **Types of Routing**
     * **Static Routing**: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * **Dynamic Routing**: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
