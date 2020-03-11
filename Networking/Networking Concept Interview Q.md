@@ -7,7 +7,7 @@ Name | Details  | Protocols involved | Data units
 --|--|--|--
 **Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the **signal** received and convert it into **0s and 1s** and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
 **Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
-**Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |IPv4, IPv6, IPX, AppleTalk, ICMP, IPSec and IGMP.|Packet
+**Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), IPSec and IGMP.|Packet
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
@@ -60,8 +60,8 @@ Name | Details  | Protocols involved | Data units
 ## [Protocols]
 ### ARP
 ![](./ARP.png)
+* The **address resolution protocol** (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
 * ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
-* The address resolution protocol (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
 ___
 ### IP 
 (Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
