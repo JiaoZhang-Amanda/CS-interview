@@ -277,10 +277,10 @@ Gateway's MAC address/ the router’s MAC address
 * **Routing Protocols**
 <br>A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
 
-<details>
-<summary><b>&nbsp;RIP(Routing Information Protocol)</b></summary>
-It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
-</details>
+        <details>
+        <summary><b>RIP(Routing Information Protocol)</b></summary>
+        It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
+        </details>
 
 <details>
 <summary><b>OSPF(Open Shortest Path First)</b></summary>
