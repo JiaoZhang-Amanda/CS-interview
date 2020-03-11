@@ -106,7 +106,7 @@ IP(**Internet Protocol**) is designed explicitly as addressing protocol. It is m
         * A **static** IP address is an address that is permanently assigned to you by your ISP, and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
         * A **dynamic** IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
 * **IP routing**: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use **routing tables** to determine a next hop address to which the packet should be forwarded.
-    * **Router**? a device or PC which is used to connect two or more IP networks. 
+    * **[Router](#Router)**? a device or PC which is used to connect two or more IP networks. 
     * **Default Gateway**? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
 *  **IP address conflict**: It occurs when two or more devices on the same network are assigned the same IP address. 
     * Try to restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
@@ -262,10 +262,28 @@ ____
 ### MAC address
 * MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
 * MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
-* What's the MAC address in the TCP packet when your destination is Google.com?
+```
+# What's the MAC address in the TCP packet when your destination is Google.com?
 Gateway's MAC address/ the router’s MAC address
-* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
+# 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
 取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
+```
+### Router
+1) Router function?
+    * It forwards data packets toward their destination.
+    * It acts as an intersection between multiple IP networks.
+2) Routing Protocols
+A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
+    * RIP(Routing Information Protocol): It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
+    * OSPF(Open Shortest Path First): It enabled routers discover the network by sending identification messages to each other followed by messages that capture specific routing items rather than the entire routing table. It is the only link-state routing protocol listed in this category. 
+        * An OSPF network can be divided into sub-domains called **areas**. An area is a logical collection of OSPF networks, routers, and links that have the same area identification. A router within an area must maintain a topological database for the area to which it belongs.
+        * OSPF LSA Types: LSA Type 1: Router LSA. LSA Type 2: Network LSA. LSA Type 3: Summary LSA. LSA Type 4: Summary ASBR LSA. LSA Type 5: Autonomous system external LSA. LSA Type 6: Multicast OSPF LSA. LSA Type 7: Not-so-stubby area LSA. LSA Type 8: External attribute LSA for BGP.
+    * IS-IS(Intermediate System to Intermediate System): IS-IS does not run over Internet Protocol (IP) and uses its own addressing scheme. 
+    * BGP(Border Gateway Protocol ): an **exterior gateway protocol (EGP)**. Basically, interior protocols are meant to dynamically route data across a network that you fully control and maintain. Exterior routing protocols are used to exchange routes between distinctly separate networks that you have no administrative control over. BGP is the routing protocol used on the internet;  therefore, the most common enterprise use is to run BGP on your internet edge when connecting to your ISP.
+        * six states:Idle, Connect, Active, Opensent, Openconfirm, Established. In the "Idle" state, BGP initializes all resources, refuses all inbound BGP connection attempts and initiates a TCP connection to the peer. The second state is "Connect". In the "Connect" state, the router waits for the TCP connection to complete and transitions to the "OpenSent" state if successful. If unsuccessful, it starts the ConnectRetry timer and transitions to the "Active" state upon expiration. In the "Active" state, the router resets the ConnectRetry timer to zero and returns to the "Connect" state. In the "OpenSent" state, the router sends an Open message and waits for one in return in order to transition to the "OpenConfirm" state. Keepalive messages are exchanged and, upon successful receipt, the router is placed into the "Established" state. In the "Established" state, the router can send/receive: Keepalive; Update; and Notification messages to/from its peer.
+3) Types of Routing
+    * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
+    * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
 
 * **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
     - Types: Sliding Window ARQ(Automatic Repeat req uest) 
@@ -388,22 +406,7 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 * Collisions are often in a hub environment, because each port on a hub is in the same **collision domain**. By contrast, each port on a bridge, a switch or a router is in a separate collision domain.
 * All ports on a hub or a switch are by default in the same **broadcast domain**. All ports on a router are in the different broadcast domains and routers don't forward broadcasts from one broadcast domain to another.
 
-### 4. Router
-1) Router function?
-    * It forwards data packets toward their destination.
-    * It acts as an intersection between multiple IP networks.
-2) Routing Protocols
-A routing protocol specifies how routers communicate with each other, distributing information that enables them to select routes between any two nodes on a computer network.
-    * RIP(Routing Information Protocol): It enabled routers discover the network by first sending a message requesting router tables from neighboring devices. Neighbor routers running RIP respond by sending the full routing tables back to the requestor, whereupon the requestor follows an algorithm to merge these updates into its own table. 
-    * OSPF(Open Shortest Path First): It enabled routers discover the network by sending identification messages to each other followed by messages that capture specific routing items rather than the entire routing table. It is the only link-state routing protocol listed in this category. 
-        * An OSPF network can be divided into sub-domains called **areas**. An area is a logical collection of OSPF networks, routers, and links that have the same area identification. A router within an area must maintain a topological database for the area to which it belongs.
-        * OSPF LSA Types: LSA Type 1: Router LSA. LSA Type 2: Network LSA. LSA Type 3: Summary LSA. LSA Type 4: Summary ASBR LSA. LSA Type 5: Autonomous system external LSA. LSA Type 6: Multicast OSPF LSA. LSA Type 7: Not-so-stubby area LSA. LSA Type 8: External attribute LSA for BGP.
-    * IS-IS(Intermediate System to Intermediate System): IS-IS does not run over Internet Protocol (IP) and uses its own addressing scheme. 
-    * BGP(Border Gateway Protocol ): an **exterior gateway protocol (EGP)**. Basically, interior protocols are meant to dynamically route data across a network that you fully control and maintain. Exterior routing protocols are used to exchange routes between distinctly separate networks that you have no administrative control over. BGP is the routing protocol used on the internet;  therefore, the most common enterprise use is to run BGP on your internet edge when connecting to your ISP.
-        * six states:Idle, Connect, Active, Opensent, Openconfirm, Established. In the "Idle" state, BGP initializes all resources, refuses all inbound BGP connection attempts and initiates a TCP connection to the peer. The second state is "Connect". In the "Connect" state, the router waits for the TCP connection to complete and transitions to the "OpenSent" state if successful. If unsuccessful, it starts the ConnectRetry timer and transitions to the "Active" state upon expiration. In the "Active" state, the router resets the ConnectRetry timer to zero and returns to the "Connect" state. In the "OpenSent" state, the router sends an Open message and waits for one in return in order to transition to the "OpenConfirm" state. Keepalive messages are exchanged and, upon successful receipt, the router is placed into the "Established" state. In the "Established" state, the router can send/receive: Keepalive; Update; and Notification messages to/from its peer.
-3) Types of Routing
-    * Static Routing: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
-    * Dynamic Routing: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
+
     
 ### 5. What is a Proxy Server and how do they protect the computer network?
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
