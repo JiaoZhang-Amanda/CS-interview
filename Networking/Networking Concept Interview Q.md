@@ -1,8 +1,8 @@
 # Networking concepts Interview Question
-* [Models](#checkered_flagmodels)
-* [Protocols](#Protocols)
+* [Models](#firemodels)
+* [Protocols](#fireProtocols)
 
-## [:checkered_flag:]()[Models]
+## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
 
@@ -60,7 +60,7 @@ Name | Details  | Protocols involved | Data units
 * **Urgent pointer**: these 16 bits are used when the URG bit has been set, the urgent pointer is used to indicate where the urgent data ends.
 * **Options**: this field is optional and can be anywhere between 0 and 320 bits.
 
-## [Protocols]
+## [:fire:]()[Protocols]
 ### Common ports
 * HTTP – Port 80.
 * HTTPS – 443.
