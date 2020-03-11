@@ -7,7 +7,7 @@ Name | Details  | Protocols involved | Data units
 --|--|--|--
 **Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the **signal** received and convert it into **0s and 1s** and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
 **Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
-**Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), IPSec and IGMP.|Packet
+**Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), [IPSec](#IPSec) and IGMP.|Packet
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
@@ -64,42 +64,48 @@ Name | Details  | Protocols involved | Data units
 * ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
 ___
 ### IP 
-(Internet Protocol): IP is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
-* connection-less, unreliable protocol designed to be ysed in a connection-less packet switched network such as the Internet.
-* no guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lst or duplicated), IP relies on transport layer(TCP) to take care of these.
+IP(**Internet Protocol**) is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
+* **Connection-less**, **unreliable** protocol designed to be used in a connection-less packet switched network such as the Internet.
+* No guarantee of delivery of error-free packets, ordered delivery of packets and delivery of packets(e.g. some will be lost or duplicated), IP relies on transport layer(TCP) to take care of these.
 * IP addresses
-    * Classful IP addressing
-        * Class A: 0*******.X.X.X(1-126)--network,node,node,node
+    * **Classful IP addressing**
+        * Class A: 0*******.X.X.X(1-126)--network,node,node,node (0 and 127 are reserved)
         * Class B: 10******.X.X.X(128-191)--network,network,node,node
         * Class C: 110*****.X.X.X(192-223)-- network,network,network,node
         * Class D: 1110****.X.X.X(224-239) Multicasting
-        * Class E: 1111****.X.X.X(240-255) REsearch
-    * Classless(concept of blocks): a.b.c.d/n
-        * subnet masking: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location. It is used to differentiate Network ID and Host ID from a given IP address. The default subnet mask are as under Class A = 255.0.0.0, Class B = 255.255.0.0, Class C = 255.255.255.0
+        * Class E: 1111****.X.X.X(240-255) Research
+    * **Classless(concept of blocks): a.b.c.d/n**
+        * **Subnet masking**: 32-bit pattern having a "1" in every netid and subnetid locations and a "0" in every hostid location. It is used to differentiate Network ID and Host ID from a given IP address. The default subnet mask are as under Class A = 255.0.0.0, Class B = 255.255.0.0, Class C = 255.255.255.0.
         * Subnetting: a process of creating multiple segments within IP network address space(netid, subnetid, hostid)
     * Special IP Addresses(e.g. All 1's --> limited broadcast address)
-    * Private IP Addresses. not used in Internet or which are **not routable** in Internet.
+    * **Private IP Addresses**. not used in Internet or which are **not routable** in Internet.
         * 10.0.0.0-10.255.255.255<br>
         * 172.16.0.0-172.31.255.255<br>
         * 192.168.0.0-192.168.255.255
-    * IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
-    * regular expression for IP address: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
-    * static VS dynamic IP address: 
+    * **IPv4** is 32-Bit IP address whereas IPv6 is a 128-Bit IP address. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method. IPv4 uses ARP (Address Resolution Protocol) to map to MAC address whereas IPv6 uses NDP (Neighbour Discovery Protocol) to map to MAC address.
+    * regular expression for IP address: `^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$`
+    * **Static VS Dynamic IP address**: 
         * If you need to setup a web server or an email service, you'll need a static IP address. If you are just browsing an Internet, you may just get by with a dynamic IP address.
-        * A static IP address is an address that is permanently assigned to you by your ISP (as long as your contract is in good standing), and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
-        * A dynamic IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
-* IP routing: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use routing tables to determine a next hop address to which the packet should be forwarded.
-    * Router? a device or PC which is used to connect two or more IP networks. 
-    * Default Gateway? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
-*  IP address conflict: It occurs when two or more devices on the same network are assigned the same IP address. ==> take is restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
-* IPsec:  IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. It has 2 modes. The Main mode which provides the greater security and the Aggressive mode which enables the host to establish an IPsec circuit more quickly.
+        * A **static** IP address is an address that is permanently assigned to you by your ISP, and does not change even if your computer reboots. A static IP address is usually assigned to a server hosting websites, and providing email, database and FTP services.
+        * A **dynamic** IP address is an IP address dynamically assigned to your computer by your ISP. Each time your computer (or router) is rebooted, your ISP dynamically assigns an IP address to your networking device using DHCP protocol.
+* **IP routing**: sending packets from a host on one network to another host on a different remote network. This process is usually done by routers. Routers examine the destination IP address of a packet , determine the next-hop address, and forward the packet. Routers use **routing tables** to determine a next hop address to which the packet should be forwarded.
+    * **Router**? a device or PC which is used to connect two or more IP networks. 
+    * **Default Gateway**? A default gateway is a router that hosts use to communicate with other hosts on remote networks. A default gateway is used when a host doesn’t have a route entry for the specific remote network and doesn’t know how to reach that network.
+*  **IP address conflict**: It occurs when two or more devices on the same network are assigned the same IP address. 
+    * Try to restarting the affected computer and your networking equipment. Restarting your router and/or modem will re-assign all IP addresses via DHCP. check to see if your computer is using a static IP address. try releasing your computer’s current IP address and obtaining a new one. If the above steps didn’t fix the issue, you should next log into your router’s administration panel and take a look at the connected devices.
 ```
-how many host in /27? addresses: 32 available hosts: 30 subnets: 2048
-Is 1.1.1.1 routable? 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
+# How many host in /27? 
+addresses: 32 available hosts: 30
+# Is 1.1.1.1 routable? 
+1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
 ```
 ### ICMP
 * ICMP is a transport level protocol within TCP/IP which communicates information about network connectivity issues back to the source of the compromised transmission. It sends control messages such as destination network unreachable, source route failed, and source quench.
 * For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
+
+### IPsec
+* IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. 
+* It has 2 modes. The **Main mode** which provides the greater security and the **Aggressive mode** which enables the host to establish an IPsec circuit more quickly.
 ___
 ### 1. What is the difference between TCP and UDP? When would you use each of them?
 TCP|UDP
