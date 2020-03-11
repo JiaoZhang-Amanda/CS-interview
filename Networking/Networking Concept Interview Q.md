@@ -534,6 +534,7 @@ Establishing a UDP socket communication on the **client side** are the following
 - Create a socket using the **socket()** function;
 - Send and receive data by means of the **recvfrom()** and **sendto()** functions.
 
+
 Establishing a UDP socket communication on the **server side** are as follows:
 - Create a socket with the **socket()** function;
 - Bind the socket to an address using the **bind()** function;
