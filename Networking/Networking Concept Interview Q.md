@@ -10,7 +10,7 @@ Name | Details  | Protocols involved | Data units
 **Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), [IPSec](#IPSec) and IGMP.|Packet
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCPUDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
-**Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
+**Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, [SSL](#SSL) and MIME|data
 **Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
 
 ### 2. Explain TCP/IP Model
@@ -145,27 +145,27 @@ Client ------ACK-----> Server<br>
 
 * since a FIN and an ACK are required in each direction.
 ___
-### 6. SSL
-SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
-1) How is SSL related to HTTPs
-HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL/TLS (hereafter referred to simply as “SSL”) encryption layer on top of it. Servers and clients still speak exactly the same HTTP to each other, but over a secure SSL connection that encrypts and decrypts their requests and responses. The SSL layer has 2 main purposes:
+### SSL
+SSL is the **secure socket layer**, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
+* How is SSL related to HTTPs
+HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL/TLS encryption layer on top of it. Servers and clients still speak exactly the same HTTP to each other, but over a secure SSL connection that encrypts and decrypts their requests and responses. The SSL layer has **2 main purposes**:
     * Verifying that you are talking directly to the server that you think you are talking to
     * Ensuring that only the server can read what you send it and only you can read what it sends back
-2) SSL handshakes
-* It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the website's origin server.
-* It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
-* It occurs after a TCP connection has been opened via a TCP handshake.
+*  **SSL handshakes**
+    * It takes place whenever a user navigates to a website over HTTPS and the browser first begins to query the **website's origin server**.
+    * It also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.
+    * It occurs after a TCP connection has been opened via a TCP handshake.
 <details>
 <summary> handshakes process</summary>
-<br>1. The SSL or TLS client sends a client hello message that lists cryptographic information such as the SSL or TLS version and, in the client's order of preference, the CipherSuites supported by the client. The message also contains a random byte string that is used in subsequent computations. The protocol allows for the client hello to include the data compression methods supported by the client.
-<br>2. The SSL or TLS server responds with a server hello message that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request that includes a list of the types of certificates supported and the Distinguished Names of acceptable Certification Authorities (CAs).
-<br>3. The SSL or TLS client verifies the server's digital certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
-<br>4. The SSL or TLS client sends the random byte string that enables both the client and the server to compute the secret key to be used for encrypting subsequent message data. The random byte string itself is encrypted with the server's public key.
+<br>1. The <b>SSL or TLS client</b> sends a <b>client hello message</b> that lists cryptographic information such as the SSL or TLS version. 
+<br>2. The <b>SSL or TLS server</b> responds with a <b>server hello message</b> that contains the CipherSuite chosen by the server from the list provided by the client, the session ID, and another random byte string. The server also sends its digital certificate. If the server requires a digital certificate for client authentication, the server sends a client certificate request.
+<br>3. The <b>SSL or TLS client</b> verifies the server's digital certificate.
+<br>4. The <b>SSL or TLS client</b> sends the random byte string that enables both the client and the server to compute the <b>secret key</b> to be used for encrypting subsequent message data.
 <br>5. If the SSL or TLS server sent a client certificate request, the client sends a random byte string encrypted with the client's private key, together with the client's digital certificate, or a no digital certificate alert. This alert is only a warning, but with some implementations the handshake fails if client authentication is mandatory.
-<br>6. The SSL or TLS server verifies the client's certificate. For more information, see How SSL and TLS provide identification, authentication, confidentiality, and integrity.
+<br>6. The SSL or TLS server verifies the client's certificate.
 <br>7. The SSL or TLS client sends the server a finished message, which is encrypted with the secret key, indicating that the client part of the handshake is complete.
 <br>8. The SSL or TLS server sends the client a finished message, which is encrypted with the secret key, indicating that the server part of the handshake is complete.
-<br>9. For the duration of the SSL or TLS session, the server and client can now exchange messages that are symmetrically encrypted with the shared secret key.
+<br>9. For the duration of the SSL or TLS session, the server and client can now exchange messages that are <b>symmetrically encrypted</b> with the shared secret key.
 </details>
 
 ![](https://www.ibm.com/support/knowledgecenter/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660a.gif)
