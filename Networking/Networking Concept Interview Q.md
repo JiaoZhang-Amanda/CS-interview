@@ -11,7 +11,7 @@ Name | Details  | Protocols involved | Data units
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCPUDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, [SSL](#SSL) and MIME|data
-**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|[HTTP](#HTTP)(via a web browser), SMTP(via an email client), [DHCP](#DHCP), FTP(via an FTP client), Telnet|data
+**Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|[HTTP](#HTTP)(via a web browser), [SMTP](#SMTP)(via an email client), [DHCP](#DHCP), [FTP](#FTP), Telnet|data
 
 ### 2. Explain TCP/IP Model
 ![](./OSI_TCP:IP.png)
@@ -240,12 +240,16 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
  After the request message or accept the IP by DHCP SERVER, the server sent an ACK to the client. This message clear to the client that now you can start using the network.
 </details>
 
-___
-* **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
+### FTP
+**File Transfer Protocol**. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
+### SMTP
+Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
+### Telnet
+Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
 
-* **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
 
-* **Telnet**: Telnet is a set of rules designed for connecting one system with another. The connecting process here is termed as remote login. The system which requests for connection is the local computer, and the system which accepts the connection is the remote computer.
+
+____
 
 * **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
 * **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
