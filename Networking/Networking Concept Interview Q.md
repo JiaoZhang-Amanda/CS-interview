@@ -1,6 +1,7 @@
 # Networking concepts Interview Question
 * [Models](#firemodels)
 * [Protocols](#fireProtocols)
+* [Details](#fireDetails)
 
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
@@ -77,7 +78,7 @@ ___
 ### ARP
 ![](./ARP.png)
 * The **address resolution protocol** (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
-* ARP finds the hardware address, also known as Media Access Control (MAC) address, of a host from its known IP address.
+* ARP finds the hardware address, also known as [Media Access Control (MAC) address](##mac-address), of a host from its known IP address.
 ___
 ### IP 
 IP(**Internet Protocol**) is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
@@ -257,6 +258,15 @@ ____
 * **POP**: Post office Protocol. POP3 is designed for receiving incoming E-mails.
 * **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 
+## [:fire:]()[Details]
+### MAC address
+* MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
+* MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
+* What's the MAC address in the TCP packet when your destination is Google.com?
+Gateway's MAC address/ the router’s MAC address
+* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
+取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
+
 * **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
     - Types: Sliding Window ARQ(Automatic Repeat req uest) 
         * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
@@ -304,13 +314,7 @@ All necessary connections between the domain name and IP addresses are reflected
     * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
     * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
     
-### MAC address
-* MAC addresses are 6-byte (48-bits) in length, and are written in MM:MM:MM:SS:SS:SS format.
-* MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
-* What's the MAC address in the TCP packet when your destination is Google.com?
-Gateway's MAC address/ the router’s MAC address
-* 如果我有几个network，路由上有静态路由，客户端如何判断应该去哪个？
-取决于哪个静态路由cover了client要访问的网络，also metric and prefix size matters 
+
 
 ### 4. Flow/error control
 * Flow control and Error control are the control mechanism at data link layer and transport layer. flow control observes the proper flow of the data from sender to receiver, on the other hand, the error control observes that the data delivered to the receiver is error free and reliable.
