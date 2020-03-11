@@ -2,8 +2,9 @@
 * [Models](#firemodels)
 * [Protocols](#fireProtocols)
 * [Details](#fireDetails)
-    * [MAC Address](#MACaddress)
+    * [MAC Address](#mac-address)
     * [Router](#Router)
+    * [Flow/Error control](#Flow/error-control)
 
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
@@ -137,7 +138,7 @@ TCP provides **reliable** communication, in-order byte-stream data transfer. For
 TCP gives guarantee of transmission of data|UDP does not give guarantee of transmission of data.
 TCP header size is 20 bytes|UDP header size is 8 bytes
 In TCP there is concept of **acknowledgment**|In UDP there is no concept of acknowledgment
-there is **error, flow control**, sender won't overwhelm receiver |there is **no error, flow control**
+there is **[error, flow control](#Flow/error-control)**, sender won't overwhelm receiver |there is **no error, flow control**
 there is **congestion control**, senders "slow down sending rate" when network congested|there is **no congestion control**
 Retransmission of **lost packets** is possible in TCP|There is no retransmission of lost packets
 TCP is slower|UDP is faster because there is no retransmission of lost packets
@@ -305,23 +306,22 @@ IS-IS does not run over Internet Protocol (IP) and uses its own addressing schem
     * **Static Routing**: non-adaptive routing which doesn’t change routing table unless the network administrator changes or modify them manually. Static routing does not use complex routing algorithms and It provides high or more security than dynamic routing.
     * **Dynamic Routing**: adaptive routing which change routing table according to the change in topology. Dynamic routing uses complex routing algorithms and it does not provide high security like static routing. When the network change(topology) occurs, it sends the message to router to ensure that changes then the routes are recalculated for sending updated routing information.
 
+### Flow/error control
+* Flow control and Error control are the control mechanism at **data link layer** and **transport layer**. flow control observes the proper flow of the data from sender to receiver, on the other hand, the error control observes that the data delivered to the receiver is error free and reliable.
+* Flow Control: tell the sender how much data to send. 
+* Flow & Error Control technique
+    * **Stop-and-Wait ARQ**: send one frame at a time, sender sends one frame, waits until it receives confirmation from the receiver (okay to go ahead), and then sends the next frame.
+    * **Sliding Window ARQ**: send several frame at a time, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
+        * **Gp-back-N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
+        * **Selective-reject ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
 ___
 
-* **Sliding Window Protocols**: Sliding window protocols are **data link layer protocols** for reliable and sequential delivery of data frames. The sliding window is also used in **Transmission Control Protocol**. In this protocol, multiple frames can be sent by a sender at a time before receiving an acknowledgment from the receiver. The term sliding window refers to the imaginary boxes to hold frames.
-    - Types: Sliding Window ARQ(Automatic Repeat req uest) 
-        * **Go – Back – N ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. The frames are sequentially numbered and a finite number of frames are sent. If the acknowledgment of a frame is not received within the time period, all frames starting from that frame are retransmitted.
-        * **Selective Repeat ARQ**: sending multiple frames before receiving the acknowledgment for the first frame. However, here only the erroneous or lost frames are retransmitted, while the good frames are received and buffered.
-    - TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
-* **Stop and wait protocol**: sender sends one frame, waits until it receives confirmation from the receiver (okay to go ahead), and then sends the next frame.
+- TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
 * **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
     * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
     * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
     * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
     
-
-
-
-
 ### Network security protocols
 * Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
 * Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
@@ -356,14 +356,7 @@ All necessary connections between the domain name and IP addresses are reflected
     
 
 
-### 4. Flow/error control
-* Flow control and Error control are the control mechanism at data link layer and transport layer. flow control observes the proper flow of the data from sender to receiver, on the other hand, the error control observes that the data delivered to the receiver is error free and reliable.
-* Flow Control: tell the sender how much data to send. 
-* Flow & Error Control technique: Stop-and-Wait & Sliding Window
-* Stop-and-Wait ARQ: send one frame at a time
-* Sliding Window ARQ: send several frame at a time
-        * Gp-back-N ARQ
-        * Selective-reject ARQ
+### 4. 
         
 ### 4. Window Size? MTU? MSS?
 * **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as congestion control and the receive window tries not to exceed the capacity of the receiver to process data, a process known as flow control.
