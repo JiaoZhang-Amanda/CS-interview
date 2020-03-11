@@ -217,28 +217,30 @@ HTTP denotes Hyper Text Transfer Protocal, port#80, responsible for web context.
     * HTTP does not require any certificates and HTTPS needs SSL Certificates
 
 ### DHCP
-![](DHCP.png)
+![](https://witestlab.poly.edu/blog/content/images/2017/03/dhcp-transaction.svg)
+
 <details>
-<summary>What id DHCP?</summary>
-The work of DHCP is to assign an IP address to the hosts. Dynamic Host Configuration Protocol(DHCP) is an application layer protocol. It is a Client server protocol which uses UDP services. IP address is assigned from a pool of addresses. DHCP port number for server is 67 and for the client is 68.
+<summary>What is DHCP?</summary>
+<b>Dynamic Host Configuration Protocol</b>(DHCP) is an application layer protocol. The work of DHCP is to assign an IP address to the hosts.  It is a Client server protocol which uses UDP services. IP address is assigned from a pool of addresses. DHCP port number for server is 67 and for the client is 68.
 </details>
 <details>
 <summary>How DHCP Works</summary>
  <br>Device sends broadcast message "I am new here". DHCP server see message and responde and allocate an IP address, while other devices ignore the message.
- <br>In DHCP, the client and the server exchange mainly 4 DHCP messages in order to make a connection, also called DORA process, but there are 8 DHCP messages in the process.
+ <br>In DHCP, the client and the server exchange mainly 4 DHCP messages in order to make a connection, also called <b>DORA process</b>, but there are 8 DHCP messages in the process.
 </details>
 <details>
-<summary>DHCP DORA Process</summary>
- <br>* Discovery ( DHCP discover ):
+<summary><b>DHCP DORA Process</b></summary>
+ <br>* <b>Discovery</b> ( DHCP discover ):
  <br>By this message interaction start between server and client. Discovery sent by a client that is connected to a local subnet. While send discovery destination address is broadcast 255.255.255.255 and source address is 0.0.0.0.
-  <br>* OFFER ( DHCP offer ):
+  <br>* <b>OFFER</b> ( DHCP offer ):
   <br>Offer is a response to the Discovery message by the DHCP server to the DHCP clients. It contains a network configuration setting for the client like an IP address offered to client 10.1.1.1.
-  <br>* REQUEST ( DHCP request ):
+  <br>* <b>REQUEST</b> ( DHCP request ):
  Response to Offer is indicating that the client has accepted the network configuration. It means to accept the offer by the DHCP server with IP 10.1.1.1. this message sent by the client with destination address 255.255.255.255 and the source address is 10.1.1.1.
-  <br>* ACKNOWLEDGE ( DHCP ack ):
+  <br>* <b>ACKNOWLEDGE</b> ( DHCP ack ):
  After the request message or accept the IP by DHCP SERVER, the server sent an ACK to the client. This message clear to the client that now you can start using the network.
 </details>
 
+___
 * **FTP**: *File Transfer Protocol*. FTP allows users to transfer files from one machine to another. Types of files may include program files, multimedia files, text files, and documents, etc. **Port 21** Employees use FTP to securely share files with coworkers and external business partners. Webmaster teams use FTP to transfer Web pages, Web application files, and images to their Web server.
 
 * **SMTP**: Simple mail transport Protocol. SMTP is designed to send and distribute outgoing E-Mail.
