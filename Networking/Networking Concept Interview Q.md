@@ -78,7 +78,7 @@ ___
 ### ARP
 ![](./ARP.png)
 * The **address resolution protocol** (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
-* ARP finds the hardware address, also known as [Media Access Control (MAC) address](##mac-address), of a host from its known IP address.
+* ARP finds the hardware address, also known as [Media Access Control (MAC) address](#mac-address), of a host from its known IP address.
 ___
 ### IP 
 IP(**Internet Protocol**) is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
