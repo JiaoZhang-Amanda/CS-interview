@@ -161,12 +161,50 @@ Output: [1,2,3,4,5,6,7]
 
 <details>
 <summary>270. Closest Binary Search Tree Value</summary>
+Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
 
+Note:
+
+Given target value is a floating point.
+You are guaranteed to have only one unique value in the BST that is closest to the target.
 </details>
 
 <details>
 <summary>272. Closest Binary Search Tree Value II </summary>
+Given a non-empty binary search tree and a target value, find k values in the BST that are closest to the target.
 
+Note:
+
+Given target value is a floating point.
+You may assume k is always valid, that is: k≤ total nodes.
+You are guaranteed to have only one unique set of k values in the BST that are closest to the target.
+Example:
+
+Input: root = [4,2,5,1,3], target = 3.714286, and k = 2
+
+    4
+   / \
+  2   5
+ / \
+1   3
+
+Output: [4,3]
 </details>
 
-230. Kth Smallest Element in a BST 
+<details>
+<summary>230. Kth Smallest Element in a BST </summary>
+Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+
+Note:
+You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+
+Example 1:
+
+Input: root = [3,1,4,null,2], k = 1
+   3
+  / \
+ 1   4
+  \
+   2
+Output: 1
+</details>

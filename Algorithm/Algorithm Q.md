@@ -167,3 +167,14 @@ public void union(int p, int q){
 * inorder: traverse the left subtree, then visit the root node and finally traverse the right subtree.
 * postorder: traverse the left subtree, then traverse the right subtree and finally visit the root node.
 * level-order: traverse the tree level by level.
+
+## Dynamic Programming
+
+
+## Searching Algorithm
+### Linear Search / sequential search
+### Binary Search
+Binary Search is generally composed of 3 main sections:
+* Pre-processing — Sort if collection is unsorted.
+* Binary Search — Using a loop or recursion to divide search space in half after each comparison.
+* Post-processing — Determine viable candidates in the remaining space.
