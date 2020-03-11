@@ -4,12 +4,20 @@
 * [Details](#fireDetails)
     * [MAC Address](#mac-address)
     * [Router](#Router)
-    * [Flow/Error control](#Flow/error-control)
+    * [Flow/Error control](#flowerror-control)
     * [DNS](#DNS)
     * [NAT](#NAT)
     * [Domain Name](#Domain-Name)
     * [Unicast, Multicast and Broadcast](#unicast-multicast-and-broadcast)
+    * [Hub, Switch and Router](#Hub-Switch-and-Router)
     * [Window size, MTU, MSS](#window-size-mtu-mss)
+    * [Network security protocols] (#Network-security-protocols)
+    * [Server Load Balancing](#Server-Load-Balancing)
+    * [Networking Hardware](#networking-hardware)
+    * [Gateway](#Gateway)
+    * [Bandwidth, Delay/Latency](#Bandwidth-DelayLatency)
+* [Others](#others)
+    * [What happens when you type a URL in the web browser?](#What-happens-when-you-type-a-URL-in-the-web-browser)
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -17,7 +25,7 @@
 Name | Details  | Protocols involved | Data units
 --|--|--|--
 **Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the **signal** received and convert it into **0s and 1s** and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
-**Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
+**Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & [Media Access Control (MAC)](#MAC-protocal) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
 **Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), [IPSec](#IPSec) and IGMP.|Packet
 **Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCPUDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
@@ -86,6 +94,13 @@ ___
 ![](./ARP.png)
 * The **address resolution protocol** (arp) is a protocol used by the Internet Protocol (IP), specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer. It is used when IPv4 is used over Ethernet.
 * ARP finds the hardware address, also known as [Media Access Control (MAC) address](#mac-address), of a host from its known IP address.
+
+### MAC protocal
+**Medium Access Control**. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
+* **Type**:
+    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
+    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
+    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
 ___
 ### IP 
 IP(**Internet Protocol**) is designed explicitly as addressing protocol. It is mostly used with TCP. The IP addresses in packets help in routing them through different nodes in a network until it reaches the destination system. 
@@ -316,33 +331,33 @@ IS-IS does not run over Internet Protocol (IP) and uses its own addressing schem
 * DNS stands for **Domain Name System**. It translates domain names to IP addresses so browsers can load Internet resources. It works in a hierarchical way.
 * It is an **application layer protocol** for message exchange between clients and servers. DNS primarily uses the **User Datagram Protocol (UDP)** on port number **53** to serve requests.
 * **Process/ DNS resolving**
-![](DNS.png)
+![](https://witestlab.poly.edu/blog/content/images/2017/03/dns-iterative-messages.svg)
     * When you type the URL of website for example ‘google.com’ in a web-browser & then request send to **DNS recursive resolver** through your ISP.
     * This DNS recursive resolver then sends the query to a **DNS root nameserver (.)**.
     * The root DNS server then replies to the DNS resolver by IP address of a **Top Level Domain (TLD)** DNS server, which have the information about the domains.
     * The DNS resolver then queries the **.com** Top Level Domain (TLD).
-    * The Top Level Domain server then replies with the IP address of the domain’s name-server, w7cloud.com.
+    * The Top Level Domain server then replies with the IP address of the domain’s name-server.
     * In last, the DNS resolver sends a request to the website’s name-server.
     * The IP address for google.com is then returned to the resolver from the name-server.
     * Then DNS recursive resolver responds to the web-browser with the IP address of the domain requested initially.
-* DNS servers
+* **DNS servers**
     * Authoritative Name Server
     * DNS Resolver
     * DNS Root Server
 * DNS record types: All necessary connections between the domain name and IP addresses are reflected in a special file located on the DNS server. The contents of this file are called a DNS zone description, or simply a **DNS zone**.
-    * **AAAA Record**: Contain THE hostname and it’s corresponding **IPv6 address**. * What's the DNS record type for IPv6 entries?  An AAAA (pronounced quad A) record is a DNS record that maps to an IPv6 address.         
+    * **AAAA Record**: Contain THE hostname and it’s corresponding **IPv6 address**.  
 
 ### NAT
 * Network Address Translation (NAT) is the ability of a router to translate a public IP address to a private IP address and vice versa.  It adds security to the network by keeping the private IP addresses hidden from the outside world.
 * three NAT types
-    * Open NAT - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
-    * Moderate NAT - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
-    * Strict NAT - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
+    * **Open NAT** - This means that your gaming console has the ability to connect to anyone’s games, host games, and other users will be able to find and connect to the game you are hosting.
+    * **Moderate NAT** - This means that your connectivity to other players is neither limited nor open.  You will be able to connect to other players but some functions will be limited.
+    * **Strict NAT** - This means that you have limited connectivity with other players and players who have Strict or Moderate NAT will not be able to join your gaming session.
     
 ### Domain Name
-* **Broadcast Domain**: A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer.
 * **Domain Name**: A domain name is your website name. A domain name is the address where Internet users can access your website.
-* **Subdomain** For example, west.example.com and east.example.com are subdomains of the example.com domain, which in turn is a subdomain of the com top-level domain (TLD). 
+* **Broadcast Domain**: A broadcast domain is a logical division of a computer network, in which all nodes can reach each other by broadcast at the data link layer.
+* **Subdomain** For example, "west.example.com" and "east.example.com" are subdomains of the "example.com" domain, which in turn is a subdomain of the com top-level domain (TLD). 
 
 ### Unicast, Multicast and Broadcast
 Data is transported over a network by three simple methods i.e. Unicast, Broadcast, and Multicast. 
@@ -350,32 +365,53 @@ Data is transported over a network by three simple methods i.e. Unicast, Broadca
 * **Broadcast**: from one source to all possible destinations i.e. One-to-All.  e.g. ARP Request message, DHCP DISCOVER Message
 * **Multicast**: from one source to multiple destinations stating an interest in receiving the traffic i.e. One-to-Many. e.g. Multicast Windows Deployment Services (WDS) OS deployment traffic, IP TV etc
 
+### Hub, Switch and Router
+* A **hub** is to sent out a message from one port to other ports. For example, if there are three computers of A, B, C, the message sent by a hub for computer A will also come to the other computers. But only computer A will respond and the response will also go out to every other port on the hub. Therefore, all the computers can receive the message and computers themselves need to decide whether to accept the message. works on the **physical layer (Layer 1)** of OSI model
+* A **switch** is able to handle the data and knows the specific addresses to send the message. It can decide which computer is the message intended for and send the message directly to the right computer.  works on the **data link layer (Layer 2)**.
+* **Router** is actually a small computer that can be programmed to handle and route the network traffic. It usually connects at least two networks together. Routers can calculate the best route for sending data and communicate with each other by protocols.works in **network layer(Layer 3 of the OSI Model)**
+* Collisions are often in a hub environment, because each port on a hub is in the same **collision domain**. By contrast, each port on a bridge, a switch or a router is in a separate collision domain.
+* All ports on a hub or a switch are by default in the same **broadcast domain**. All ports on a router are in the different broadcast domains and routers don't forward broadcasts from one broadcast domain to another.
+
 ### Window Size? MTU? MSS?
-* **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as congestion control and the receive window tries not to exceed the capacity of the receiver to process data, a process known as flow control.
-* A **maximum transfer unit (MTU)** is the maximum size of the data field(payload) in the frame. If packet size > MTU, need for fragmentation for IP datagram. Fragmentation: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits). The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
-*  **TCP MSS**(TCP Maximum Segment Size) defines the maximum amount of data that a host is willing to accept in a single TCP/IPv4 datagram. This TCP/IPv4 datagram might be fragmented at the IPv4 layer.
-* TCP Window Size Scaling: TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the window size. Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
+* **TCP windows**: Congestion window marks the limit of data which can be held by the network, a process known as **congestion control** and the receive window tries not to exceed the capacity of the receiver to process data, a process known as **flow control**.
+    * TCP uses “windowing” which means that a sender will send one or more data segments and the receiver will acknowledge one or all segments. 
+    * When the receiver sends an acknowledgment, it will tell the sender how much data it can transmit before the receiver will send an acknowledgment. We call this the **window size**. 
+    * Basically, the window size indicates the size of the receive buffer. Typically the TCP connection will start with a small window size and every time when there is a successful acknowledgement, the window size will increase. 
+* **maximum transfer unit (MTU)**: maximum size of the data field(payload) in the frame. If packet size > MTU, need for fragmentation for IP datagram. 
+    * **Fragmentation**: Identification(16bits) + flags(3bits) + fragmentation Offset(13 bits). The Internet's Transmission Control Protocol (TCP) uses the MTU to determine the maximum size of each packet in any transmission.
+*  **TCP MSS**: (TCP Maximum Segment Size) defines the maximum amount of data that a host is willing to accept in a single TCP/IPv4 datagram. This TCP/IPv4 datagram might be fragmented at the IPv4 layer.
 
-
-* **MAC protocal**: medium access control. Within the data link layer, the LLC provides flow control and multiplexing for the logical link (i.e. EtherType, 802.1Q VLAN tag etc), while the MAC provides flow control and multiplexing for the transmission medium. 
-    * Channel partitioning: divide channel into small pieces(time slots, frequency) TDMA, FDMA, CDMA
-    * Random Access: Channel not divided and allow collisions. ALOHA, CSMA/CD(Carrier Sense Multiple access with collison detection, IEEE802.3), CSMA/CA(Collison avoidance)
-    * Controlled-asssess: Nodes take turn. Reservation, polling, token passing(IEEE802.5)
-    
-### Network security protocols
+### Network Security Protocols
 * Network security protocols are primarily designed to prevent any unauthorized user, application, service or device from accessing network data. This applies to virtually all data types regardless of the network medium used.
-* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them. Some of the popular network security protocols include Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).
+* Network security protocols generally implement cryptography and encryption techniques to secure the data so that it can only be decrypted with a special algorithm, logical key, mathematical formula and/or a combination of all of them.
+* **Secure File Transfer Protocol (SFTP), Secure Hypertext Transfer Protocol (HTTPS) and Secure Socket Layer (SSL).**
 
 ### Server Load Balancing
-* Server Load Balancing (SLB) is a technology that distributes high traffic sites among several servers using a network-based hardware or software-defined appliance. 
+* **Server Load Balancing (SLB)** is a technology that distributes high traffic sites among several servers using a network-based hardware or software-defined appliance. 
 * Server Load Balancing (SLB) provides network services and content delivery using a series of load balancing algorithms. It prioritizes responses to the specific requests from clients over the network. Server load balancing distributes client traffic to servers to ensure consistent, high-performance application delivery.
-* Two main types of load balancing:
-    * Transport-level load balancing is a DNS-based approach which acts independently of the application payload.
-    * Application-level load balancing uses traffic load to make balancing decisions such as with windows server load balancing.
+* **Types**:
+    * **Transport-level load balancing**: DNS-based approach which acts independently of the application payload.
+    * **Application-level load balancing**: uses traffic load to make balancing decisions such as with windows server load balancing.
 * HTTP server load balancing is a simple HTTP request/response architecture for HTTP traffic. But a TCP load balancer is for applications that do not speak HTTP. TCP load balancing can be implemented at layer 4 or at layer 7. An HTTP load balancer is a reverse proxy that can perform extra actions on HTTPS traffic.
 
-## [Others]
-### 1. Describe in as much details as possible what happens after we type "www.google.com" into the URL box of browser and hit enter. / What happens when you type a URL in the web browser?
+### Networking Hardware
+* Networking hardware, also known as network equipment or computer networking devices, are electronic devices which are required for communication and interaction between devices on a computer network. Specifically, they mediate data transmission in a computer network.
+* Networking devices may include **gateways, routers, network bridges, modems, wireless access points, networking cables, line drivers, switches, hubs, and repeaters** and may also include hybrid network devices such as **multilayer switches, protocol converters, bridge routers, proxy servers, firewalls, network address translators, multiplexers, network interface controllers, wireless network interface controllers, ISDN terminal adapters and other related hardware**.
+
+### Gateway
+A gateway is a piece of networking hardware used in telecommunications for telecommunications networks that allows data to flow from one discrete network to another. Gateways are distinct from routers or switches in that they communicate using **more than one protocol** to connect a bunch of networks and can operate at **any of the seven layers** of the open systems interconnection model (OSI).
+
+### Bandwidth, Delay/Latency
+* **Bandwidth**: Bandwidth determines how fast data can be transferred over time. Bandwidth is the amount of data that can be transferred per second.
+* **Delay/Latency(end-to-end)** Latency is delay. Latency is how long it takes data to travel between its source and destination, measured in milliseconds.
+    * **Transmission time**, the time it takes to transmit a group of bits(e.g. a message/packet/frame) of bits into a network<br>`Tt = number of message bits[bits] / data rate[bps]`
+    * **Propagation delay**, the time it takes for a bit to tranverse the link `Tp = link length[m] / Vprop[m/s]`
+    * **Nodal processing**: check bit errors and determine output link(routing decesion)
+    * **Queuing delay**(Random, depends on network loading, link capacities, disciplines, etc...):  time waiting at output link for transmission, depends on congestion level of router
+* **Throughput[bits/sec]**: The number of information bits that can be transferred reliably over a certain period of time.
+
+## [:fire:]()[Others]
+### 1. What happens when you type a URL in the web browser?
 - Step 1. URL is typed in the browser.
 - Step 2. If requested object is in browser cache and is fresh, move on to Step  8.
 - Step 3. DNS lookup to find the ip address of the server. Browser first looks up URL-ip mapping browser cache, then in OS cache. If all empty, then make a recursive query to local DNS server(provide ip address).
@@ -399,26 +435,12 @@ Data is transported over a network by three simple methods i.e. Unicast, Broadca
 2. User browser can refuse cookies
 3. Cookies exit as plain text on client machine and they may pose a security rist as anyone can open the cookie.
 
-### 3. Networking hardware
-* Networking hardware, also known as network equipment or computer networking devices, are electronic devices which are required for communication and interaction between devices on a computer network. Specifically, they mediate data transmission in a computer network.
-* Networking devices may include gateways, routers, network bridges, modems, wireless access points, networking cables, line drivers, switches, hubs, and repeaters; and may also include hybrid network devices such as multilayer switches, protocol converters, bridge routers, proxy servers, firewalls, network address translators, multiplexers, network interface controllers, wireless network interface controllers, ISDN terminal adapters and other related hardware.
-
-### Gateway 
-A gateway is a piece of networking hardware used in telecommunications for telecommunications networks that allows data to flow from one discrete network to another. Gateways are distinct from routers or switches in that they communicate using more than one protocol to connect a bunch of networks[1][2] and can operate at any of the seven layers of the open systems interconnection model (OSI).
-
-### 3. Difference between Hub, Switch and Router?
-* A **hub** is to sent out a message from one port to other ports. For example, if there are three computers of A, B, C, the message sent by a hub for computer A will also come to the other computers. But only computer A will respond and the response will also go out to every other port on the hub. Therefore, all the computers can receive the message and computers themselves need to decide whether to accept the message. works on the physical layer (Layer 1) of OSI model
-* A switch is able to handle the data and knows the specific addresses to send the message. It can decide which computer is the message intended for and send the message directly to the right computer.  works on the data link layer (Layer 2)
-* Router is actually a small computer that can be programmed to handle and route the network traffic. It usually connects at least two networks together. Routers can calculate the best route for sending data and communicate with each other by protocols.works in *network layer*(Layer 3 of the OSI Model)
-* Collisions are often in a hub environment, because each port on a hub is in the same **collision domain**. By contrast, each port on a bridge, a switch or a router is in a separate collision domain.
-* All ports on a hub or a switch are by default in the same **broadcast domain**. All ports on a router are in the different broadcast domains and routers don't forward broadcasts from one broadcast domain to another.
-
-### 5. What is a Proxy Server and how do they protect the computer network?
-* For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
+### 3. What is a Proxy Server and how do they protect the computer network?
 * Proxy Servers prevent external users who are unauthorized to access such IP addresses of the internal network. The Proxy Server makes the computer network virtually invisible to the external users.
-* Proxy Server also maintains the list of blacklisted websites so that the internal user is automatically prevented from getting easily infected by viruses, worms, etc.
+* For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
+* Proxy Server maintains the list of blacklisted websites so that the internal user is automatically prevented from getting easily infected by viruses, worms, etc.
 
-### 6. What are the different types of a network? Explain each briefly. (Network Classifications based on coverage)
+### 4. What are the different types of a network? Explain each briefly. (Network Classifications based on coverage)
 * **Personal Area Network (PAN)**: It is the smallest and basic network type that is often used at home. It is a connection between the computer and another device such as phone, printer, modem tablets, etc
 * **Local Area Network (LAN)**: LAN is used in small offices and internet cafes to connect a small group of computers to each other. Usually, they are used to transfer a file or for playing the game in a network.
 * **Metropolitan Area Network (MAN)**: It is a powerful network type than LAN. The area covered by MAN is a small town, city, etc. A huge server is used to cover such a large span of area for connection.
@@ -428,18 +450,8 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 * **Enterprise Private Network (EPN)**
 * **Passive Optical Local Area Network (POLAN)**
 
-### 7. Networking Performance Measures: Bandwidth, Delay/Latency
-* **Bandwidth**: Bandwidth determines how fast data can be transferred over time. Bandwidth is the amount of data that can be transferred per second.
-* **Delay/Latency(end-to-end)** Latency is delay. Latency is how long it takes data to travel between its source and destination, measured in milliseconds.
-    * **Transmission time**, the time it takes ti transmit a group of bits(e.g. a message/packet/frame) of bits into a network<br>
-    `Tt = number of message bits[bits] / data rate[bps]`
-    * **Propagation delay**, the time it takes for a bit to tranverse the link
-    `Tp = link length[m] / Vprop[m/s]`
-    * **Nodal processing**: check bit errors and determine output link(routing decesion)
-    * **Queuing delay**(Random, depends on network loading, link capacities, disciplines, etc...):  time waiting at output link for transmission, depends on congestion level of router
-* **Throughput[bits/sec]**: The number of information bits that can be transferred reliably over a certain period of time.
 
-### 8. Different Wi-Fi Protocols and Data Rates
+### 5. What are different Wi-Fi Protocols and Data Rates
 IEEE 802.11 Wireless LANs(Wi-Fi) protocol summary:
 
 Protocol | Frequency  | Channel Width   |   MIMO   |   Maximum data rate (theoretical)
@@ -454,12 +466,13 @@ Protocol | Frequency  | Channel Width   |   MIMO   |   Maximum data rate (theore
 Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 
 ### Cloud v Vitualization
-* virtualization is a technology, where cloud is an environment.
-* virtualization is a technology that allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system, and clouds are IT environments that abstract, pool, and share scalable resources across a network.
+* Virtualization is a technology, where cloud is an environment.
+* Virtualization is a technology that allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system, and clouds are IT environments that abstract, pool, and share scalable resources across a network.
 * Clouds are usually created to enable cloud computing, which is the act of running workloads within that system. 
 * Cloud architecture
 
-* **SSH**: Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
+### SSH
+Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 
 ## [Socket Programming]
 A socet is an astract representation of a communication endpoint.  
