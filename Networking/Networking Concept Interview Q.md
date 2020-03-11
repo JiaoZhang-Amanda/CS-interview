@@ -17,7 +17,18 @@
     * [Gateway](#Gateway)
     * [Bandwidth, Delay/Latency](#Bandwidth-DelayLatency)
 * [Others](#others)
-    * [What happens when you type a URL in the web browser?](#What-happens-when-you-type-a-URL-in-the-web-browser)
+    * [What happens when you type a URL in the web browser?](#1-What-happens-when-you-type-a-URL-in-the-web-browser)
+    * [What are cookies? Why do we need it?](#2-what-are-cookies-why-do-we-need-it)
+    * [What is a Proxy Server and how do they protect the computer network?](#3-what-is-a-proxy-server-and-how-do-they-protect-the-computer-network)
+    * [What are the different types of a network?](4-what-are-the-different-types-of-a-network)
+    * [What are different Wi-Fi Protocols and Data Rates?](5-What-are-different-Wi-Fi-Protocols-and-Data-Rates)
+    * [Cloud, Vitualization](#Cloud-Vitualization)
+    * [SSSH](#SSH)
+* [Socket Programming](#Socket-Programming)
+    * [TCP Socket API](#1-TCP-Socket-API)
+    * [UDP Socket API](#2-UDP-Socket-API)
+    * [Difference between sendto and send functions](#Difference-between-sendto-and-send-functions)
+    * [Basic CLI](#4-Basic-CLIcommand-line-interface)
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -440,7 +451,7 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 * For data transmission, IP addresses are required and even DNS uses IP addresses to route to the correct website. It means without the knowledge of correct and actual IP addresses it is not possible to identify the physical location of the network.
 * Proxy Server maintains the list of blacklisted websites so that the internal user is automatically prevented from getting easily infected by viruses, worms, etc.
 
-### 4. What are the different types of a network? Explain each briefly. (Network Classifications based on coverage)
+### 4. What are the different types of a network?
 * **Personal Area Network (PAN)**: It is the smallest and basic network type that is often used at home. It is a connection between the computer and another device such as phone, printer, modem tablets, etc
 * **Local Area Network (LAN)**: LAN is used in small offices and internet cafes to connect a small group of computers to each other. Usually, they are used to transfer a file or for playing the game in a network.
 * **Metropolitan Area Network (MAN)**: It is a powerful network type than LAN. The area covered by MAN is a small town, city, etc. A huge server is used to cover such a large span of area for connection.
@@ -449,7 +460,6 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 * **System Area Network (SAN)**
 * **Enterprise Private Network (EPN)**
 * **Passive Optical Local Area Network (POLAN)**
-
 
 ### 5. What are different Wi-Fi Protocols and Data Rates
 IEEE 802.11 Wireless LANs(Wi-Fi) protocol summary:
@@ -465,16 +475,17 @@ Protocol | Frequency  | Channel Width   |   MIMO   |   Maximum data rate (theore
 802.11b(1G)  |    2.4 GHz    |  20 MHz    |  N/A   |   11 Mbps
 Legacy 802.11  |    2.4 GHz   |   20 MHz   |   N/A   |   2 Mbps
 
-### Cloud v Vitualization
-* Virtualization is a technology, where cloud is an environment.
-* Virtualization is a technology that allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system, and clouds are IT environments that abstract, pool, and share scalable resources across a network.
+### Cloud, Vitualization
+* Virtualization is a **technology**, where cloud is an **environment**.
+* Virtualization is a technology that allows you to create **multiple simulated environments** or** dedicated resources** from a single, physical hardware system
+* Clouds are IT environments that abstract, pool, and share scalable resources across a network.
 * Clouds are usually created to enable cloud computing, which is the act of running workloads within that system. 
 * Cloud architecture
 
 ### SSH
 Secure Shell. SSH allows for remote command-line login and remote execution. It has many of the functions of FTP but is more secure. `ssh username@ssh.server.com` replacing username with your username on the SSH server and ssh.server.com with the host name or IP address of the SSH server
 
-## [Socket Programming]
+## [:fire:]()[Socket Programming]
 A socet is an astract representation of a communication endpoint.  
 A socket allows the application to "plug in" to the network and commnucate with other applications
 A socket is uniquely identified by the IP address, Port number and the underlying transport layer protocol.
@@ -525,7 +536,7 @@ Establishing a UDP socket communication on the **client side** are the following
 - Bind the socket to an address using the **bind()** function;
 - Send and receive data by means of **recvfrom()** and **sendto()**.
 
-### 3. Difference between sendto and send functions.
+### 3. Difference between sendto and send functions
 These functions send data to a socket. Generally speaking, send() is used for TCP SOCK_STREAM connected sockets, and sendto() is used for UDP SOCK_DGRAM unconnected datagram sockets.
 
 ### 4. Basic CLI(command-line interface)
