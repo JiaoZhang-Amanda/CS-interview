@@ -40,7 +40,7 @@
 * [Socket Programming](#fireSocket-Programming)
     * [TCP Socket API](#1-TCP-Socket-API)
     * [UDP Socket API](#2-UDP-Socket-API)
-    * [Difference between sendto and send functions](#Difference-between-sendto-and-send-functions)
+    * [Difference between sendto and send functions](#3-Difference-between-sendto-and-send-functions)
     * [Basic CLI](#4-Basic-CLIcommand-line-interface)
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
@@ -564,15 +564,18 @@ These functions send data to a socket. Generally speaking, send() is used 
     * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com. `telnet telnet.microsoft.com`
     * Use telnet to connect to the computer running the telnet Server Service at telnet.microsoft.com on TCP port 44 and log the session activity in a local file called telnetlog.txt `telnet /f telnetlog.txt telnet.microsoft.com 44`
 * `Traceroute` 
-    * a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network It will display the different routers or hops needed to travel from the source system to the destination system.. Windows( `Tracert`) Linux(`tracepath`)
+    * a computer network diagnostic tool for displaying the route (path), and measuring transit delays, of packets across an Internet Protocol (IP) network 
+    * It will display the different routers or hops needed to travel from the source system to the destination system. Windows( `Tracert`) Linux(`tracepath`)
 * `ifconfig` 
     * get your IP address
 * `nslookup` 
     * getting information from DNS server. find the address record for a domain. Reverse DNS lookup. view all the available DNS records. Lookup for an soa record. Look for an NS(Name Server) record which maps a domain name to a list of DNS servers authoritative for that domain. etc.
 * `Grep` 
     * a command line tool to search for regular expressions. Grep will print the matching line to the output and with the --color flag you can highlight the matching strings. `grep searchterm filename`
-`tcpdump` 
-    * Capture Packets from Specific Interface; Display Available Interfaces... `tcpdump -i -eth0`
+* `tcpdump` 
+    * Capture Packets from Specific Interface
+    * Display Available Interfaces
+    * `tcpdump -i -eth0`
 * Print Working Directory (pwd) 
 * Change Directories (cd) 
 * List Files and Directories (ls) 
