@@ -1,4 +1,4 @@
-# Networking concepts Interview Question
+# Networking Concepts Interview Question
 * [Models](#firemodels)
 * [Protocols](#fireProtocols)
     * [Common Ports](#common-ports)
