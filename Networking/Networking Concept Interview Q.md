@@ -8,7 +8,7 @@ Name | Details  | Protocols involved | Data units
 **Physical Layer** | It is responsible for the actual physical connection between the devices.When receiving data, this layer will get the **signal** received and convert it into **0s and 1s** and send them to the Data Link layer, which will put the frame back together. |PON, OTN, DSL, IEEE.802.11, IEEE.802.3, L431 and TIA 449.| bits, symble
 **Datalink Layer** | is responsible for the **node to node** delivery of the message. The main function of this layer is to make sure data transfer is **error-free** from one node to another, over the physical layer. **DLL** encapsulates *Sender and Receiver’s MAC address* in the header. Data Link Layer is divided into two sub layers : Logical Link Control (LLC) & Media Access Control (MAC) -- **Error detection, Error control & Flow Control**|[ARP](#ARP), CSLIP, HDLC, IEEE.802.3, PPP, X-25, SLIP, ATM, SDLS and PLIP| Frame
 **Network Layer**| transmission of data from one **host** to the other located in different networks. It also takes care of **packet routing**. *The sender & receiver’s IP address* are placed in the header by the network layer. |[IP](#IP)(IPv4, IPv6), IPX, AppleTalk, [ICMP](#ICMP), [IPSec](#IPSec) and IGMP.|Packet
-**Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|TCP, UDP, SPX, DCCP and SCTP| Segments, Datagram
+**Transport Layer**| responsible for the **End to End Delivery** of the complete message. The transport layer also provides the **acknowledgement** of the successful data transmission and **re-transmits** the data if an error is found.|[TCP&UDP](#TCP&UDP), SPX, DCCP and SCTP| Segments, Datagram
 **Session Layer**| responsible for **establishment of connection**, maintenance of sessions, authentication and also ensures security.|PPTP, SAP, L2TP and NetBIOS|data
 **Presentation Layer**|The data from the application layer is extracted here and manipulated as per the required format to transmit over the network.|XDR, TLS, SSL and MIME|data
 **Application Layer**|These applications produce the data, which has to be transferred over the network. This layer also serves as a window for the application services to access the network and for displaying the received information to the user.|HTTP(via a web browser), SMTP(via an email client), DHCP, FTP(via an FTP client), Telnet|data
@@ -100,14 +100,15 @@ addresses: 32 available hosts: 30
 1.1.1.1 is a public DNS resolver that provides a fast and private way to browse the Internet.
 ```
 ### ICMP
-* ICMP is a transport level protocol within TCP/IP which communicates information about network connectivity issues back to the source of the compromised transmission. It sends control messages such as destination network unreachable, source route failed, and source quench.
+* ICMP is a transport level protocol within TCP/IP which communicates information about **network connectivity issues** back to the source of the compromised transmission. 
+* It **sends control messages** such as destination network unreachable, source route failed, and source quench.
 * For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
 
 ### IPsec
 * IP Security. It defines the encrypted, decrypted and authenticated packets. IPsec can be used to encrypt application layer data, provide security for routers sending routing data across the public internet and provide authentication without encryption. 
 * It has 2 modes. The **Main mode** which provides the greater security and the **Aggressive mode** which enables the host to establish an IPsec circuit more quickly.
 ___
-### 1. What is the difference between TCP and UDP? When would you use each of them?
+### TCP&UDP
 TCP|UDP
 --|--
 TCP stands for **Transmission control protocol**|UDP stands for **User datagram protocol**
@@ -117,15 +118,13 @@ TCP provides **reliable** communication, in-order byte-stream data transfer. For
 TCP gives guarantee of transmission of data|UDP does not give guarantee of transmission of data.
 TCP header size is 20 bytes|UDP header size is 8 bytes
 In TCP there is concept of **acknowledgment**|In UDP there is no concept of acknowledgment
-there is **error, flow control**, sender won't overwhelm receiver |there is no **error, flow control**
-there is **congestion control**, senders "slow down sending rate" when network congested|there is no **congestion control**
-TCP has concern of jitter. Means if any packet lost then TCP does not provide subsequent data to the application while it is requesting re-sending of the missing data|UDP does not have concern of jitter because there is retransmission of missing data.
-TCP is slower as compared to UDP because retransmission of lost packets can take long delay.|UDP is faster as compared to TCP because there is no retransmission of lost packets
-App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | App's using: streaming media, teleconferencing, DNS, SNMP, RIP, Voice over IP (VoIP)
+there is **error, flow control**, sender won't overwhelm receiver |there is **no error, flow control**
+there is **congestion control**, senders "slow down sending rate" when network congested|there is **no congestion control**
+Retransmission of **lost packets** is possible in TCP|There is no retransmission of lost packets
+TCP is slower|UDP is faster because there is no retransmission of lost packets
+App's using: HTTP(web), FTP(file transfer), Telnet(remote login), SMTP(email) | App's using: streaming media, DNS, DHCP, SNMP, RIP, VoIP(Voice over IP )
 
-* Both UDP and TCP provide error checking.
-
-### 5. TCP Connection set-up? Three-way handshake? TCP Synchronisation
+### TCP Connection set-up? Three-way handshake? TCP Synchronisation
 Client ------SYN-----> Server<br>
 Client <---ACK/SYN---- Server ----①<br>
 Client ------ACK-----> Server<br>
@@ -137,11 +136,14 @@ Client ------ACK-----> Server<br>
 * Server receives ACK.
 * TCP socket connection is ESTABLISHED.
 
-### 6. TCP connection termination? four-way handshake
+*  The server must acknowledge (ACK) the client's SYN and the server must also send its own SYN containing the initial sequence number for the data that the server will send on the connection.
+### TCP connection termination? four-way handshake
 Client ------FIN-----> Server<br>
 Client <-----ACK------ Server ----②<br>
 Client <-----FIN------ Server ----③<br>
 Client ------ACK-----> Server<br>
+
+* since a FIN and an ACK are required in each direction.
 ___
 ### 6. SSL
 SSL is the secure socket layer, a cryptographic protocol to encrypt network traffic. HTTPS is HTTP over SSL.
