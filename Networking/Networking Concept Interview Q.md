@@ -1,8 +1,8 @@
 # Networking concepts Interview Question
-* [Models](#checked_flagmodels)
+* [Models](#checkered_flagmodels)
 * [Protocols](#Protocols)
 
-## [:checked_flag:]()[Models]
+## [:checkered_flag:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
 
