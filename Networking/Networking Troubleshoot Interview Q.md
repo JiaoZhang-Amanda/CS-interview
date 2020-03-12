@@ -1,5 +1,5 @@
-## Network troubleshooting Interview Question
-### Network troubleshooting commands
+# Network troubleshooting Interview Question
+### :fire:Network troubleshooting commands
 * **PING**: checks the connectivity with the other computers.
 * **IPCONFIG**: shows the IP address of the computer and also it shows the DNS, DHCP, Gateway addresses of the network and subnet mask.
 * **NSLOOKUP**: checks domain name aliases, DNS records, operating system information by sending query to the Internet Domain Name Servers.
@@ -16,13 +16,13 @@ Conmmands used to check Internet connection?
 * PING servername/PING serverIP
 * TRACERT servername/TRACERT serverIP
 ```
-### Built-in tools to troubleshoot network issues.
+### :fire:Built-in tools to troubleshoot network issues.
 1) Command Prompt Commands
 First, ipconfig provides information about your current connection. Second, use the ping command to send a few packets of information to a remote server. others: Tracert/traceroute, Nslookup, Netstat
 2) Built-In Troubleshooting Utilities
 Windows contains built-in troubleshooters for common problem areas like printing, Windows Update, and audio. 
 
-### How to Troubleshoot a Network
+### :fire:How to Troubleshoot a Network
 <details>
 <summary> 1. Check the hardware.</summary>
 When you’re beginning the troubleshooting process, check all your hardware to make sure it’s connected properly, turned on, and working. If a cord has come loose or somebody has switched off an important router, this could be the problem behind your networking issues. There’s no point in going through the process of troubleshooting network issues if all you need to do is plug a cord in. Make sure all switches are in the correct positions and haven’t been bumped accidentally.
