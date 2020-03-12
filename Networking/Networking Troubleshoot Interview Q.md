@@ -133,12 +133,13 @@ check task manager, antivirus, disk fragmentation.
 
 <details>
 <summary>How do computers connect over the Internet?</summary>
+<img src="./pictures/internet_connect.png" alt="Internet_connect">
 <br>1) To connect to the Internet and other computers on a network, a computer must have a **NIC (network interface card)** installed. A network cable plugged into the NIC on one end and plugged into a cable modem, DSL modem, router, or switch can allow a computer to access the Internet and connect to other computers.
 <br>2) <b>ISPs (Internet service providers)</b>: When connected to an ISP, you're assigned an IP address, which is a unique address given to your computer or network to communicate on the Internet.
 <br>3) Windows, macOS, and Linux computers use the TCP/IP protocol to connect to other computers on a LAN or WAN. Connecting to a LAN or WAN requires either a wired connection or a wireless connection. A wired connection is usually done using a network cable (Cat 5 or Cat 6 network cable). A wireless connection (Wi-Fi) uses an 802.11b, 802.11g or 802.11n wireless network card. With both connection types, a network router is usually required to connect to other computers. Connecting to the Internet at your home also requires either a cable modem or a DSL modem, depending on which ISP you use.
 </details>
 
-![](./internet_connect.png)
+![](./pictures/internet_connect.png)
 
 <details>
 <summary>How do I troubleshoot slow performance on AWS EC2/RDS?</summary>
