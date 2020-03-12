@@ -9,7 +9,7 @@
     * [Authorization](#Authorization)
     * [Log Processing](#Log-Processing)
 * [Firewall](#fireFirewall)
-## [:fire:][Network Security Concept]
+## :fire:[Network Security Concept]
 ### Network Security
 Network security is the security provided to a network from **unauthorized access and risks**. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
 * **Confidentiality**: only sender, intended receiver should understand message contents ----> **Encrypted at sender and decryped at receiver**(symmetric and asymmetric [Encryption](#Encryption))
@@ -63,7 +63,7 @@ Network security is the security provided to a network from **unauthorized acces
 ### Log Processing
 How audit logs are processed, searched for key events, or summarized.
 
-## [:fire:][Firewall]
+## :fire:[Firewall]
 The network firewall is considered as the first line of defense against any cyber attack. It is able to protect different servers based on the firewall configuration. 
 
 ### 1. What is Network Firewall?
