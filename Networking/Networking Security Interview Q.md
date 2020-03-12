@@ -1,25 +1,33 @@
-## Network Security Interview Question
-
+# Network Security Interview Question
+* [Network Security Concept](#Network-Security-Concept)
+    * [Network Security](#Network-Security)
+    * [Types of Network Security](#Types-of-Network-Security)
+    * [Encryption](#Encryption)
+    * [Digital Signatures](#Digital-Signatures)
+    * [Risk, Vulnerability, and Threat](#Risk-Vulnerability-and-Threat)
+    * [White and Black hat hacker](#White-and-Black-hat-hacker)
+    * [Authorization](#Authorization)
+    * [Log Processing](#Log-Processing)
+* [Firewall](#Firewall)
 ## [Network Security Concept]
 ### Network Security
 Network security is the security provided to a network from **unauthorized access and risks**. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
-* **Confidentiality**: only sender, intended receiver should understand message contents ----> 
-* **Encrypted at sender and decryped at receiver**(symmetric and asymmetric [encryption](#Encryption))
-* **Authentication**: sender, receiver want to confirm identity of each other
+* **Confidentiality**: only sender, intended receiver should understand message contents ----> **Encrypted at sender and decryped at receiver**(symmetric and asymmetric [Encryption](#Encryption))
+* **Authentication**: sender, receiver want to **confirm identity** of each other
 * **Message Integrity**: sender, receiver want to ensure message not altered(in transit, or afterwards) without detection ----> [digital signature](#Digital-Signatures)
 * **Access and Availability**: services must be accessible and available to users, Access Control: Firewalls
 
-### Types of Network Security?
+### Types of Network Security
 * Antivirus and Antimalware Software: is a software program that protects a computer from any malicious software, any virus, spyware, adware, etc.
 * Application Security
 * Behavioral Analytics
 * Data Loss Prevention (DLP)
 * Email Security
-* **Firewalls**: acts as a gatekeeper which prevents unauthorized users to access the private networks as intranets.
+* **[Firewalls](#firewall)**: acts as a gatekeeper which prevents unauthorized users to access the private networks as intranets.
 * Mobile Device Security
 * Network Segmentation
 * Security Information and Event Management (SIEM)
-* **Virtual Private Network (VPN)**
+* **[Virtual Private Network (VPN)](#VPN)**
 * Web Security
 * Wireless Security
 * Endpoint Security
@@ -31,35 +39,28 @@ Network security is the security provided to a network from **unauthorized acces
     * **Symmetric Encryption** uses the same key for both encryption and decryption
     * **Asymmetric Encryption** employs different keys for the two processes. 
     * Symmetric is faster for obvious reasons but requires sending the key through an unencrypted channel, which is a risk.
-* **Public Key Encryption**
-Public key encryption use public and private key for encryption and decryption. In this mechanism, public key is used to encrypt messages and only the corresponding private key can be used to decrypt them. To encrypt a message, a sender has to know recipient’s public key.
+* **Public Key Encryption**: use public and private key for encryption and decryption. In this mechanism, public key is used to encrypt messages and only the corresponding private key can be used to decrypt them. To encrypt a message, a sender has to know recipient’s public key.
 
 ### Digital Signatures
-* Digital signature is an attachment to an electronic message used for security purpose. 
-* It is used to verify the authenticity of the sender.
-* It is also known as a mathematical technique which is used to validate the authenticity and integrity of a message software or a digital document.
+* A digital signature is a mathematical technique used to validate the authenticity and integrity of a message, software or digital document.
 * They provide assurance of evidence of originality identity and status of an electronic document transaction or message and even acknowledges the informed consent of the signer.
-* It has a legal significance.
+* Message signing, on the other hand, uses the sender's private key to sign the message, and his public key is used to read the signature.
 
-### 7. Risk, Vulnerability, and Threat
+### Risk, Vulnerability, and Threat
 * **Risk**: result of a system being secure but not secured sufficiently, thereby increasing the likelihood of a threat. 
 * **Vulnerability**: a weakness or breach in your network or equipment (e.g. modems, routers, access points). 
 * **Threat**: the actual means of causing an incident; for instance, a virus attack is deemed a threat.
 
-### 8. What are the possible results of an attack on a computer network?
-* Loss or corruption of sensitive data that is essential for a company’s survival and success
-* Diminished reputation and trust among customers
-* The decline in value with shareholders
-* Reduced brand value
-* Reduction in profits
+### White and Black hat hacker
+* Black and white hat hackers are different sides of the same coin. Both groups are skilled and talented in gaining entry into networks and accessing otherwise protected data.  
+* Black hats are motivated by political agendas, personal greed, or malice
+* White hats strive to foil the former. Many white hats also conduct tests and practice runs on network systems, to ascertain the effectiveness of security.
 
-### 9. Explain the difference between a white and black hat hacker.
-Black and white hat hackers are different sides of the same coin. Both groups are skilled and talented in gaining entry into networks and accessing otherwise protected data. However, black hats are motivated by political agendas, personal greed, or malice, whereas white hats strive to foil the former. Many white hats also conduct tests and practice runs on network systems, to ascertain the effectiveness of security.
+### Authorization
+* Authorization is a security mechanism used to determine user/client privileges or access levels related to network resources, including firewalls, routers, switches and application features. 
+* Authorization is normally preceded by authentication and during authorization. It’s system that verifies an authenticated user’s access rules and either grants or refuses resource access.
 
-### 10. What is Authorization?
-Authorization is a security mechanism used to determine user/client privileges or access levels related to network resources, including firewalls, routers, switches and application features. Authorization is normally preceded by authentication and during authorization. It’s system that verifies an authenticated user’s access rules and either grants or refuses resource access.
-
-### 11. What Is Log Processing?
+### Log Processing
 How audit logs are processed, searched for key events, or summarized.
 ________
 ## [Firewall]
@@ -115,6 +116,13 @@ ______
 
 ______
 ## [Basic Network Attacks]
+### What are the possible results of an attack on a computer network?
+* Loss or corruption of sensitive data that is essential for a company’s survival and success
+* Diminished reputation and trust among customers
+* The decline in value with shareholders
+* Reduced brand value
+* Reduction in profits
+
 ### 1. Virus
 A virus is not self-executable; it requires the user’s interaction to infects a computer and spread on the network. An example is an email with a malicious link or malicious attachment. When a recipient opens the attachment or clicks the link, the malicious code gets activated and circumvents the systems security controls and makes they inoperable. In this case, the user inadvertently corrupts the device.
 
