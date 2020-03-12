@@ -142,17 +142,28 @@ check task manager, antivirus, disk fragmentation.
 4) Check if there is high memory utilization by the App service you are running on the EC2 instance. Usually, it occurs because of some memory leak due to some unwanted looping and wrong variable handling. Its the developers mistake and should be fixed immediately.
 5) Implement better App Performance Monitroing (APM) agent like NewRelic to know exactly which MySQL queries are taking more time. The developers could have written a query with absolutely no brain, fix that.
 
-### 16. A client in Germany is trying to access a server in London, but his connection is running slow. You are in Dublin. How do you diagnose his issue?
+### 16. 
 * This is a client system issue - have the client run diagnostics on his system.
 * This is a network congestion issue between the client and server - run several trace routes and see if there is latency on any intervening connection (there is little to be done about this, it just keeps you from chasing your tail looking at other issues needlessly)
 * This is a server issue - see if other authorized clients are having the same or similar issues.
 * Outside of these obvious ones, check the proper install of software, updates, etc. on both sides or at least the client side if you can’t get the server.
 
-### 17. CPU usage 100%?
-* End the processes that consume lots of CPU resources
-* Update your drivers
-* Modify Settings in Registry Editor: If you’re using Windows 10, this issue may be caused by Cortana. If you enabled Cortana, you may encounter the 100% CPU usage issue.
-* Run an antivirus scan: try running an antivirus scan to see if there are viruses, spywares or Trojans on your PC.
-* Disable P2P Share
-* Modify Windows notification settings
+<details>
+<summary>305. Number of Islands II</summary>
 
+</details>
+
+<details>
+<summary><b>·</b> A client in Germany is trying to access a server in London, but his connection is running slow. You are in Dublin. How do you diagnose his issue?</summary>
+
+</details>
+
+<details>
+<summary><b>·</b> CPU usage 100%?</summary>
+<br>1. End the processes that consume lots of CPU resources
+<br>2. Update your drivers
+<br>3. Modify Settings in Registry Editor: If you’re using Windows 10, this issue may be caused by Cortana. If you enabled Cortana, you may encounter the 100% CPU usage issue.
+<br>4. Run an antivirus scan: try running an antivirus scan to see if there are viruses, spywares or Trojans on your PC.
+<br>5. Disable P2P Share
+<br>6. Modify Windows notification settings
+</details>
