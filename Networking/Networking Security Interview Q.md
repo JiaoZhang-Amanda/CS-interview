@@ -9,8 +9,8 @@
     * [Authorization](#Authorization)
     * [Log Processing](#Log-Processing)
 * [Firewall](#fireFirewall)
-* [VPN](#VPN)
-* [Network Attacks](#Network-Attacks)
+* [VPN](#fireVPN)
+* [Network Attacks](#fireNetwork-Attacks)
 ## :fire:[Network Security Concept]
 ### Network Security
 Network security is the security provided to a network from **unauthorized access and risks**. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
@@ -112,8 +112,8 @@ A firewall is a hardware or software installed to provide security to the privat
 ### 3. Why VPN?
 * Private networks have all kinds of advantages
 * Building a private network is expensive. Cheaper to have shared resources rather than dedicated
-______
-## [Network Attacks]
+
+## :fire:[Network Attacks]
 ### What are the possible results of an attack on a computer network?
 * Loss or corruption of sensitive data that is essential for a company’s survival and success
 * Diminished reputation and trust among customers
