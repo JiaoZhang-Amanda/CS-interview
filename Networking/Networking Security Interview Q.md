@@ -1,5 +1,5 @@
 # Network Security Interview Question
-* [Network Security Concept](#Network-Security-Concept)
+* [Network Security Concept](#fireNetwork-Security-Concept)
     * [Network Security](#Network-Security)
     * [Types of Network Security](#Types-of-Network-Security)
     * [Encryption](#Encryption)
@@ -8,13 +8,13 @@
     * [White and Black hat hacker](#White-and-Black-hat-hacker)
     * [Authorization](#Authorization)
     * [Log Processing](#Log-Processing)
-* [Firewall](#Firewall)
-## [Network Security Concept]
+* [Firewall](#fireFirewall)
+## [:fire:][Network Security Concept]
 ### Network Security
 Network security is the security provided to a network from **unauthorized access and risks**. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
 * **Confidentiality**: only sender, intended receiver should understand message contents ----> **Encrypted at sender and decryped at receiver**(symmetric and asymmetric [Encryption](#Encryption))
 * **Authentication**: sender, receiver want to **confirm identity** of each other
-* **Message Integrity**: sender, receiver want to ensure message not altered(in transit, or afterwards) without detection ----> [digital signature](#Digital-Signatures)
+* **Message Integrity**: sender, receiver want to ensure message not altered(in transit, or afterwards) without detection ----> [Digital Signature](#Digital-Signatures)
 * **Access and Availability**: services must be accessible and available to users, Access Control: Firewalls
 
 ### Types of Network Security
@@ -62,8 +62,8 @@ Network security is the security provided to a network from **unauthorized acces
 
 ### Log Processing
 How audit logs are processed, searched for key events, or summarized.
-________
-## [Firewall]
+
+## [:fire:][Firewall]
 The network firewall is considered as the first line of defense against any cyber attack. It is able to protect different servers based on the firewall configuration. 
 
 ### 1. What is Network Firewall?
