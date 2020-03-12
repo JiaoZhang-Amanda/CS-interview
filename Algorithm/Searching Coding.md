@@ -15,6 +15,9 @@
 658    |    Find K Closest Elements    |    Medium
 286  |  Walls and Gates  |  Medium
 317   |   Shortest Distance from All Buildings   |   Hard
+200 | Number of Islands |    Medium
+305 | Number of Islands II|Hard
+425 | Word Squares|Hard
 
 <details>
 <summary>374. Guess Number Higher or Lower</summary>
@@ -172,6 +175,16 @@ The point (1,2) is an ideal empty land to build a house, as the total travel d
 </details>
 
 <details>
-<summary>302. Smallest Rectangle Enclosing Black Pixels</summary>
+<summary>200. Number of Islands</summary>
+
+</details>
+
+<details>
+<summary>305. Number of Islands II</summary>
+
+</details>
+
+<details>
+<summary>425. Word Squares</summary>
 
 </details>

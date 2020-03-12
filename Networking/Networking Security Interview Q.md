@@ -1,15 +1,15 @@
 ## Network Security Interview Question
-________
-## [Network Security Concept]
-### 1. What is Network Security?
-Network security is the security provided to a network from unauthorized access and risks. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
-    * **Confidentiality**: only sender, intended receiver should understand message contents ----> **Encrypted at sender and decryped at receiver**(symmetric and asymmetric encryption)
-    * **Authentication**: sender, receiver want to confirm identity of each other
-    * **Message Integrity**: sender, receiver want to ensure message not altered(in transit, or afterwards) without detection ----> **digital signature**
-    * **Access and Availability**: services must be accessible and available to users
-        * Access Control: Firewalls
 
-### 2. Types of Network Security?
+## [Network Security Concept]
+### Network Security
+Network security is the security provided to a network from **unauthorized access and risks**. It is the duty of network administrators to adopt preventive measures to protect their networks from potential security threats.
+* **Confidentiality**: only sender, intended receiver should understand message contents ----> 
+* **Encrypted at sender and decryped at receiver**(symmetric and asymmetric [encryption](#Encryption))
+* **Authentication**: sender, receiver want to confirm identity of each other
+* **Message Integrity**: sender, receiver want to ensure message not altered(in transit, or afterwards) without detection ----> [digital signature](#Digital-Signatures)
+* **Access and Availability**: services must be accessible and available to users, Access Control: Firewalls
+
+### Types of Network Security?
 * Antivirus and Antimalware Software: is a software program that protects a computer from any malicious software, any virus, spyware, adware, etc.
 * Application Security
 * Behavioral Analytics
@@ -25,30 +25,26 @@ Network security is the security provided to a network from unauthorized access 
 * Endpoint Security
 * Network Access Control (NAC)
 
-### 3. What is Data Encryption?
-- Data encryption ensures data safety and very important for confidential or critical data.
-- It protects data from being read, altered or forged while transmission.
-- It changes the electronic information into an unreadable state by using algorithms or ciphers.
-- Web browsers automatically encrypt the text when they are connected to a secure server.
-- In the olden days data encryption was only used for passing government and military information.
-
-### 4. Two types: Explain the difference between symmetric and asymmetric encryption.
-symmetric encryption uses the same key for both encryption and decryption, whereas asymmetric encryption employs different keys for the two processes. Symmetric is faster for obvious reasons but requires sending the key through an unencrypted channel, which is a risk.
-
-### 5. What is the Public Key Encryption?
+### Encryption
+* Data encryption ensures data safety and very important for confidential or critical data. It protects data from being read, altered or forged while transmission. It changes the electronic information into an unreadable state by using algorithms or ciphers. Web browsers automatically encrypt the text when they are connected to a secure server.
+* Two types
+    * **Symmetric Encryption** uses the same key for both encryption and decryption
+    * **Asymmetric Encryption** employs different keys for the two processes. 
+    * Symmetric is faster for obvious reasons but requires sending the key through an unencrypted channel, which is a risk.
+* **Public Key Encryption**
 Public key encryption use public and private key for encryption and decryption. In this mechanism, public key is used to encrypt messages and only the corresponding private key can be used to decrypt them. To encrypt a message, a sender has to know recipient’s public key.
 
-### 6. Digital Signatures?
+### Digital Signatures
 * Digital signature is an attachment to an electronic message used for security purpose. 
 * It is used to verify the authenticity of the sender.
 * It is also known as a mathematical technique which is used to validate the authenticity and integrity of a message software or a digital document.
 * They provide assurance of evidence of originality identity and status of an electronic document transaction or message and even acknowledges the informed consent of the signer.
 * It has a legal significance.
 
-### 7. How do you define risk, vulnerability, and threat, in the context of network security?
-* risk: result of a system being secure but not secured sufficiently, thereby increasing the likelihood of a threat. 
-* vulnerability: a weakness or breach in your network or equipment (e.g. modems, routers, access points). 
-* threat: the actual means of causing an incident; for instance, a virus attack is deemed a threat.
+### 7. Risk, Vulnerability, and Threat
+* **Risk**: result of a system being secure but not secured sufficiently, thereby increasing the likelihood of a threat. 
+* **Vulnerability**: a weakness or breach in your network or equipment (e.g. modems, routers, access points). 
+* **Threat**: the actual means of causing an incident; for instance, a virus attack is deemed a threat.
 
 ### 8. What are the possible results of an attack on a computer network?
 * Loss or corruption of sensitive data that is essential for a company’s survival and success
