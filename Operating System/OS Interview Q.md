@@ -1,6 +1,11 @@
 # OS Interview Question
 OS should provide: processes and threads, file systems, network protocols with similar APIs, user interface with display, mouse, keyboard and access control based on file ownership and that file owers can control.
-
+* [Processor Management](#fireProcessor-Management)
+* [Memory](#fireMemory)
+* [I/O Management](#fireIO-Management)
+* [Synchronization & deadlock](#fireSynchronizationdeadlock)
+* [kernel development(Linux)](#firekernel-developmentLinux)
+* [Linux](#fireLinux)
 ## Threads and Processes
 #### 1. What is a Thread? What is a process? What is process table?
 * A **Thread** is a path of execution within a process. A process can contain multiple threads.
@@ -66,16 +71,38 @@ To kill the process using the process_id and free up the resources allowing othe
 * **Bootloader** is a piece of code that runs before any operating system is running. Bootloader are used to boot other operating systems, usually each operating system has a set of bootloaders specific for it.
 * **Bootstrap** loader is a program that resides in the computers EPROM, ROM, or othernon-volatile memory that automatically executed by the processor when turning on the computer. The bootstrap loader reads the hard drives boot sector to continue the process of loading the computers operating system.
 
-#### 13. Describe how to boot an operating system.
-The word “boot” is short for “bootstrap,” which is the name of the program that prompts the operating system at startup. Booting occurs when you start a computer from the kernel. This usually happens when you start it for the first time. It may also occur when the computer malfunctions and you have to put it in safe mode or reboot it as though it were a new CPU.
-
+#### 13. Booting Process
+* The word “boot” is short for “bootstrap,” which is the name of the program that prompts the operating system at startup. 
+* Booting is a process in which your computer gets initialized. This process includes initilizing all your hadware components in your computer and get them to work together and to load your default operating system which will make your computer operational.
+* Booting occurs when you start a computer from the kernel. This usually happens when you start it for the first time. It may also occur when the computer malfunctions and you have to put it in safe mode or reboot it as though it were a new CPU.
+* **Process**
+    1) Power Up
+    2) Power-On Self Test(POST): This test checks all connected hardware, including RAM and secondary storage devices to be sure it is all functioning properly. After POST has completed its job, the boot process searches the boot device list for a device with a BIOS on it.
+    3) Find a Boot Device: The I/O system is essential to the operation of the computer because it defines the rules for communications between the CPU and the other devices attached to the computer via the motherboard. The I/O system, sometimes found in the "io.sys" file on the boot device, provides extensions to the BIOS located in ROM on the motherboard.
+    4) Load the Operating System from the boot device
+    5) Transfer Control: the boot process relinquishes control to the OS. The OS then proceeds to execute any pre-configured startup routines to define user configuration or application execution.
+```
+# Troubleshooting a PC that doesn't boots up. 
+1) Check Your Monitor
+Check to make sure your monitor is plugged in
+2) Listen for the Message at the Beep
+if the computer is having trouble starting up, it may make a series of beeps (kind of like Morse code) that tell you what's wrong.
+3) Reseat the Hardware Inside
+4) Explore the BIOS
+If your computer turns on and you see the POST screen but can't boot into Windows, certain settings may be causing a problem. 
+5) Scan for Viruses Using a Live CD
+6) Boot into Safe Mode
+If you're getting the Blue Screen of Death at startup, it could be a result of a bad application, driver issue, or other hardware quirk causing problems on boot.
+7) Check Your Hard Drive for Corruption
+8) Test the Drive in Another PC and Pray
+```
 #### 14. 6 Stages of Linux Boot Process
 1. BIOS
 BIOS stands for Basic Input/Output System. Performs some system integrity checks, Searches, loads, and executes the boot loader program. In simple terms BIOS loads and executes the MBR boot loader.
-2. MBR
-MBR stands for Master Boot Record. It is located in the 1st sector of the bootable disk.  in simple terms MBR loads and executes the GRUB boot loader.
-3. GRUB
-GRUB stands for Grand Unified Bootloader. If you have multiple kernel images installed on your system, you can choose which one to be executed. In simple terms GRUB just loads and executes Kernel and initrd images.
+2. MBR(Master Boot Record)
+It is located in the 1st sector of the bootable disk.  in simple terms MBR loads and executes the GRUB boot loader.
+3. GRUB(Grand Unified Bootloader.)
+If you have multiple kernel images installed on your system, you can choose which one to be executed. In simple terms GRUB just loads and executes Kernel and initrd images.
 4. Kernel
 * Mounts the root file system as specified in the “root=” in grub.conf. Kernel executes the /sbin/init program
 * Since init was the 1st program to be executed by Linux Kernel, it has the process id (PID) of 1. Do a ‘ps -ef | grep init’ and check the pid.
@@ -87,8 +114,22 @@ GRUB stands for Grand Unified Bootloader. If you have multiple kernel images ins
 6. Runlevel programs
 When the Linux system is booting up, you might see various services getting started. For example, it might say “starting sendmail …. OK”. Those are the runlevel programs, executed from the run level directory as defined by your run level.
 
-## Processor Management
+## :fire:Processor Management
 Scheduling & Interrupt management
+### Context Switching 
+Context Switching involves storing the context or state of a process so that it can be reloaded when required and execution can be resumed from the same point as earlier.
+* Three major triggers:
+    * **Multitasking**: In a multitasking environment, a process is switched out of the CPU so another process can be run. The state of the old process is saved and the state of the new process is loaded. On a pre-emptive system, processes may be switched out by the scheduler.
+    * **Interrupt Handling**: The hardware switches a part of the context when an interrupt occurs. This happens automatically. Only some of the context is changed to minimize the time required to handle the interrupt.
+    * **User and Kernel Mode Switching**: A context switch may take place when a transition between the user mode and kernel mode is required in the operating system.
+* **Steps**
+    * Save the context of the process that is currently running on the CPU. Update the process control block and other important fields.
+    * Move the process control block of the above process into the relevant queue such as the ready queue, I/O queue etc.
+    * Select a new process for execution.
+    * Update the process control block of the selected process. This includes updating the process state to running.
+    * Update the memory management data structures as required.
+    * Restore the context of the process that was previously running when it is loaded again on the processor. This is done by loading the previous values of the process control block and registers.
+    
 #### 1. Scheduling Alg.
 Maximize CPU utilization and throughput, minimize wait time and response time.
 * First-Come, First-Served (FCFS) Scheduling: non-preemptive, non-interactive scheduling algorithm
@@ -126,15 +167,38 @@ printf() should work inside the CAN ISR however this will introduce many areas f
 #### 3.3 Can we put breakpoint inside ISR?
 The interrupt is firing, waking the micro, and the micro is executing the ISR code. However, no breakpoints will operate in the ISR.
 
-## Memory
+#### 4. Shared Memory 
+The shared memory in the shared memory model is the memory that can be simultaneously accessed by multiple processes. This is done so that the processes can communicate with each other. All POSIX systems, as well as Windows operating systems use shared memory.
+* Advantage of Shared Memory Model
+<br>Memory communication is faster on the shared memory model as compared to the message passing model on the same machine.
+* Disadvantage of Shared Memory Model
+    * All the processes that use the shared memory model need to make sure that they are not writing to the same memory location.
+    * Shared memory model may create problems such as synchronization and memory protection that need to be addressed.
+## :fire:Memory
 Vitual memory & Real memory. Memory get's divided into two distinct areas:
 * **The user space**, which is a set of locations where normal user processes run (i.e everything other than the kernel). The role of the kernel is to manage applications running in this space from messing with each other, and the machine.
 * **The kernel space**, which is the location where the code of the kernel is stored, and executes under.
 
+#### 1. Memory Management
+* **Process Address Space**
+    * **Symbolic addresses**: The addresses used in a source code. The variable names, constants, and instruction labels are the basic elements of the symbolic address space.
+    * **Relative addresses**:  a compiler converts symbolic addresses into relative addresses.
+    * **Physical addresses**: The loader generates these addresses at the time when a program is loaded into main memory.
+* **Memory Allocation**
+    * Low Memory − Operating system resides in this memory.
+    * High Memory − User processes are held in high memory.
+* **Fragmentation**
+As processes are loaded and removed from memory, the free memory space is broken into little pieces. It happens after sometimes that processes cannot be allocated to memory blocks considering their small size and memory blocks remains unused. This problem is known as Fragmentation.
+    * External fragmentation: Total memory space is enough to satisfy a request or to reside a process in it, but it is not contiguous, so it cannot be used.
+    * Internal fragmentation: Memory block assigned to process is bigger. Some portion of memory is left unused, as it cannot be used by another process.
+* **Paging**: Paging is a memory management technique in which process address space is broken into blocks of the same size called pages. Paging technique plays an important role in implementing virtual memory.
+    * **Page Fault** – A page fault happens when a running program accesses a memory page that is mapped into the virtual address space, but not loaded in physical memory.
+* **Segmentation**: Segmentation is a memory management technique in which each job is divided into several segments of different sizes, one for each module that contains pieces that perform related functions. Each segment is actually a different logical address space of the program.
+
 #### 2. What is Virtual Memory?
 * Virtual memory creates an illusion that each user has one or more contiguous address spaces, each beginning at address zero. The sizes of such virtual address spaces is generally very high.
 * The idea of virtual memory is to use disk space to extend the RAM. Running processes don’t need to care whether the memory is from RAM or disk. The illusion of such a large amount of memory is created by subdividing the virtual memory into smaller pieces, which can be loaded into physical memory whenever they are needed by a process.
-* Segmentation: diveide the address space into variable-size segmnets
+* Segmentation: divvide the address space into variable-size segmnets
 * **Paging**: divide the address space into fixed-size pages
 
 #### 3. What is kernel paging?
@@ -151,12 +215,35 @@ paging is a memory management scheme by which a computer stores and retrieves da
 #### 6. Explain your experience with RAID and disk redundancy.
 RAID (redundant array of independent disks) is a way of storing the same data in different places on multiple hard disks or solid-state drives to protect data in the case of a drive failure. There are different RAID levels, however, and not all have the goal of providing redundancy.
 
-## I/O Management
+#### 7. Buffer and Cache
+* Both cache and buffer are temporary storage areas
+* The buffer is mainly found in RAM and acts as an area where the CPU can store data temporarily
+* Cache, on the other hand, is a high-speed storage area that can be part of the main memory or some other separate storage area like a hard disk.
+* Cache is a high-speed storage area while a buffer is a normal storage area on ram for temporary storage.
+* Cache is made from static ram which is faster than the slower dynamic ram used for a buffer.
+* The buffer is mostly used for input/output processes while the cache is used during reading and writing processes from the disk.
+* Cache can also be a section of the disk while a buffer is only a section of the ram.
+* A buffer can be used in keyboards to edit typing mistakes while the cache cannot.
+
+#### TLB(Translation lookaside buffer)
+* A memory cache that is used to reduce the time taken to access a user memory location. It is a part of the chip's memory-management unit (MMU). 
+* The TLB stores the recent translations of virtual memory to physical memory and can be called an address-translation cache.
+
+#### 8. Page replacement algorithm
+* **First In First Out (FIFO)**: in this algorithm, a queue is maintained.
+* **Optimal Page replacement**: this algorithms replaces the page which will not be referred for so long in future.
+* **Least Recently Used**: this algorithm replaces the page which has not been referred for a long time. LRU resulted to be the best algorithm for page replacement to implement, but it has some disadvantages. In the used algorithm, LRU maintains a linked list of all pages in the memory, in which, the most recently used page is placed at the front, and the least recently used page is placed at the rear.
+
+```
+# How I'm able to run a 7GB game with my 4 GB RAM? Why the game gets slow in such cases?
+Most minimum requirements for a game are the minimum recommended for acceptable performance. If your computer does not have enough free ram then it will start using the page file (disk) for extra ram. This can cause the game to slow down drastically.
+```
+## :fire:I/O Management
 Human interface device & Network protocols & File system & Logical I/O management & Physical device drivers
 #### 1. Files
 * Abstraction of persisitent data storage, meaning fetching and storing data outside a process.
-* Naming files: name space is outside the processes. User process uses the handler the OS returns to read/write the file.
-* Fils API: open(), read(), write(), close()
+* **Naming files**: name space is outside the processes. User process uses the handler the OS returns to read/write the file.
+* Fils **API**: open(), read(), write(), close()
 * system calls on files are synchronous. Will not return until the operation is considered completed.
 * standard file descriptors: 0 is stdin which map/connect to the keyboard by default, 1 is stdout which map/connect to the display by default, 2 is stderr which map/connect to the display by default.
 * For each process, the kernel maintains an array of pointers to "file objects" A **file object** represents an opened file and a **file descriptor** is an index to this array.
@@ -170,7 +257,18 @@ Human interface device & Network protocols & File system & Logical I/O managemen
 * Directory Hierarchy
     * **Hard Link**: refer to a file(not a dictory) in one directory that appears in another. Using link() system call of ln in shell command.
     * **Soft Links / Symbolic Links**: a special kind of file containing the name of another file or directory. Using syslink() / ln -s shell command.
+* **Active Directory (AD)** is a Microsoft product that consists of several services that run on Windows Server to manage permissions and access to networked resources. Active Directory stores data as objects. An object is a single element, such as a user, group, application or device, such as a printer.
+```
+# Which directory are third party software stored? 
+/opt. According to the Filesystem Hierarchy Standard, /opt is for "the installation of add-on application software packages". /usr/local is "for use by the system administrator when installing software locally".
 
+#If I'm unable to copy a file from my system and paste it, what can be the possible reasons and how will I troubleshoot?
+1. The hard disk is set into read only mode by mistake or corrupted file system. 
+2. The target disk is corrupted. The "Access is denied" error message might appear.
+3. The file or folder ownership has changed.
+4. You don't have the appropriate permissions.
+5. The files are encrypted.
+```
 #### 3. Terminals
 * outout buffer
 * input buffer
@@ -179,7 +277,7 @@ Human interface device & Network protocols & File system & Logical I/O managemen
 * device: Network Interface Card(NIC)
 * data arrives in a packet
 
-## Synchronization & deadlock
+## :fire:Synchronization & deadlock
 Process Synchronization: The shared resources can be used by all the processes but the processes should make sure that at a particular time, only one process should be using that shared resource.
 #### 1. What is deadlock? 
 Deadlock is a situation when two or more processes wait for each other to finish and none of them ever finish.  Consider an example when two trains are coming toward each other on same track and there is only one track, none of the trains can move once they are in front of each other.  Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
@@ -233,7 +331,7 @@ signal(S){
 #### 7. What is spin lock?
 A spinlock is a lock which causes a thread trying to acquire it to simply wait in a loop ("spin") while repeatedly checking if the lock is available. Since the thread remains active but is not performing a useful task, the use of such a lock is a kind of busy waiting.
 
-## kernel development(Linux)
+## :fire:kernel development(Linux)
 "kernel" means the portion of the OS that runs in privileged mode.
 #### 1. What happens when we type a simple command on shell? 
 * Shell interprets the command.
@@ -252,6 +350,8 @@ A system log is a file containing events that are updated by the operating syste
     * We are interested in /var/log/messages.
     * messages log file contain general system messages.
     * syslog/rsyslog generally routed all general system messages to log file or the logs which are not configured to be routed to any log file.
+- Linux log files are normally stored in the folder **/var/log**. The folder contains a large number of files offering detailed information for each application.
+
 #### 3. Types of records in a system log includes
 * IMS in put message
 * Condensed command type of record
@@ -293,29 +393,83 @@ GDB provides these facilities for debugging multi-thread programs:
 * `info threads`, a command to inquire about existing threads
 * `thread apply [threadno] [all] args`, a command to apply a command to a list of threads
 * thread-specific breakpoints
-____
-#### What is CLI?
+
+## :fire:Linux
+#### CLI?
 A **command-line interface (CLI)** processes commands to a computer program in the form of lines of text. The program which handles the interface is called a command-line interpreter or command-line processor. Operating systems implement a command-line interface in a shell for interactive access to operating system functions or services.
 
-#### ssh command in Linux?
-ssh stands for **“Secure Shell”**. It is a protocol used to securely connect to a remote server/system. ssh is secure in the sense that it transfers the data in encrypted form between the host and the client. It transfers inputs from the client to the host and relays back the output. ssh runs at TCP/IP port 22.
+#### SSH?
+* ssh stands for **“Secure Shell”**. It is a protocol used to securely connect to a remote server/system. 
+* ssh is secure in the sense that it transfers the data in encrypted form between the host and the client. It transfers inputs from the client to the host and relays back the output. ssh runs at TCP/IP port 22.
+* Remotely Manage a Linux Server
 ```
 ssh user_name@host(IP/Domain_name)
 ```
-#### linux commands
-* change permission? `chmod` <br>
+#### Linux Commands
+* Change permission? **chmod** 
 `[user](read, write, execute)[group](read, write, execute)[others](read, write, execute)`
 the nine bits that specify read, write, and execute (or search) permissions for the owner, group and world, there are three other bits that have special characteristics.
 * lists the current running processes: `ps`
-* lists directory contents: `ls`
-* displays manual pages: `man`
-* concatenates files: `cat`
+```
+ps -A 显示所有进程信息
+ps -u root 显示指定用户信息
+ps -ef|grep ssh 查找特定进程
+ps aux 列出目前所有的正在内存当中的程序
+# How do you open files of a specific process?
+    ps aux | grep {program-name} :to obtain process id
+    ls -l /proc/XXX/fd  :To list opne files for firefox process
+```
+* lists directory contents: **ls**
+```
+$ ls       # 仅列出当前目录可见文件
+$ ls -l    # 列出当前目录可见文件详细信息
+$ ls -hl   # 列出详细信息并以可读大小显示文件大小
+$ ls -al   # 列出所有文件（包括隐藏）的详细信息
+```
+* displays manual pages: **man**
+* concatenates files: **cat**
 * changes file timestamps: `touch`
 * prints the working directory: `pwd`
 * changes directory: `cd`
 * removes files and directories: `rm`
 * copies files and directories: `cp`
 * makes directories: `mkdir`
+* Killing the process: kill – Kill a process by ID; killall – Kill a process by name
+* Check open ports in Linux:
+    * **ss**: display all open TCP and UDP ports in Linux.
+    * **netstat**: list all ports in Linux
+    * **lsof**: list open files and ports on Linux based system.
+    * **nmap**: check TCP and UDP ports
+* Display Inode: **stat**/**ls**
+```
+$ stat fileName-Here
+$ stat /etc/passwd
+$ ls -li filename
+$ ls -li /etc/resolv.conf  (-i option displays the index number (inode) )
+```
+* **fcntl**: manipulate file descriptor
+* **netstat**
+<br> Print **network connections, routing tables, interface statistics, masquerade connections, and multicast memberships**
+* **iostat**
+<br>Monitoring system input/output device loading by observing the time the devices are active in relation to their average transfer rates.
+<br>Report Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS)
+* **vmstat**
+<br>Report virtual memory statistics
+<br>Reports information about processes, memory, paging, block IO, traps, and cpu activity.
+* **crontab**
+<br>Files used to schedule the execution of programs
+* **free**
+<br>Display information about the memory and swap in kibibyte. 1 kibibyte (KiB) is 1024 bytes. To get a detailed report on the system’s memory usage.
+* **proc/meminfo**
+<br>The /proc filesystem is pseudo filesystem. It does not exist on a disk. Instead, the kernel creates it in memory. It is used to provide information about the system
+<br>The ‘/proc/meminfo‘ is used by to report the amount of free and used memory (both physical and swap) on the system as well as the shared memory and buffers used by the kernel.
+* **fstab**: 
+<br>Static information about the filesystems
+<br>The file fstab contains descriptive information about the filesystems
+the system can mount.  fstab is only read by programs, and not
+written
+* **strace**
+<br> trace system calls and signals
 
 #### Linux networking commands
 *  `ipconfig`: configure network interface parameters. Mostly we use this command to check the IP address assigned to the system.
@@ -329,8 +483,34 @@ the nine bits that specify read, write, and execute (or search) permissions for 
 * `nmap` is a one of the powerful commands, which checks the opened port on the server.
 * enable or disable the network interface by using `ifup`/`ifdown` commands with ethernet interface parameter.
 
+### Linux Configurations
+* **Access files**: e.g. /etc/host.conf , tells the network domain server how to look up hostnames. (Normally /etc/hosts, then name server; it can be changed through netconf.)
 #### linux troubleshooting basics.
-#### shell script
-* How to read command line arguments in a bash script?
+* **Booting and login/logout**: e.g. /etc/redhat-release, includes one line stating the Red Hat release number and name. Used by rc.local.
+* **File system**: e.g. the file mtab specified in the following table reads the /proc/mount file, which contains the currently mounted filesystems.
+* **System administration**: e.g. etc/passwd, see “man passwd”. Holds some user account info including passwords (when not “shadowed”).
+* **Networking**: /etc/gateway, optionally used by the routed daemon.
+* **System commands**: System commands are meant exclusively to control the system, and make everything work properly.
+* **Daemons**: A daemon is a program running in non-interactive mode. Typically, daemon tasks are related to the networking area: they wait for connections, so that they can provide services through them.
+* **User programs**: In Linux (and UNIX in general), there are countless “user” programs. A most common user program config file is /etc/lynx.cfg.
+* **Changing configuration files**
+* **The kernel**: /proc/sys/kernel/ directory
+* **Daemons and system programs**: Common ones are in.ftpd (ftp server daemon), in.telnetd (telnet server daemon), and syslogd (system logging daemon).
+* **User programs**
+* **User configuration files: . (dot) files and rc files**
+
+#### Shell Script
+```
+# How to read command line arguments in a bash script?
 First Argument: $1, Second Argument: $2, Third Argument: $3
-* What is $ sign?
+# What is $ sign?
+```
+#### Linux server troubleshooting steps
+* Check the hardware: make sure all the cables are plugged in correctly.
+* Define the exact problem
+    * check to see if an application is running: `$ sudo ps -ef | grep apache2` or `$ sudo netstat -plunt | grep apache2` whether Apache web server is running
+* Top: to check load average, swap, and which processes are using resources. Top shows all of a Linux server's currently running processes.
+* What's up with disk space? use **df** to view a full summary of available and used disk space.
+    * `$ sudo df -h` presents data about your hard drives in a human-readable format.
+    * `$ sudo df -i` displays the number of used inodes and their percentage for the file system.
+* Check the logs: check the server logs. These are usually in /var/log in a subdirectory specific to the service.
