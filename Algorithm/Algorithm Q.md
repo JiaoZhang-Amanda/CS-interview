@@ -161,7 +161,44 @@ public void union(int p, int q){
 * A **binary tree** is a rooted tree in which each node has no more than 2 children.
 *  If a tree is a rooted tree in which each node has no more than N children, it is called **N-ary tree**
 * **Trie** is one of the most frequently used N-ary trees
+```
+class Trie {
+    TrieNode root;
+    public Trie(String[] strs) {
+        root = new TrieNode();
+        for (String str: strs) {
+            TrieNode cur = root;
+            for (char ch: str.toCharArray()) {
+                int index = ch-'a';
+                if (cur.children[index] == null) cur.children[index] = new TrieNode();
+                cur.children[index].words.add(str);
+                cur = cur.children[index];
+            }
+        }
+    }
+    
+    public List<String> getWords(String prefix) {
+        List<String> res = new ArrayList<>();
+        TrieNode cur = root;
+        for (char ch: prefix.toCharArray()) {
+            int index = ch-'a';
+            if (cur.children[index] == null) return res;
+            cur = cur.children[index];
+        }
+        res.addAll(cur.words);
+        return res;
+    }
+}
 
+class TrieNode {
+    TrieNode[] children;
+    List<String> words;
+    public TrieNode() {
+        children = new TrieNode[26];
+        words = new ArrayList<>();
+    }
+}
+```
 ### Tree Traversal
 * preorder: visit the root node, then traverse the left subtree and finally traverse the right subtree.
 * inorder: traverse the left subtree, then visit the root node and finally traverse the right subtree.

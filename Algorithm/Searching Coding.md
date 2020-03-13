@@ -176,15 +176,58 @@ The point (1,2) is an ideal empty land to build a house, as the total travel d
 
 <details>
 <summary>200. Number of Islands</summary>
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
+Example 1:
+
+Input:
+11110
+11010
+11000
+00000
+
+Output: 1
 </details>
 
 <details>
 <summary>305. Number of Islands II</summary>
+A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
+Example:
+
+Input: m = 3, n = 3, positions = [[0,0], [0,1], [1,2], [2,1]]
+Output: [1,1,2,3]
 </details>
 
 <details>
 <summary>425. Word Squares</summary>
+Given a set of words (without duplicates), find all word squares you can build from them.
 
+A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
+
+For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word reads the same both horizontally and vertically.
+
+b a l l
+a r e a
+l e a d
+l a d y
+
+Example 1:
+
+Input:
+["area","lead","wall","lady","ball"]
+
+Output:
+[
+  [ "wall",
+    "area",
+    "lead",
+    "lady"
+  ],
+  [ "ball",
+    "area",
+    "lead",
+    "lady"
+  ]
+]
 </details>
