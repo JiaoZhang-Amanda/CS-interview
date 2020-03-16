@@ -1,4 +1,4 @@
-## String Coding
+## Math Coding
 
 ### JAVA releted
 
