@@ -43,6 +43,7 @@
     * [Difference between sendto and send functions](#3-Difference-between-sendto-and-send-functions)
     * [Basic CLI](#4-Basic-CLIcommand-line-interface)
 * [Restful API](#fireRestful-API)
+* [AWS](#fireaws)
 ## [:fire:]()[Models]
 ### 1. Explain the seven layers of the OSI reference model. / What are layers in OSI model?
 **OSI model** stands for Open System Interconnection. It’s a reference model which describes that how different applications will communicate to each other over the computer network.
@@ -640,3 +641,22 @@ The architectural style for creating web api are
     * REST have a URL structure and a request/response pattern the revolve around the use of resources
     * REST is a type of software architecture and a method for users to request data or information from servers
     * REST requires the interaction between the customer and server
+
+## :fire:[AWS]
+### Explain what AWS is?
+AWS stands for Amazon Web Service; it is a collection of remote computing services also known as a cloud computing platform.  This new realm of cloud computing is also known as IaaS or Infrastructure as a Service.
+
+### Mention what the key components of AWS are?
+* **Route 53**: A DNS web service
+* **Simple E-mail Service**: It allows sending e-mail using RESTFUL API call or via regular SMTP
+* **Identity and Access Management**: It provides enhanced security and identity management for your AWS account
+* **Simple Storage Device or (S3)**: It is a storage device and the most widely used AWS service. 
+    * You can use S3 interface to store and retrieve any amount of data, at any time and from anywhere on the web.  For S3, the payment model is “pay as you go.”
+    * Amazon S3 is a REST service, and you can send a request by using the REST API or the AWS SDK wrapper libraries that wrap the underlying Amazon S3 REST API.
+* **Elastic Compute Cloud (EC2)**: It provides on-demand computing resources for hosting applications. It is handy in case of unpredictable workloads. It is a cloud web service used for hosting your application
+* **Elastic Block Store (EBS)**: It offers persistent storage volumes that attach to EC2 to allow you to persist data past the lifespan of a single Amazon EC2 instance
+* **CloudWatch**: To monitor AWS resources, It allows administrators to view and collect key Also, one can set a notification alarm in case of trouble.
+
+### What is a Message Queue?
+* A message queue is a form of asynchronous service-to-service communication used in serverless and microservices architectures. Messages are stored on the queue until they are processed and deleted. Each message is processed only once, by a single consumer. Message queues can be used to decouple heavyweight processing, to buffer or batch work, and to smooth spiky workloads.
+* **Amazon Simple Queue Service (SQS)** is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS eliminates the complexity and overhead associated with managing and operating message oriented middleware, and empowers developers to focus on differentiating work.
