@@ -214,7 +214,15 @@ paging is a memory management scheme by which a computer stores and retrieves da
 
 #### 6. Explain your experience with RAID and disk redundancy.
 RAID (redundant array of independent disks) is a way of storing the same data in different places on multiple hard disks or solid-state drives to protect data in the case of a drive failure. There are different RAID levels, however, and not all have the goal of providing redundancy.
+```
+# what is the difference raid 1 and raid 5?
+On most situations you will be using one of the following four levels of RAIDs.
 
+~ RAID 0: Minimum 2 disks, Excellent performance , No redundancy
+~ RAID 1: Minimum 2 disks. Good performance. Excellent redundancy
+~ RAID 5: Minimum 3 disks. Good performance. Good redundancy 
+~ RAID 10 (also known as RAID 1+0): Minimum 4 disks. Excellent performance and redundancy
+```
 #### 7. Buffer and Cache
 * Both cache and buffer are temporary storage areas
 * The buffer is mainly found in RAM and acts as an area where the CPU can store data temporarily

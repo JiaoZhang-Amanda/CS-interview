@@ -34,7 +34,30 @@ BCNF is the Boyce Code Normal form. It is the higher version of 3NF which does n
 
 #### What is SQL?
 * **Structured Query language**, SQL is an ANSI(American National Standard Institute) standard programming language that is designed specifically for storing and managing the data in the relational database management system (RDBMS) using all kinds of data operations.
+* **SQL query**
+`Select distinct DEPARTMENT from Worker;`
+The following query is using the correlated subquery to return the 5th highest salary:
+`SELECT Salary
+FROM Worker W1
+WHERE 4 = (
+ SELECT COUNT( DISTINCT ( W2.Salary ) )
+ FROM Worker W2
+ WHERE W2.Salary >= W1.Salary
+ );`
+ 
+ #### What's constraints?
+ * Constraints are the rules enforced on the data columns of a table. These are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the database.
+* Constraints could be either on a column level or a table level. The column level constraints are applied only to one column, whereas the table level constraints are applied to the whole table.
 
+ * Following are some of the most commonly used constraints available in SQL. These constraints have already been discussed in SQL - RDBMS Concepts chapter, but it’s worth to revise them at this point.
+        * **NOT NULL** Constraint − Ensures that a column cannot have NULL value.
+        * **DEFAULT** Constraint − Provides a default value for a column when none is specified.
+        * **UNIQUE** Constraint − Ensures that all values in a column are different.
+        * **PRIMARY** Key − Uniquely identifies each row/record in a database table.
+        * **FOREIGN** Key − Uniquely identifies a row/record in any of the given database table.
+        * **CHECK** Constraint − The CHECK constraint ensures that all the values in a column satisfies certain conditions.
+        * **INDEX** − Used to create and retrieve data from the database very quickly.
+        
 #### How many SQL statements are used? Define them. What are the different subsets of SQL?
 SQL statements are basically divided into three categories, DDL, DML, and DCL.
 * **Data Definition Language (DDL)** commands are used to define the structure that holds the data. These commands are auto-committed i.e. changes done by the DDL commands on the database are saved permanently.
@@ -137,7 +160,10 @@ Join is the process of explaining the relationship between different tables by c
 #### What do you understand by Index hunting?
 * Index hunting is the process of boosting the collection of indexes which helps in improving the query performance as well as the speed of the database.
 * An index refers to a performance tuning method of allowing faster retrieval of records from the table. An index creates an entry for each value and hence it will be faster to retrieve data.
-
+```
+CREATE INDEX index_name
+ON table_name ( column1, column2.....);
+```
 #### How to improve query performance using Index hunting?
 Index hunting help in improving query performance by:
 * Using a query optimizer to coordinate queries with the workload.
@@ -174,3 +200,23 @@ Use a NOT EXISTS() to a subquery containing a MIN() or MAX() aggregate, or use R
 Do a left outer join where the linked field in table 2 is null
 #### How many clustered indexes can you have in a table
 1
+___
+## database troubleshooting
+#### Can’t login?
+This problem occurs if the user tries to log in with credentials that cannot be validated. This problem can occur in the following scenarios:
+* Scenario 1: The login may be a SQL Server login but the server only accepts Windows Authentication
+<br> To resolve this issue, configure SQL Server in Mixed Authentication Mode.
+* Scenario 2: You are trying to connect by using SQL Server Authentication but the login used does not exist on SQL Server
+<br> To resolve this issue, verify that the SQL Server login exists
+* Scenario 3: The login may use Windows Authentication but the login is an unrecognized Windows principal
+<br> An unrecognized Windows principal means that Windows can't verify the login. This might be because the Windows login is from an untrusted domain. To resolve this issue, verify that you are logged in to the correct domain.
+
+### Can’t connect to the database
+* Incorrect Login Credentials
+For instance, it can be because of the wrong login username and password being used to access the admin panel.
+* Corrupt Databasehe 
+WordPress database can be corrupted by a number of things like installing a faulty or incompatible plugin. Another likely reason might be that the server that hosts your database may temporarily be down.
+* To **Fix**
+1) Repair the Database
+2) Change Login Credentials: take a look at the database login settings in the wp-config file. Your database login credentials may have stopped working because you might have changed your hosting company or some useful information about your database which wasn’t manually updated in the wp-config file.
+3) Fix Corrupted Files
