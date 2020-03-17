@@ -8,10 +8,9 @@
 4. Dynamic Programming
 5. Search / Binary Search
 6. String / Array
-7. Math
-8. Bit
-9. Linked List
-
+7. Math / Bit
+8. Linked List
+9. Design
 
 ## Sorting Algorithm
 
