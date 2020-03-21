@@ -1,7 +1,27 @@
 ## Tree Coding
 
 ### JAVA releted
+Trie
+```
+public TrieNode buildTrie(String[] words) {
+    TrieNode root = new TrieNode();
+    for (String w : words) {
+        TrieNode p = root;
+        for (char c : w.toCharArray()) {
+            int i = c - 'a';
+            if (p.next[i] == null) p.next[i] = new TrieNode();
+            p = p.next[i];
+        }
+        p.word = w;
+    }
+    return root;
+}
 
+class TrieNode {
+    TrieNode[] next = new TrieNode[26];
+    String word;
+}
+```
 
 ### Leetcode
 

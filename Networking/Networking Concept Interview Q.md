@@ -455,6 +455,7 @@ A gateway is a piece of networking hardware used in telecommunications for telec
 
 ## [:fire:]()[Others]
 ### 1. What happens when you type a URL in the web browser?
+[details](https://blog.nicolasmesa.co/posts/2018/08/what-happens-when-you-type-a-url-in-your-browser-and-press-enter/)
 - Step 1. URL is typed in the browser.
 - Step 2. If requested object is in browser cache and is fresh, move on to Step  8.
 - Step 3. DNS lookup to find the ip address of the server. Browser first looks up URL-ip mapping browser cache, then in OS cache. If all empty, then make a recursive query to local DNS server(provide ip address).
