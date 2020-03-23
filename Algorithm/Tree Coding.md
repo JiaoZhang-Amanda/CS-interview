@@ -25,23 +25,23 @@ class TrieNode {
 
 ### Leetcode
 
-\#| Title|Difficulty
---|--|--
-173   | Binary Search Tree Iterator  |  Medium
-257    | Binary Tree Paths  |  Easy
-298    | Binary Tree Longest Consecutive Sequence   | Medium
-549   | Binary Tree Longest Consecutive Sequence II    |Medium
-545  |  Boundary of Binary Tree   | Medium
-652   | Find Duplicate Subtrees  |  Medium
-501   | Find Mode in Binary Search Tree   | Easy
-889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium
-270    |Closest Binary Search Tree Value  |  Easy
-272    |Closest Binary Search Tree Value II  |  Hard
-230    | Kth Smallest Element in a BST  |  Medium
-366   | Find Leaves of Binary Tree   | Medium
-145   | Binary Tree Postorder Traversal   | Hard
-297  |  Serialize and Deserialize Binary Tree  |  Hard
-449   | Serialize and Deserialize BST  |  Medium
+\#| Title|Difficulty|--
+--|--|--|--
+173   | Binary Search Tree Iterator  |  Medium|Traverse
+257    | Binary Tree Paths  |  Easy|path
+298    | Binary Tree Longest Consecutive Sequence   | Medium|path
+549   | Binary Tree Longest Consecutive Sequence II    |Medium|path
+545  |  Boundary of Binary Tree   | Medium|Traverse
+652   | Find Duplicate Subtrees  |  Medium|
+501   | Find Mode in Binary Search Tree   | Easy|
+889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium|
+270    |Closest Binary Search Tree Value  |  Easy|
+272    |Closest Binary Search Tree Value II  |  Hard|
+230    | Kth Smallest Element in a BST  |  Medium|
+366   | Find Leaves of Binary Tree   | Medium|
+145   | Binary Tree Postorder Traversal   | Hard|Traverse|
+297  |  Serialize and Deserialize Binary Tree  |  Hard|
+449   | Serialize and Deserialize BST  |  Medium|
 
 <details>
 <summary>173. Binary Search Tree Iterator</summary>
@@ -61,9 +61,7 @@ Example:
 Input:
 
    1
- /   \
 2     3
- \
   5
 
 Output: ["1->2->5", "1->3"]
@@ -77,14 +75,15 @@ The path refers to any sequence of nodes from some starting node to any node in 
 
 For example,
 
-   1
+    1
     \
      3
     / \
-   2   4
+    2   4
         \
          5
-Longest consecutive sequence path is 3-4-5, so return 3.
+         
+<br>Longest consecutive sequence path is 3-4-5, so return 3.
 </details>
 
 <details>
@@ -96,6 +95,7 @@ Especially, this path can be either increasing or decreasing. For example, [1,2,
 Example 1:
 
 Input:
+
         2
        / \
       1   3
@@ -115,13 +115,14 @@ The right-most node is also defined by the same way with left and right exchange
 
 Example 1
 Input:
+
     ____1_____
-   /          \
-  2            3
- / \          / 
-4   5        6   
-   / \      / \
-  7   8    9  10  
+    /          \
+    2            3
+    / \          / 
+    4   5        6   
+    / \      / \
+    7   8    9  10  
        
 Ouput:
 [1,2,4,7,8,9,10,6,3]
@@ -132,6 +133,7 @@ Ouput:
 Given a binary tree, return all duplicate subtrees. For each kind of duplicate subtrees, you only need to return the root node of any one of them.
 
 Two trees are duplicate if they have the same structure with same node values.
+
         1
        / \
       2   3
