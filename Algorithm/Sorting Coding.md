@@ -68,18 +68,19 @@ if(q.size() > k){
 324   | Wiggle Sort II  |  Medium  
 527   |  Word Abbreviation    | Hard
 253   | Meeting Rooms II  |  Medium
-215   | Kth Largest Element in an Array    |Medium
 522    |Longest Uncommon Subsequence II    |Medium  
+329| Longest Increasing Path in a Matrix|Hard
+524| Longest Word in Dictionary through Deleting|Medium
 506    |Relative Ranks   | Easy
 853   | Car Fleet   | Medium
-347     |  Top K Frequent Elements    |   Sorting
 360| Sort Transformed Array|Medium
 315| Count of Smaller Numbers After Self|Hard
  274| H-Index|Medium
  692| Top K Frequent Words|Medium
- 329| Longest Increasing Path in a Matrix|Hard
- 524 Longest Word in Dictionary through Deleting|Medium
- 
+215   | Kth Largest Element in an Array    |Medium
+ 347     |  Top K Frequent Elements    |   Sorting
+ 658    |    Find K Closest Elements    |    Medium
+ 373  |  Find K Pairs with Smallest Sums  |  Medium
 <details>
 <summary>56. Merge Intervals</summary>
 Given a collection of intervals, merge all overlapping intervals.<br>Input: [[1,3],[2,6],[8,10],[15,18]]<br>
@@ -126,20 +127,59 @@ room2: (5,10),(15,20)
 </details>
 
 <details>
-<summary>215. Kth Largest Element in an Array</summary>
-Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
-<br>Example 1:
-<br>Input: [3,2,1,5,6,4] and k = 2
-<br>Output: 5
-</details>
-
-<details>
 <summary>522. Longest Uncommon Subsequence II</summary>
 Given a list of strings, you need to find the longest uncommon subsequence among them. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.
 <br>A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.
 <br>The input will be a list of strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn't exist, return -1.
 <br>Input: "aba", "cdc", "eae"
 <br>Output: 3
+</details>
+
+<details>
+<summary>329. Longest Increasing Path in a Matrix</summary>
+Given an integer matrix, find the length of the longest increasing path.
+
+From each cell, you can either move to four directions: left, right, up or down. You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
+
+Example 1:
+
+Input: nums = 
+[
+  [9,9,4],
+  [6,6,8],
+  [2,1,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [1, 2, 6, 9].
+Example 2:
+
+Input: nums = 
+[
+  [3,4,5],
+  [3,2,6],
+  [2,2,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
+</details>
+
+
+<details>
+<summary>524. Longest Word in Dictionary through Deleting</summary>
+Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
+
+Example 1:
+Input:
+s = "abpcplea", d = ["ale","apple","monkey","plea"]
+
+Output: 
+"apple"
+Example 2:
+Input:
+s = "abpcplea", d = ["a","b","c"]
+
+Output: 
+"a"
 </details>
 
 <details>
@@ -160,16 +200,6 @@ The distance between these two cars is ignored - they are assumed to have the sa
 A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.
 If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.
 How many car fleets will arrive at the destination?
-</details>
-
-<details>
-<summary>347. Top K Frequent Elements</summary>
-Given a non-empty array of integers, return the k most frequent elements.
-
-Example 1:
-
-Input: nums = [1,1,1,2,2,3], k = 2
-Output: [1,2]
 </details>
 
 <details>
@@ -242,50 +272,56 @@ Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
     with the number of occurrence being 4, 3, 2 and 1 respectively.
 </details>
 
-<details>
-<summary>329. Longest Increasing Path in a Matrix</summary>
-Given an integer matrix, find the length of the longest increasing path.
-
-From each cell, you can either move to four directions: left, right, up or down. You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
-
-Example 1:
-
-Input: nums = 
-[
-  [9,9,4],
-  [6,6,8],
-  [2,1,1]
-] 
-Output: 4 
-Explanation: The longest increasing path is [1, 2, 6, 9].
-Example 2:
-
-Input: nums = 
-[
-  [3,4,5],
-  [3,2,6],
-  [2,2,1]
-] 
-Output: 4 
-Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
-</details>
 
 
 <details>
-<summary>524. Longest Word in Dictionary through Deleting</summary>
-Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
-
-Example 1:
-Input:
-s = "abpcplea", d = ["ale","apple","monkey","plea"]
-
-Output: 
-"apple"
-Example 2:
-Input:
-s = "abpcplea", d = ["a","b","c"]
-
-Output: 
-"a"
+<summary>215. Kth Largest Element in an Array</summary>
+Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+<br>Example 1:
+<br>Input: [3,2,1,5,6,4] and k = 2
+<br>Output: 5
 </details>
 
+<details>
+<summary>347. Top K Frequent Elements</summary>
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+</details>
+
+<details>
+<summary>658. Find K Closest Elements </summary>
+Given a sorted array, two integers k and x, find the k closest elements to x in the array. The result should also be sorted in ascending order. If there is a tie, the smaller elements are always preferred.
+
+Example 1:
+Input: [1,2,3,4,5], k=4, x=3
+Output: [1,2,3,4]
+Example 2:
+Input: [1,2,3,4,5], k=4, x=-1
+Output: [1,2,3,4]
+</details>
+
+<details>
+<summary>373. Find K Pairs with Smallest Sums</summary>
+You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
+
+Define a pair (u,v) which consists of one element from the first array and one element from the second array.
+
+Find the k pairs (u1,v1),(u2,v2) ...(uk,vk) with the smallest sums.
+
+Example 1:
+
+Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
+Output: [[1,2],[1,4],[1,6]] 
+Explanation: The first 3 pairs are returned from the sequence: 
+             [1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
+Example 2:
+
+Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
+Output: [1,1],[1,1]
+Explanation: The first 2 pairs are returned from the sequence: 
+             [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
+</details>
