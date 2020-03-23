@@ -75,7 +75,7 @@ list.reverse()
 
 ### Leetcode
 
-\#| Title|Difficulty|
+\#| Title|Difficulty|--
 --|--|--|--
 56  |  Merge Intervals  |  Medium|Intervals
 253   | Meeting Rooms II  |  Medium|Intervals
