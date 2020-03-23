@@ -24,6 +24,7 @@ sb.reverse().toString();
 408  |  Valid Word Abbreviation  |  Easy
 320  |  Generalized Abbreviation   | Medium
 411|Minimum Unique Word Abbreviation    |Hard
+527   |  Word Abbreviation    | Hard
 249 |   Group Shifted Strings  |  Medium
 389  |  Find the Difference   | Easy
 293  |  Flip Game  |  Easy
@@ -232,6 +233,17 @@ Each number or letter in the abbreviation is considered length = 1. For exampl
 "apple", ["blade"] -> "a4" (because "5" or "4e" conflicts with "blade")
 
 "apple", ["plain", "amber", "blade"] -> "1p3" (other valid answers include "ap3", "a3e", "2p2", "3le", "3l1").
+</details>
+
+
+<details>
+<summary>527. Word Abbreviation</summary>
+Given an array of n distinct non-empty strings, you need to generate minimal possible abbreviations for every word following rules below.
+<br>1. Begin with the first character and then the number of characters abbreviated, which followed by the last character.
+<br>2. If there are any conflict, that is more than one words share the same abbreviation, a longer prefix is used instead of only the first character until making the map from word to abbreviation become unique. In other words, a final abbreviation cannot map to more than one original words.
+<br> 3. If the abbreviation doesn't make the word shorter, then keep it as original.
+<br>Input: ["like","god","internal","me","internet","interval","intension","face","intrusion"]
+<br>Output: ["l2e","god","internal","me","i6t","interval","inte4n","f2e","intr4n"]
 </details>
 
 <details>

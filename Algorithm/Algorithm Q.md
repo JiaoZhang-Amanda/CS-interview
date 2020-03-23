@@ -32,7 +32,36 @@ Counting Sort      | O(k+n)       | O(k+n)        | O(k+n)      |   O(k+n)      
     3) Take all of the elements that are less than or equal to the pivot and use quicksort on them.
     4) Take all of the elements that are greater than the pivot and use quicksort on them.
     5) Return the concatenation of the quicksorted list of elements that are less than or equal to the pivot, the pivot, and the quicksorted list of elements that are greater than the pivot.
-    
+```
+public class QuickSort {
+    public static void sort(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+    }
+ 
+    public static void quickSort(int[] nums, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int pivot_index = partition(nums, start, end);
+        quickSort(nums, start, pivot_index - 1);
+        quickSort(nums, pivot_index + 1, end);
+    }
+ 
+    public static int partition(int[] nums, int start, int end) {
+        int mid = start + (end - start) / 2;
+        int pivot = nums[mid];
+        while (start < end) {
+            while (nums[start] < pivot) {start++;}       
+            while (nums[end] > pivot) {end--;}
+            // swap
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+        }
+        return start;
+    }
+}
+```
 #### Merge Sort
 * An efficient sorting algorithm that uses a divide-and-conquer approach to order elements in an array.
 * Mergesort runs in a guaranteed O(nlogn) time, which is significantly faster than the average- and worst-case running times of several other sorting algorithms.

@@ -11,6 +11,15 @@ for(int k = 0; k < dirs.length; ++k) {
     ...
 }
 ```
+Binary Search
+```
+int i = 0, j = arr.length-1;
+while(i <= j){
+    int mid = (i+j)/2;
+    if(arr[mid] < x) i = mid+1;
+    else j = mid-1;
+}
+```
 ### Leetcode
 
 \#| Title|Difficulty

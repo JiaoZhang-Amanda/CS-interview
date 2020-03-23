@@ -48,14 +48,21 @@ for (Map.Entry<String,String> entry : gfg.entrySet())
                  ", Value = " + entry.getValue()); 
 ```
 PriorityQueue<>
+default Min Heap:  that is the top element is the minimum one in the heap. 
 ```
 PriorityQueue<Integer> q = new PriorityQueue<>(
     (n1, n2) -> map.get(n1) - map.get(n2)
-);
+); //min-heap
 q.offer(i);
 if(q.size() > k){
     q.poll();
 }
+```
+ArrayList
+```
+list.addLast()
+list.addFirst()
+list.reverse()
 ```
 * compare(Integer o1, Integer o2){}中，o1代表的是List容器中的后一个元素，o2代表的是List容器中的前一个元素！
 
@@ -66,7 +73,6 @@ if(q.size() > k){
 56  |  Merge Intervals  |  Medium
 280   |  Wiggle Sort |      Medium
 324   | Wiggle Sort II  |  Medium  
-527   |  Word Abbreviation    | Hard
 253   | Meeting Rooms II  |  Medium
 522    |Longest Uncommon Subsequence II    |Medium  
 329| Longest Increasing Path in a Matrix|Hard
@@ -102,16 +108,6 @@ Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >
 <br>Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
 <br>Input: nums = [1, 5, 1, 1, 6, 4]
 <br>Output: One possible answer is [1, 4, 1, 5, 1, 6].
-</details>
-
-<details>
-<summary>527. Word Abbreviation</summary>
-Given an array of n distinct non-empty strings, you need to generate minimal possible abbreviations for every word following rules below.
-<br>1. Begin with the first character and then the number of characters abbreviated, which followed by the last character.
-<br>2. If there are any conflict, that is more than one words share the same abbreviation, a longer prefix is used instead of only the first character until making the map from word to abbreviation become unique. In other words, a final abbreviation cannot map to more than one original words.
-<br> 3. If the abbreviation doesn't make the word shorter, then keep it as original.
-<br>Input: ["like","god","internal","me","internet","interval","intension","face","intrusion"]
-<br>Output: ["l2e","god","internal","me","i6t","interval","inte4n","f2e","intr4n"]
 </details>
 
 <details>
@@ -261,13 +257,14 @@ Your answer should be sorted by frequency from highest to lowest. If two words h
 
 Example 1:
 Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
-Output: ["i", "love"]
-Explanation: "i" and "love" are the two most frequent words.
+<br>Output: ["i", "love"]
+<br>Explanation: "i" and "love" are the two most frequent words.
     Note that "i" comes before "love" due to a lower alphabetical order.
+    
 Example 2:
-Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
-Output: ["the", "is", "sunny", "day"]
-Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
+<br>Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
+<br>Output: ["the", "is", "sunny", "day"]
+<br>Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
     with the number of occurrence being 4, 3, 2 and 1 respectively.
 </details>
 
