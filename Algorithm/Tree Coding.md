@@ -38,6 +38,10 @@ class TrieNode {
 270    |Closest Binary Search Tree Value  |  Easy
 272    |Closest Binary Search Tree Value II  |  Hard
 230    | Kth Smallest Element in a BST  |  Medium
+366   | Find Leaves of Binary Tree   | Medium
+145   | Binary Tree Postorder Traversal   | Hard
+297  |  Serialize and Deserialize Binary Tree  |  Hard
+449   | Serialize and Deserialize BST  |  Medium
 
 <details>
 <summary>173. Binary Search Tree Iterator</summary>
@@ -227,4 +231,76 @@ Input: root = [3,1,4,null,2], k = 1
   \
    2
 Output: 1
+</details>
+
+<details>
+<summary>366. Find Leaves of Binary Tree</summary>
+Given a binary tree, collect a tree's nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.
+
+Example:
+
+Input: [1,2,3,4,5]
+  
+          1
+         / \
+        2   3
+       / \     
+      4   5    
+
+Output: [[4,5,3],[2],[1]]
+ 
+
+Explanation:
+
+1. Removing the leaves [4,5,3] would result in this tree:
+
+          1
+         / 
+        2  
+</details>
+
+<details>
+<summary>145. Binary Tree Postorder Traversal</summary>
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [3,2,1]
+</details>
+
+<details>
+<summary>297. Serialize and Deserialize Binary Tree </summary>
+Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+Example: 
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+</details>
+
+<details>
+<summary>449. Serialize and Deserialize BST</summary>
+Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary search tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+The encoded string should be as compact as possible.
+
+Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 </details>

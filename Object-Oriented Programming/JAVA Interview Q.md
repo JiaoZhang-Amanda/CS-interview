@@ -1,7 +1,18 @@
 ## JAVA Interview Question
 * [JAVA Basic Concept](#JAVA-Basic-Concept)
     * [OOP](#oop)
-
+    * [JVM](#jvm)
+    * [Modifiers](#Modifiers)
+    * [Multithreading](#Multithreading)
+    * [Inner Classes](#Inner-Classes)
+* [JAVA Methods](#JAVA-Methods)
+    * [String VS StringBuffer VS StringBuiler](#String-VS-StringBuffer-VS-StringBuiler)
+    * ["==" VS "equals()"](#==-VS-equals())
+    * [HashTable VS HashMap](#HashTable-VS-HashMap)
+    * [final VS finalize VS finally](#final-VS-finalize-VS-finally)
+    * [List VS Set VS Map](#List-VS-Set-VS-Map)
+    * [ArrayList VS Vector VS LinkedList](#ArrayList-VS-Vector-VS-LinkedList)
+    * [what is contract between hashcode and equals method in java?](#what-is-contract-between-hashcode-and-equals-method-in-java?)
 ## JAVA Basic Concept
 ### OOP
 * **Inheritance**: It lets programmers create new classes that share some of the attributes of existing classes. 
@@ -64,7 +75,8 @@ No, you can only extend a single class but you can implement multiple interfaces
 * Waiting − Sometimes, a thread transitions to the waiting state while the thread waits for another thread to perform a task. A thread transitions back to the runnable state only when another thread signals the waiting thread to continue executing.
 * Timed Waiting − A runnable thread can enter the timed waiting state for a specified interval of time. A thread in this state transitions back to the runnable state when that time interval expires or when the event it is waiting for occurs.
 * Terminated (Dead) − A runnable thread enters the terminated state when it completes its task or otherwise terminates.
-### 2 Explain Mutex
+
+### 2) Explain Mutex
 We use mutex to protect critical section and thus prevent race condition. Each time only one process will be able to have the key and proceed with their work. Mutex has a boolean variable and indicates if the lock is available. A process that attempts to acquire an unavailable lock is blocked until the lock is released. It is locking mechanism.
 
 ### 3) Explain Semaphore
@@ -95,7 +107,7 @@ public class MyMainClass {
 * An inner class can also be **static**, which means that you can access it without creating an object of the outer class
 * One advantage of inner classes, is that they can access attributes and methods of the outer class
 
-## JAVA Method
+## JAVA Methods
 ### String VS StringBuffer VS StringBuiler
 - String is immutable, whereas StringBuffer and StringBuider are mutable classes.
   whenever we do String manipulation like concatenation, substring etc, it generates a new String and discards the older String for garbage collection.

@@ -71,6 +71,9 @@ procedure BFS(G, start_v) is
                  w.parent := v
                  Q.enqueue(w)
 ```
+* Time O(n+m)
+* Space O(n) 
+
 ### Depth-first search(DFS)
 An algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
 * Input: A graph G and a vertex v of G
@@ -95,6 +98,38 @@ while S is not empty do
         for all edges from v to w in G.adjacentEdges(v) do 
             S.push(w)
 ```
+* Time O(n+m)
+* Space O(n) 
+
+### Topological sort
+Topological sorting for **Directed Acyclic Graph (DAG)** is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering.
+* Time O(n+m)
+* Using DFS or BFS
+
+### Union Find(Disjoint Set Union)
+A union-find algorithm is an algorithm that performs two useful operations on such a data structure:
+
+* Find: Determine which subset a particular element is in. This can be used for determining if two elements are in the same subset.
+* Union: Join two subsets into a single subset.
+
+Union-Find Algorithm can be used to check whether an **undirected graph** contains cycle or not. 
+```
+public int find(int p){
+    while(p != id[p]) p = id[p];
+    return p;
+}
+
+public void union(int p, int q){
+    int pRoot = find(p);
+    int qRoot = find(q);
+    if(pRoot == qRoot) return;
+    id[p] = qRoot;
+    count--;
+}
+```
+* Time O(m+n)
+* Space O(n) 
+
 ### Dijkstra’s algorithm
 An algorithm for finding the shortest paths between nodes in a graph, which may represent
 * Using a priority queue
@@ -126,30 +161,7 @@ An algorithm for finding the shortest paths between nodes in a graph, which may 
 ### A*
 A graph traversal and path search algorithm, which is often used in computer science due to its completeness, optimality, and optimal efficiency. One major p.ractical drawback is its O(b^d) space complexity, as it stores all generated nodes in memory. 
 
-#### Topological sort
-Topological sorting for **Directed Acyclic Graph (DAG)** is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering.
 
-### Union Find(Disjoint Set Union)
-A union-find algorithm is an algorithm that performs two useful operations on such a data structure:
-
-* Find: Determine which subset a particular element is in. This can be used for determining if two elements are in the same subset.
-* Union: Join two subsets into a single subset.
-
-Union-Find Algorithm can be used to check whether an **undirected graph** contains cycle or not. 
-```
-public int find(int p){
-    while(p != id[p]) p = id[p];
-    return p;
-}
-
-public void union(int p, int q){
-    int pRoot = find(p);
-    int qRoot = find(q);
-    if(pRoot == qRoot) return;
-    id[p] = qRoot;
-    count--;
-}
-```
 ## Tree / Binary Search Tree
 * Tree construction, traversal and manipulation algorithms
 * one flavor of balanced binary tree, whether it's a red/black tree, a splay tree or an AVL tree and how it's implemented. 

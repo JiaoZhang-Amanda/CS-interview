@@ -21,10 +21,13 @@ sb.reverse().toString();
 336   |    Palindrome Pairs  |     Hard
 214    |   Shortest Palindrome     |  Hard
 616  |  Add Bold Tag in String  |  Medium
+408  |  Valid Word Abbreviation  |  Easy
 320  |  Generalized Abbreviation   | Medium
+411|Minimum Unique Word Abbreviation    |Hard
 249 |   Group Shifted Strings  |  Medium
 389  |  Find the Difference   | Easy
 293  |  Flip Game  |  Easy
+294 | Flip Game II | Medium
 20   | Valid Parentheses  |  Easy
 318  |  Maximum Product of Word Lengths  |  Medium
 358  |  Rearrange String k Distance Apart  |  Hard
@@ -34,7 +37,7 @@ sb.reverse().toString();
 890  |  Find and Replace Pattern |   Medium
 844   | Backspace String Compare  |  Easy
 158 |   Read N Characters Given Read4 II - Call multiple times |   Hard
-
+415    |Add Strings  |  Easy
 <details>
 <summary>345. Reverse Vowels of a String</summary>
 Write a function that takes a string as input and reverse only the vowels of a string.
@@ -203,6 +206,12 @@ Output:
 </details>
 
 <details>
+<summary>408. Valid Word Abbreviation</summary>
+Given a non-empty string s and an abbreviation abbr, return whether the string matches with the given abbreviation.
+Given s = "internationalization", abbr = "i12iz4n": Return true.
+</details>
+
+<details>
 <summary>320. Generalized Abbreviation</summary>
 Write a function to generate the generalized abbreviations of a word.
 
@@ -211,6 +220,18 @@ Example:
 Given word = "word", return the following list (order does not matter):
 
 ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
+</details>
+
+<details>
+<summary>411. Minimum Unique Word Abbreviation</summary>
+</details>
+Given a target string and a set of strings in a dictionary, find an abbreviation of this target string with the smallest possible length such that it does not conflict with abbreviations of the strings in the dictionary.
+
+Each number or letter in the abbreviation is considered length = 1. For example, the abbreviation "a32bc" has length = 4.
+
+"apple", ["blade"] -> "a4" (because "5" or "4e" conflicts with "blade")
+
+"apple", ["plain", "amber", "blade"] -> "1p3" (other valid answers include "ap3", "a3e", "2p2", "3le", "3l1").
 </details>
 
 <details>
@@ -267,6 +288,19 @@ For example, given s = "++++", after one move, it may become one of the followi
   "++--"
 ]
 If there is no valid move, return an empty list [].
+</details>
+
+<details>
+<summary>294. Flip Game II</summary>
+You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -, you and your friend take turns to flip two consecutive "++" into "--". The game ends when a person can no longer make a move and therefore the other person will be the winner.
+
+Write a function to determine if the starting player can guarantee a win.
+
+For example, given s = "++++", return true. The starting player can guarantee a win by flipping the middle "++" to become "+--+".
+
+Follow up:
+Derive your algorithm's runtime complexity.
+
 </details>
 
 <details>
@@ -453,4 +487,9 @@ By using the read4 API, implement the function int read(char *buf, int n) that r
 Note:
 The read function may be called multiple times.
 
+</details>
+
+<details>
+<summary>415. Add Strings   </summary>
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 </details>

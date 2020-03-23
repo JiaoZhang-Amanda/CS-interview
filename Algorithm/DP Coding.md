@@ -17,6 +17,10 @@
 727    |   Minimum Window Subsequence   |    Hard
 351   |    Android Unlock Patterns    |   Medium
 361   |    Bomb Enemy  |     Medium
+471   | Encode String with Shortest Length  |  Hard
+10  |  Regular Expression Matching  |  Hard
+418 | Sentence Screen Fitting   | Medium
+568 |   Maximum Vacation Days  |  Hard
 
 <details>
 <summary>139. Word Break</summary>
@@ -160,4 +164,98 @@ E 0 W E
 0 E 0 0
 
 return 3. (Placing a bomb at (1,1) kills 3 enemies)
+</details>
+
+<details>
+<summary>471. Encode String with Shortest Length</summary>
+Given a non-empty string, encode the string such that its encoded length is the shortest.
+
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times.
+
+Note:
+k will be a positive integer and encoded string will not be empty or have extra space.
+You may assume that the input string contains only lowercase English letters. The string's length is at most 160.
+If an encoding process does not make the string shorter, then do not encode it. If there are several solutions, return any of them is fine.
+Example 1:
+
+Input: "aaa"
+Output: "aaa"
+Explanation: There is no way to encode it such that it is shorter than the input string, so we do not encode it.
+Example 2:
+
+Input: "aaaaa"
+Output: "5[a]"
+Explanation: "5[a]" is shorter than "aaaaa" by 1 character.
+</details>
+
+<details>
+<summary>10. Regular Expression Matching</summary>
+Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
+
+Note:
+
+s could be empty and contains only lowercase letters a-z.
+p could be empty and contains only lowercase letters a-z, and characters like . or *.
+Example 1:
+
+Input:
+s = "aa"
+p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+</details>
+
+<details>
+<summary>418. Sentence Screen Fitting </summary>
+Given a rows x cols screen and a sentence represented by a list of non-empty words, find how many times the given sentence can be fitted on the screen.
+
+Note:
+A word cannot be split into two lines.
+The order of words in the sentence must remain unchanged.
+Two consecutive words in a line must be separated by a single space.
+Total words in the sentence won’t exceed 100.
+Length of each word is greater than 0 and won’t exceed 10.
+1 ≤ rows, cols ≤ 20,000.
+
+Example 1:
+Input:
+rows = 2, cols = 8, sentence = ["hello", "world"]
+Output: 
+1
+Explanation:
+hello---
+world---
+The character '-' signifies an empty space on the screen.
+</details>
+
+<details>
+<summary>568. Maximum Vacation Days</summary>
+LeetCode wants to give one of its best employees the option to travel among N cities to collect algorithm problems. But all work and no play makes Jack a dull boy, you could take vacations in some particular cities and weeks. Your job is to schedule the traveling to maximize the number of vacation days you could take, but there are certain rules and restrictions you need to follow.
+
+Rules and restrictions:
+
+You can only travel among N cities, represented by indexes from 0 to N-1. Initially, you are in the city indexed 0 on Monday.
+The cities are connected by flights. The flights are represented as a N*N matrix (not necessary symmetrical), called flights representing the airline status from the city i to the city j. If there is no flight from the city i to the city j, flights[i][j] = 0; Otherwise, flights[i][j] = 1. Also, flights[i][i] = 0 for all i.
+You totally have K weeks (each week has 7 days) to travel. You can only take flights at most once per day and can only take flights on each week's Monday morning. Since flight time is so short, we don't consider the impact of flight time.
+For each city, you can only have restricted vacation days in different weeks, given an N*K matrix called days representing this relationship. For the value of days[i][j], it represents the maximum days you could take vacation in the city i in the week j.
+ 
+
+You're given the flights matrix and days matrix, and you need to output the maximum vacation days you could take during K weeks.
+
+Example 1:
+
+Input:flights = [[0,1,1],[1,0,1],[1,1,0]], days = [[1,3,1],[6,0,3],[3,3,3]]
+Output: 12
+Explanation: 
+Ans = 6 + 3 + 3 = 12. 
+
+One of the best strategies is:
+1st week : fly from city 0 to city 1 on Monday, and play 6 days and work 1 day. 
+(Although you start at city 0, we could also fly to and start at other cities since it is Monday.) 
+2nd week : fly from city 1 to city 2 on Monday, and play 3 days and work 4 days.
+3rd week : stay at city 2, and play 3 days and work 4 days.
 </details>

@@ -1,7 +1,8 @@
 ## Design Coding
 
 ### JAVA releted
-
+`Random r = new Random();`
+`r.nextInt(list.size())`
 ### Leetcode
 
 \#| Title|Difficulty
@@ -16,6 +17,14 @@
 379  |      Design Phone Directory    |    Medium
 146   |     LRU Cache    |    Hard
 460    |    LFU Cache     |   Hard
+380 |   Insert Delete GetRandom O(1)  |  Medium
+295 |   Find Median from Data Stream   | Hard
+341  |  Flatten Nested List Iterator  |  Medium
+359   | Logger Rate Limiter  |  Easy
+251   | Flatten 2D Vector  |  Medium
+155  |  Min Stack  |  Easy
+489  |  Robot Room Cleaner  |  Hard
+855  |  Exam Room |   Medium
 
 <details>
 <summary>284. Peeking Iterator</summary>
@@ -151,4 +160,194 @@ get(key) - Get the value (will always be positive) of the key if the key exists 
 put(key, value) - Set or insert the value if the key is not already present. When the cache reaches its capacity, it should invalidate the least frequently used item before inserting a new item. For the purpose of this problem, when there is a tie (i.e., two or more keys that have the same frequency), the least recently used key would be evicted.
 
 Note that the number of times an item is used is the number of calls to the get and put functions for that item since it was inserted. This number is set to zero when the item is removed.
+</details>
+
+<details>
+<summary>380. Insert Delete GetRandom O(1)</summary>
+Design a data structure that supports all following operations in average O(1) time.
+
+insert(val): Inserts an item val to the set if not already present.
+remove(val): Removes an item val from the set if present.
+getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+Example:
+
+// Init an empty set.
+RandomizedSet randomSet = new RandomizedSet();
+
+// Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomSet.insert(1);
+</details>
+
+<details>
+<summary>295. Find Median from Data Stream</summary>
+Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.
+
+For example,
+[2,3,4], the median is 3
+
+[2,3], the median is (2 + 3) / 2 = 2.5
+
+Design a data structure that supports the following two operations:
+
+void addNum(int num) - Add a integer number from the data stream to the data structure.
+double findMedian() - Return the median of all elements so far.
+ 
+
+Example:
+
+addNum(1)
+addNum(2)
+findMedian() -> 1.5
+addNum(3) 
+findMedian() -> 2
+</details>
+
+<details>
+<summary>341. Flatten Nested List Iterator</summary>
+Given a nested list of integers, implement an iterator to flatten it.
+
+Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+Example 1:
+
+Input: [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,1,2,1,1].
+Example 2:
+
+Input: [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,4,6].
+            
+</details>
+
+<details>
+<summary>359. Logger Rate Limiter</summary>
+Design a logger system that receive stream of messages along with its timestamps, each message should be printed if and only if it is not printed in the last 10 seconds.
+
+Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the given timestamp, otherwise returns false.
+
+It is possible that several messages arrive roughly at the same time.
+
+Example:
+
+Logger logger = new Logger();
+
+// logging string "foo" at timestamp 1
+logger.shouldPrintMessage(1, "foo"); returns true; 
+
+// logging string "bar" at timestamp 2
+logger.shouldPrintMessage(2,"bar"); returns true;
+
+// logging string "foo" at timestamp 3
+logger.shouldPrintMessage(3,"foo"); returns false;
+</details>
+
+<details>
+<summary>251. Flatten 2D Vector</summary>
+Implement an iterator to flatten a 2d vector.
+
+For example,
+Given 2d vector =
+
+[
+  [1,2],
+  [3],
+  [4,5,6]
+]
+By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,2,3,4,5,6].
+
+Hint:
+
+How many variables do you need to keep track?
+Two variables is all you need. Try with x and y.
+Beware of empty rows. It could be the first few rows.
+To write correct code, think about the invariant to maintain. What is it?
+The invariant is x and y must always point to a valid point in the 2d vector. Should you maintain your invariant ahead of time or right when you need it?
+Not sure? Think about how you would implement hasNext(). Which is more complex?
+Common logic in two different places should be refactored into a common method.
+Follow up:
+As an added challenge, try to code it using only iterators in C++ or iterators in Java.
+</details>
+
+<details>
+<summary>155. Min Stack</summary>
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.
+ 
+</details>
+
+<details>
+<summary>489. Robot Room Cleaner</summary>
+Given a robot cleaner in a room modeled as a grid.
+
+Each cell in the grid can be empty or blocked.
+
+The robot cleaner with 4 given APIs can move forward, turn left or turn right. Each turn it made is 90 degrees.
+
+When it tries to move into a blocked cell, its bumper sensor detects the obstacle and it stays on the current cell.
+
+Design an algorithm to clean the entire room using only the 4 given APIs shown below.
+
+interface Robot {
+  // returns true if next cell is open and robot moves into the cell.
+  // returns false if next cell is obstacle and robot stays on the current cell.
+  boolean move();
+
+  // Robot will stay on the same cell after calling turnLeft/turnRight.
+  // Each turn will be 90 degrees.
+  void turnLeft();
+  void turnRight();
+
+  // Clean the current cell.
+  void clean();
+}
+Example:
+
+Input:
+room = [
+  [1,1,1,1,1,0,1,1],
+  [1,1,1,1,1,0,1,1],
+  [1,0,1,1,1,1,1,1],
+  [0,0,0,1,0,0,0,0],
+  [1,1,1,1,1,1,1,1]
+],
+row = 1,
+col = 3
+
+Explanation:
+All grids in the room are marked by either 0 or 1.
+0 means the cell is blocked, while 1 means the cell is accessible.
+The robot initially starts at the position of row=1, col=3.
+From the top left corner, its position is one row below and three columns right.
+</details>
+
+<details>
+<summary>855. Exam Room</summary>
+In an exam room, there are N seats in a single row, numbered 0, 1, 2, ..., N-1.
+
+When a student enters the room, they must sit in the seat that maximizes the distance to the closest person.  If there are multiple such seats, they sit in the seat with the lowest number.  (Also, if no one is in the room, then the student sits at seat number 0.)
+
+Return a class ExamRoom(int N) that exposes two functions: ExamRoom.seat() returning an int representing what seat the student sat in, and ExamRoom.leave(int p) representing that the student in seat number p now leaves the room.  It is guaranteed that any calls to ExamRoom.leave(p) have a student sitting in seat p.
+
+ 
+
+Example 1:
+
+Input: ["ExamRoom","seat","seat","seat","seat","leave","seat"], [[10],[],[],[],[],[4],[]]
+Output: [null,0,9,4,2,null,5]
+Explanation:
+ExamRoom(10) -> null
+seat() -> 0, no one is in the room, then the student sits at seat number 0.
+seat() -> 9, the student sits at the last seat number 9.
+seat() -> 4, the student sits at the last seat number 4.
+seat() -> 2, the student sits at the last seat number 2.
+leave(4) -> null
+seat() -> 5, the student sits at the last seat number 5.
 </details>

@@ -1,8 +1,16 @@
 ## Searching Coding
 
 ### JAVA releted
+* try all 4 directions
+```
+int[][] dirs = {{-1,0}, {1,0}, {0,1}, {0,-1}};
 
-
+for(int k = 0; k < dirs.length; ++k) {
+    int x = pos[0] + dirs[k][0];
+    int y = pos[1] + dirs[k][1];
+    ...
+}
+```
 ### Leetcode
 
 \#| Title|Difficulty
@@ -18,6 +26,12 @@
 200 | Number of Islands |    Medium
 305 | Number of Islands II|Hard
 425 | Word Squares|Hard
+490   | The Maze  |  Medium
+505   | The Maze II  |  Medium
+422 |Valid Word Square   | Easy
+498 |   Diagonal Traverse   | Medium
+240   | Search a 2D Matrix II |   Medium
+373  |  Find K Pairs with Smallest Sums  |  Medium
 
 <details>
 <summary>374. Guess Number Higher or Lower</summary>
@@ -230,4 +244,151 @@ Output:
     "lady"
   ]
 ]
+</details>
+
+<details>
+<summary>490. The Maze</summary>
+There is a ball in a maze with empty spaces and walls. The ball can go through empty spaces by rolling up, down, left or right, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.
+
+Given the ball's start position, the destination and the maze, determine whether the ball could stop at the destination.
+
+The maze is represented by a binary 2D array. 1 means the wall and 0 means the empty space. You may assume that the borders of the maze are all walls. The start and destination coordinates are represented by row and column indexes.
+
+Example 1
+
+Input 1: a maze represented by a 2D array
+
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 1 0
+1 1 0 1 1
+0 0 0 0 0
+
+Input 2: start coordinate (rowStart, colStart) = (0, 4)
+Input 3: destination coordinate (rowDest, colDest) = (4, 4)
+
+Output: true
+Explanation: One possible way is : left -> down -> left -> down -> right -> down -> right.
+
+</details>
+
+<details>
+<summary>505. The Maze II</summary>
+There is a ball in a maze with empty spaces and walls. The ball can go through empty spaces by rolling up, down, left or right, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.
+
+Given the ball's start position, the destination and the maze, find the shortest distance for the ball to stop at the destination. The distance is defined by the number of empty spaces traveled by the ball from the start position (excluded) to the destination (included). If the ball cannot stop at the destination, return -1.
+
+The maze is represented by a binary 2D array. 1 means the wall and 0 means the empty space. You may assume that the borders of the maze are all walls. The start and destination coordinates are represented by row and column indexes.
+
+Example 1
+
+Input 1: a maze represented by a 2D array
+
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 1 0
+1 1 0 1 1
+0 0 0 0 0
+
+Input 2: start coordinate (rowStart, colStart) = (0, 4)
+Input 3: destination coordinate (rowDest, colDest) = (4, 4)
+
+Output: 12
+Explanation: One shortest way is : left -> down -> left -> down -> right -> down -> right.
+             The total distance is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
+</details>
+
+<details>
+<summary>422. Valid Word Square</summary>
+Given a sequence of words, check whether it forms a valid word square.
+
+A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
+
+Note:
+
+The number of words given is at least 1 and does not exceed 500.
+Word length will be at least 1 and does not exceed 500.
+Each word contains only lowercase English alphabet a-z.
+Example 1:
+
+Input:
+[
+  "abcd",
+  "bnrt",
+  "crmy",
+  "dtye"
+]
+
+Output:
+true
+
+Explanation:
+The first row and first column both read "abcd".
+The second row and second column both read "bnrt".
+The third row and third column both read "crmy".
+The fourth row and fourth column both read "dtye".
+
+Therefore, it is a valid word square.
+</details>
+
+<details>
+<summary>498. Diagonal Traverse</summary>
+Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+
+ 
+
+Example:
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+
+Output:  [1,2,4,7,5,3,6,8,9]
+</details>
+
+<details>
+<summary>240. Search a 2D Matrix II</summary>
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+Example:
+
+Consider the following matrix:
+
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+Given target = 5, return true.
+
+Given target = 20, return false.
+</details>
+
+<details>
+<summary>373. Find K Pairs with Smallest Sums</summary>
+You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
+
+Define a pair (u,v) which consists of one element from the first array and one element from the second array.
+
+Find the k pairs (u1,v1),(u2,v2) ...(uk,vk) with the smallest sums.
+
+Example 1:
+
+Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
+Output: [[1,2],[1,4],[1,6]] 
+Explanation: The first 3 pairs are returned from the sequence: 
+             [1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
+Example 2:
+
+Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
+Output: [1,1],[1,1]
+Explanation: The first 2 pairs are returned from the sequence: 
+             [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
 </details>

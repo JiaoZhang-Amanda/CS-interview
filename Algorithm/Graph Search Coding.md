@@ -1,8 +1,54 @@
 ## Graph Search Coding
 
 ### JAVA releted
-
-
+* Construct Graph
+```
+private Map<Integer, List<Integer>> constructGraph(int[][] edges) {
+    Map<Integer, List<Integer>> graph = new HashMap<>();
+    for(int i = 0; i < s.length(); i++) {
+        graph.put(i, new ArrayList<>());
+    }
+    for(int i = 0; i < edges.length; i++) {
+        graph.get(edges[i][0]).add(edges[i][1]);
+    }
+    return graph;
+}
+```
+* Union Find
+```
+public class UnionFind {
+    private int[] parent = null;
+    private int unionCount = 0;
+    
+    public UnionFind(int n){
+        unionCount = 0;
+        parent = new int[n];
+        for(int i = 0; i < n; i++){
+            parent[i] = i;
+        }
+    }
+    
+    public int find(int x){
+        if(parent[x] == x){
+            return x;
+        }
+        return parent[x] = find(parent[x]);
+    }
+    
+    public void connect(int a, int b){
+        int root_a = find(a);
+        int root_b = find(b);
+        if(root_a != root_b){
+            parent[root_a] = root_b;
+            unionCount--;
+        }
+    }   
+    
+    public int getTotalUnionNum(){
+        return unionCount;
+    }
+}
+```
 ### Leetcode
 
 \#| Title|Difficulty
@@ -18,6 +64,7 @@
 444  |  Sequence Reconstruction   | Medium
 133  |  Clone Graph   | Medium
 785 | Is Graph Bipartite? | Medium
+[link](https://www.cnblogs.com/lz87/p/10354361.html)|Max path value in directed graph|-
 <details>
 
 <summary>841. Keys and Rooms</summary>
@@ -86,7 +133,7 @@ Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge 
 
 Example 1:
 
-     0        3
+     0          3
 
      |          |
 
@@ -96,7 +143,7 @@ Given n = 5 and edges = [[0, 1], [1, 2], [3, 4]], return 2.
 
 Example 2:
 
-     0         4
+     0           4
 
      |           |
 
@@ -124,7 +171,9 @@ Input: [[1,2], [1,3], [2,3]]
 Output: [2,3]
 Explanation: The given undirected graph will be like this:
   1
+  
  / \
+ 
 2 - 3
 </details>
 
@@ -144,7 +193,9 @@ Output: [2,3]
 Explanation: The given directed graph will be like this:
   1
  / \
+ 
 v   v
+
 2-->3
 </details>
 
@@ -225,4 +276,28 @@ The graph looks like this:
 |       |
 3----2
 We can divide the vertices into two groups: {0, 2} and {1, 3}.
+</details>
+
+<details>
+<summary>Max path value in directed graph</summary>
+In a directed graph, each node is assigned an uppercase letter. We define a path's value as the number of most frequently-occurring letter along that path. For example, if a path in the graph goes through "ABACA", the value of the path is 3, since there are 3 occurrences of 'A' on the path.
+
+Given a graph with n nodes and m directed edges, return the largest value path of the graph. If the largest value is infinite, then return -1.
+
+The graph is represented with a string and an edge list. The i-th character represents the uppercase letter of the i-th node. Each tuple in the edge list (i, j) means there is a directed edge from the i-th node to the j-th node. Self-edges are possible, as well as multi-edges.
+
+For example, the following input graph:
+
+ABACA
+[(0, 1),
+ (0, 2),
+ (2, 3),
+ (3, 4)]
+Would have maximum value 3 using the path of vertices [0, 2, 3, 4], (A, A, C, A).
+
+The following input graph:
+
+A
+[(0, 0)]
+Should return null, since we have an infinite loop
 </details>
