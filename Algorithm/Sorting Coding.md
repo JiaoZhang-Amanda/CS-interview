@@ -33,6 +33,13 @@ if(o1>o2)  return -1;
 if(o1==o2)  return 0;
 if(o1<o2)  return 1;
 ```
+`this.compareTo(that)`
+```
+returns 
+a negative int if this < that
+0 if this == that
+a positive int if this > that
+```
 TreeMap<>
 default: decreasing
 ```
@@ -68,31 +75,42 @@ list.reverse()
 
 ### Leetcode
 
-\#| Title|Difficulty
---|--|--
-56  |  Merge Intervals  |  Medium
-280   |  Wiggle Sort |      Medium
-324   | Wiggle Sort II  |  Medium  
-253   | Meeting Rooms II  |  Medium
-522    |Longest Uncommon Subsequence II    |Medium  
-329| Longest Increasing Path in a Matrix|Hard
-524| Longest Word in Dictionary through Deleting|Medium
-506    |Relative Ranks   | Easy
-853   | Car Fleet   | Medium
-360| Sort Transformed Array|Medium
-315| Count of Smaller Numbers After Self|Hard
- 274| H-Index|Medium
- 692| Top K Frequent Words|Medium
-215   | Kth Largest Element in an Array    |Medium
- 347     |  Top K Frequent Elements    |   Sorting
- 658    |    Find K Closest Elements    |    Medium
- 373  |  Find K Pairs with Smallest Sums  |  Medium
+\#| Title|Difficulty|
+--|--|--|--
+56  |  Merge Intervals  |  Medium|Intervals
+253   | Meeting Rooms II  |  Medium|Intervals
+280   |  Wiggle Sort |      Medium|
+324   | Wiggle Sort II  |  Medium  |
+522    |Longest Uncommon Subsequence II    |Medium  |
+329| Longest Increasing Path in a Matrix|Hard|
+524| Longest Word in Dictionary through Deleting|Medium|
+506    |Relative Ranks   | Easy|
+853   | Car Fleet   | Medium|
+360| Sort Transformed Array|Medium|
+315| Count of Smaller Numbers After Self|Hard|
+ 274| H-Index|Medium|
+ 692| Top K Frequent Words|Medium |Top K 
+215   | Kth Largest Element in an Array    |Medium|Top K 
+ 347     |  Top K Frequent Elements    |   Sorting|Top K 
+ 658    |    Find K Closest Elements    |    Medium|Top K 
+ 373  |  Find K Pairs with Smallest Sums  |  Medium|Top K 
  
 <details>
 <summary>56. Merge Intervals</summary>
 Given a collection of intervals, merge all overlapping intervals.<br>Input: [[1,3],[2,6],[8,10],[15,18]]<br>
 Output: [[1,6],[8,10],[15,18]]<br>
 Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+</details>
+
+<details>
+<summary>253. Meeting Rooms II</summary>
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+Input: intervals = [(0,30),(5,10),(15,20)]
+Output: 2
+Explanation:
+We need two meeting rooms
+room1: (0,30)
+room2: (5,10),(15,20)
 </details>
 
 <details>
@@ -111,21 +129,13 @@ Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >
 </details>
 
 <details>
-<summary>253. Meeting Rooms II</summary>
-Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
-Input: intervals = [(0,30),(5,10),(15,20)]
-Output: 2
-Explanation:
-We need two meeting rooms
-room1: (0,30)
-room2: (5,10),(15,20)
-</details>
-
-<details>
 <summary>522. Longest Uncommon Subsequence II</summary>
 Given a list of strings, you need to find the longest uncommon subsequence among them. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.
+
 <br>A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.
+
 <br>The input will be a list of strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn't exist, return -1.
+
 <br>Input: "aba", "cdc", "eae"
 <br>Output: 3
 </details>
@@ -146,6 +156,7 @@ Input: nums =
 ] 
 Output: 4 
 Explanation: The longest increasing path is [1, 2, 6, 9].
+
 Example 2:
 
 Input: nums = 
@@ -158,7 +169,6 @@ Output: 4
 Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
 </details>
 
-
 <details>
 <summary>524. Longest Word in Dictionary through Deleting</summary>
 Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
@@ -169,6 +179,7 @@ s = "abpcplea", d = ["ale","apple","monkey","plea"]
 
 Output: 
 "apple"
+
 Example 2:
 Input:
 s = "abpcplea", d = ["a","b","c"]
