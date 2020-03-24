@@ -5,7 +5,7 @@
 
 ### Leetcode
 
-\#| Title|Difficulty-
+\#| Title|Difficulty|-
 --|--|--|--
 66  |  Plus One   |  Easy|
 391   |  Perfect Rectangle   |  Hard|
