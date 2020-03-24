@@ -65,6 +65,8 @@ public class UnionFind {
 133  |  Clone Graph   | Medium
 785 | Is Graph Bipartite? | Medium
 [link](https://www.cnblogs.com/lz87/p/10354361.html)|Max path value in directed graph|-
+207|    Course Schedule   | Medium|
+210| Course Schedule II   | Medium|
 <details>
 
 <summary>841. Keys and Rooms</summary>
@@ -300,4 +302,39 @@ The following input graph:
 A
 [(0, 0)]
 Should return null, since we have an infinite loop
+</details>
+
+<details>
+<summary>207. Course Schedule</summary>
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses-1.
+
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+
+Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
+
+
+Example 1:
+
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0. So it is possible.
+</details>
+
+<details>
+<summary>210. Course Schedule II</summary>
+There are a total of n courses you have to take, labeled from 0 to n-1.
+
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+
+Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.
+
+There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.
+
+Example 1:
+
+Input: 2, [[1,0]] 
+Output: [0,1]
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   
+             course 0. So the correct course order is [0,1] .
 </details>

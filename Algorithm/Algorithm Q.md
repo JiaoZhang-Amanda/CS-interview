@@ -161,6 +161,7 @@ public void union(int p, int q){
 
 ### Dijkstra’s algorithm
 An algorithm for finding the shortest paths between nodes in a graph, which may represent
+* Solves the single-source shortest path problem with non-negative edge weight.
 * Using a priority queue
 ```
   function Dijkstra(Graph, source):
