@@ -34,8 +34,8 @@
 857 |   Minimum Cost to Hire K workers |   Hard|
 750 |   Number of Corner Rectangles   | Medium|
 815|    Bud Routes  |  Hard|
-659 |   Split Array into Consecutive Subsequences  |  Medium|Subsequences
 803  |  Bricks Falling When Hit  |  Hard|
+659 |   Split Array into Consecutive Subsequences  |  Medium|Subsequences
 334  |  Increasing Triplet Subsequence |   Medium   |Subsequences
 
 <details>
@@ -512,10 +512,26 @@ The best strategy is take the first bus to the bus stop 7, then take the second 
 </details>
 
 <details>
+<summary>803. Bricks Falling When Hit</summary>
+We have a grid of 1s and 0s; the 1s in a cell represent bricks.  A brick will not drop if and only if it is directly connected to the top of the grid, or at least one of its (4-way) adjacent bricks will not drop.
+
+We will do some erasures sequentially. Each time we want to do the erasure at the location (i, j), the brick (if it exists) on that location will disappear, and then some other bricks may drop because of that erasure.
+
+Return an array representing the number of bricks that will drop after each erasure in sequence.
+
+Example 1:
+Input: 
+grid = [[1,0,0,0],[1,1,1,0]]
+hits = [[1,0]]
+Output: [2]
+Explanation: 
+If we erase the brick at (1, 0), the brick at (1, 1) and (1, 2) will drop. So we should return 2.
+</details>
+
+<details>
 <summary>659. Split Array into Consecutive Subsequences</summary>
 Given an array nums sorted in ascending order, return true if and only if you can split it into 1 or more subsequences such that each subsequence consists of consecutive integers and has length at least 3.
 
- 
 
 Example 1:
 
@@ -534,23 +550,6 @@ Explanation:
 You can split them into two consecutive subsequences : 
 1, 2, 3, 4, 5
 3, 4, 5
-</details>
-
-<details>
-<summary>803. Bricks Falling When Hit</summary>
-We have a grid of 1s and 0s; the 1s in a cell represent bricks.  A brick will not drop if and only if it is directly connected to the top of the grid, or at least one of its (4-way) adjacent bricks will not drop.
-
-We will do some erasures sequentially. Each time we want to do the erasure at the location (i, j), the brick (if it exists) on that location will disappear, and then some other bricks may drop because of that erasure.
-
-Return an array representing the number of bricks that will drop after each erasure in sequence.
-
-Example 1:
-Input: 
-grid = [[1,0,0,0],[1,1,1,0]]
-hits = [[1,0]]
-Output: [2]
-Explanation: 
-If we erase the brick at (1, 0), the brick at (1, 1) and (1, 2) will drop. So we should return 2.
 </details>
 
 <details>
