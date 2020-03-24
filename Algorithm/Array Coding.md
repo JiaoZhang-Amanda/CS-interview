@@ -17,14 +17,14 @@
 407    | Trapping Rain Water II    | Hard|
 463  |  Island Perimeter  |  Easy|
 239 | Sliding Window Maximum |Hard|
-128  |  Longest Consecutive Sequence  |  Hard|
+846  |  Hand of Straights  |  Medium|sequences
+128  |  Longest Consecutive Sequence  |  Hard|sequences
 79   | Word Search   | Medium        |
 212 |   Word Search II   | Hard|
 162  |  Find Peak Element  |  Medium|
 4  |  Median of Two Sorted Arrays |   Hard|
 1074|Number of Submatrices That Sum to Target|Hard|Sum
 560 |   Subarray Sum Equals K  |  Medium|Sum
-846  |  Hand of Straights  |  Medium|
 15    |    3Sum    |    Medium|Sum
 16     |   3Sum Closest    |     Medium|Sum
 259   |  3Sum Smaller    | Medium|Sum
@@ -198,6 +198,28 @@ Output: [3,3,5,5,6,7]
 </details>
 
 <details>
+<summary>846. Hand of Straights</summary>
+Alice has a hand of cards, given as an array of integers.
+
+Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
+
+Return true if and only if she can.
+
+ 
+
+Example 1:
+
+Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
+Output: true
+Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
+Example 2:
+
+Input: hand = [1,2,3,4,5], W = 4
+Output: false
+Explanation: Alice's hand can't be rearranged into groups of 4.
+</details>
+
+<details>
 <summary>128. Longest Consecutive Sequence</summary>
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 
@@ -326,28 +348,6 @@ Given an array of integers and an integer k, you need to find the total number o
 Example 1:
 Input:nums = [1,1,1], k = 2
 Output: 2
-</details>
-
-<details>
-<summary>846. Hand of Straights</summary>
-Alice has a hand of cards, given as an array of integers.
-
-Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.
-
-Return true if and only if she can.
-
- 
-
-Example 1:
-
-Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
-Output: true
-Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
-Example 2:
-
-Input: hand = [1,2,3,4,5], W = 4
-Output: false
-Explanation: Alice's hand can't be rearranged into groups of 4.
 </details>
 
 <details>
