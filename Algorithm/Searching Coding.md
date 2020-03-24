@@ -42,6 +42,7 @@ while(i <= j){
 [link](Randomly generate a maze)|Randomly generate a maze||
 1140  |  Stone Game II  |   Medium
 497   | Random Point in Non-overlapping Rectangles  |  Medium
+774|	Minimize Max Distance to Gas Station|	Hard
 
 <details>
 <summary>374. Guess Number Higher or Lower</summary>
@@ -432,4 +433,18 @@ Input:
 [[[[1,1,5,5]]],[],[],[]]
 Output: 
 [null,[4,1],[4,1],[3,3]]
+</details>
+
+<details>
+<summary>774. Minimize Max Distance to Gas Station</summary>
+On a horizontal number line, we have gas stations at positions stations[0], stations[1], ..., stations[N-1], where N = stations.length.
+
+Now, we add K more gas stations so that D, the maximum distance between adjacent gas stations, is minimized.
+
+Return the smallest possible value of D.
+
+Example:
+
+Input: stations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], K = 9
+Output: 0.500000
 </details>
