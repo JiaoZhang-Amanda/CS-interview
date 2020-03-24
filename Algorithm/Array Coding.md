@@ -5,38 +5,38 @@
 
 ### Leetcode
 
-\#| Title|Difficulty
---|--|--
-66  |  Plus One   |  Easy
-391   |  Perfect Rectangle   |  Hard
-228   |  Summary Ranges  |   Medium
-289    | Game of Life    | Medium
-406   |  Queue Reconstruction by Height   |  Medium
-163   |  Missing Ranges   |  Medium
-15    |    3Sum    |    Medium
-16     |   3Sum Closest    |     Medium
-259   |  3Sum Smaller    | Medium
-42| Trapping Rain Water  | Hard
-407    | Trapping Rain Water II    | Hard
-463  |  Island Perimeter  |  Easy
-239 | Sliding Window Maximum |Hard
-128  |  Longest Consecutive Sequence  |  Hard
-79   | Word Search   | Medium        
-212 |   Word Search II   | Hard
-162  |  Find Peak Element  |  Medium
-4  |  Median of Two Sorted Arrays |   Hard
-1074|Number of Submatrices That Sum to Target|Hard
-560 |   Subarray Sum Equals K  |  Medium
-846  |  Hand of Straights  |  Medium
-64   | Minimum Path Sum |   Medium
-46|Permutations|Medium
-150  |  Evaluate Reverse Polish Notation  |  Medium
-857 |   Minimum Cost to Hire K workers |   Hard
-750 |   Number of Corner Rectangles   | Medium
-815|    Bud Routes  |  Hard
-659 |   Split Array into Consecutive Subsequences  |  Medium
-803  |  Bricks Falling When Hit  |  Hard
-334  |  Increasing Triplet Subsequence |   Medium   
+\#| Title|Difficulty-
+--|--|--|--
+66  |  Plus One   |  Easy|
+391   |  Perfect Rectangle   |  Hard|
+228   |  Summary Ranges  |   Medium|
+289    | Game of Life    | Medium|
+406   |  Queue Reconstruction by Height   |  Medium|
+163   |  Missing Ranges   |  Medium|
+42| Trapping Rain Water  | Hard|
+407    | Trapping Rain Water II    | Hard|
+463  |  Island Perimeter  |  Easy|
+239 | Sliding Window Maximum |Hard|
+128  |  Longest Consecutive Sequence  |  Hard|
+79   | Word Search   | Medium        |
+212 |   Word Search II   | Hard|
+162  |  Find Peak Element  |  Medium|
+4  |  Median of Two Sorted Arrays |   Hard|
+1074|Number of Submatrices That Sum to Target|Hard|Sum
+560 |   Subarray Sum Equals K  |  Medium|Sum
+846  |  Hand of Straights  |  Medium|
+15    |    3Sum    |    Medium|Sum
+16     |   3Sum Closest    |     Medium|Sum
+259   |  3Sum Smaller    | Medium|Sum
+64   | Minimum Path Sum |   Medium|Sum
+46|Permutations|Medium|
+150  |  Evaluate Reverse Polish Notation  |  Medium|
+857 |   Minimum Cost to Hire K workers |   Hard|
+750 |   Number of Corner Rectangles   | Medium|
+815|    Bud Routes  |  Hard|
+659 |   Split Array into Consecutive Subsequences  |  Medium|Subsequences
+803  |  Bricks Falling When Hit  |  Hard|
+334  |  Increasing Triplet Subsequence |   Medium   |Subsequences
 
 <details>
 <summary>66. Plus One</summary>
@@ -136,49 +136,6 @@ Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
 Output: ["2", "4->49", "51->74", "76->99"]
 </details>
 
-<details>
-<summary>15. 3Sum </summary>
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
-Note:
-
-The solution set must not contain duplicate triplets.
-
-Example:
-
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
-</details>
-
-<details>
-<summary>16. 3Sum Closest</summary>
-Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
-
-Example:
-
-Given array nums = [-1, 2, 1, -4], and target = 1.
-
-The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
-</details>
-
-<details>
-<summary>259.  3Sum Smaller</summary>
-Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
-
-Example:
-
-Input: nums = [-2,0,1,3], and target = 2
-Output: 2 
-Explanation: Because there are two triplets which sums are less than 2:
-             [-2,0,1]
-             [-2,0,3]
-Follow up: Could you solve it in O(n2) runtime?
-</details>
 
 <details>
 <summary>42. Trapping Rain Water </summary>
@@ -391,6 +348,50 @@ Example 2:
 Input: hand = [1,2,3,4,5], W = 4
 Output: false
 Explanation: Alice's hand can't be rearranged into groups of 4.
+</details>
+
+<details>
+<summary>15. 3Sum </summary>
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+</details>
+
+<details>
+<summary>16. 3Sum Closest</summary>
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+
+Example:
+
+Given array nums = [-1, 2, 1, -4], and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</details>
+
+<details>
+<summary>259.  3Sum Smaller</summary>
+Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
+
+Example:
+
+Input: nums = [-2,0,1,3], and target = 2
+Output: 2 
+Explanation: Because there are two triplets which sums are less than 2:
+             [-2,0,1]
+             [-2,0,3]
+Follow up: Could you solve it in O(n2) runtime?
 </details>
 
 <details>

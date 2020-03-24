@@ -39,7 +39,9 @@ while(i <= j){
 422 |Valid Word Square   | Easy
 498 |   Diagonal Traverse   | Medium
 240   | Search a 2D Matrix II |   Medium
-
+[link](Randomly generate a maze)|Randomly generate a maze||
+1140  |  Stone Game II  |   Medium
+497   | Random Point in Non-overlapping Rectangles  |  Medium
 
 <details>
 <summary>374. Guess Number Higher or Lower</summary>
@@ -370,3 +372,64 @@ Given target = 20, return false.
 </details>
 
 
+<details>
+<summary>Randomly generate a maze</summary>
+Randomly generate a maze of size N * N (where N = 2K + 1) whose corridor and wall’s width are both 1 cell. For each pair of cells on the corridor, there must existone and only one path between them. (Randomlymeans that the solution is generated randomly, and whenever the program is executed, the solution can be different.). The wall is denoted by 1 in the matrix and corridor is denoted by 0.
+Assumptions
+N = 2K + 1 and K >= 0
+the top left corner must be corridor
+there should be as many corridor cells as possible
+for each pair of cells on the corridor, there must exist one and only one path between them
+Examples
+N = 5, one possible maze generated is
+0 0 0 1 0
+    1  1  0  1  0
+
+    0  1  0  0  0
+
+    0  1  1  1  0
+
+    0  0  0  0  0
+</details>
+
+
+<details>
+<summary>1140. Stone Game II</summary>
+Alex and Lee continue their games with piles of stones.  There are a number of piles arranged in a row, and each pile has a positive integer number of stones piles[i].  The objective of the game is to end with the most stones. 
+
+Alex and Lee take turns, with Alex starting first.  Initially, M = 1.
+
+On each player's turn, that player can take all the stones in the first X remaining piles, where 1 <= X <= 2M.  Then, we set M = max(M, X).
+
+The game continues until all the stones have been taken.
+
+Assuming Alex and Lee play optimally, return the maximum number of stones Alex can get.
+
+Example 1:
+
+Input: piles = [2,7,9,4,4]
+Output: 10
+Explanation:  If Alex takes one pile at the beginning, Lee takes two piles, then Alex takes 2 piles again. Alex can get 2 + 4 + 4 = 10 piles in total. If Alex takes two piles at the beginning, then Lee can take all three piles left. In this case, Alex get 2 + 7 = 9 piles in total. So we return 10 since it's larger
+</details>
+
+<details>
+<summary>497.Random Point in Non-overlapping Rectangles</summary>
+Given a list of non-overlapping axis-aligned rectangles rects, write a function pick which randomly and uniformily picks an integer point in the space covered by the rectangles.
+
+Note:
+
+An integer point is a point that has integer coordinates. 
+A point on the perimeter of a rectangle is included in the space covered by the rectangles. 
+ith rectangle = rects[i] = [x1,y1,x2,y2], where [x1, y1] are the integer coordinates of the bottom-left corner, and [x2, y2] are the integer coordinates of the top-right corner.
+length and width of each rectangle does not exceed 2000.
+1 <= rects.length <= 100
+pick return a point as an array of integer coordinates [p_x, p_y]
+pick is called at most 10000 times.
+Example 1:
+
+Input: 
+["Solution","pick","pick","pick"]
+[[[[1,1,5,5]]],[],[],[]]
+Output: 
+[null,[4,1],[4,1],[3,3]]
+</details>
