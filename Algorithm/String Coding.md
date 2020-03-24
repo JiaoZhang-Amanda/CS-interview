@@ -7,38 +7,42 @@ sb.reverse().toString();
 ```
 ### Leetcode
 
-\#| Title|Difficulty
---|--|--
-345  |  Reverse Vowels of a String   |    Easy
-535| Encode and Decode TinyURL|    Medium
-388  |     Longest Absolute File Path    |   Medium
-394  |     Decode String    |   Medium
-482   |    License Key Formatting   |    Medium
-217 |   Contains Duplicate|   Easy
-159   |    Longest Substring with At Most Two Distinct Characters   |    Hard
-340   |    Longest Substring with At Most K Distinct Characters   |    Hard
-266   |    Palindrome Permutation   |    Easy
-336   |    Palindrome Pairs  |     Hard
-214    |   Shortest Palindrome     |  Hard
-616  |  Add Bold Tag in String  |  Medium
-408  |  Valid Word Abbreviation  |  Easy
-320  |  Generalized Abbreviation   | Medium
-411|Minimum Unique Word Abbreviation    |Hard
-527   |  Word Abbreviation    | Hard
-249 |   Group Shifted Strings  |  Medium
-389  |  Find the Difference   | Easy
-293  |  Flip Game  |  Easy
-294 | Flip Game II | Medium
-20   | Valid Parentheses  |  Easy
-318  |  Maximum Product of Word Lengths  |  Medium
-358  |  Rearrange String k Distance Apart  |  Hard
-484  |  Find Permutation |   Medium
-833   | Find And Replace in String |   Medium
-926 |   Flip String to Monotone Increasing  |  Medium
-890  |  Find and Replace Pattern |   Medium
-844   | Backspace String Compare  |  Easy
-158 |   Read N Characters Given Read4 II - Call multiple times |   Hard
-415    |Add Strings  |  Easy
+\#| Title|Difficulty|-
+--|--|--|--
+345  |  Reverse Vowels of a String   |    Easy|
+535| Encode and Decode TinyURL|    Medium|
+388  |     Longest Absolute File Path    |   Medium|
+394  |     Decode String    |   Medium|
+482   |    License Key Formatting   |    Medium|
+217 |   Contains Duplicate|   Easy|
+159   |    Longest Substring with At Most Two Distinct Characters   |    Hard|
+340   |    Longest Substring with At Most K Distinct Characters   |    Hard|
+266   |    Palindrome Permutation   |    Easy|Palindrome
+336   |    Palindrome Pairs  |     Hard|Palindrome
+214    |   Shortest Palindrome     |  Hard|Palindrome
+616  |  Add Bold Tag in String  |  Medium|
+408  |  Valid Word Abbreviation  |  Easy|Abbreviation
+320  |  Generalized Abbreviation   | Medium|Abbreviation
+411|Minimum Unique Word Abbreviation    |Hard|Abbreviation
+527   |  Word Abbreviation    | Hard|Abbreviation
+249 |   Group Shifted Strings  |  Medium|
+389  |  Find the Difference   | Easy|
+293  |  Flip Game  |  Easy|
+294 | Flip Game II | Medium|
+20   | Valid Parentheses  |  Easy|
+318  |  Maximum Product of Word Lengths  |  Medium|
+358  |  Rearrange String k Distance Apart  |  Hard|
+484  |  Find Permutation |   Medium|
+833   | Find And Replace in String |   Medium|
+926 |   Flip String to Monotone Increasing  |  Medium|
+890  |  Find and Replace Pattern |   Medium|
+158 |   Read N Characters Given Read4 II - Call multiple times |   Hard|
+415    |Add Strings  |  Easy|
+68	|Text Justification|	Hard|
+1153|	String Transforms Into Another String|	Hard|
+844   | Backspace String Compare  |  Easy|Remove
+1047	|Remove All Adjacent Duplicates In String|	Easy|Remove
+1209| Remove All Adjacent Duplicates in String II|Medium|Remove
 <details>
 <summary>345. Reverse Vowels of a String</summary>
 Write a function that takes a string as input and reverse only the vowels of a string.
@@ -473,6 +477,67 @@ since a and b map to the same letter.
 </details>
 
 <details>
+<summary>158. Read N Characters Given Read4 II - Call multiple times</summary>
+The API: int read4(char *buf) reads 4 characters at a time from a file.
+
+The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.
+
+By using the read4 API, implement the function int read(char *buf, int n) that reads n characters from the file.
+
+Note:
+The read function may be called multiple times.
+
+</details>
+
+<details>
+<summary>415. Add Strings   </summary>
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+</details>
+
+<details>
+<summary>68. Text Justification</summary>
+Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+
+For the last line of text, it should be left justified and no extra space is inserted between words.
+
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+Example 1:
+
+Input:
+words = ["This", "is", "an", "example", "of", "text", "justification."]
+maxWidth = 16
+Output:
+[
+   "This    is    an",
+   "example  of text",
+   "justification.  "
+]
+</details>
+
+<details>
+<summary>1153. String Transforms Into Another String</summary>
+Given two strings str1 and str2 of the same length, determine whether you can transform str1 into str2 by doing zero or more conversions.
+
+In one conversion you can convert all occurrences of one character in str1 to any other lowercase English character.
+
+Return true if and only if you can transform str1 into str2.
+
+Example 1:
+
+Input: str1 = "aabcc", str2 = "ccdee"
+Output: true
+Explanation: Convert 'c' to 'e' then 'b' to 'd' then 'a' to 'c'. Note that the order of conversions matter.
+</details>
+
+<details>
 <summary>844. Backspace String Compare</summary>
 Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.
 
@@ -489,19 +554,46 @@ Explanation: Both S and T become "".
 </details>
 
 <details>
-<summary>158. Read N Characters Given Read4 II - Call multiple times</summary>
-The API: int read4(char *buf) reads 4 characters at a time from a file.
+<summary>1047. Remove All Adjacent Duplicates In String</summary>
+Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
 
-The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.
+We repeatedly make duplicate removals on S until we no longer can.
 
-By using the read4 API, implement the function int read(char *buf, int n) that reads n characters from the file.
+Return the final string after all such duplicate removals have been made.  It is guaranteed the answer is unique.
 
-Note:
-The read function may be called multiple times.
+ 
 
+Example 1:
+
+Input: "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
 </details>
 
 <details>
-<summary>415. Add Strings   </summary>
-Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+<summary>1209. Remove All Adjacent Duplicates in String II</summary>
+Given a string s, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them causing the left and the right side of the deleted substring to concatenate together.
+
+We repeatedly make k duplicate removals on s until we no longer can.
+
+Return the final string after all such duplicate removals have been made.
+
+It is guaranteed that the answer is unique.
+
+ 
+
+Example 1:
+
+Input: s = "abcd", k = 2
+Output: "abcd"
+Explanation: There's nothing to delete.
+Example 2:
+
+Input: s = "deeedbbcccbdaa", k = 3
+Output: "aa"
+Explanation: 
+First delete "eee" and "ccc", get "ddbbbdaa"
+Then delete "bbb", get "dddaa"
+Finally delete "ddd", get "aa"
 </details>
