@@ -10,6 +10,8 @@
     * [“pass-by-reference” & “pass-by-value”](#pass-by-reference--pass-by-value)
     * [Type Casting](#Type-casting)
 * [Keyword](#firekeyword)
+    * [final](#final)
+    * [static](#static)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -195,3 +197,92 @@ System.out.println(b); // prints 40
 * **Switch** statement data type can not be long: Switch does not support long because switch is designed to judge the equivalence of types with only a few values. If the value is too complex, it is better to use if.
 
 ## :fire:Keyword
+### final
+1. Variable
+    * For basic types, `final` keeps the value constant;
+    * For reference types, `final` leaves the reference unchanged, and no other object can be referenced, but the referenced object itself can be modified.
+```
+final int x = 1;
+// x = 2;  // cannot assign value to final variable 'x'
+final A y = new A();
+y.a = 1;
+```
+2. Methods
+    * `final` methods cannot be overridden
+    * The private method is implicitly specified as final. If the method in the subclass is signed the same as a private method in the base class, the subclass method does not override the base class method, but defines a new method in the subclass.
+3. Class
+    * `final` class cannot be inherited by other classes
+    
+### static
+1. **Variable**
+* Static variable: also known as a class variable. The variable belongs to the class, all instances of the class share the static variable, can be accessed directly through the class name. Static variables exist in memory only **once**.
+```
+private int x;         // 实例变量
+private static int y;  // 静态变量
+
+public static void main(String[] args) {
+    // int x = A.x;  // Non-static field 'x' cannot be referenced from a static context
+    A a = new A();
+    int x = a.x;
+    int y = A.y;
+}
+```
+2. **Method**
+* Attributes and methods belongs to the class, rather than an object. Static methods can be called without creating objects
+* A static method must have an implementation, which means it cannot be an abstract method
+* You can only access the static fields and static methods of the class belong to, and you cannot have the `this` and `super` keywords in your methods, so they are associated with specific objects.
+```
+public class A {
+
+    private static int x;
+    private int y;
+
+    public static void func1(){
+        int a = x;
+        // int b = y;  // Non-static field 'y' cannot be referenced from a static context
+        // int b = this.y;     // 'A.this' cannot be referenced from a static context
+    }
+    // public abstract static void func2();  // Illegal combination of modifiers: 'abstract' and 'static'
+}
+```
+3. **Statement block**
+* The static statement block runs once during class initialization.
+```
+public class A {
+    static {
+        System.out.println("123");
+    }
+
+    public static void main(String[] args) {
+        A a1 = new A();
+        A a2 = new A();
+    }
+}
+//output 123
+```
+4. **Inner Class**
+* A non-static inner class depends on an instance of an external class, which means that you need to create an instance of an external class before you can use it to create a non-static inner class. Static inner classes do not.
+* Static inner classes cannot access non-static variables and methods of external classes.
+```
+public class OuterClass {
+
+    class InnerClass {
+    }
+
+    static class StaticInnerClass {
+    }
+
+    public static void main(String[] args) {
+        // InnerClass innerClass = new InnerClass(); // 'OuterClass.this' cannot be referenced from a static context
+        OuterClass outerClass = new OuterClass();
+        InnerClass innerClass = outerClass.new InnerClass();
+        StaticInnerClass staticInnerClass = new StaticInnerClass();
+    }
+}
+```
+5. **package**
+* Eliminates the need to specify classnames, simplifying the code but making it much less readable. `import static com.xxx.ClassName.*`
+6. **Others**: initial order
+* Static variables and static statement blocks take precedence over instance variables and normal statement blocks
+* The order in which static variables and static statement blocks are initialized depends on the order in which they are placed in the code.
+* 父类（静态变量、静态语句块）- 子类（静态变量、静态语句块）- 父类（实例变量、普通语句块）- 父类（构造函数）- 子类（实例变量、普通语句块）- 子类（构造函数）
