@@ -3,8 +3,9 @@
     * [Wrapper Classes](#Wrapper-Classes)
     * [Buffer Pool](#Buffer-Pool)
 * [String](#fireString)
+    * [Principle -- Why Immutable?](#Principle-Why-Immutable?)
+    * [Immutable Benefits](#Immutable-Benefits)
     * [String VS StringBuffer VS StringBuiler](#String-VS-StringBuffer-VS-StringBuiler)
-    * ["==" VS "equals()"](#==-VS-equals())
     
 ## :fire:Data Type
 ### Primitive Type
@@ -50,8 +51,8 @@ System.out.println(m == n); // true
 * The compiler calls the valueOf() method during autoboxing, so multiple instances of an Integer with the same value and the value within the cache pool are created using autoboxing, and the same object is referenced.
 
 ## :fire:String
-* String is declared final, so it cannot be inherited. (wrapper classes such as Integer cannot be inherited)
 ### Principle -- Why Immutable?
+* String is declared final, so it cannot be inherited. (wrapper classes such as Integer cannot be inherited)
 * Java8
 ```
 public final class String
@@ -72,7 +73,7 @@ public final class String
 }
 ```
 * The value array is declared final, which means that after the value array has been initialized, it cannot refer to any other array. And there is no way to change the value array inside String, so you can guarantee that String is **immutable**.
-### Immutable benefits
+### Immutable Benefits
 1) **String Pool**
     * Caching the String literals and reusing them saves a lot of heap space because different String variables refer to the same object in the String pool. **String intern pool** serves exactly this purpose.
 ![](https://www.baeldung.com/wp-content/uploads/2018/08/Why_String_Is_Immutable_In_Java.jpg)
@@ -88,3 +89,11 @@ public final class String
     * This, in turn, improves the performance of collections that uses hash implementations when operated with String objects.
 5) **Performance**
     * It enhances the performance by saving heap memory and faster access of hash implementations when operated with Strings.
+### String, StringBuffer and StringBuilder
+- **Immutable**
+    * String is immutable, whereas StringBuffer and StringBuider are mutable classes.
+    * whenever we do String manipulation like concatenation, substring etc, it generates a new String and discards the older String for garbage collection.
+- **Thread Safe**
+    * String is immutable, so it is thread-safe
+    * StringBuffer is thread safe and synchronized. Synchronized is used internally for synchronization. StringBuffer provides Thread safety but on a performance cost. StringBuffer: all of its public methods are synchronized
+    * StringBuilder is not thread safe. StringBuilder is more faster than StringBuffer. 
