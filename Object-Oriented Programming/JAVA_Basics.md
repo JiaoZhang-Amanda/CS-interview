@@ -119,3 +119,74 @@ System.out.println(s5 == s6);  // true
     * StringBuilder is not thread safe. StringBuilder is more faster than StringBuffer. 
 
 ## :fire:Operation
+###  “pass-by-reference” & “pass-by-value”
+* Java is always **pass-by-value**. But, when we pass the value of an object, we are passing the reference to it.
+```
+public static void main(String[] args) {
+    Dog aDog = new Dog("Max");
+    Dog oldDog = aDog;
+
+    // we pass the object to foo
+    foo(aDog);
+    // aDog variable is still pointing to the "Max" dog when foo(...) returns
+    aDog.getName().equals("Max"); // true
+    aDog.getName().equals("Fifi"); // false
+    aDog == oldDog; // true
+}
+
+public static void foo(Dog d) {
+    d.getName().equals("Max"); // true
+    // change d inside of foo() to point to a new Dog instance "Fifi"
+    d = new Dog("Fifi");
+    d.getName().equals("Fifi"); // true
+}
+```
+* The value aDog within main is not changed in the function foo with the Dog "Fifi" as the object reference is passed by value.
+```
+public static void main(String[] args) {
+    Dog aDog = new Dog("Max");
+    Dog oldDog = aDog;
+
+    foo(aDog);
+    // when foo(...) returns, the name of the dog has been changed to "Fifi"
+    aDog.getName().equals("Fifi"); // true
+    // but it is still the same dog:
+    aDog == oldDog; // true
+}
+
+public static void foo(Dog d) {
+    d.getName().equals("Max"); // true
+    // this changes the name of d to be "Fifi"
+    d.setName("Fifi");
+}
+```
+* Any operations that foo performs on d are such that, for all practical purposes, they are performed on aDog, but it is not possible to change the value of the variable aDog itself.
+
+### Type casting
+* **Type casting** is when you assign a value of one primitive data type to another type.
+    * Widening Casting (automatically) - converting a smaller type to a larger type size
+`byte -> short -> char -> int -> long -> float -> double`
+    * Narrowing Casting (manually) - converting a larger type to a smaller size type
+`double -> float -> long -> int -> char -> short -> byte`
+```
+int myInt = 9;
+double myDouble = myInt; // Automatic casting: int to double
+double myDouble = 9.78;
+int myInt = (int) myDouble; // Manual casting: double to int
+```
+* **Implicit Type Conversion**
+    * Java's +=, -=, *=, /= compound assignment operators doesn't require casting
+    * Using the += or ++ operator performs implicit type conversions.
+```
+short s1 = 1;
+s1 += 1;
+s1++; //==> s1 = (short) (s1 + 1);
+byte b = 10;
+b *= 5.7;
+System.out.println(b); // prints 57
+byte b = 100;
+b /= 2.5;
+System.out.println(b); // prints 40
+```
+* **float & double**: `float f = 1.1f;` 1.1f is the literal of the type float but the 1.1 is the literal of the type double. `float f = 1.1;` is wrong.
+* **Switch** statement data type can not be long: Switch does not support long because switch is designed to judge the equivalence of types with only a few values. If the value is too complex, it is better to use if.
