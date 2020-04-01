@@ -18,6 +18,11 @@
     * [toString()](#toString)
     * [clone()](#clone)
 * [Inheritance](#Inheritance)
+    * [Modifiers](#Modifiers)
+    * [Abstraction Class & Interface](#Abstraction-Class--Interface)
+    * [Super](#super)
+    * [Override & Overload](#Override--Overload)
+* [Exception](#Exception)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -328,9 +333,9 @@ The default returns the form tostringexample@4554617c, where the value after @ i
 ### Modifiers
 * The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
 * **Types of modifiers**
-    * **access modifiers**: controls the access level
-    * **non-access modifiers**: do not control access level, but provides other functionality
-* **Types of Java access modifiers**
+    * **Access modifiers**: controls the access level
+    * **Non-access modifiers**: do not control access level, but provides other functionality
+* **Access Modifiers**
     * **Private**: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
     * **Default**: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
     * **Protected**: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
@@ -342,14 +347,149 @@ The default returns the form tostringexample@4554617c, where the value after @ i
     Default   | Y  |  Y |   N  |  N
     Protected |   Y   | Y    |Y|    N
     Public   | Y |   Y    |Y    |Y
+    
 * **Non-Access Modifiers**
-* For classes, you can use either final or abstract:
-    * **final**: The class cannot be inherited by other classes
-    * **abstract**: The class cannot be used to create objects(To access an abstract class, it must be inherited from another class. )
-* For attributes and methods: 
-    * **final**: Attributes and methods cannot be overridden/modified(If you don't want the ability to override existing attribute values, declare attributes as final)
-    * **static** :  Attributes and methods belongs to the class, rather than an object. Static methods can be called without creating objects
-    * **abstract**: Can only be used in an abstract class, and can only be used on methods. The method does not have a body, for example abstract void run();. The body is provided by the subclass (inherited from). 
-    * **transient**: Attributes and methods are skipped when serializing the object containing them
-    * **synchronized**: Methods can only be accessed by one thread at a time
-    * **volatile**: The value of an attribute is not cached thread-locally, and is always read from the "main memory"
+    * For classes, you can use either final or abstract:
+        * **final**: The class cannot be inherited by other classes
+        * **abstract**: The class cannot be used to create objects(To access an abstract class, it must be inherited from another class. )
+    * For attributes and methods: 
+        * **final**: Attributes and methods cannot be overridden/modified(If you don't want the ability to override existing attribute values, declare attributes as final)
+        * **static** :  Attributes and methods belongs to the class, rather than an object. Static methods can be called without creating objects
+        * **abstract**: Can only be used in an abstract class, and can only be used on methods. The method does not have a body, for example abstract void run();. The body is provided by the subclass (inherited from). 
+        * **transient**: Attributes and methods are skipped when serializing the object containing them
+        * **synchronized**: Methods can only be accessed by one thread at a time
+        * **volatile**: The value of an attribute is not cached thread-locally, and is always read from the "main memory"
+        
+### Abstraction Class & Interface
+1)  **Abstraction Class**
+* If a class contains abstract methods, the class must be declared an abstract class.
+* Abstract classes cannot be instantiated, they can only be inherited
+```JAVA
+public abstract class AbstractClassExample {
+
+    protected int x;
+    private int y;
+
+    public abstract void func1();
+
+    public void func2() {
+        System.out.println("func2");
+    }
+}
+public class AbstractExtendClassExample extends AbstractClassExample {
+    @Override
+    public void func1() {
+        System.out.println("func1");
+    }
+}
+```
+2) **Interface**
+* The members of the interface (field + method) are public by default and are not allowed to be defined as private or protected.
+* Interface fields are static and final by default.
+```JAVA
+public interface InterfaceExample {
+
+    void func1();
+
+    default void func2(){
+        System.out.println("func2");
+    }
+
+    int x = 123;
+    // int y;               // Variable 'y' might not have been initialized
+    public int z = 0;       // Modifier 'public' is redundant for interface fields
+    // private int k = 0;   // Modifier 'private' not allowed here
+    // protected int l = 0; // Modifier 'protected' not allowed here
+    // private void fun3(); // Modifier 'private' not allowed here
+}
+public class InterfaceImplementExample implements InterfaceExample {
+    @Override
+    public void func1() {
+        System.out.println("func1");
+    }
+}
+```
+### Super
+* You can use the super() function to access the constructor of the super class.
+* If a subclass overrides a method of a parent class, you can refer to the method implementation of the parent class by using the super keyword.
+```JAVA
+public class SuperExample {
+
+    protected int x;
+    protected int y;
+
+    public SuperExample(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void func() {
+        System.out.println("SuperExample.func()");
+    }
+}
+public class SuperExtendExample extends SuperExample {
+
+    private int z;
+
+    public SuperExtendExample(int x, int y, int z) {
+        super(x, y);
+        this.z = z;
+    }
+
+    @Override
+    public void func() {
+        super.func();
+        System.out.println("SuperExtendExample.func()");
+    }
+}
+```
+### Override & Overload
+* **Overloading** occurs when two or more methods in one class have the same method name but different parameters.
+* **Overriding** means having two methods with the same method name and parameters (i.e., method signature). One of the methods is in the parent class and the other is in the child class. Overriding allows a child class to provide a specific implementation of a method that is already provided its parent class.
+```
+/*
+    A
+    |
+    B
+    |
+    C
+    |
+    D
+ */
+
+
+class A {
+
+    public void show(A obj) {
+        System.out.println("A.show(A)");
+    }
+
+    public void show(C obj) {
+        System.out.println("A.show(C)");
+    }
+}
+
+class B extends A {
+
+    @Override
+    public void show(A obj) {
+        System.out.println("B.show(A)");
+    }
+}
+
+class C extends B {
+}
+
+class D extends C {
+}
+```
+## Exception
+Java Exceptions are hierarchical and inheritance is used for categorizing the different types of exceptions. Throwable is the parent class of Java Exceptions Hierarchy and it has two child objects 
+- Throwable: Error & Exceptions
+- Exceptions: checked & runtime exception
+
+* **Errors** are exceptional scenarios which are out of the scope of applications and it’s not possible to anticipate and recover from them, for example, hardware failure, JVM crash or out of memory error
+
+* **Checked exceptions** are exceptional scenarios that we can anticipate in a program and try to recover from it, for example, FileNotFoundException. We should catch this exception and provide a useful message to the user and log it properly for debugging purpose. ` try...catch... `
+
+* **Runtime exceptions** are caused by bad programming, for example, trying to retrieve an element from the Array. At first, we should check the length of the array before trying to retrieve the element otherwise it might throw ArrayIndexOutOfBoundException at runtime.
