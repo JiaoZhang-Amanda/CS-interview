@@ -79,6 +79,19 @@ public final class String
 ![](https://www.baeldung.com/wp-content/uploads/2018/08/Why_String_Is_Immutable_In_Java.jpg)
     * Because of the presence of the String pool in the preceding example, two different variables are pointing to same String object from the pool, thus **saving crucial memory resource**.
     * String pool exists because Strings are immutable.
+    * When a String calls the **intern()** method, a reference to the String Pool is returned if there is already a String in the String Pool that is equal to the value of the String (using the equals() method). Otherwise, a new String is added to the String Pool and a reference to the new String is returned.
+    * If you create a String as a literal like "BBB", you automatically drop the String into a String Pool.
+```
+String s1 = new String("aaa");
+String s2 = new String("aaa");
+System.out.println(s1 == s2);           // false
+String s3 = s1.intern();
+String s4 = s1.intern();
+System.out.println(s3 == s4);           // true
+String s5 = "bbb";
+String s6 = "bbb";
+System.out.println(s5 == s6);  // true
+```
 2) **Security**
     * The String is widely used in Java applications to store sensitive pieces of information like usernames, passwords, connection URLs, network connections, etc. It's also used extensively by JVM class loaders while loading classes.
 3) **Synchronization**
