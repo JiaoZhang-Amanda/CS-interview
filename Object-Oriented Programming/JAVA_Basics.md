@@ -12,6 +12,7 @@
 * [Keyword](#firekeyword)
     * [final](#final)
     * [static](#static)
+* [Object Methods](#fireobject-methods)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -290,3 +291,5 @@ public class OuterClass {
 <br>`static {System.out.println("static statement blocks");}`
 <br>`public String field = "instance variable";{System.out.println("statement blocks");}`
 <br>`public InitialOrderTest() {System.out.println("constructor");}`
+
+## :fire:Object Methods
