@@ -8,7 +8,8 @@
     * [String VS StringBuffer VS StringBuiler](#string-stringbuffer-and-stringbuilder)
 * [Operation](#fireoperation)
     * [“pass-by-reference” & “pass-by-value”](#pass-by-reference--pass-by-value)
-    * [Type casting](#Type-casting)
+    * [Type Casting](#Type-casting)
+* [Keyword](#firekeyword)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -192,3 +193,5 @@ System.out.println(b); // prints 40
 ```
 * **float & double**: `float f = 1.1f;` 1.1f is the literal of the type float but the 1.1 is the literal of the type double. `float f = 1.1;` is wrong.
 * **Switch** statement data type can not be long: Switch does not support long because switch is designed to judge the equivalence of types with only a few values. If the value is too complex, it is better to use if.
+
+## :fire:Keyword
