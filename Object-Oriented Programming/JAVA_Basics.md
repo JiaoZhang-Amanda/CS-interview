@@ -13,6 +13,10 @@
     * [final](#final)
     * [static](#static)
 * [Object Methods](#fireobject-methods)
+    * [equals()](#equals)
+    * [hashCode()](#hashCode)
+    * [toString()](#toString)
+    * [clone()](#clone)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -80,7 +84,7 @@ public final class String
 ```
 * The value array is declared final, which means that after the value array has been initialized, it cannot refer to any other array. And there is no way to change the value array inside String, so you can guarantee that String is **immutable**.
 * String constructor source code
-```
+```JAVA
 public String(String original) {
     this.value = original.value;
     this.hash = original.hash;
@@ -127,7 +131,7 @@ System.out.println(s5 == s6);  // true
 ## :fire:Operation
 ###  “pass-by-reference” & “pass-by-value”
 * Java is always **pass-by-value**. But, when we pass the value of an object, we are passing the reference to it.
-```
+```JAVA
 public static void main(String[] args) {
     Dog aDog = new Dog("Max");
     Dog oldDog = aDog;
@@ -148,7 +152,7 @@ public static void foo(Dog d) {
 }
 ```
 * The value aDog within main is not changed in the function foo with the Dog "Fifi" as the object reference is passed by value.
-```
+```JAVA
 public static void main(String[] args) {
     Dog aDog = new Dog("Max");
     Dog oldDog = aDog;
@@ -174,7 +178,7 @@ public static void foo(Dog d) {
 `byte -> short -> char -> int -> long -> float -> double`
     * Narrowing Casting (manually) - converting a larger type to a smaller size type
 `double -> float -> long -> int -> char -> short -> byte`
-```
+```JAVA
 int myInt = 9;
 double myDouble = myInt; // Automatic casting: int to double
 double myDouble = 9.78;
@@ -183,7 +187,7 @@ int myInt = (int) myDouble; // Manual casting: double to int
 * **Implicit Type Conversion**
     * Java's +=, -=, *=, /= compound assignment operators doesn't require casting
     * Using the += or ++ operator performs implicit type conversions.
-```
+```JAVA
 short s1 = 1;
 s1 += 1;
 s1++; //==> s1 = (short) (s1 + 1);
@@ -202,7 +206,7 @@ System.out.println(b); // prints 40
 1. Variable
     * For basic types, `final` keeps the value constant;
     * For reference types, `final` leaves the reference unchanged, and no other object can be referenced, but the referenced object itself can be modified.
-```
+```JAVA
 final int x = 1;
 // x = 2;  // cannot assign value to final variable 'x'
 final A y = new A();
@@ -217,7 +221,7 @@ y.a = 1;
 ### static
 1. **Variable**
 * Static variable: also known as a class variable. The variable belongs to the class, all instances of the class share the static variable, can be accessed directly through the class name. Static variables exist in memory only **once**.
-```
+```JAVA
 private int x;         // 实例变量
 private static int y;  // 静态变量
 
@@ -232,7 +236,7 @@ public static void main(String[] args) {
 * Attributes and methods belongs to the class, rather than an object. Static methods can be called without creating objects
 * A static method must have an implementation, which means it cannot be an abstract method
 * You can only access the static fields and static methods of the class belong to, and you cannot have the `this` and `super` keywords in your methods, so they are associated with specific objects.
-```
+```JAVA
 public class A {
 
     private static int x;
@@ -248,7 +252,7 @@ public class A {
 ```
 3. **Statement block**
 * The static statement block runs once during class initialization.
-```
+```JAVA
 public class A {
     static {
         System.out.println("123");
@@ -264,7 +268,7 @@ public class A {
 4. **Inner Class**
 * A non-static inner class depends on an instance of an external class, which means that you need to create an instance of an external class before you can use it to create a non-static inner class. Static inner classes do not.
 * Static inner classes cannot access non-static variables and methods of external classes.
-```
+```JAVA
 public class OuterClass {
 
     class InnerClass {
@@ -293,3 +297,28 @@ public class OuterClass {
 <br>`public InitialOrderTest() {System.out.println("constructor");}`
 
 ## :fire:Object Methods
+### equals()
+`public boolean equals(Object obj)`
+```
+x.equals(x); // true
+x.equals(y) == y.equals(x); // true
+x.equals(null); // false;
+```
+* For primitive types, `==` determines if two values are equal, and there is no equals() method for primitive types.
+* For reference types, `==` determines whether two variables refer to the same object, and equals() determines whether the referenced object is equivalent.
+```
+Integer x = new Integer(1);
+Integer y = new Integer(1);
+System.out.println(x.equals(y)); // true
+System.out.println(x == y);      // false
+```
+### hashCode()
+`public native int hashCode()`
+### toString()
+`public String toString()`
+The default returns the form tostringexample@4554617c, where the value after @ is the unsigned hexadecimal representation of the hash code.
+### clone()
+`protected native Object clone() throws CloneNotSupportedException`
+* It will throw CloneNotSupportedException when a class does not implement the **Cloneable interface** and call clone () method
+* **Shallow Clone**: The copy object and the original object refer to the same object.
+* **Deep Clone**: The copy object and the original object refer to the different object.
