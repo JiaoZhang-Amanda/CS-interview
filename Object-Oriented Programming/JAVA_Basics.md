@@ -7,6 +7,8 @@
     * [Immutable Benefits](#Immutable-Benefits)
     * [String VS StringBuffer VS StringBuiler](#string-stringbuffer-and-stringbuilder)
 * [Operation](#fireoperation)
+    * [“pass-by-reference” & “pass-by-value”](#pass-by-reference--pass-by-value)
+    * [Type casting](#Type-casting)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -162,7 +164,7 @@ public static void foo(Dog d) {
 ```
 * Any operations that foo performs on d are such that, for all practical purposes, they are performed on aDog, but it is not possible to change the value of the variable aDog itself.
 
-### Type casting
+### Type Casting
 * **Type casting** is when you assign a value of one primitive data type to another type.
     * Widening Casting (automatically) - converting a smaller type to a larger type size
 `byte -> short -> char -> int -> long -> float -> double`
