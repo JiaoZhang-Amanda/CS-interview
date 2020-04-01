@@ -1,8 +1,8 @@
-* [Data Type](#:fire:data-type)
+* [Data Type](#firedata-type)
     * [Primitive Type](#Primitive-type)
     * [Wrapper Classes](#Wrapper-Classes)
     * [Buffer Pool](#Buffer-Pool)
-* [String](#:fire:String)
+* [String](#fireString)
     * [String VS StringBuffer VS StringBuiler](#String-VS-StringBuffer-VS-StringBuiler)
     * ["==" VS "equals()"](#==-VS-equals())
     
