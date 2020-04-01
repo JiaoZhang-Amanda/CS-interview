@@ -31,12 +31,11 @@ No, you can only extend a single class but you can implement multiple interfaces
 **Encapsulation** is a concept in Object Oriented Programming for combining properties and methods in a single unit. Encapsulation helps programmers to follow a modular approach for software development as each object has its own set of methods and variables and serves its functions independent of other objects. Encapsulation also serves data hiding purpose.
 
 ### JVM
-#### 1) What is difference between JDK,JRE and JVM?
-**JVM** is an acronym for Java Virtual Machine, it is an abstract machine which provides the runtime environment in which java bytecode can be executed. It is a specification. JVMs are available for many hardware and software platforms (so JVM is platform dependent).
-
-**JRE** stands for Java Runtime Environment. It is the implementation of JVM.
-
-**JDK** is an acronym for Java Development Kit. It physically exists. It contains JRE + development tools.
+#### 1) Explain the difference between JRE, JDK, JVM, and JIT.
+* **JRE** is an abbreviation of Java Runtime Environment that consist of sets of files needed by JVM throughout the runtime.
+* **JVM** is an abbreviation of Java Virtual Machine which delivers the runtime environment for collected Java Bytecode. JVM is in control of the conversion of the bytecode into machine-readable code.
+* **JDK** is an abbreviation for Java Development Kit which contains JRE including development tools for the purpose of development. JDK is required to write and execute a Java code.
+* **JIT** is an abbreviation of Just in Time compilation, and this helps to improve the performance of Java application by converting Java bytecode into native code when they cross a certain threshold, i.e. the mostly hot code is transformed into native code.
 
 ### Modifiers
 * The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
