@@ -23,6 +23,8 @@
     * [Super](#super)
     * [Override & Overload](#Override--Overload)
 * [Exception](#Exception)
+* [Generics](#Generics)
+* [JRE or JDK](#JRE-or-JDK)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -330,6 +332,7 @@ The default returns the form tostringexample@4554617c, where the value after @ i
 * **Deep Clone**: The copy object and the original object refer to the different object.
 
 ## :fire:Inheritance
+* Java does not support multiple inheritance and can only achieve the same goal by implementing multiple interfaces
 ### Modifiers
 * The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
 * **Types of modifiers**
@@ -493,3 +496,20 @@ Java Exceptions are hierarchical and inheritance is used for categorizing the di
 * **Checked exceptions** are exceptional scenarios that we can anticipate in a program and try to recover from it, for example, FileNotFoundException. We should catch this exception and provide a useful message to the user and log it properly for debugging purpose. ` try...catch... `
 
 * **Runtime exceptions** are caused by bad programming, for example, trying to retrieve an element from the Array. At first, we should check the length of the array before trying to retrieve the element otherwise it might throw ArrayIndexOutOfBoundException at runtime.
+
+## Generics
+```
+public class Box<T> {
+    // T stands for "Type"
+    private T t;
+    public void set(T t) { this.t = t; }
+    public T get() { return t; }
+}
+```
+## JRE or JDK
+* JRE: Java Runtime Environment
+    * Provides the required environment for Java to run. It mainly includes the standard implementation of the JVM and some basic Java class libraries
+* JDK: Java Development Kit
+    * Provides the Java development and the running environment
+    * The JDK is the core of Java development, integrating the JRE with other tools such as javac, the compiler for compiling Java source code
+* JDK>JRE>JVM, The JRE enables Java programs to run, The JDK also supports the development of Java programs
