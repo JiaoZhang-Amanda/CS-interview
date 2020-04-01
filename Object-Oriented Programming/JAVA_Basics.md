@@ -6,7 +6,7 @@
     * [Principle -- Why Immutable?](#principle----why-immutable)
     * [Immutable Benefits](#Immutable-Benefits)
     * [String VS StringBuffer VS StringBuiler](#string-stringbuffer-and-stringbuilder)
-    
+* [Operation](#fireoperation)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -33,7 +33,7 @@ A wrapper class is an object that encapsulates a primitive type.
 ### Buffer Pool
 * `new Integer(123)`: create a new object
 * `Integer.valueOf(123)`: return the object from buffer pool. Multiple calls get a reference to the **same** object.
-```
+```JAVA
 Integer x = new Integer(123);
 Integer y = new Integer(123);
 System.out.println(x == y);    // false
@@ -43,7 +43,7 @@ System.out.println(z == k);   // true
 ```
 * When arguments on both sides of the “==” operator are objects, no unboxing will occur and the “==” operator will compare the **object’s reference** in memory.
 * "==" between The wrapper type and the primitive type: automatically converts the wrapper type to the primitive type, and then compares the values `new Integer（123）==123 //true`
-```
+```JAVA
 Integer m = 123;
 Integer n = 123;
 System.out.println(m == n); // true
@@ -54,7 +54,7 @@ System.out.println(m == n); // true
 ### Principle -- Why Immutable?
 * String is declared final, so it cannot be inherited. (wrapper classes such as Integer cannot be inherited)
 * Java8
-```
+```JAVA
 public final class String
     implements java.io.Serializable, Comparable<String>, CharSequence {
     /** The value is used for character storage. */
@@ -62,7 +62,7 @@ public final class String
 }
 ```
 * Java9
-```
+```JAVA
 public final class String
     implements java.io.Serializable, Comparable<String>, CharSequence {
     /** The value is used for character storage. */
@@ -73,6 +73,13 @@ public final class String
 }
 ```
 * The value array is declared final, which means that after the value array has been initialized, it cannot refer to any other array. And there is no way to change the value array inside String, so you can guarantee that String is **immutable**.
+* String constructor source code
+```
+public String(String original) {
+    this.value = original.value;
+    this.hash = original.hash;
+}
+```
 ### Immutable Benefits
 1) **String Pool**
     * Caching the String literals and reusing them saves a lot of heap space because different String variables refer to the same object in the String pool. **String intern pool** serves exactly this purpose.
@@ -110,3 +117,5 @@ System.out.println(s5 == s6);  // true
     * String is immutable, so it is thread-safe
     * StringBuffer is thread safe and synchronized. Synchronized is used internally for synchronization. StringBuffer provides Thread safety but on a performance cost. StringBuffer: all of its public methods are synchronized
     * StringBuilder is not thread safe. StringBuilder is more faster than StringBuffer. 
+
+## :fire:Operation
