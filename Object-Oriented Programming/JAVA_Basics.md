@@ -3,9 +3,9 @@
     * [Wrapper Classes](#Wrapper-Classes)
     * [Buffer Pool](#Buffer-Pool)
 * [String](#fireString)
-    * [Principle -- Why Immutable?](#Principle-Why-Immutable?)
+    * [Principle -- Why Immutable?](#principle----why-immutable)
     * [Immutable Benefits](#Immutable-Benefits)
-    * [String VS StringBuffer VS StringBuiler](#String-VS-StringBuffer-VS-StringBuiler)
+    * [String VS StringBuffer VS StringBuiler](#string-stringbuffer-and-stringbuilder)
     
 ## :fire:Data Type
 ### Primitive Type
