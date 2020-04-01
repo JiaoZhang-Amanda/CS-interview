@@ -299,14 +299,14 @@ public class OuterClass {
 ## :fire:Object Methods
 ### equals()
 `public boolean equals(Object obj)`
-```
+```JAVA
 x.equals(x); // true
 x.equals(y) == y.equals(x); // true
 x.equals(null); // false;
 ```
 * For primitive types, `==` determines if two values are equal, and there is no equals() method for primitive types.
 * For reference types, `==` determines whether two variables refer to the same object, and equals() determines whether the referenced object is equivalent.
-```
+```JAVA
 Integer x = new Integer(1);
 Integer y = new Integer(1);
 System.out.println(x.equals(y)); // true
