@@ -285,4 +285,8 @@ public class OuterClass {
 6. **Others**: initial order
 * Static variables and static statement blocks take precedence over instance variables and normal statement blocks
 * The order in which static variables and static statement blocks are initialized depends on the order in which they are placed in the code.
-* 父类（静态变量、静态语句块）- 子类（静态变量、静态语句块）- 父类（实例变量、普通语句块）- 父类（构造函数）- 子类（实例变量、普通语句块）- 子类（构造函数）
+* superclass(Static variables, static statement blocks)->subclass(Static variables, static statement blocks) -> superclass(instance variable, statement blocks) -> superclass(constructor) -> subclass(instance variable, statement blocks) -> subclass(constructor)
+<br>`public static String staticField = "Static variables";`
+<br>`static {System.out.println("static statement blocks");}`
+<br>`public String field = "instance variable";{System.out.println("statement blocks");}`
+<br>`public InitialOrderTest() {System.out.println("constructor");}`
