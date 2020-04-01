@@ -17,14 +17,14 @@
     * [hashCode()](#hashCode)
     * [toString()](#toString)
     * [clone()](#clone)
-* [Inheritance](#Inheritance)
+* [Inheritance](#fireInheritance)
     * [Modifiers](#Modifiers)
     * [Abstraction Class & Interface](#Abstraction-Class--Interface)
     * [Super](#super)
     * [Override & Overload](#Override--Overload)
-* [Exception](#Exception)
-* [Generics](#Generics)
-* [JRE or JDK](#JRE-or-JDK)
+* [Exception](#fireException)
+* [Generics](#fireGenerics)
+* [JRE or JDK](#fireJRE-or-JDK)
 ## :fire:Data Type
 ### Primitive Type
 Data Type|    Default Value (for fields)|size
@@ -486,7 +486,7 @@ class C extends B {
 class D extends C {
 }
 ```
-## Exception
+## :fire:Exception
 Java Exceptions are hierarchical and inheritance is used for categorizing the different types of exceptions. Throwable is the parent class of Java Exceptions Hierarchy and it has two child objects 
 - Throwable: Error & Exceptions
 - Exceptions: checked & runtime exception
@@ -497,8 +497,8 @@ Java Exceptions are hierarchical and inheritance is used for categorizing the di
 
 * **Runtime exceptions** are caused by bad programming, for example, trying to retrieve an element from the Array. At first, we should check the length of the array before trying to retrieve the element otherwise it might throw ArrayIndexOutOfBoundException at runtime.
 
-## Generics
-```
+## :fire:Generics
+```JAVA
 public class Box<T> {
     // T stands for "Type"
     private T t;
@@ -506,7 +506,7 @@ public class Box<T> {
     public T get() { return t; }
 }
 ```
-## JRE or JDK
+## :fire:JRE or JDK
 * JRE: Java Runtime Environment
     * Provides the required environment for Java to run. It mainly includes the standard implementation of the JVM and some basic Java class libraries
 * JDK: Java Development Kit
