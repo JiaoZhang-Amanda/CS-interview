@@ -81,7 +81,7 @@ public final class String
     * String pool exists because Strings are immutable.
     * When a String calls the **intern()** method, a reference to the String Pool is returned if there is already a String in the String Pool that is equal to the value of the String (using the equals() method). Otherwise, a new String is added to the String Pool and a reference to the new String is returned.
     * If you create a String as a literal like "BBB", you automatically drop the String into a String Pool.
-```
+```JAVA
 String s1 = new String("aaa");
 String s2 = new String("aaa");
 System.out.println(s1 == s2);           // false
