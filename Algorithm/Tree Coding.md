@@ -27,11 +27,12 @@ class TrieNode {
 
 \#| Title|Difficulty|--
 --|--|--|--
-173   | Binary Search Tree Iterator  |  Medium|Traverse
 257    | Binary Tree Paths  |  Easy|path
 298    | Binary Tree Longest Consecutive Sequence   | Medium|path
 549   | Binary Tree Longest Consecutive Sequence II    |Medium|path
+173   | Binary Search Tree Iterator  |  Medium|Traverse
 545  |  Boundary of Binary Tree   | Medium|Traverse
+145   | Binary Tree Postorder Traversal   | Hard|Traverse
 652   | Find Duplicate Subtrees  |  Medium|
 501   | Find Mode in Binary Search Tree   | Easy|
 889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium|
@@ -39,7 +40,6 @@ class TrieNode {
 272    |Closest Binary Search Tree Value II  |  Hard|
 230    | Kth Smallest Element in a BST  |  Medium|
 366   | Find Leaves of Binary Tree   | Medium|Search
-145   | Binary Tree Postorder Traversal   | Hard|Traverse|
 297  |  Serialize and Deserialize Binary Tree  |  Hard|
 449   | Serialize and Deserialize BST  |  Medium|
 1376 |   Time Needed to Inform All Employees    |Medium|
@@ -47,13 +47,6 @@ class TrieNode {
 834  |  Sum of Distances in Tree   | Hard|
 337 |   House Robber III |   Medium|
 450| Delete Node in a BST|Medium|
-
-<details>
-<summary>173. Binary Search Tree Iterator</summary>
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
-
-Calling next() will return the next smallest number in the BST.
-</details>
 
 <details>
 <summary>257. Binary Tree Paths</summary>
@@ -109,6 +102,13 @@ Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
 </details>
 
 <details>
+<summary>173. Binary Search Tree Iterator</summary>
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+
+Calling next() will return the next smallest number in the BST.
+</details>
+
+<details>
 <summary>545. Boundary of Binary Tree </summary>
 Given a binary tree, return the values of its boundary in anti-clockwise direction starting from root. Boundary includes left boundary, leaves, and right boundary in order without duplicate nodes.
 
@@ -131,6 +131,22 @@ Input:
        
 Ouput:
 [1,2,4,7,8,9,10,6,3]
+</details>
+
+<details>
+<summary>145. Binary Tree Postorder Traversal</summary>
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [3,2,1]
 </details>
 
 <details>
@@ -264,22 +280,6 @@ Explanation:
           1
          / 
         2  
-</details>
-
-<details>
-<summary>145. Binary Tree Postorder Traversal</summary>
-Given a binary tree, return the postorder traversal of its nodes' values.
-
-Example:
-
-Input: [1,null,2,3]
-   1
-    \
-     2
-    /
-   3
-
-Output: [3,2,1]
 </details>
 
 <details>
