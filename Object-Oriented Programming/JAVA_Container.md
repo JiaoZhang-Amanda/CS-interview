@@ -6,7 +6,7 @@
 * The Collection interface and Map interface are the two main “root” interfaces of Java collection classes.
 ### Collection 
 `java.util.Collection`
-![](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208220948084.png)
+![](./photo/Collection.png)
 * **Set** : Doesn't allow duplicates and unordered collection. Set just allow one null element as there is no duplicate permitted
     * **HashSet**: Hashing based. Search O(1)
     * **TreeSet**: balanced BST based. Note that TreeSet implements SortedSet. Search O(logn)
