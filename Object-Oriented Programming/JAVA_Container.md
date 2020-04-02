@@ -6,7 +6,8 @@
 * The Collection interface and Map interface are the two main “root” interfaces of Java collection classes.
 ### Collection 
 `java.util.Collection`
-![](https://camo.githubusercontent.com/6ee13e3fa6717189ef266359ec74ed8a8fb88d62/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232353330313937332e706e67)
+![](https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67)
+![](https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67)
 * **Set** : Doesn't allow duplicates and unordered collection. Set just allow one null element as there is no duplicate permitted
     * **HashSet**: Hashing based. Search O(1)
     * **TreeSet**: balanced BST based. Note that TreeSet implements SortedSet. Search O(logn)
