@@ -22,6 +22,9 @@
     * [Abstraction Class & Interface](#Abstraction-Class--Interface)
     * [Super](#super)
     * [Override & Overload](#Override--Overload)
+* [Container Type](#fireContainer-Type)
+    * [Collection](#Collection)
+    * [Map](#Map)
 * [Exception](#fireException)
 * [Generics](#fireGenerics)
 * [JRE or JDK](#fireJRE-or-JDK)
@@ -486,6 +489,35 @@ class C extends B {
 class D extends C {
 }
 ```
+## :fire:Container Type
+* The Collection interface and Map interface are the two main “root” interfaces of Java collection classes.
+### Collection 
+`java.util.Collection`
+![](./photo/Collection.png)
+* **Set** : Doesn't allow duplicates and unordered collection. Set just allow one null element as there is no duplicate permitted
+    * **HashSet**: Hashing based. Search O(1)
+    * **TreeSet**: Balanced BST based. TreeSet implements SortedSet. Search O(logn)
+    * **LinkedHashSet**
+* **List** : Can contain duplicates and elements are ordered. List's contract maintains insertion order or element. The list allows null elements and you can have many null objects in a List.
+    * **ArrayList**: Dynamic array based. **Non-synchronized**, multiple threads can work on ArrayList at the same time.
+        * `public class ArrayList<E> extends AbstractList<E>
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable`
+        * The default size of the array is 10
+    * **LinkedList**: Linked list based. A linked list is a sequence of nodes in which each node is connected to the node following it. This forms a chain-like link for data storage. LinkedList can be used as a stack, queue, and dequeue. LinkedList is faster in add and remove, but slower in get.
+    * **Vector**: similar with ArrayList but it is **synchronized and thread-safe**. ArrayList grow by half of its size when resized while Vector doubles the size of itself by default when grows.
+* **Queue** : Typically order elements in FIFO order
+    * **PriorityQueue**: Based on the heap structure.
+* **Deque** : Elements can be inserted and removed at both ends. Allows both LIFO and FIFO. 
+
+### Map
+`java.util.Map`
+![](https://camo.githubusercontent.com/cd126ae7572489beead8b33f3a26a5a0bb1f288e/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232343735373835352e706e67)
+* **HashTable**: **Synchronized and thread-safe**(can be shared with many threads). HashTable does not allow null keys or values
+* **HashMap**: Hashing based. HashMap data structure contains Key-Value pairs. All the keys in a HashMap data structure are unique. The values are not necessarily be unique. Different keys may correspond to same value. **Non-synchronized and not thread-safe**. HashMap allows **one null key** and any number of null values.
+    * **LinkedHashMap**
+* **TreeMap**: TreeMap implements SortedMap.  
+* **LinkedHashMap**
+
 ## :fire:Exception
 Java Exceptions are hierarchical and inheritance is used for categorizing the different types of exceptions. Throwable is the parent class of Java Exceptions Hierarchy and it has two child objects 
 - Throwable: Error & Exceptions
