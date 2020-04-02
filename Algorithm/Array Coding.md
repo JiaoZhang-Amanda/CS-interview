@@ -7,8 +7,15 @@
 
 \#| Title|Difficulty|-
 --|--|--|--
-66  |  Plus One   |  Easy|
-391   |  Perfect Rectangle   |  Hard|
+66  |  Plus One   |  Easy|Sum
+1074|Number of Submatrices That Sum to Target|Hard|Sum
+560 |   Subarray Sum Equals K  |  Medium|Sum
+15    |    3Sum    |    Medium|Sum
+16     |   3Sum Closest    |     Medium|Sum
+259   |  3Sum Smaller    | Medium|Sum
+64   | Minimum Path Sum |   Medium|Sum
+391   |  Perfect Rectangle   |  Hard|Rectangle
+750 |   Number of Corner Rectangles   | Medium|Rectangle
 228   |  Summary Ranges  |   Medium|
 289    | Game of Life    | Medium|
 406   |  Queue Reconstruction by Height   |  Medium|
@@ -24,16 +31,9 @@
 212 |   Word Search II   | Hard|
 162  |  Find Peak Element  |  Medium|
 4  |  Median of Two Sorted Arrays |   Hard|
-1074|Number of Submatrices That Sum to Target|Hard|Sum
-560 |   Subarray Sum Equals K  |  Medium|Sum
-15    |    3Sum    |    Medium|Sum
-16     |   3Sum Closest    |     Medium|Sum
-259   |  3Sum Smaller    | Medium|Sum
-64   | Minimum Path Sum |   Medium|Sum
 46|Permutations|Medium|
 150  |  Evaluate Reverse Polish Notation  |  Medium|
 857 |   Minimum Cost to Hire K workers |   Hard|
-750 |   Number of Corner Rectangles   | Medium|
 815|    Bud Routes  |  Hard|
 803  |  Bricks Falling When Hit  |  Hard|
 659 |   Split Array into Consecutive Subsequences  |  Medium|Subsequences
@@ -58,6 +58,99 @@ Explanation: The array represents the integer 123.
 </details>
 
 <details>
+<summary>1074. Number of Submatrices That Sum to Target</summary>
+Given a matrix, and a target, return the number of non-empty submatrices that sum to target.
+
+A submatrix x1, y1, x2, y2 is the set of all cells matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
+
+Two submatrices (x1, y1, x2, y2) and (x1', y1', x2', y2') are different if they have some coordinate that is different: for example, if x1 != x1'.
+
+ 
+
+Example 1:
+
+Input: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0
+Output: 4
+Explanation: The four 1x1 submatrices that only contain 0.
+Example 2:
+
+Input: matrix = [[1,-1],[-1,1]], target = 0
+Output: 5
+Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2 submatrix.
+</details>
+
+<details>
+<summary>560. Subarray Sum Equals K</summary>
+Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+
+Example 1:
+Input:nums = [1,1,1], k = 2
+Output: 2
+</details>
+
+<details>
+<summary>15. 3Sum </summary>
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+</details>
+
+<details>
+<summary>16. 3Sum Closest</summary>
+Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
+
+Example:
+
+Given array nums = [-1, 2, 1, -4], and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</details>
+
+<details>
+<summary>259.  3Sum Smaller</summary>
+Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
+
+Example:
+
+Input: nums = [-2,0,1,3], and target = 2
+Output: 2 
+Explanation: Because there are two triplets which sums are less than 2:
+             [-2,0,1]
+             [-2,0,3]
+Follow up: Could you solve it in O(n2) runtime?
+</details>
+
+<details>
+<summary>64. Minimum Path Sum</summary>
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+
+Note: You can only move either down or right at any point in time.
+
+Example:
+
+Input:
+[
+  [1,3,1],
+  [1,5,1],
+  [4,2,1]
+]
+Output: 7
+Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+</details>
+
+<details>
 <summary>391. Perfect Rectangle </summary>
 Given N axis-aligned rectangles where N > 0, determine if they all together form an exact cover of a rectangular region.
 
@@ -74,6 +167,26 @@ rectangles = [
 ]
 
 Return true. All 5 rectangles together form an exact cover of a rectangular region.
+</details>
+
+
+<details>
+<summary>750. Number of Corner Rectangles</summary>
+Given a grid where each entry is only 0 or 1, find the number of corner rectangles.
+
+A corner rectangle is 4 distinct 1s on the grid that form an axis-aligned rectangle. Note that only the corners need to have the value 1. Also, all four 1s used must be distinct.
+
+ 
+
+Example 1:
+
+Input: grid = 
+[[1, 0, 0, 1, 0],
+ [0, 0, 1, 0, 1],
+ [0, 0, 0, 1, 0],
+ [1, 0, 1, 0, 1]]
+Output: 1
+Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1][4], grid[3][2], grid[3][4].
 </details>
 
 <details>
@@ -342,99 +455,6 @@ The median is (2 + 3)/2 = 2.5
 </details>
 
 <details>
-<summary>1074. Number of Submatrices That Sum to Target</summary>
-Given a matrix, and a target, return the number of non-empty submatrices that sum to target.
-
-A submatrix x1, y1, x2, y2 is the set of all cells matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
-
-Two submatrices (x1, y1, x2, y2) and (x1', y1', x2', y2') are different if they have some coordinate that is different: for example, if x1 != x1'.
-
- 
-
-Example 1:
-
-Input: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0
-Output: 4
-Explanation: The four 1x1 submatrices that only contain 0.
-Example 2:
-
-Input: matrix = [[1,-1],[-1,1]], target = 0
-Output: 5
-Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2 submatrix.
-</details>
-
-<details>
-<summary>560. Subarray Sum Equals K</summary>
-Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
-
-Example 1:
-Input:nums = [1,1,1], k = 2
-Output: 2
-</details>
-
-<details>
-<summary>15. 3Sum </summary>
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
-Note:
-
-The solution set must not contain duplicate triplets.
-
-Example:
-
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
-</details>
-
-<details>
-<summary>16. 3Sum Closest</summary>
-Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
-
-Example:
-
-Given array nums = [-1, 2, 1, -4], and target = 1.
-
-The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
-</details>
-
-<details>
-<summary>259.  3Sum Smaller</summary>
-Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
-
-Example:
-
-Input: nums = [-2,0,1,3], and target = 2
-Output: 2 
-Explanation: Because there are two triplets which sums are less than 2:
-             [-2,0,1]
-             [-2,0,3]
-Follow up: Could you solve it in O(n2) runtime?
-</details>
-
-<details>
-<summary>64. Minimum Path Sum</summary>
-Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
-
-Note: You can only move either down or right at any point in time.
-
-Example:
-
-Input:
-[
-  [1,3,1],
-  [1,5,1],
-  [4,2,1]
-]
-Output: 7
-Explanation: Because the path 1→3→1→1→1 minimizes the sum.
-</details>
-
-<details>
 <summary>46. Permutations</summary>
 Given a collection of distinct integers, return all possible permutations.
 
@@ -496,25 +516,6 @@ Example 2:
 Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], K = 3
 Output: 30.66667
 Explanation: We pay 4 to 0-th worker, 13.33333 to 2-th and 3-th workers seperately. 
-</details>
-
-<details>
-<summary>750. Number of Corner Rectangles</summary>
-Given a grid where each entry is only 0 or 1, find the number of corner rectangles.
-
-A corner rectangle is 4 distinct 1s on the grid that form an axis-aligned rectangle. Note that only the corners need to have the value 1. Also, all four 1s used must be distinct.
-
- 
-
-Example 1:
-
-Input: grid = 
-[[1, 0, 0, 1, 0],
- [0, 0, 1, 0, 1],
- [0, 0, 0, 1, 0],
- [1, 0, 1, 0, 1]]
-Output: 1
-Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1][4], grid[3][2], grid[3][4].
 </details>
 
 <details>
