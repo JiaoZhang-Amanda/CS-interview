@@ -52,7 +52,7 @@ class TrieNode {
 
 <details>
 <summary>257. Binary Tree Paths</summary>
- <a href = "https://leetcode.com/problems/binary-tree-paths/">link</a>
+ <a href = "https://leetcode.com/problems/binary-tree-paths/"  target="_blank">link</a><br>
 Given a binary tree, return all root-to-leaf paths.
 
 Note: A leaf is a node with no children.
