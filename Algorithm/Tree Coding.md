@@ -35,19 +35,19 @@ class TrieNode {
 545  |  Boundary of Binary Tree   | Medium|Traverse
 145   | Binary Tree Postorder Traversal   | Hard|Traverse
 314| Binary Tree Vertical Order Traversal|Medium|Traverse 
-652   | Find Duplicate Subtrees  |  Medium|
-501   | Find Mode in Binary Search Tree   | Easy|
-889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium|
-270    |Closest Binary Search Tree Value  |  Easy|
-272    |Closest Binary Search Tree Value II  |  Hard|
-230    | Kth Smallest Element in a BST  |  Medium|
+889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium|Construct
+297  |  Serialize and Deserialize Binary Tree  |  Hard|Construct
+449   | Serialize and Deserialize BST  |  Medium|Construct
+270    |Closest Binary Search Tree Value  |  Easy|Search
+272    |Closest Binary Search Tree Value II  |  Hard|Search
+230    | Kth Smallest Element in a BST  |  Medium|Search
 366   | Find Leaves of Binary Tree   | Medium|Search
-297  |  Serialize and Deserialize Binary Tree  |  Hard|
-449   | Serialize and Deserialize BST  |  Medium|
-1376 |   Time Needed to Inform All Employees    |Medium|
+652   | Find Duplicate Subtrees  |  Medium|Search
+501   | Find Mode in Binary Search Tree   | Easy|Search
+1376 |   Time Needed to Inform All Employees    |Medium|practical
+337 |   House Robber III |   Medium|practical
 96  |  Unique Binary Search Trees  |  Medium|
 834  |  Sum of Distances in Tree   | Hard|
-337 |   House Robber III |   Medium|
 450| Delete Node in a BST|Medium|
 
 <details>
@@ -200,52 +200,6 @@ Input: [3,9,20,null,null,15,7]
   15   7 
 </details>
 
-<details>
-<summary>652. Find Duplicate Subtrees</summary>
-Given a binary tree, return all duplicate subtrees. For each kind of duplicate subtrees, you only need to return the root node of any one of them.
-
-Two trees are duplicate if they have the same structure with same node values.
-
-        1
-       / \
-      2   3
-     /   / \
-    4   2   4
-       /
-      4
-The following are two duplicate subtrees:
-
-      2
-     /
-    4
-and
-
-    4
-</details>
-
-<details>
-<summary>501. Find Mode in Binary Search Tree</summary>
-Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
-
-Assume a BST is defined as follows:
-
-The left subtree of a node contains only nodes with keys less than or equal to the node's key.
-The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
-Both the left and right subtrees must also be binary search trees.
- 
-
-For example:
-Given BST [1,null,2,2],
-
-   1
-    \
-     2
-    /
-   2
- 
-
-return [2].
-</details>
 
 <details>
 <summary>889. Construct Binary Tree from Preorder and Postorder Traversal </summary>
@@ -255,6 +209,36 @@ Values in the traversals pre and post are distinct positive integers.
 Example 1:
 Input: pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]
 Output: [1,2,3,4,5,6,7]
+</details>
+
+<details>
+<summary>297. Serialize and Deserialize Binary Tree </summary>
+Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+Example: 
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+</details>
+
+<details>
+<summary>449. Serialize and Deserialize BST</summary>
+Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary search tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+The encoded string should be as compact as possible.
+
+Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 </details>
 
 <details>
@@ -334,33 +318,50 @@ Explanation:
 </details>
 
 <details>
-<summary>297. Serialize and Deserialize Binary Tree </summary>
-Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+<summary>652. Find Duplicate Subtrees</summary>
+Given a binary tree, return all duplicate subtrees. For each kind of duplicate subtrees, you only need to return the root node of any one of them.
 
-Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+Two trees are duplicate if they have the same structure with same node values.
 
-Example: 
+        1
+       / \
+      2   3
+     /   / \
+    4   2   4
+       /
+      4
+The following are two duplicate subtrees:
 
-You may serialize the following tree:
+      2
+     /
+    4
+and
 
-    1
-   / \
-  2   3
-     / \
-    4   5
-
-as "[1,2,3,null,null,4,5]"
+    4
 </details>
 
 <details>
-<summary>449. Serialize and Deserialize BST</summary>
-Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+<summary>501. Find Mode in Binary Search Tree</summary>
+Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
 
-Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary search tree can be serialized to a string and this string can be deserialized to the original tree structure.
+Assume a BST is defined as follows:
 
-The encoded string should be as compact as possible.
+The left subtree of a node contains only nodes with keys less than or equal to the node's key.
+The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
 
-Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
+For example:
+Given BST [1,null,2,2],
+
+   1
+    \
+     2
+    /
+   2
+ 
+
+return [2].
 </details>
 
 <details>
@@ -382,6 +383,27 @@ Example 1:
 Input: n = 1, headID = 0, manager = [-1], informTime = [0]
 Output: 0
 Explanation: The head of the company is the only employee in the company.
+</details>
+
+
+<details>
+<summary>337. House Robber III </summary>
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
+
+Determine the maximum amount of money the thief can rob tonight without alerting the police.
+
+Example 1:
+
+Input: [3,2,3,null,3,null,1]
+
+     3
+    / \
+   2   3
+    \   \ 
+     3   1
+
+Output: 7 
+Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
 </details>
 
 <details>
@@ -425,25 +447,6 @@ We can see that dist(0,1) + dist(0,2) + dist(0,3) + dist(0,4) + dist(0,5)
 equals 1 + 1 + 2 + 2 + 2 = 8.  Hence, answer[0] = 8, and so on.
 </details>
 
-<details>
-<summary>337. House Robber III </summary>
-The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the "root." Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that "all houses in this place forms a binary tree". It will automatically contact the police if two directly-linked houses were broken into on the same night.
-
-Determine the maximum amount of money the thief can rob tonight without alerting the police.
-
-Example 1:
-
-Input: [3,2,3,null,3,null,1]
-
-     3
-    / \
-   2   3
-    \   \ 
-     3   1
-
-Output: 7 
-Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
-</details>
 
 <details>
 <summary>450. Delete Node in a BST</summary>
