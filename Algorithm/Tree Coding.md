@@ -51,7 +51,7 @@ class TrieNode {
 450| Delete Node in a BST|Medium|
 
 <details>
-<summary>257. Binary Tree Paths</summary>
+<summary>257. Binary Tree Paths <a href = "https://leetcode.com/problems/binary-tree-paths/"></a></summary>
 Given a binary tree, return all root-to-leaf paths.
 
 Note: A leaf is a node with no children.
