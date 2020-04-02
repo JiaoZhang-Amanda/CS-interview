@@ -130,6 +130,7 @@ Output: 2
 
 <details>
 <summary>173. Binary Search Tree Iterator</summary>
+<a href = "https://leetcode.com/problems/binary-search-tree-iterator/">Leetcode Link</a><br>
 Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
 
 Calling next() will return the next smallest number in the BST.
