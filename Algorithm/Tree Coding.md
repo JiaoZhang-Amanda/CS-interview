@@ -138,6 +138,8 @@ Calling next() will return the next smallest number in the BST.
 
 <details>
 <summary>545. Boundary of Binary Tree </summary>
+<a href = "https://leetcode.com/problems/boundary-of-binary-tree/">Leetcode Link</a><br>
+
 Given a binary tree, return the values of its boundary in anti-clockwise direction starting from root. Boundary includes left boundary, leaves, and right boundary in order without duplicate nodes.
 
 Left boundary is defined as the path from root to the left-most node. Right boundary is defined as the path from root to the right-most node. If the root doesn't have left subtree or right subtree, then the root itself is left boundary or right boundary. Note this definition only applies to the input binary tree, and not applies to any subtrees.
