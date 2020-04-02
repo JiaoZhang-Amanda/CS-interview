@@ -8,7 +8,6 @@
 * [JAVA Methods](#JAVA-Methods)
     * [String VS StringBuffer VS StringBuiler](#String-VS-StringBuffer-VS-StringBuiler)
     * ["==" VS "equals()"](#==-VS-equals())
-    * [HashTable VS HashMap](#HashTable-VS-HashMap)
     * [final VS finalize VS finally](#final-VS-finalize-VS-finally)
     * [List VS Set VS Map](#List-VS-Set-VS-Map)
     * [ArrayList VS Vector VS LinkedList](#ArrayList-VS-Vector-VS-LinkedList)
@@ -117,30 +116,11 @@ public class MyMainClass {
   - The two operators are used to compare objects to check equality.
   - "==" for address comparison; "equals()" for content comparison. == checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
 
-### HashTable VS HashMap
-  - HashTable is synchronized and thread-safe(can be shared with many threads), whereas HashMap is not and not-thread safe(can not be shared). Thus, HashMap is better for non-threaded applications.(HashMap can be synchronized by Map m = Collections.synchronizeMap(hashMap))
-  - HashTable does not allow null keys or values, HashMap allows one null key and any number of null values.
-
 ### final VS finalize VS finally
 - Final is a keyword. Final is used to apply restrictions on class, method and variable. Final class can't be inherited, final method can't be overridden and final variable value can't be changed.
 - Finally is a block. Finally is used to place important code, it will be executed whether exception is handled or not.
 - Finalize is a method. Finalize is used to perform clean up processing just before object is garbage collected.
 
-### List VS Set VS Map
-Set: HashSet, LinkedHashSet, TreeSet
-List: ArrayList, LinkedList, Vector
-Map: HashMap, LinkedHashMap, HashTable, TreeMap
-
-- List allows duplicates while Set doesn't allow duplicates.
-- Map holds two objects per Entry e.g. a key and a value and It may contain duplicate values but keys are always unique.
-- List is an ordered collection, List's contract maintains insertion order or element. Set is an unordered collection, you get no guarantee on which order element will be stored. 
-- The list allows null elements and you can have many null objects in a List because it also allowed duplicates. Set just allow one null element as there is no duplicate permitted while in Map you can have null values and at most one null key. 
-
-### ArrayList VS Vector VS LinkedList
-- ArrayList is non-synchronized, while Vector is synchronized which means multiple threads can work on ArrayList at the same time.
-- ArrayList grow by half of its size when resized while Vector doubles the size of itself by default when grows.
-- ArrayList gives better performance as it is non-synchronized. Vector operations gives poor performance as they are thread-safe.
-- LinkedList is faster in add and remove, but slower in get.
 
 ### what is contract between hashcode and equals method in java?
 public boolean equals(Object obj)
