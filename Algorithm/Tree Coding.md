@@ -30,7 +30,8 @@ class TrieNode {
 257    | Binary Tree Paths  |  Easy|path
 298    | Binary Tree Longest Consecutive Sequence   | Medium|path
 549   | Binary Tree Longest Consecutive Sequence II    |Medium|path
-173   | Binary Search Tree Iterator  |  Medium|Traverse
+687	|Longest Univalue Path	|Easy|path
+173   | Binary Search Tree Iterator  |  Medium|Traverse 
 545  |  Boundary of Binary Tree   | Medium|Traverse
 145   | Binary Tree Postorder Traversal   | Hard|Traverse
 652   | Find Duplicate Subtrees  |  Medium|
@@ -99,6 +100,26 @@ Input:
       1   3
 Output: 3
 Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
+</details>
+
+<details>
+<summary>687. Longest Univalue Path</summary>
+
+Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.
+
+The length of path between two nodes is represented by the number of edges between them.
+
+
+Example 1:
+
+Input:
+
+              5
+             / \
+            4   5
+           / \   \
+          1   1   5
+Output: 2
 </details>
 
 <details>
