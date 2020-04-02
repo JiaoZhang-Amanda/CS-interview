@@ -34,6 +34,7 @@ class TrieNode {
 173   | Binary Search Tree Iterator  |  Medium|Traverse 
 545  |  Boundary of Binary Tree   | Medium|Traverse
 145   | Binary Tree Postorder Traversal   | Hard|Traverse
+314| Binary Tree Vertical Order Traversal|Medium|Traverse 
 652   | Find Duplicate Subtrees  |  Medium|
 501   | Find Mode in Binary Search Tree   | Easy|
 889    |Construct Binary Tree from Preorder and Postorder Traversal   | Medium|
@@ -168,6 +169,25 @@ Input: [1,null,2,3]
    3
 
 Output: [3,2,1]
+</details>
+
+<details>
+<summary>314. Binary Tree Vertical Order Traversal</summary>
+Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
+
+If two nodes are in the same row and column, the order should be from left to right.
+
+Examples 1:
+
+Input: [3,9,20,null,null,15,7]
+
+   3
+  /\
+ /  \
+ 9  20
+    /\
+   /  \
+  15   7 
 </details>
 
 <details>
