@@ -110,7 +110,7 @@ Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
 
 <details>
 <summary>687. Longest Univalue Path</summary>
-
+<a href = "https://leetcode.com/problems/longest-univalue-path/"></a>Leetcode Link<br>
 Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.
 
 The length of path between two nodes is represented by the number of edges between them.
