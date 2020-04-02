@@ -52,7 +52,7 @@ class TrieNode {
 
 <details>
 <summary>257. Binary Tree Paths</summary>
- <a href = "https://leetcode.com/problems/binary-tree-paths/"  target="_blank">Leetcode Link</a><br>
+ <a href = "https://leetcode.com/problems/binary-tree-paths/">Leetcode Link</a><br>
 Given a binary tree, return all root-to-leaf paths.
 
 Note: A leaf is a node with no children.
@@ -72,6 +72,7 @@ Output: ["1->2->5", "1->3"]
 
 <details>
 <summary>298. Binary Tree Longest Consecutive Sequence</summary>
+<a href = "https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/">Leetcode Link</a><br>
 Given a binary tree, find the length of the longest consecutive sequence path.
 
 The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
