@@ -8,11 +8,11 @@ First, Java code is complied into bytecode. This bytecode gets interpreted on di
 ![](https://www.guru99.com/images/java/052016_0614_WorkingofJa10.jpg)
 ### JVM Architecture
 It contains classloader, memory area, execution engine etc.
-![](https://www.guru99.com/images/1/2.png)
+![](https://segmentfault.com/img/bVkZat)
 
 ## :fire:JVM Run-Time Data Areas
 * Created per thread– PC register, JVM stack, Native method stack
-* Shared by threads– Heap, Method area, Run-time constant pool
+* Shared by threads– Heap, Method area, Run-time constant pool<br>
 ![](https://4.bp.blogspot.com/-m1QNXYUo8dg/WriYyHlzeiI/AAAAAAAAAmo/YB1Bzw2a65EvS-hGvS1UczQLNo-dAf_mgCLcBGAs/s1600/JVM%2BData%2BAreas.png)
 ### Program Counter (PC) Register
 In a JVM at any given time many threads may be executing. Each of excuting thread gets its own PC register.
