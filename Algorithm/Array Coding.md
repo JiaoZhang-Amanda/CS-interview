@@ -44,6 +44,7 @@
 
 <details>
 <summary>66. Plus One</summary>
+<a href = "https://leetcode.com/problems/plus-one/submissions/">Leetcode Link</a><br>
 Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
 
 The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
@@ -59,6 +60,7 @@ Explanation: The array represents the integer 123.
 
 <details>
 <summary>1074. Number of Submatrices That Sum to Target</summary>
+<a href = "https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/">Leetcode Link</a><br>
 Given a matrix, and a target, return the number of non-empty submatrices that sum to target.
 
 A submatrix x1, y1, x2, y2 is the set of all cells matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
@@ -81,6 +83,7 @@ Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2
 
 <details>
 <summary>560. Subarray Sum Equals K</summary>
+<a href = "https://leetcode.com/problems/subarray-sum-equals-k/">Leetcode Link</a><br>
 Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
 
 Example 1:
@@ -90,6 +93,7 @@ Output: 2
 
 <details>
 <summary>15. 3Sum </summary>
+<a href = "https://leetcode.com/problems/3sum/">Leetcode Link</a><br>
 Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
 Note:
@@ -109,6 +113,7 @@ A solution set is:
 
 <details>
 <summary>16. 3Sum Closest</summary>
+<a href = "https://leetcode.com/problems/3sum-closest/">Leetcode Link</a><br>
 Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 
 Example:
@@ -120,6 +125,7 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
 <details>
 <summary>259.  3Sum Smaller</summary>
+<a href = "https://leetcode.com/problems/3sum-smaller/">Leetcode Link</a><br>
 Given an array of n integers nums and a target, find the number of index triplets i, j, k with 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
 
 Example:
@@ -134,6 +140,7 @@ Follow up: Could you solve it in O(n2) runtime?
 
 <details>
 <summary>64. Minimum Path Sum</summary>
+<a href = "https://leetcode.com/problems/minimum-path-sum/">Leetcode Link</a><br>
 Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
 
 Note: You can only move either down or right at any point in time.
