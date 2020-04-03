@@ -29,42 +29,6 @@ No, you can only extend a single class but you can implement multiple interfaces
 #### 2) What is data encapsulation and what’s its significance?
 **Encapsulation** is a concept in Object Oriented Programming for combining properties and methods in a single unit. Encapsulation helps programmers to follow a modular approach for software development as each object has its own set of methods and variables and serves its functions independent of other objects. Encapsulation also serves data hiding purpose.
 
-### JVM
-#### 1) Explain the difference between JRE, JDK, JVM, and JIT.
-* **JRE** is an abbreviation of Java Runtime Environment that consist of sets of files needed by JVM throughout the runtime.
-* **JVM** is an abbreviation of Java Virtual Machine which delivers the runtime environment for collected Java Bytecode. JVM is in control of the conversion of the bytecode into machine-readable code.
-* **JDK** is an abbreviation for Java Development Kit which contains JRE including development tools for the purpose of development. JDK is required to write and execute a Java code.
-* **JIT** is an abbreviation of Just in Time compilation, and this helps to improve the performance of Java application by converting Java bytecode into native code when they cross a certain threshold, i.e. the mostly hot code is transformed into native code.
-
-### Modifiers
-* The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
-* **Types of modifiers**
-    * **access modifiers**: controls the access level
-    * **non-access modifiers**: do not control access level, but provides other functionality
-* **Types of Java access modifiers**
-    * **Private**: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
-    * **Default**: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
-    * **Protected**: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
-    * **Public**: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
-    
-    Access Modifier    |within class  |  within package  |  outside package by subclass only   | outside package
-    --|--|--|--|--
-    Private  |  Y |   N  |  N |   N
-    Default   | Y  |  Y |   N  |  N
-    Protected |   Y   | Y    |Y|    N
-    Public   | Y |   Y    |Y    |Y
-* **Non-Access Modifiers**
-* For classes, you can use either final or abstract:
-    * **final**: The class cannot be inherited by other classes
-    * **abstract**: The class cannot be used to create objects(To access an abstract class, it must be inherited from another class. )
-* For attributes and methods: 
-    * **final**: Attributes and methods cannot be overridden/modified(If you don't want the ability to override existing attribute values, declare attributes as final)
-    * **static** :  Attributes and methods belongs to the class, rather than an object. Static methods can be called without creating objects
-    * **abstract**: Can only be used in an abstract class, and can only be used on methods. The method does not have a body, for example abstract void run();. The body is provided by the subclass (inherited from). 
-    * **transient**: Attributes and methods are skipped when serializing the object containing them
-    * **synchronized**: Methods can only be accessed by one thread at a time
-    * **volatile**: The value of an attribute is not cached thread-locally, and is always read from the "main memory"
-
 ### Multithreading
 ### 1) Life cycle of thread
 ![](https://www.tutorialspoint.com/java/images/Thread_Life_Cycle.jpg)
@@ -106,11 +70,6 @@ public class MyMainClass {
 * One advantage of inner classes, is that they can access attributes and methods of the outer class
 
 ## JAVA Methods
-### String VS StringBuffer VS StringBuiler
-- String is immutable, whereas StringBuffer and StringBuider are mutable classes.
-  whenever we do String manipulation like concatenation, substring etc, it generates a new String and discards the older String for garbage collection.
-- StringBuffer is thread safe and synchronized whereas StringBuilder is not.
-  StringBuilder is more faster than StringBuffer. StringBuffer provides Thread safety but on a performance cost. StringBuffer: all of its public methods are synchronized
   
 ### "==" VS "equals()"
   - The two operators are used to compare objects to check equality.
@@ -143,34 +102,10 @@ Exceptions: checked & runtime exception
 
 **Runtime exceptions** are caused by bad programming, for example, trying to retrieve an element from the Array. At first, we should check the length of the array before trying to retrieve the element otherwise it might throw ArrayIndexOutOfBoundException at runtime.
 
-
-### 11. What happened when compiling and running JAVA code?
-Programs are not compiled into executable file. They are compiled into bytecode, which the JVM executes at runtime.
-Java source code is compiled into bytecode when we use javac compiler.
-The bytecode gets saved on the disk with the file extension.class when the program is to be run.
-The bytecode is converted using the Just-in-time(JIT) compiler.
-The result is machine code which is fed to the memory and is executed.
-
 ### 13. Stack memory VS Heap memory
 - Stack memory is used to store local variables and function call while heap memory is used to store objects in Java
 - Stack is used for static memory allocation and Heap for dynamic memory allocation, both stored in the computer's RAM.
 - Stack frame access is easier than the heap frame as the stack have small region of memory and is cache friendly, but in case of heap frames which are dispersed throughout the memory so it cause more cache misses.
-
-
-### 15. Boxing and Unboxing
-Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an int to an Integer, a double to a Double, and so on. If the conversion goes the other way, this is called unboxing.
-
-|Primitive type|Wrapper class|
-|--|--|
-|boolean|Boolean|
-|byte	| Byte|
-|char	 |Character|
-|float	 |Float|
-|int	     |Integer|
-|long	|Long|
-|short	|Short|
-|double	|Double|
-
 
 
 ### 18. Serialization VS Deserialization

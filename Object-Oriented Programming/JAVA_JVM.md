@@ -3,9 +3,23 @@
 ## :fire:JVM
 ### What is JVM?
 **Java Virtual Machine (JVM)** is a engine that provides runtime environment to drive the Java Code or applications. It converts Java bytecode into machines language. JVM is a part of Java Run Environment (JRE).
-### How JVM works
+### How JVM works?
 First, Java code is complied into bytecode. This bytecode gets interpreted on different machines. Between host system and Java source, Bytecode is an intermediary language. JVM is responsible for allocating memory space.
 ![](https://www.guru99.com/images/java/052016_0614_WorkingofJa10.jpg)
+### Explain the difference between JRE, JDK, JVM, and JIT.
+* **JRE** is an abbreviation of Java Runtime Environment that consist of sets of files needed by JVM throughout the runtime.
+* **JVM** is an abbreviation of Java Virtual Machine which delivers the runtime environment for collected Java Bytecode. JVM is in control of the conversion of the bytecode into machine-readable code.
+* **JDK** is an abbreviation for Java Development Kit which contains JRE including development tools for the purpose of development. JDK is required to write and execute a Java code.
+* **JIT** is an abbreviation of Just in Time compilation, and this helps to improve the performance of Java application by converting Java bytecode into native code when they cross a certain threshold, i.e. the mostly hot code is transformed into native code.
+
+### What happened when compiling and running JAVA code?
+Programs are not compiled into executable file. They are compiled into bytecode, which the JVM executes at runtime.
+Java source code is compiled into bytecode when we use javac compiler.
+The bytecode gets saved on the disk with the file extension.class when the program is to be run.
+The bytecode is converted using the Just-in-time(JIT) compiler.
+The result is machine code which is fed to the memory and is executed.
+
+
 ### JVM Architecture
 It contains classloader, memory area, execution engine etc.
 ![](https://segmentfault.com/img/bVkZat)
