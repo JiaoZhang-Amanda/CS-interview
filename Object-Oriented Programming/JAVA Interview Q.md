@@ -132,10 +132,6 @@ ____
 ### 1. Does JAVA has destructor? How to force it?
 No. Because Java is a garbage collected language. You can not predict when an object will be destroyed. 
 
-### 2. How JAVA garbage collection works? Is it guarateed to work?
-Java garbage collection is the process by which Java programs perform automatic memory management. When Java programs run on the JVM, objects are created on the heap, once an object is no longer referenced and therefore is not reachable by the code, the garbage collector finds these unused objects and deletes them to free up memory.
-No, it is not guaranteed to work. If there is insufficient memory remaining to satisfy the amount needed for a new object, the garbage collector will attempt to reclaim as much memory as possible by releasing memory. However, it is possible for a developer to mistakenly create objects which never go out of scope, thus consuming more and more memory until all heap is exhausted.
-
 ### 7. Explain the Java Exception Hierarchy.
 Java Exceptions are hierarchical and inheritance is used for categorizing the different types of exceptions. Throwable is the parent class of Java Exceptions Hierarchy and it has two child objects 
 Throwable: Error & Exceptions

@@ -17,9 +17,9 @@
 391   |  Perfect Rectangle   |  Hard|Rectangle
 750 |   Number of Corner Rectangles   | Medium|Rectangle
 228   |  Summary Ranges  |   Medium|
+163   |  Missing Ranges   |  Medium|
 289    | Game of Life    | Medium|
 406   |  Queue Reconstruction by Height   |  Medium|
-163   |  Missing Ranges   |  Medium|
 42| Trapping Rain Water  | Hard|
 407    | Trapping Rain Water II    | Hard|
 463  |  Island Perimeter  |  Easy|
@@ -208,6 +208,16 @@ Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
 </details>
 
 <details>
+<summary>163. Missing Ranges</summary>
+Given a sorted integer array nums, where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
+
+Example:
+
+Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
+Output: ["2", "4->49", "51->74", "76->99"]
+</details>
+
+<details>
 <summary>289. Game of Life</summary>
 According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
 
@@ -249,15 +259,6 @@ Input:
 
 Output:
 [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
-</details>
-<details>
-<summary>163. Missing Ranges</summary>
-Given a sorted integer array nums, where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
-
-Example:
-
-Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
-Output: ["2", "4->49", "51->74", "76->99"]
 </details>
 
 
