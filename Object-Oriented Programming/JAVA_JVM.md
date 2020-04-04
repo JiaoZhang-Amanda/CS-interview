@@ -49,11 +49,21 @@ Native method stacks are allocated per thread when each thread is created.
 ### Run-Time Constant Pool
 * Constant_pool contains constants (string literals, numeric literals) which are known at compile-time, it also stores method and field references that must be resolved at run time.
 
+### Stack memory VS Heap memory
+- Stack memory is used to store local variables and function call while heap memory is used to store objects in Java
+- Stack is used for static memory allocation and Heap for dynamic memory allocation, both stored in the computer's RAM.
+- Stack frame access is easier than the heap frame as the stack have small region of memory and is cache friendly, but in case of heap frames which are dispersed throughout the memory so it cause more cache misses.
+
+### Serialization VS Deserialization
+Serialization is a mechanism of converting the state of an object into a byte stream. Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory.
+
 ## :fire:Garbage Collection
 ### How JAVA garbage collection works? 
 Java garbage collection is the process by which Java programs perform automatic memory management. When Java programs run on the JVM, objects are created on the heap, once an object is no longer referenced and therefore is not reachable by the code, the garbage collector finds these unused objects and deletes them to free up memory.
 ### Is it guarateed to work? 
 No, it is not guaranteed to work. If there is insufficient memory remaining to satisfy the amount needed for a new object, the garbage collector will attempt to reclaim as much memory as possible by releasing memory. However, it is possible for a developer to mistakenly create objects which never go out of scope, thus consuming more and more memory until all heap is exhausted.
+### Does JAVA has destructor? How to force it?
+No. Because Java is a garbage collected language. You can not predict when an object will be destroyed. 
 ### Advantage
 * It makes java memory efficient because garbage collector removes the unreferenced objects from heap memory.
 * It is automatically done by the garbage collector(a part of JVM) so we don't need to make extra efforts.
