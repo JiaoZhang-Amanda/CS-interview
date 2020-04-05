@@ -9,9 +9,16 @@
 ## :pencil2: Algorithm & data structure
 - [data structure](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Data%20Structure/Data%20Structure%20Q.md)
 - [Algorithm Basic](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Algorithm%20Q.md)
-- [Sorting Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Sorting%20Coding.md)
-- [Graph Search Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Graph%20Search%20Coding.md)
-- [Tree Search Algorithm](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Tree%20Coding.md)
+  - [Sorting](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Sorting%20Coding.md)
+  - [Graph](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Graph%20Search%20Coding.md)
+  - [Tree](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Tree%20Coding.md)
+  - [Array](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Array%20Coding.md)
+  - [DP](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/DP%20Coding.md)
+  - [Design](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Design%20Coding.md)
+  - [Linked List](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/LinkedList%20Coding.md)
+  - [Math](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Math%20Coding.md)
+  - [Search](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Searching%20Coding.md)
+  - [String](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/String%20Coding.md)
 ## :computer: OS
 - [Operation System](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Operating%20System/OS%20Interview%20Q.md)
 ## :cloud: Networking
@@ -31,8 +38,9 @@
 ## :penguin: Web Framwork
 - [JAVA Spring](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Web%20Framwork/Java%20Spring.md)
 ## :wrench: Tools
-- [Git]
+- Git
   - [Git Markdown](https://github.com/guodongxiaren/README/blob/master/README.md#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE)
-  - [Gir Emoji](https://www.webfx.com/tools/emoji-cheat-sheet/)
+  - [Git Emoji](https://www.webfx.com/tools/emoji-cheat-sheet/)
 ## :watermelon: Others
+- [BQ](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Others/Behavior%20Question%20list.md)
 ## :memo: Notes
