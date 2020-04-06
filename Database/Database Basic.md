@@ -44,7 +44,7 @@ BCNF is the Boyce Code Normal form. It is the higher version of 3NF which does n
 ## :fire:E-R model
 ### What do you understand by the E-R model?
 * E-R model is an Entity-Relationship model which defines the conceptual view of the database.
-* The E-R model basically shows the real-world entities and their association/relations. Entities here represent the set of attributes in the database.
+* The E-R model basically shows the real-world entities and their association/relations. Entities here represent the set of attributes in the database.<br>
 ![](https://camo.githubusercontent.com/30b13bf542f6115d8bcecc903ed08a0f16d21304/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f31643238616430352d333965352d343961322d613661312d6136663439366164626136612e706e67)
 ![](https://camo.githubusercontent.com/144cd455691b6d05e58c063d5272b6e1681689d4/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f31343338396561342d386439362d346539362d396637362d3536346361333332346331652e706e67)
 ### What are the various types of relationships in Database? Define them.

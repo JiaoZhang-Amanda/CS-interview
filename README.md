@@ -6,8 +6,8 @@
 
 <br>
 
-## :pencil2: Algorithm & data structure
-- [data structure](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Data%20Structure/Data%20Structure%20Q.md)
+## :pencil2: Algorithm & Data structure
+- [Data structure](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Data%20Structure/Data%20Structure%20Q.md)
 - [Algorithm Basic](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Algorithm%20Q.md)
   - [Sorting](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Sorting%20Coding.md)
   - [Graph](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Algorithm/Graph%20Search%20Coding.md)
@@ -32,8 +32,9 @@
   - [Java Basics](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Object-Oriented%20Programming/JAVA_Basics.md)
   - [JAVA JVM](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Object-Oriented%20Programming/JAVA_JVM.md)
   - [Java Multithread](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Object-Oriented%20Programming/JAVA_Multithread.md)
-## :floppy_disk: database
-- [database](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Database/Database%20Interview%20Q.md)
+## :floppy_disk: Database
+- [Database Basic](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Database/Database%20Basic.md)
+- [SQL](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Database/SQL.md#fireIndex)
 ## :bulb: OOD
 ## :penguin: Web Framwork
 - [JAVA Spring](https://github.com/JiaoZhang-Amanda/CS-interview/blob/master/Web%20Framwork/Java%20Spring.md)
