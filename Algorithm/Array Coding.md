@@ -180,6 +180,7 @@ Return true. All 5 rectangles together form an exact cover of a rectangular regi
 
 <details>
 <summary>750. Number of Corner Rectangles</summary>
+<a href = "https://leetcode.com/problems/number-of-corner-rectangles/">Leetcode Link</a><br>
 Given a grid where each entry is only 0 or 1, find the number of corner rectangles.
 
 A corner rectangle is 4 distinct 1s on the grid that form an axis-aligned rectangle. Note that only the corners need to have the value 1. Also, all four 1s used must be distinct.
