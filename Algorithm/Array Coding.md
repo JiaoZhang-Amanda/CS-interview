@@ -223,6 +223,7 @@ Output: ["2", "4->49", "51->74", "76->99"]
 
 <details>
 <summary>79. Word Search</summary>
+<a href = "https://leetcode.com/problems/word-search/">Leetcode Link</a><br>
 Given a 2D board and a word, find if the word exists in the grid.
 
 The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
@@ -230,11 +231,9 @@ The word can be constructed from letters of sequentially adjacent cell, where "a
 Example:
 
 board =
-[
-  ['A','B','C','E'],
-  ['S','F','C','S'],
-  ['A','D','E','E']
-]
+[['A','B','C','E'],
+  <br> ['S','F','C','S'],
+  <br> ['A','D','E','E']]
 
 Given word = "ABCCED", return true.
 Given word = "SEE", return true.
