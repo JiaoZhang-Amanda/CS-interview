@@ -230,7 +230,7 @@ The word can be constructed from letters of sequentially adjacent cell, where "a
 
 Example:
 
-board =
+board =<br>
 [['A','B','C','E'],
   <br> ['S','F','C','S'],
   <br> ['A','D','E','E']]
@@ -242,6 +242,7 @@ Given word = "ABCB", return false.
 
 <details>
 <summary>212. Word Search II</summary>
+<a href = "https://leetcode.com/problems/word-search-ii/">Leetcode Link</a><br>
 Given a 2D board and a list of words from the dictionary, find all words in the board.
 
 Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
@@ -249,12 +250,11 @@ Each word must be constructed from letters of sequentially adjacent cell, where 
 Example:
 
 Input: 
-board = [
-  ['o','a','a','n'],
-  ['e','t','a','e'],
-  ['i','h','k','r'],
-  ['i','f','l','v']
-]
+board = <br>
+[['o','a','a','n'],
+ <br> ['e','t','a','e'],
+  <br>['i','h','k','r'],
+  <br>['i','f','l','v']]
 words = ["oath","pea","eat","rain"]
 
 Output: ["eat","oath"]
