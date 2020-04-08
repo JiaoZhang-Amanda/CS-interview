@@ -18,6 +18,11 @@
 750 |   Number of Corner Rectangles   | Medium|Rectangle
 228   |  Summary Ranges  |   Medium|Ranges
 163   |  Missing Ranges   |  Medium|Ranges
+79   | Word Search   | Medium        |Search
+212 |   Word Search II   | Hard|Search
+162  |  Find Peak Element  |  Medium|Search
+169|	Majority Element	|Easy|Search
+229	|Majority Element II	|Medium|Search
 289    | Game of Life    | Medium|
 406   |  Queue Reconstruction by Height   |  Medium|
 42| Trapping Rain Water  | Hard|
@@ -27,11 +32,6 @@
 325 | Maximum Size Subarray Sum Equals k|Medium|
 846  |  Hand of Straights  |  Medium|sequences
 128  |  Longest Consecutive Sequence  |  Hard|sequences
-79   | Word Search   | Medium        |Search
-212 |   Word Search II   | Hard|Search
-162  |  Find Peak Element  |  Medium|Search
-169|	Majority Element	|Easy|Search
-229	|Majority Element II	|Medium|Search
 4  |  Median of Two Sorted Arrays |   Hard|
 46|Permutations|Medium|
 150  |  Evaluate Reverse Polish Notation  |  Medium|
@@ -222,6 +222,103 @@ Output: ["2", "4->49", "51->74", "76->99"]
 </details>
 
 <details>
+<summary>79. Word Search</summary>
+Given a 2D board and a word, find if the word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+Example:
+
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+</details>
+
+<details>
+<summary>212. Word Search II</summary>
+Given a 2D board and a list of words from the dictionary, find all words in the board.
+
+Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+Example:
+
+Input: 
+board = [
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+words = ["oath","pea","eat","rain"]
+
+Output: ["eat","oath"]
+</details>
+
+<details>
+<summary>162. Find Peak Element</summary>
+A peak element is an element that is greater than its neighbors.
+
+Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
+
+The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+Example 2:
+
+Input: nums = [1,2,1,3,5,6,4]
+Output: 1 or 5 
+Explanation: Your function can return either index number 1 where the peak element is 2, 
+             or index number 5 where the peak element is 6.
+</details>
+
+
+<details>
+<summary>169. Majority Element</summary>
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+
+Example 1:
+
+Input: [3,2,3]
+Output: 3
+Example 2:
+
+Input: [2,2,1,1,1,2,2]
+Output: 2
+</details>
+
+<details>
+<summary>229. Majority Element II</summary>
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+
+Note: The algorithm should run in linear time and in O(1) space.
+
+Example 1:
+
+Input: [3,2,3]
+Output: [3]
+Example 2:
+
+Input: [1,1,1,3,3,2,2,2]
+Output: [1,2]
+</details>
+
+
+<details>
 <summary>289. Game of Life</summary>
 According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
 
@@ -377,102 +474,6 @@ Example:
 Input: [100, 4, 200, 1, 3, 2]
 Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
-</details>
-
-<details>
-<summary>79. Word Search</summary>
-Given a 2D board and a word, find if the word exists in the grid.
-
-The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
-
-Example:
-
-board =
-[
-  ['A','B','C','E'],
-  ['S','F','C','S'],
-  ['A','D','E','E']
-]
-
-Given word = "ABCCED", return true.
-Given word = "SEE", return true.
-Given word = "ABCB", return false.
-</details>
-
-<details>
-<summary>212. Word Search II</summary>
-Given a 2D board and a list of words from the dictionary, find all words in the board.
-
-Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
-
-Example:
-
-Input: 
-board = [
-  ['o','a','a','n'],
-  ['e','t','a','e'],
-  ['i','h','k','r'],
-  ['i','f','l','v']
-]
-words = ["oath","pea","eat","rain"]
-
-Output: ["eat","oath"]
-</details>
-
-<details>
-<summary>162. Find Peak Element</summary>
-A peak element is an element that is greater than its neighbors.
-
-Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
-
-The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
-
-You may imagine that nums[-1] = nums[n] = -∞.
-
-Example 1:
-
-Input: nums = [1,2,3,1]
-Output: 2
-Explanation: 3 is a peak element and your function should return the index number 2.
-Example 2:
-
-Input: nums = [1,2,1,3,5,6,4]
-Output: 1 or 5 
-Explanation: Your function can return either index number 1 where the peak element is 2, 
-             or index number 5 where the peak element is 6.
-</details>
-
-
-<details>
-<summary>169. Majority Element</summary>
-Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
-
-You may assume that the array is non-empty and the majority element always exist in the array.
-
-Example 1:
-
-Input: [3,2,3]
-Output: 3
-Example 2:
-
-Input: [2,2,1,1,1,2,2]
-Output: 2
-</details>
-
-<details>
-<summary>229. Majority Element II</summary>
-Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
-
-Note: The algorithm should run in linear time and in O(1) space.
-
-Example 1:
-
-Input: [3,2,3]
-Output: [3]
-Example 2:
-
-Input: [1,1,1,3,3,2,2,2]
-Output: [1,2]
 </details>
 
 <details>
