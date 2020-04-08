@@ -16,8 +16,8 @@
 64   | Minimum Path Sum |   Medium|Sum
 391   |  Perfect Rectangle   |  Hard|Rectangle
 750 |   Number of Corner Rectangles   | Medium|Rectangle
-228   |  Summary Ranges  |   Medium|
-163   |  Missing Ranges   |  Medium|
+228   |  Summary Ranges  |   Medium|Ranges
+163   |  Missing Ranges   |  Medium|Ranges
 289    | Game of Life    | Medium|
 406   |  Queue Reconstruction by Height   |  Medium|
 42| Trapping Rain Water  | Hard|
@@ -27,9 +27,11 @@
 325 | Maximum Size Subarray Sum Equals k|Medium|
 846  |  Hand of Straights  |  Medium|sequences
 128  |  Longest Consecutive Sequence  |  Hard|sequences
-79   | Word Search   | Medium        |
-212 |   Word Search II   | Hard|
-162  |  Find Peak Element  |  Medium|
+79   | Word Search   | Medium        |Search
+212 |   Word Search II   | Hard|Search
+162  |  Find Peak Element  |  Medium|Search
+169|	Majority Element	|Easy|Search
+229	|Majority Element II	|Medium|Search
 4  |  Median of Two Sorted Arrays |   Hard|
 46|Permutations|Medium|
 150  |  Evaluate Reverse Polish Notation  |  Medium|
@@ -39,8 +41,6 @@
 659 |   Split Array into Consecutive Subsequences  |  Medium|Subsequences
 334  |  Increasing Triplet Subsequence |   Medium   |Subsequences
 849	|Maximize Distance to Closest Person	|Easy|
-169|	Majority Element	|Easy|
-229	|Majority Element II	|Medium|
 
 <details>
 <summary>66. Plus One</summary>
@@ -200,6 +200,7 @@ Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1
 
 <details>
 <summary>228. Summary Ranges</summary>
+<a href = "https://leetcode.com/problems/summary-ranges/">Leetcode Link</a><br>
 Given a sorted integer array without duplicates, return the summary of its ranges.
 
 Example 1:
@@ -211,6 +212,7 @@ Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
 
 <details>
 <summary>163. Missing Ranges</summary>
+<a href = "https://leetcode.com/problems/missing-ranges/">Leetcode Link</a><br>
 Given a sorted integer array nums, where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
 
 Example:
@@ -441,6 +443,37 @@ Explanation: Your function can return either index number 1 where the peak eleme
 </details>
 
 
+<details>
+<summary>169. Majority Element</summary>
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+
+Example 1:
+
+Input: [3,2,3]
+Output: 3
+Example 2:
+
+Input: [2,2,1,1,1,2,2]
+Output: 2
+</details>
+
+<details>
+<summary>229. Majority Element II</summary>
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+
+Note: The algorithm should run in linear time and in O(1) space.
+
+Example 1:
+
+Input: [3,2,3]
+Output: [3]
+Example 2:
+
+Input: [1,1,1,3,3,2,2,2]
+Output: [1,2]
+</details>
 
 <details>
 <summary>4. Median of Two Sorted Arrays</summary>
@@ -624,38 +657,4 @@ If Alex sits in the second open seat (seats[2]), then the closest person has dis
 If Alex sits in any other open seat, the closest person has distance 1.
 Thus, the maximum distance to the closest person is 2.
     
-</details>
-
-
-
-<details>
-<summary>169. Majority Element</summary>
-Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
-
-You may assume that the array is non-empty and the majority element always exist in the array.
-
-Example 1:
-
-Input: [3,2,3]
-Output: 3
-Example 2:
-
-Input: [2,2,1,1,1,2,2]
-Output: 2
-</details>
-
-<details>
-<summary>229. Majority Element II</summary>
-Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
-
-Note: The algorithm should run in linear time and in O(1) space.
-
-Example 1:
-
-Input: [3,2,3]
-Output: [3]
-Example 2:
-
-Input: [1,1,1,3,3,2,2,2]
-Output: [1,2]
 </details>
