@@ -9,7 +9,7 @@
 ## :fire:Create Thread
 ### by Implementing a Runnable Interface
 1) First, implement a run() method provided by a Runnable interface. This method provides an entry point for the thread and you will put your complete business logic inside this method.
-```
+```JAVA
 public class MyRunnable implements Runnable {
     @Override
     public void run() {
@@ -19,7 +19,7 @@ public class MyRunnable implements Runnable {
 ```
 2) Second, instantiate a Thread object using the following constructor
 3) Once a Thread object is created, you can start it by calling start() method, which executes a call to run( ) method.
-```
+```JAVA
 public static void main(String[] args) {
     MyRunnable instance = new MyRunnable();
     Thread thread = new Thread(instance);
@@ -28,7 +28,7 @@ public static void main(String[] args) {
 ```
 ### by Implementing a Callable Interface
 * Compared with Runnable, Callable has return value. The return value packed by FutureTask
-```
+```JAVA
 public class MyCallable implements Callable<Integer> {
     public Integer call() {
         return 123;
@@ -46,7 +46,7 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
 * This approach provides more flexibility in handling multiple threads created using available methods in Thread class.
 1) override run( ) method available in Thread class.
 2) Once Thread object is created, you can start it by calling start() method, which executes a call to run( ) method.
-```
+```JAVA
 public class MyThread extends Thread {
     public void run() {
         // ...
@@ -63,7 +63,7 @@ public static void main(String[] args) {
 * Java provides two **locking mechanisms** to control mutually exclusive access to Shared resources by multiple threads, the first being **synchronized** for the JVM implementation and the other being **ReentrantLock** for the JDK implementation.
 ### synchronized
 * When one thread enters a synchronized block, the other thread must wait.
-```
+```JAVA
 public void func() {
     synchronized (this) {
         // ...
@@ -82,7 +82,7 @@ public synchronized static void fun() {
 }
 ```
 ### ReentrantLcok
-```
+```JAVA
 public class LockExample {
 
     private Lock lock = new ReentrantLock();
