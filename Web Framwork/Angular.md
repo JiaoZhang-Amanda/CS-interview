@@ -3,20 +3,24 @@
 * [项目目录结构](#fire项目目录结构)
 
 * [模版语法](#fire模版语法)
-
+* [依赖注入](#fire依赖注入)
+* [双向数据绑定](#双向数据绑定)
 ## :fire:Angular介绍
 ### 什么是AngularJs？
 AngularJs是一个JavaScript framework，它能够创建Web，Mobile，Desktop Application。Google创建
 * **优势**
-    * Dependency Injection依赖注入
-    * Two Way Data-Binding 双向数据绑定
+    * Dependency Injection [依赖注入](#fire依赖注入)
+    * Two Way Data-Binding [双向数据绑定](#双向数据绑定)
     * Test测试
     * Model-View Controller 控制
     * Directives 指令，Pipe 管道操作，service 服务，animate 动画等
     
 ### MVC
-Model-View-Controller
-改变model，更新view；改变view，更新model
+Model-View-Controller: 改变model，更新view；改变view，更新model
+* M即数据模型: 可以将service服务层认为就是MVC中的M层
+在angular中可以认为是从服务端获取的数据，因为angular提倡的是组件化、模块化开发。所以不建议将与后台交互的业务逻辑、数据请求与组件混合，而是专门放在服务即service中单独处理，通过依赖注入（DI）的形式将获取到的数据注入到所应用的组件。所以。
+* V即视图层: 在angular中视图就是在@componet装饰器中组装的html模板
+* C即控制器: 在angular中可以理解为组件。
 
 ### 版本
 * **Angular1** = AngularJs，一个应用面非常广泛的JS框架
@@ -25,28 +29,28 @@ Model-View-Controller
 
 ## :fire:Angular应用开发
 ### 准备
-* Node.js
+* **Node.js**
 angular的CLI需要的NodeJs的环境基础
 “https://nodejs.org/en/”
-* Angular CLI
+* **Angular CLI**
 Angular提供的一个命令行工具，让用户通过命令行创建和管理项目。
 `npm install -g @angular/cli`
-* IDE：Visual Studio Code
+* **IDE：Visual Studio Code**
 “https://code.visualstudio.com/download”
-* Debug: Visual Studio Code Chrome Debugger Extension
+* **Debug: Visual Studio Code Chrome Debugger Extension**
 "https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome"
 
-* Tip: To test that you have Node.js and npm correctly installed on your machine, you can type node --version and npm --version.
+* **Tip**: To test that you have Node.js and npm correctly installed on your machine, you can type node --version and npm --version.
 
 ### 步骤
-1) 创建新的Angular项目：ng new
+1) **创建新的Angular项目**：ng new
 `ng new XXX`
 <br>第一次因为需要安装nodenode-modules，所以会很慢
-2) 运行应用：ng serve
+2) **运行应用**：ng serve
 <br>进入对应应用的文件夹`cd XXX`
 <br>使用CLI命令启动服务器`ng serve --open`，运行刚刚创建的angular项目
 <br>浏览器输入`http://localhost:4200`，运行地址
-3) 停止运行: Ctrl + c
+3) **停止运行**: Ctrl + c
 `Ctrl + c`
 
 ## :fire:项目目录结构
@@ -141,3 +145,8 @@ export class AppModule { }
 </html>
 ```
 ## :fire:模版语法
+## :fire:依赖注入
+## :fire:双向数据绑定
+从界面的操作能实时反映到数据，数据的变更能实时展现到界面
+ [(x)]语法结合了属性绑定的方括号[x]和事件绑定的圆括号(x)。
+ Angular 以 NgModel 指令为桥梁，允许在表单元素上使用双向数据绑定。
