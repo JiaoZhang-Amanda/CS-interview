@@ -98,7 +98,7 @@ export class AppComponent {
 }
 ```
 ### app.module.ts模块
-```
+```javascript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
@@ -126,7 +126,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 export class AppModule { }
 ```
 ### index.html
-```
+```javascript
 <!doctype html>
 <html lang="en">
 //声明了页面的字符集（charset）、标题（title）和基础URL（base href）。
