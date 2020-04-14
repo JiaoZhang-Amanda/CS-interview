@@ -262,6 +262,7 @@ Output: ["eat","oath"]
 
 <details>
 <summary>162. Find Peak Element</summary>
+<a href = "https://leetcode.com/problems/find-peak-element/">Leetcode Link</a><br>
 A peak element is an element that is greater than its neighbors.
 
 Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.
@@ -286,6 +287,7 @@ Explanation: Your function can return either index number 1 where the peak eleme
 
 <details>
 <summary>169. Majority Element</summary>
+<a href = "https://leetcode.com/problems/majority-element/">Leetcode Link</a><br>
 Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
 
 You may assume that the array is non-empty and the majority element always exist in the array.
@@ -302,6 +304,7 @@ Output: 2
 
 <details>
 <summary>229. Majority Element II</summary>
+<a href = "https://leetcode.com/problems/majority-element-ii/">Leetcode Link</a><br>
 Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 
 Note: The algorithm should run in linear time and in O(1) space.
