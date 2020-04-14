@@ -82,7 +82,7 @@ Angular提供的一个命令行工具，让用户通过命令行创建和管理�
 * **README.md**: 说明文件
 * **tslint.json**: tslint的配置文件，用来定义TypeScript代码质量检查的规则，不用管。
 ### app.component.ts组件
-```
+```javascript
 //导入依赖：从Angular核心模块里面引入了component装饰器
 import { Component } from '@angular/core';
 
